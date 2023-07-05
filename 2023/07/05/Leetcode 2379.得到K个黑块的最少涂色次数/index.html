@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Leetcode 2379.得到K个黑块的最少涂色次数 题目： 给你一个长度为 n 下标从 0 开始的字符串 blocks ，blocks[i] 要么是 &#39;W&#39; 要么是 &#39;B&#39; ，表示第 i 块的颜色。字符 &#39;W&#39; 和 &#39;B&#39; 分别表示白色和黑色。 给你一个整数 k ，表示想要 连续 黑色块的数目。 每一次操作中，你可以选择一个白色块">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://example.com/2023/07/05/Leetcode%202379.%E5%BE%97%E5%88%B0K%E4%B8%AA%E9%BB%91%E5%9D%97%E7%9A%84%E6%9C%80%E5%B0%91%E6%B6%82%E8%89%B2%E6%AC%A1%E6%95%B0/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Leetcode 2379.得到K个黑块的最少涂色次数 题目： 给你一个长度为 n 下标从 0 开始的字符串 blocks ，blocks[i] 要么是 &#39;W&#39; 要么是 &#39;B&#39; ，表示第 i 块的颜色。字符 &#39;W&#39; 和 &#39;B&#39; 分别表示白色和黑色。 给你一个整数 k ，表示想要 连续 黑色块的数目。 每一次操作中，你可以选择一个白色块">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-07-05T13:39:08.361Z">
+<meta property="article:modified_time" content="2023-03-09T04:53:12.729Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-Leetcode 2379.得到K个黑块的最少涂色次数" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/07/05/Leetcode%202379.%E5%BE%97%E5%88%B0K%E4%B8%AA%E9%BB%91%E5%9D%97%E7%9A%84%E6%9C%80%E5%B0%91%E6%B6%82%E8%89%B2%E6%AC%A1%E6%95%B0/" class="article-date">
+  <time class="dt-published" datetime="2023-07-05T13:39:08.361Z" itemprop="datePublished">2023-07-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="Leetcode-2379-得到K个黑块的最少涂色次数"><a href="#Leetcode-2379-得到K个黑块的最少涂色次数" class="headerlink" title="Leetcode 2379.得到K个黑块的最少涂色次数"></a>Leetcode 2379.得到K个黑块的最少涂色次数</h2><ul>
+<li><p><strong>题目</strong>：</p>
+<p>给你一个长度为 <code>n</code> 下标从 <strong>0</strong> 开始的字符串 <code>blocks</code> ，<code>blocks[i]</code> 要么是 <code>&#39;W&#39;</code> 要么是 <code>&#39;B&#39;</code> ，表示第 <code>i</code> 块的颜色。字符 <code>&#39;W&#39;</code> 和 <code>&#39;B&#39;</code> 分别表示白色和黑色。</p>
+<p>给你一个整数 <code>k</code> ，表示想要 <strong>连续</strong> 黑色块的数目。</p>
+<p>每一次操作中，你可以选择一个白色块将它 <strong>涂成</strong> 黑色块。</p>
+<p>请你返回至少出现 <strong>一次</strong> 连续 <code>k</code> 个黑色块的 <strong>最少</strong> 操作次数。</p>
+</li>
+<li><p><strong>示例：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">输入：blocks = &quot;WBBWWBBWBW&quot;, k = 7</span><br><span class="line">输出：3</span><br><span class="line">解释：</span><br><span class="line">一种得到 7 个连续黑色块的方法是把第 0 ，3 和 4 个块涂成黑色。</span><br><span class="line">得到 blocks = &quot;BBBBBBBWBW&quot; 。</span><br><span class="line">可以证明无法用少于 3 次操作得到 7 个连续的黑块。</span><br><span class="line">所以我们返回 3 。</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>思路</strong>：由于是比较连续K个黑色块，改变的是白色块的数目；也就是依次滑动固定长度为K的窗口，改变里面的白色块的数目，累计起来操作数最小的即为所求次数。</p>
+</li>
+<li><p><strong>例如</strong>：<code>WBBWWBBWBW </code>__ <code>k=7</code> __&gt; </p>
+<ol>
+<li><pre><code class="WBBWWBB~~,最开始的后W的次数为3，记录">
+</code></pre>
+</li>
+<li><strong>W</strong> <del>BBWWBB <strong>W</strong></del> 向后移动一个位置，窗口里的W的次数为3，但是原先的W的个数为3，如果是新遇到的字符为W，则<code>cnt+1</code>，但是要删除掉窗口最开始记录的W，保证窗口的长度始终为<code>K</code></li>
+</ol>
+</li>
+<li><p><strong>分析</strong>：</p>
+<ol>
+<li>这就是简单的滑动窗口 ，可以减少<strong>暴力循环遍历</strong>。窗口通常是指在数组&#x2F;字符串中由开始和结束索引定义的一系列元素的集合，即闭区间 [i , j ]。而滑动窗口是指可以将两个边界向某一方向「滑动」的窗口。例如：将窗口 [i，j]向右移动一个位置，变为[ i+1, j+1 ]。滑动后，窗口内少了元素i,多了元素j+1;</li>
+<li><strong>时间复杂度为：<code>O(n)</code>，n即为<code>blocks</code>的长度</strong></li>
+</ol>
+</li>
+<li><p><strong>代码：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">minimumRecolors</span><span class="params">(String blocks,<span class="type">int</span> k)</span>&#123;</span><br><span class="line">        <span class="type">int</span> cnt=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;k;i++)&#123;<span class="comment">//记中hong &#x27;w&#x27;的个数</span></span><br><span class="line">            <span class="keyword">if</span>(block.charAt(i)==<span class="string">&#x27;W&#x27;</span>)&#123;</span><br><span class="line">                cnt++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">int</span> ans=cnt;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=k;i&lt;block.length();i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(block.charAt(i)==<span class="string">&#x27;W&#x27;</span>)&#123;<span class="comment">//窗口的右开口记录‘W’，加1</span></span><br><span class="line">                cnt++;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(block.charAt(i-k)==<span class="string">&#x27;W&#x27;</span>)&#123;<span class="comment">//窗口的左开口‘W’，减1</span></span><br><span class="line">                cnt--;</span><br><span class="line">            &#125;</span><br><span class="line">            ans=Math.min(ans,cnt);<span class="comment">//返回整个过程中记录的最小值</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>结束~~</p>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/07/05/Leetcode%202379.%E5%BE%97%E5%88%B0K%E4%B8%AA%E9%BB%91%E5%9D%97%E7%9A%84%E6%9C%80%E5%B0%91%E6%B6%82%E8%89%B2%E6%AC%A1%E6%95%B0/" data-id="cljprmhqk00077kumde43eeti" data-title="" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2023/07/05/LeetCode%201105.%E5%A1%AB%E5%85%85%E4%B9%A6%E6%9E%B6/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title"></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/07/">July 2023</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2023/07/05/Leetcode%202379.%E5%BE%97%E5%88%B0K%E4%B8%AA%E9%BB%91%E5%9D%97%E7%9A%84%E6%9C%80%E5%B0%91%E6%B6%82%E8%89%B2%E6%AC%A1%E6%95%B0/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2023/07/05/LeetCode%201105.%E5%A1%AB%E5%85%85%E4%B9%A6%E6%9E%B6/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2023/07/05/Leetcode%201048.%E6%9C%80%E9%95%BF%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%93%BE/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2023/07/05/LeetCode%201043%E5%88%86%E9%9A%94%E6%95%B0%E7%BB%84%E4%BB%A5%E5%BE%97%E5%88%B0%E6%9C%80%E5%A4%A7%E5%92%8C/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2023/07/05/Leetcode%201031.%E4%B8%A4%E4%B8%AA%E9%9D%9E%E9%87%8D%E5%8F%A0%E5%AD%90%E6%95%B0%E7%BB%84%E7%9A%84%E6%9C%80%E5%A4%A7%E5%92%8C/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2023 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
