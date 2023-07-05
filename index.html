@@ -73,55 +73,38 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-Leetcode 2379.得到K个黑块的最少涂色次数" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+    <article id="post-First-In" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/2023/07/05/Leetcode%202379.%E5%BE%97%E5%88%B0K%E4%B8%AA%E9%BB%91%E5%9D%97%E7%9A%84%E6%9C%80%E5%B0%91%E6%B6%82%E8%89%B2%E6%AC%A1%E6%95%B0/" class="article-date">
-  <time class="dt-published" datetime="2023-07-05T13:39:08.361Z" itemprop="datePublished">2023-07-05</time>
+    <a href="/2023/07/05/First-In/" class="article-date">
+  <time class="dt-published" datetime="2023-07-05T09:50:05.000Z" itemprop="datePublished">2023-07-05</time>
 </a>
     
   </div>
   <div class="article-inner">
     
     
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/07/05/First-In/">First_In</a>
+    </h1>
+  
+
+      </header>
+    
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <h2 id="Leetcode-2379-得到K个黑块的最少涂色次数"><a href="#Leetcode-2379-得到K个黑块的最少涂色次数" class="headerlink" title="Leetcode 2379.得到K个黑块的最少涂色次数"></a>Leetcode 2379.得到K个黑块的最少涂色次数</h2><ul>
-<li><p><strong>题目</strong>：</p>
-<p>给你一个长度为 <code>n</code> 下标从 <strong>0</strong> 开始的字符串 <code>blocks</code> ，<code>blocks[i]</code> 要么是 <code>&#39;W&#39;</code> 要么是 <code>&#39;B&#39;</code> ，表示第 <code>i</code> 块的颜色。字符 <code>&#39;W&#39;</code> 和 <code>&#39;B&#39;</code> 分别表示白色和黑色。</p>
-<p>给你一个整数 <code>k</code> ，表示想要 <strong>连续</strong> 黑色块的数目。</p>
-<p>每一次操作中，你可以选择一个白色块将它 <strong>涂成</strong> 黑色块。</p>
-<p>请你返回至少出现 <strong>一次</strong> 连续 <code>k</code> 个黑色块的 <strong>最少</strong> 操作次数。</p>
-</li>
-<li><p><strong>示例：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">输入：blocks = &quot;WBBWWBBWBW&quot;, k = 7</span><br><span class="line">输出：3</span><br><span class="line">解释：</span><br><span class="line">一种得到 7 个连续黑色块的方法是把第 0 ，3 和 4 个块涂成黑色。</span><br><span class="line">得到 blocks = &quot;BBBBBBBWBW&quot; 。</span><br><span class="line">可以证明无法用少于 3 次操作得到 7 个连续的黑块。</span><br><span class="line">所以我们返回 3 。</span><br></pre></td></tr></table></figure>
-</li>
-<li><p><strong>思路</strong>：由于是比较连续K个黑色块，改变的是白色块的数目；也就是依次滑动固定长度为K的窗口，改变里面的白色块的数目，累计起来操作数最小的即为所求次数。</p>
-</li>
-<li><p><strong>例如</strong>：<code>WBBWWBBWBW </code>__ <code>k=7</code> __&gt; </p>
-<ol>
-<li><pre><code class="WBBWWBB~~,最开始的后W的次数为3，记录">
-</code></pre>
-</li>
-<li><strong>W</strong> <del>BBWWBB <strong>W</strong></del> 向后移动一个位置，窗口里的W的次数为3，但是原先的W的个数为3，如果是新遇到的字符为W，则<code>cnt+1</code>，但是要删除掉窗口最开始记录的W，保证窗口的长度始终为<code>K</code></li>
+        <h3 id="Test"><a href="#Test" class="headerlink" title="Test"></a>Test</h3><ol>
+<li>第一篇博客简单测试实现的功能，后续会继续优化网页的显示</li>
+<li>得抓紧时间学习新知识，争取找点找到实习工作</li>
+<li>一切都拼尽全力，一切都顺其自然，让自己快乐快乐这才叫做意义</li>
 </ol>
-</li>
-<li><p><strong>分析</strong>：</p>
-<ol>
-<li>这就是简单的滑动窗口 ，可以减少<strong>暴力循环遍历</strong>。窗口通常是指在数组&#x2F;字符串中由开始和结束索引定义的一系列元素的集合，即闭区间 [i , j ]。而滑动窗口是指可以将两个边界向某一方向「滑动」的窗口。例如：将窗口 [i，j]向右移动一个位置，变为[ i+1, j+1 ]。滑动后，窗口内少了元素i,多了元素j+1;</li>
-<li><strong>时间复杂度为：<code>O(n)</code>，n即为<code>blocks</code>的长度</strong></li>
-</ol>
-</li>
-<li><p><strong>代码：</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">minimumRecolors</span><span class="params">(String blocks,<span class="type">int</span> k)</span>&#123;</span><br><span class="line">        <span class="type">int</span> cnt=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;k;i++)&#123;<span class="comment">//记中hong &#x27;w&#x27;的个数</span></span><br><span class="line">            <span class="keyword">if</span>(block.charAt(i)==<span class="string">&#x27;W&#x27;</span>)&#123;</span><br><span class="line">                cnt++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">int</span> ans=cnt;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=k;i&lt;block.length();i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(block.charAt(i)==<span class="string">&#x27;W&#x27;</span>)&#123;<span class="comment">//窗口的右开口记录‘W’，加1</span></span><br><span class="line">                cnt++;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(block.charAt(i-k)==<span class="string">&#x27;W&#x27;</span>)&#123;<span class="comment">//窗口的左开口‘W’，减1</span></span><br><span class="line">                cnt--;</span><br><span class="line">            &#125;</span><br><span class="line">            ans=Math.min(ans,cnt);<span class="comment">//返回整个过程中记录的最小值</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>结束~~</p>
-</li>
-</ul>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2023/07/05/Leetcode%202379.%E5%BE%97%E5%88%B0K%E4%B8%AA%E9%BB%91%E5%9D%97%E7%9A%84%E6%9C%80%E5%B0%91%E6%B6%82%E8%89%B2%E6%AC%A1%E6%95%B0/" data-id="cljprmhqk00077kumde43eeti" data-title="" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2023/07/05/First-In/" data-id="cljpok7vy0000t0um2pndac64" data-title="First_In" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -133,607 +116,46 @@
 
 
   
-    <article id="post-LeetCode 1105.填充书架" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+    <article id="post-hello-world" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/2023/07/05/LeetCode%201105.%E5%A1%AB%E5%85%85%E4%B9%A6%E6%9E%B6/" class="article-date">
-  <time class="dt-published" datetime="2023-07-05T13:39:08.358Z" itemprop="datePublished">2023-07-05</time>
+    <a href="/2023/07/05/hello-world/" class="article-date">
+  <time class="dt-published" datetime="2023-07-05T09:16:30.829Z" itemprop="datePublished">2023-07-05</time>
 </a>
     
   </div>
   <div class="article-inner">
     
     
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/07/05/hello-world/">Hello World</a>
+    </h1>
+  
+
+      </header>
+    
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <h3 id="LeetCode-1105-填充书架"><a href="#LeetCode-1105-填充书架" class="headerlink" title="LeetCode 1105.填充书架"></a>LeetCode 1105.填充书架</h3><ul>
-<li><p><strong>题目：</strong></p>
-<p>给定一个数组 <code>books</code> ，其中 <code>books[i] = [thicknessi, heighti]</code> 表示第 <code>i</code> 本书的厚度和高度。你也会得到一个整数 <code>shelfWidth</code> 。</p>
-<p><strong>按顺序</strong> 将这些书摆放到总宽度为 <code>shelfWidth</code> 的书架上。</p>
-<p>先选几本书放在书架上（它们的厚度之和小于等于书架的宽度 <code>shelfWidth</code> ），然后再建一层书架。重复这个过程，直到把所有的书都放在书架上。</p>
-<p>需要注意的是，在上述过程的每个步骤中，<strong>摆放书的顺序与你整理好的顺序相同</strong>。</p>
-<ul>
-<li>例如，如果这里有 5 本书，那么可能的一种摆放情况是：第一和第二本书放在第一层书架上，第三本书放在第二层书架上，第四和第五本书放在最后一层书架上。</li>
-</ul>
-<p><span style="color: red;">每一层</span>所摆放的书的最大高度就是这一层书架的层高，书架整体的高度为各层高之和。</p>
-<p>以这种方式布置书架，返回书架整体可能的最小高度。</p>
-<p><strong>示例 1：</strong></p>
-<img src="https://assets.leetcode.com/uploads/2019/06/24/shelves.png" alt="img" style="zoom:50%;" />
+        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
 
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">输入：books = [[1,1],[2,3],[2,3],[1,1],[1,1],[1,1],[1,2]], shelfWidth = 4</span><br><span class="line">输出：6</span><br><span class="line">解释：</span><br><span class="line">3 层书架的高度和为 1 + 3 + 2 = 6 。</span><br><span class="line">第 2 本书不必放在第一层书架上。</span><br></pre></td></tr></table></figure>
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
 
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
 
-</li>
-<li><p><strong>分析：</strong></p>
-<ol>
-<li>这边简单的思路是首先需要考虑书架的最底层的宽度不能超过<code>shelfwidth</code> ,</li>
-<li><strong>递归+记录返回值&#x3D;记忆化搜索</strong></li>
-<li>一叶知秋，整个递归中有大量重复递归调用（递归入参相同）。由于递归函数没有副作用，同样的入参无论计算多少次，算出来的结果都是一样的，因此可以用<strong>记忆化搜索</strong>来优化：<ul>
-<li>如果一个状态（递归入参）是第一次遇到，那么可以在返回前，把状态及其结果记到一个 <em>memo</em> 数组（或哈希表）中。</li>
-<li>如果一个状态不是第一次遇到，那么直接返回<em>memo</em> 中保存的结果。</li>
-</ul>
-</li>
-</ol>
-<p>+++</p>
-</li>
-<li><p><strong>代码：</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span>[][] books; <span class="comment">//二维数组，列代表的是书架的宽度和高度： 你们那 [0]、[1]</span></span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> shelfWidth;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span>[] memo;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">minHeightShelves</span><span class="params">(<span class="type">int</span>[][] books, <span class="type">int</span> shelfWidth)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.books = books;</span><br><span class="line">        <span class="built_in">this</span>.shelfWidth = shelfWidth;</span><br><span class="line">        <span class="type">int</span> <span class="variable">n</span> <span class="operator">=</span> books.length;</span><br><span class="line">        memo = <span class="keyword">new</span> <span class="title class_">int</span>[n];</span><br><span class="line">        Arrays.fill(memo, -<span class="number">1</span>); <span class="comment">// -1 表示还没有计算过</span></span><br><span class="line">        <span class="keyword">return</span> dfs(n - <span class="number">1</span>);<span class="comment">//返回的是递归的最后那个模块</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> <span class="title function_">dfs</span><span class="params">(<span class="type">int</span> i)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (i &lt; <span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>; <span class="comment">// 没有书了，高度是 0</span></span><br><span class="line">        <span class="keyword">if</span> (memo[i] != -<span class="number">1</span>) <span class="keyword">return</span> memo[i]; <span class="comment">// 之前计算过了</span></span><br><span class="line">        <span class="type">int</span> <span class="variable">res</span> <span class="operator">=</span> Integer.MAX_VALUE, maxH = <span class="number">0</span>, leftW = shelfWidth;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> i; j &gt;= <span class="number">0</span>; --j) &#123;</span><br><span class="line">            leftW -= books[j][<span class="number">0</span>];</span><br><span class="line">            <span class="keyword">if</span> (leftW &lt; <span class="number">0</span>) <span class="keyword">break</span>; <span class="comment">// 空间不足，无法放书</span></span><br><span class="line">            maxH = Math.max(maxH, books[j][<span class="number">1</span>]); <span class="comment">// 从 j 到 i 的最大高度</span></span><br><span class="line">            res = Math.min(res, dfs(j - <span class="number">1</span>) + maxH);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> memo[i] = res; <span class="comment">// 记忆化</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2023/07/05/LeetCode%201105.%E5%A1%AB%E5%85%85%E4%B9%A6%E6%9E%B6/" data-id="cljprmhqh00027kumcvjjbitg" data-title="" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-Leetcode 1048.最长字符串链" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2023/07/05/Leetcode%201048.%E6%9C%80%E9%95%BF%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%93%BE/" class="article-date">
-  <time class="dt-published" datetime="2023-07-05T13:39:08.355Z" itemprop="datePublished">2023-07-05</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h4 id="Leetcode-1048-最长字符串链"><a href="#Leetcode-1048-最长字符串链" class="headerlink" title="Leetcode 1048.最长字符串链"></a>Leetcode 1048.最长字符串链</h4><ul>
-<li><p><strong>题目：</strong></p>
-<p>给出一个单词数组 <code>words</code> ，其中每个单词都由小写英文字母组成。</p>
-<p>如果我们可以 <strong>不改变其他字符的顺序</strong> ，在 <code>wordA</code> 的任何地方添加 <strong>恰好一个</strong> 字母使其变成 <code>wordB</code> ，那么我们认为 <code>wordA</code> 是 <code>wordB</code> 的 <strong>前身</strong> 。</p>
-<hr>
-<ul>
-<li>例如，<code>&quot;abc&quot;</code> 是 <code>&quot;abac&quot;</code> 的 <strong>前身</strong> ，而 <code>&quot;cba&quot;</code> 不是 <code>&quot;bcad&quot;</code> 的 <strong>前身</strong></li>
-</ul>
-<p><strong>词链</strong>是单词 <code>[word_1, word_2, ..., word_k]</code> 组成的序列，<code>k &gt;= 1</code>，其中 <code>word1</code> 是 <code>word2</code> 的前身，<code>word2</code> 是 <code>word3</code> 的前身，依此类推。一个单词通常是 <code>k == 1</code> 的 <strong>单词链</strong> 。</p>
-<p>从给定单词列表 <code>words</code> 中选择单词组成词链，返回 词链的 <strong>最长可能长度</strong> 。</p>
-<p>+++</p>
-<p><strong>示例 1：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：words = [&quot;a&quot;,&quot;b&quot;,&quot;ba&quot;,&quot;bca&quot;,&quot;bda&quot;,&quot;bdca&quot;]</span><br><span class="line">输出：4</span><br><span class="line">解释：最长单词链之一为 [&quot;a&quot;,&quot;ba&quot;,&quot;bda&quot;,&quot;bdca&quot;]</span><br></pre></td></tr></table></figure>
-</li>
-<li><p><strong>分析：</strong></p>
-<ul>
-<li><p>方法1：记忆化搜索</p>
-<ul>
-<li><p>对于字符串 s 来说，假设它是词链的最后一个单词，那么去掉 <em>s</em> 中的一个字母，设新字符串为 <em>t</em>，问题就变成计算以 <em>t</em> 结尾的词链的最长长度。由于这是一个和原问题相似的子问题，因此可以用递归解决。</p>
-</li>
-<li><p>直接把字符串作为递归的参数，定义 <em>dfs</em>(<em>s</em>) 表示以 <em>s</em> 结尾的词链的最长长度。由于字符串的长度不超过 16，暴力枚举去掉的字符，设新字符串为 tt<em>t</em> 且在 <em>words</em> 中，则有：</p>
-<p>​														<em>dfs</em>(<em>s</em>)&#x3D;max{<em>dfs</em>(<em>t</em>)}+1</p>
-<p>（为了快速判断字符串是否在words中，需要把所有的words[i]直接存在哈希表中）</p>
-</li>
-<li><p>由于 aba” 和 aca” 去掉中间字母都会变成 “aa”，为避免重复计算，代码实现时可以用记忆化搜索。进一步地，可以直接把计算结果存到<em>ws</em> 中。</p>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p><strong>代码:</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> Map&lt;String, Integer&gt; ws = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">longestStrChain</span><span class="params">(String[] words)</span> &#123;</span><br><span class="line">        <span class="keyword">for</span> (String s : words)</span><br><span class="line">            ws.put(s, <span class="number">0</span>); <span class="comment">// 0 表示未被计算</span></span><br><span class="line">        <span class="type">int</span> <span class="variable">ans</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> ( String s : ws.keySet())</span><br><span class="line">            ans = Math.max(ans, dfs(s));</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> <span class="title function_">dfs</span><span class="params">(String s)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">res</span> <span class="operator">=</span> ws.get(s);</span><br><span class="line">        <span class="keyword">if</span> (res &gt; <span class="number">0</span>) <span class="keyword">return</span> res; <span class="comment">// 之前计算过</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; s.length(); i++) &#123; <span class="comment">// 枚举去掉 s[i]</span></span><br><span class="line">            <span class="type">String</span> <span class="variable">t</span> <span class="operator">=</span> s.substring(<span class="number">0</span>, i) + s.substring(i + <span class="number">1</span>);</span><br><span class="line">            <span class="keyword">if</span> (ws.containsKey(t)) <span class="comment">// t 在 words 中</span></span><br><span class="line">                res = Math.max(res, dfs(t));</span><br><span class="line">        &#125;</span><br><span class="line">        ws.put(s, res + <span class="number">1</span>); <span class="comment">// 记忆化</span></span><br><span class="line">        <span class="keyword">return</span> res + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<ul>
-<li>方法2：双指针，这种比较直接，可以直接看出，不需要递归调用。</li>
-</ul>
-</li>
-<li><p><strong>代码：</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">longestStrChain</span><span class="params">(String[] words)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">n</span> <span class="operator">=</span> words.length;</span><br><span class="line">        <span class="type">int</span>[] dp = <span class="keyword">new</span> <span class="title class_">int</span>[n];</span><br><span class="line">        Arrays.fill(dp,<span class="number">1</span>);</span><br><span class="line">        Arrays.sort(words,(a,b) -&gt; a.length() - b.length());<span class="comment">//从小到大</span></span><br><span class="line">        <span class="type">int</span> <span class="variable">res</span> <span class="operator">=</span> <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>;i &lt; n;i++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> i - <span class="number">1</span>;j &gt;= <span class="number">0</span>;j--) &#123;<span class="comment">//两个循环</span></span><br><span class="line">                <span class="keyword">if</span> (words[i].length() == words[j].length() + <span class="number">1</span> &amp;&amp; check(words[i],words[j])) &#123;</span><br><span class="line">                    dp[i] = Math.max(dp[i],dp[j] + <span class="number">1</span>);</span><br><span class="line">                    res = Math.max(res,dp[i]);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="type">boolean</span> <span class="title function_">check</span><span class="params">(String w1,String w2)</span> &#123;<span class="comment">//双指针遍历</span></span><br><span class="line">        <span class="type">int</span> <span class="variable">idx</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">diff</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (idx &lt; w2.length()) &#123;</span><br><span class="line">            <span class="keyword">if</span> (diff &gt; <span class="number">1</span>) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (w1.charAt(idx + diff) != w2.charAt(idx)) &#123;</span><br><span class="line">                diff++;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                idx++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-</li>
-<li><p><strong>复杂度分析：</strong></p>
-<ul>
-<li><strong>时间复杂度</strong>：O(nL^2^)，其中 <em>n</em> 为 <em>words</em> 的长度，LL<em>L</em> 为字符串的最大长度，本题不超过16。动态规划的时间复杂度 &#x3D;状态个数 × 单个状态的计算时间。这里状态个数为 O(<em>n</em>)，单个状态的计算时间为 O(L^2^)，因此时间复杂度为 O(nL^2^)。</li>
-<li><strong>空间复杂度</strong>：O(<em>n</em>L)。每个状态<em>n</em>都需要 O(*L) 的空间。</li>
-</ul>
-</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2023/07/05/Leetcode%201048.%E6%9C%80%E9%95%BF%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%93%BE/" data-id="cljprmhqj00057kum6ktg5z2i" data-title="" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-LeetCode 1043分隔数组以得到最大和" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2023/07/05/LeetCode%201043%E5%88%86%E9%9A%94%E6%95%B0%E7%BB%84%E4%BB%A5%E5%BE%97%E5%88%B0%E6%9C%80%E5%A4%A7%E5%92%8C/" class="article-date">
-  <time class="dt-published" datetime="2023-07-05T13:39:08.351Z" itemprop="datePublished">2023-07-05</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h3 id="LeetCode-1043-分隔数组以得到最大和"><a href="#LeetCode-1043-分隔数组以得到最大和" class="headerlink" title="LeetCode 1043:分隔数组以得到最大和"></a>LeetCode 1043:分隔数组以得到最大和</h3><hr>
-<ul>
-<li><p><strong>题目：</strong></p>
-<p>给你一个整数数组 <code>arr</code>，请你将该数组分隔为长度 <strong>最多</strong> 为 k 的一些（连续）子数组。分隔完成后，每个子数组的中的所有值都会变为该子数组中的最大值。</p>
-<p>返回将数组分隔变换后能够得到的元素最大和。本题所用到的测试用例会确保答案是一个 32 位整数。</p>
-<p><strong>示例 1：</strong></p>
-</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：arr = [1,15,7,9,2,5,10], k = 3</span><br><span class="line">输出：84</span><br><span class="line">解释：数组变为 [15,15,15,9,10,10,10]</span><br></pre></td></tr></table></figure>
-
-
-
-<ul>
-<li><p><strong>分析：</strong> 这道题第一眼想到的就是<code>动态规划</code></p>
-<ol>
-<li><p>定义f[i]表示的是数组前i个元素分隔而成若干个子数组，最终的元素最大和。初始的时候f[i]&#x3D;0,答案是f[n];</p>
-</li>
-<li><p>对于 <code>f[i]</code>，它的最后一个元素是 <code>arr[i−1]</code>。由于每个子数组的长度最多为 <code>k</code>，并且我们需要求得子数组中的最大值，因此，我们可以从右往左枚举最后一个子数组的第一个元素 <code>arr[j−1]</code>，其中 <code>max⁡(0,i−k)&lt;j≤i</code>，过程中维护一个变量 <code>mx</code>，表示最后一个子数组中的最大值，那么状态转移方程为：</p>
-<p><code>f[i]=max⁡&#123;f[i],f[j−1]+m×(i−j+1)&#125;</code><br>最终的答案即为 f[n]。</p>
-</li>
-</ol>
-</li>
-</ul>
-<hr>
-<ul>
-<li><p><strong>代码</strong>：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">maxSumAfterPartitioning</span><span class="params">(<span class="type">int</span>[] arr,<span class="type">int</span> k)</span>&#123;</span><br><span class="line">        <span class="type">int</span> n=arr.length();</span><br><span class="line">        <span class="type">int</span> []f=<span class="keyword">new</span> <span class="title class_">int</span>[n+<span class="number">1</span>];</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">            <span class="type">int</span> mx=<span class="number">0</span>;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> j=i;j&gt;Math.max(<span class="number">0</span>,i-k);j--)&#123;</span><br><span class="line">                mx=Math.max(mx,ar[j-<span class="number">1</span>]);</span><br><span class="line">                f[i]=Math.max(f[i],f[j-<span class="number">1</span>+mx+(i-j+<span class="number">1</span>)]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> f[n];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<hr>
-</li>
-<li><p><strong>时间复杂度：</strong>O(<code>n</code>x<code>k</code>) 。期中<code>n</code>为数组<code>arr</code>的长度…</p>
-</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2023/07/05/LeetCode%201043%E5%88%86%E9%9A%94%E6%95%B0%E7%BB%84%E4%BB%A5%E5%BE%97%E5%88%B0%E6%9C%80%E5%A4%A7%E5%92%8C/" data-id="cljprmhq900007kum5zwj02z0" data-title="" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-Leetcode 1031.两个非重叠子数组的最大和" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2023/07/05/Leetcode%201031.%E4%B8%A4%E4%B8%AA%E9%9D%9E%E9%87%8D%E5%8F%A0%E5%AD%90%E6%95%B0%E7%BB%84%E7%9A%84%E6%9C%80%E5%A4%A7%E5%92%8C/" class="article-date">
-  <time class="dt-published" datetime="2023-07-05T13:39:08.349Z" itemprop="datePublished">2023-07-05</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h3 id="Leetcode-1031-两个非重叠子数组的最大和"><a href="#Leetcode-1031-两个非重叠子数组的最大和" class="headerlink" title="Leetcode 1031.两个非重叠子数组的最大和"></a>Leetcode 1031.两个非重叠子数组的最大和</h3><ul>
-<li><p><strong>题目：</strong></p>
-<p>给你一个整数数组 <code>nums</code> 和两个整数 <code>firstLen</code> 和 <code>secondLen</code>，请你找出并返回两个非重叠 <strong>子数组</strong> 中元素的最大和<em>，</em>长度分别为 <code>firstLen</code> 和 <code>secondLen</code> 。</p>
-<p>长度为 <code>firstLen</code> 的子数组可以出现在长为 <code>secondLen</code> 的子数组之前或之后，但二者必须是不重叠的。</p>
-<p>子数组是数组的一个 <strong>连续</strong> 部分。</p>
-<p><strong>示例 1：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：nums = [0,6,5,2,2,5,1,9,4], firstLen = 1, secondLen = 2</span><br><span class="line">输出：20</span><br><span class="line">解释：子数组的一种选择中，[9] 长度为 1，[6,5] 长度为 2。</span><br></pre></td></tr></table></figure>
-
-
-</li>
-<li><p><strong>分析：</strong></p>
-<ul>
-<li>方法一：一点自己的理解是，利用双指针的思想、注意前缀和的运用。其中和值可以通过加上最后一个值，减去上一个循环的最后一个值即可的，从而可以使空间降到O(1).</li>
-<li>一定要注意下标的关系:最后的<code>second</code>子数组 和<code> i+secondLen-1&lt;n</code>(因为此时的<code>i</code>从<code>firstLen</code>开始，在初始化<code>first</code>数组的后一位)</li>
-</ul>
-</li>
-<li><p><strong>代码：</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="type">int</span> ans=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">maxSumTwoNoOverlap</span><span class="params">(<span class="type">int</span>[] nums, <span class="type">int</span> firstLen, <span class="type">int</span> secondLen)</span> &#123;</span><br><span class="line">        <span class="comment">// 思路：动态规划，分别判断first在前面或者在后面的情况</span></span><br><span class="line">        <span class="comment">// 从前到后以second的当前索引和加上first的最大和，取最大值</span></span><br><span class="line">        <span class="keyword">return</span> Math.max(trace(nums, firstLen, secondLen), trace(nums, secondLen, firstLen));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">trace</span><span class="params">(<span class="type">int</span>[] nums, <span class="type">int</span> firstLen, <span class="type">int</span> secondLen)</span> &#123;</span><br><span class="line">        <span class="type">int</span> fSum=<span class="number">0</span>,fMax=<span class="number">0</span>,sSum=<span class="number">0</span>,res=<span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">n</span> <span class="operator">=</span> nums.length;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">0</span>;i&lt;firstLen;i++) &#123;</span><br><span class="line">            fSum+=nums[i];<span class="comment">//first前缀和</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i=firstLen;i&lt;secondLen+firstLen;i++) &#123;</span><br><span class="line">            sSum+=nums[i];<span class="comment">//second前缀和</span></span><br><span class="line">        &#125;</span><br><span class="line">        fMax = fSum;</span><br><span class="line">        res = sSum+fSum;<span class="comment">//初始最后答案</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i=firstLen+<span class="number">1</span>;(i+secondLen-<span class="number">1</span>)&lt;n;i++) &#123;</span><br><span class="line">            fSum=fSum+nums[i-<span class="number">1</span>]-nums[i-<span class="number">1</span>-firstLen];<span class="comment">//窗口移动，整体右移一位，左边界右移一位</span></span><br><span class="line">            sSum=sSum+nums[i+secondLen-<span class="number">1</span>]-nums[i-<span class="number">1</span>];<span class="comment">//同上</span></span><br><span class="line">            fMax = Math.max(fSum,fMax);<span class="comment">//记录first数组的最大值</span></span><br><span class="line">            res = Math.max(res,sSum+fMax);<span class="comment">//记录最后的最大答案</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<hr>
-<ul>
-<li><p>方法2：更加直观的解法，也就是把前缀和计算部分放在主函数，有点像模板的感觉。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">  <span class="keyword">class</span> <span class="title class_">Solution</span>&#123;</span><br><span class="line">      <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">maxSumTwoNoOverLap</span><span class="params">(<span class="type">int</span>[] nums,<span class="type">int</span> firstLen,it secondLen)</span>&#123;</span><br><span class="line">          <span class="type">int</span> n=nums.length;</span><br><span class="line">          <span class="type">int</span>[]s=<span class="keyword">new</span> <span class="title class_">int</span>[n+<span class="number">1</span>];</span><br><span class="line">          <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">              s[i+<span class="number">1</span>]=s[i]+nums[i];<span class="comment">//计算nums的前缀和</span></span><br><span class="line">          &#125;</span><br><span class="line">          <span class="keyword">return</span> Math.max(f(s,firstLen,secondLen),f(s,secondLen,firstLen));</span><br><span class="line">      &#125;</span><br><span class="line">      </span><br><span class="line">      <span class="keyword">private</span> <span class="type">int</span> <span class="title function_">f</span><span class="params">(<span class="type">int</span>[]s,<span class="type">int</span> firstLen,<span class="type">int</span> secondLen)</span>&#123;</span><br><span class="line">          <span class="type">int</span> maxA=<span class="number">0</span>,res=<span class="number">0</span>;</span><br><span class="line">          <span class="keyword">for</span>(<span class="type">int</span> i=firstLen+secondLen;i&lt;s.length;i++)&#123;<span class="comment">//注意这里的i</span></span><br><span class="line">              maxA=Math.max(maxA,s[i-secondLen]-s[i-secondLen-firstLen]);<span class="comment">//注意前半部分的最大值的写法和求法</span></span><br><span class="line">              res=Math.max(res,maxA+s[i]-s[i-secondLen]);<span class="comment">//maxA加上后半部分的最大值</span></span><br><span class="line">          &#125;</span><br><span class="line">          <span class="keyword">return</span> res;</span><br><span class="line">      &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li><p><strong>复杂度：</strong></p>
-<ul>
-<li><strong>时间复杂度：O(n),n为nums的长度</strong></li>
-<li><strong>空间复杂度：O(n),其实就是动态申请了n个max</strong></li>
-</ul>
-</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2023/07/05/Leetcode%201031.%E4%B8%A4%E4%B8%AA%E9%9D%9E%E9%87%8D%E5%8F%A0%E5%AD%90%E6%95%B0%E7%BB%84%E7%9A%84%E6%9C%80%E5%A4%A7%E5%92%8C/" data-id="cljprmhqi00037kumhiy5fy66" data-title="" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-Leetcode 459.重复的字符串" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2023/07/05/Leetcode%20459.%E9%87%8D%E5%A4%8D%E7%9A%84%E5%AD%97%E7%AC%A6%E4%B8%B2/" class="article-date">
-  <time class="dt-published" datetime="2023-07-05T13:39:08.346Z" itemprop="datePublished">2023-07-05</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h3 id="Leetcode-459-重复的字符串（滑动窗口的思想）"><a href="#Leetcode-459-重复的字符串（滑动窗口的思想）" class="headerlink" title="Leetcode 459.重复的字符串（滑动窗口的思想）"></a>Leetcode 459.重复的字符串（滑动窗口的思想）</h3><ul>
-<li><p><strong>题目：</strong></p>
-<p>给定一个非空的字符串 <code>s</code> ，检查是否可以通过由它的一个子串重复多次构成。</p>
-<p><strong>示例 1:</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入: s = &quot;abab&quot;</span><br><span class="line">输出: true</span><br><span class="line">解释: 可由子串 &quot;ab&quot; 重复两次构成。</span><br></pre></td></tr></table></figure>
-
-<p><strong>示例 2:</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: s = &quot;aba&quot;</span><br><span class="line">输出: false</span><br></pre></td></tr></table></figure>
-
-
-</li>
-<li><p><strong>分析：</strong></p>
-<ul>
-<li><p>对于原先的字符串而言，如果需要判断是否重复的话，本来是应该在原字符串中通过字符的<code>移位</code>或者<code>换行</code>实现，但是需要注意的是，字符串<code>s</code>的出现，每个字符都可以移位<code>length-1</code>次，举个例子：</p>
-<blockquote>
-<p>abcabc，对于从后向前的移位而言</p>
-<ol>
-<li>移位1次：cabcab</li>
-<li>移位2次：bcabca</li>
-<li>移位3次：abcabc —&gt; 发现是可以和原字符串匹配了。</li>
-</ol>
-</blockquote>
-</li>
-<li><p>其实这里就可以看出来匹配的思想了，就是每次移动k个字符，直到匹配移动<code>length-1</code>次为止。但是由于每次都要重复循环，所以必然会导致效率很低。</p>
-</li>
-<li><p>这里我们采用的是：创建一个新的字符串<code>str</code>,将<code>str</code>长度翻倍，也就是重复输出一遍，拼接。比如：<code>S=abc</code>,那么<code>str=S+S=abcabc</code>;<code>abc</code>移动的可能：<code>cab、bca</code>.就已经包括了所有位数的移动情况了。</p>
-<blockquote>
-<p><strong>有点像滑动窗口，也就是每次都维护S长度的字符串，从字符的左边依次遍历匹配即可</strong></p>
-</blockquote>
-</li>
-</ul>
-</li>
-<li><p><strong>代码：</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>&#123;</span><br><span class="line">	<span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">repeatedSubstringPattern</span><span class="params">(String s)</span>&#123;</span><br><span class="line">        String str=s+s;<span class="comment">//实现字符串的拼接</span></span><br><span class="line">        <span class="keyword">return</span> str.substring(<span class="number">1</span>,str.length()-<span class="number">1</span>).contains(s);<span class="comment">//从第二个字符开始滑动，也就是滑动窗口的遍历法。</span></span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<ul>
-<li><strong>由于调用的是java内部的API函数，暂不讨论时间和空间的复杂度，也就是说函数是现成可用的。</strong></li>
-</ul>
-</blockquote>
-</li>
-<li><p><strong>思考：</strong></p>
-<ul>
-<li>上述的方法确实比较精妙，考虑到了重复字符串的特性，也就是每个字符的滑动，但是我们一般都会采用的是暴力的算法，但是唯一一点是要考虑是否会超时。</li>
-</ul>
-</li>
-<li><p><strong>代码</strong>：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;   </span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">repeatedSubstringPattern</span><span class="params">(String s)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span>(s == <span class="literal">null</span> || s.length() &lt; <span class="number">1</span>) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">len</span> <span class="operator">=</span> s.length();</span><br><span class="line">        <span class="type">String</span> <span class="variable">str</span>  <span class="operator">=</span> s;</span><br><span class="line">        <span class="keyword">while</span>(len &gt; <span class="number">1</span>)&#123;</span><br><span class="line">            str = str.charAt(s.length() - <span class="number">1</span>) + str.substring(<span class="number">0</span>, s.length() - <span class="number">1</span>);</span><br><span class="line">            <span class="comment">//if(str.contains(s)) return true;</span></span><br><span class="line">            <span class="keyword">if</span>(str.equals(s)) </span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            len--;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p><strong>复杂度：</strong></p>
-<ul>
-<li><strong>时间复杂度：</strong>O(n^2^);&#x2F;&#x2F;n是字符串s的长度，枚举每个字符的匹配为<code>O（n）</code>，自然相乘就是O(n^2^);</li>
-<li><strong>空间复杂度：</strong>O(1);</li>
-</ul>
-</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2023/07/05/Leetcode%20459.%E9%87%8D%E5%A4%8D%E7%9A%84%E5%AD%97%E7%AC%A6%E4%B8%B2/" data-id="cljprmhqm00097kum2ttr26rr" data-title="" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-Leetcode 162.寻找峰值 （算法：二分查找）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2023/07/05/Leetcode%20162.%E5%AF%BB%E6%89%BE%E5%B3%B0%E5%80%BC%20%EF%BC%88%E7%AE%97%E6%B3%95%EF%BC%9A%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%EF%BC%89/" class="article-date">
-  <time class="dt-published" datetime="2023-07-05T13:39:08.344Z" itemprop="datePublished">2023-07-05</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h2 id="Leetcode-162-寻找峰值-（算法：二分查找）"><a href="#Leetcode-162-寻找峰值-（算法：二分查找）" class="headerlink" title="Leetcode 162.寻找峰值 （算法：二分查找）"></a>Leetcode 162.寻找峰值 （算法：二分查找）</h2><ul>
-<li><strong>题目：</strong></li>
-</ul>
-<p>峰值元素是指其值严格大于左右相邻值的元素。</p>
-<p>给你一个整数数组 <code>nums</code>，找到峰值元素并返回其索引。数组可能包含多个峰值，在这种情况下，返回 <strong>任何一个峰值</strong> 所在位置即可。</p>
-<p>你可以假设 <code>nums[-1] = nums[n] = -∞</code> 。（<strong>这里也就是说肯定存在最大的峰值，只要是数组中存在一个元素是比相邻的元素大，那么说明沿着一定可以找到一个峰值</strong>）</p>
-<p>你必须实现时间复杂度为 <code>O(log n)</code> 的算法来解决此问题。</p>
-<p><strong>提示：</strong></p>
-<ul>
-<li><p><code>1 &lt;= nums.length &lt;= 1000</code></p>
-</li>
-<li><p><code>-231 &lt;= nums[i] &lt;= 231 - 1</code></p>
-</li>
-<li><p>对于所有有效的 <code>i</code> 都有 <code>nums[i] != nums[i + 1]</code>—【<strong>这里说明了每个相邻的数字都不一样，也就是峰顶元素只能有一个。最后返回一个即可</strong>】</p>
-</li>
-<li><p>示例1：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：nums = [1,2,3,1]</span><br><span class="line">输出：2</span><br><span class="line">解释：3 是峰值元素，你的函数应该返回其索引2。</span><br></pre></td></tr></table></figure>
-</li>
-<li><p><strong>分析：</strong>存在最大的峰值，那么说明可以利用二分进行筛查，根据左右指针的位置计算出<code>中间的位置 mid</code>,需要比较的是mid 和mid+1处的值，如果<strong>mid较大</strong>，说明在mid和左侧位置存在峰值，如果是<strong>mid+1较大</strong>的话，说明右侧存在峰值。</p>
-</li>
-<li><p>这里用<code>left</code>代表左边界，<code>right</code>代表有边界</p>
-</li>
-<li><p>时间复杂度为：<strong>O（LogN）</strong></p>
-</li>
-</ul>
-<p><strong>实现的代码如下：</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">finalPeakElement</span><span class="params">(<span class="type">int</span> []nums)</span>&#123;</span><br><span class="line">        <span class="type">int</span> left=<span class="number">0</span>,right=nums.length-<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span>(left&lt;right)&#123;</span><br><span class="line">            <span class="type">int</span> min=left+(right-left)/<span class="number">2</span>;</span><br><span class="line">            <span class="keyword">if</span>(nums[mid]&gt;nums[mid+<span class="number">1</span>])&#123;</span><br><span class="line">                right=mid;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                left=mid+<span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> left;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<ul>
-<li><strong>算法分析</strong>：上述的算法是二分中的闭区间的做法，即先开始是有边界和左边界共同出现，二者在遍历的过程中是可以重合的。但是我们不会改变条件：<code>while(left&lt;right)</code>,这是由于当二者重合的时候已经退出循环了。</li>
-<li><del>结束</del>  THE END~</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2023/07/05/Leetcode%20162.%E5%AF%BB%E6%89%BE%E5%B3%B0%E5%80%BC%20%EF%BC%88%E7%AE%97%E6%B3%95%EF%BC%9A%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%EF%BC%89/" data-id="cljprmhql00087kum7dv83fub" data-title="" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-LeetCode 151.反转字符串中的单词" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2023/07/05/LeetCode%20151.%E5%8F%8D%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%AD%E7%9A%84%E5%8D%95%E8%AF%8D/" class="article-date">
-  <time class="dt-published" datetime="2023-07-05T13:39:08.341Z" itemprop="datePublished">2023-07-05</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h3 id="LeetCode-151-反转字符串中的单词"><a href="#LeetCode-151-反转字符串中的单词" class="headerlink" title="LeetCode 151.反转字符串中的单词"></a>LeetCode 151.反转字符串中的单词</h3><ul>
-<li><p><strong>题目：</strong></p>
-<blockquote>
-<p> 给你一个字符串<code>s</code> ，请你反转字符串中 <strong>单词</strong> 的顺序。</p>
-<p><strong>单词</strong> 是由非空格字符组成的字符串。<code>s</code> 中使用至少一个空格将字符串中的 <strong>单词</strong> 分隔开。</p>
-<p>返&#96;回 <strong>单词</strong> 顺序颠倒且 <strong>单词</strong> 之间用单个空格连接的结果字符串。</p>
-<p><strong>注意：</strong>输入字符串 <code>s</code>中可能会存在前导空格、尾随空格或者单词间的多个空格。返回的结果字符串中，单词间应当仅用单个空格分隔，且不包含任何额外的空格。</p>
-</blockquote>
-<p><strong>示例 1：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：s = &quot;the sky is blue&quot;</span><br><span class="line">输出：&quot;blue is sky the&quot;</span><br></pre></td></tr></table></figure>
-
-
-</li>
-<li><p><strong>分析</strong></p>
-<ul>
-<li>最直接的方法是：创建新的字符串数组。其实就是对于原字符串数组的每个字符元素，从后想起输入整体的单词元素，但是需要注意的是:<code>以空格或者数组的边界位置为每个单词的分界符</code>，这里需要两个指针(一个是用来字符串，一个是每个字符串<code>单词</code>的内部填充，注意除了最后一个单词后没有空格，)</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//解法二：创建新字符数组填充。</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">reverseWords</span><span class="params">(String s)</span> &#123;</span><br><span class="line">        <span class="comment">//源字符数组</span></span><br><span class="line">        <span class="type">char</span>[] initialArr = s.toCharArray();</span><br><span class="line">        <span class="comment">//新字符数组</span></span><br><span class="line">        <span class="type">char</span>[] newArr = <span class="keyword">new</span> <span class="title class_">char</span>[initialArr.length+<span class="number">1</span>];<span class="comment">//下面循环添加&quot;单词 &quot;，最终末尾的空格不会返回</span></span><br><span class="line">        <span class="type">int</span> newArrPos=<span class="number">0</span>;</span><br><span class="line">        <span class="comment">//i来进行整体对源字符数组从后往前遍历</span></span><br><span class="line">        <span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> initialArr.length-<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span>(i&gt;=<span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">while</span>(i&gt;=<span class="number">0</span> &amp;&amp; initialArr[i] == <span class="string">&#x27; &#x27;</span>)&#123;i--;&#125;  <span class="comment">//跳过空格</span></span><br><span class="line">            <span class="comment">//此时i位置是边界或!=空格，先记录当前索引，之后的while用来确定单词的首字母的位置</span></span><br><span class="line">            <span class="type">int</span> <span class="variable">right</span> <span class="operator">=</span> i;</span><br><span class="line">            <span class="keyword">while</span>(i&gt;=<span class="number">0</span> &amp;&amp; initialArr[i] != <span class="string">&#x27; &#x27;</span>)&#123;</span><br><span class="line">                i--;</span><br><span class="line">                &#125; </span><br><span class="line">            <span class="comment">//指定区间单词取出(由于i为首字母的前一位，所以这里+1,)，取出的每组末尾都带有一个空格</span></span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> i+<span class="number">1</span>; j &lt;= right; j++) &#123;<span class="comment">//选取的是当前的区间中的字符</span></span><br><span class="line">                newArr[newArrPos++] = initialArr[j];</span><br><span class="line">                <span class="keyword">if</span>(j == right)&#123;</span><br><span class="line">                    newArr[newArrPos++] = <span class="string">&#x27; &#x27;</span>;<span class="comment">//空格</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//若是原始字符串没有单词，直接返回空字符串；若是有单词，返回0-末尾空格索引前范围的字符数组(转成String返回)</span></span><br><span class="line">        <span class="keyword">if</span>(newArrPos == <span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;&quot;</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">String</span>(newArr,<span class="number">0</span>,newArrPos-<span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<ul>
-<li><strong>时间复杂度：O(n)，整体就只有对于原字符串数组的一次遍历。</strong></li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2023/07/05/LeetCode%20151.%E5%8F%8D%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%AD%E7%9A%84%E5%8D%95%E8%AF%8D/" data-id="cljprmhqf00017kumdhp3ey8a" data-title="" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-Leetcode 55：跳跃游戏（贪心）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2023/07/05/Leetcode%2055%EF%BC%9A%E8%B7%B3%E8%B7%83%E6%B8%B8%E6%88%8F%EF%BC%88%E8%B4%AA%E5%BF%83%EF%BC%89/" class="article-date">
-  <time class="dt-published" datetime="2023-07-05T13:39:08.337Z" itemprop="datePublished">2023-07-05</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h3 id="Leetcode-55：跳跃游戏（贪心）"><a href="#Leetcode-55：跳跃游戏（贪心）" class="headerlink" title="Leetcode 55：跳跃游戏（贪心）"></a>Leetcode 55：跳跃游戏（贪心）</h3><ul>
-<li><p><strong>题目：</strong> 给定一个非负整数数组 <code>nums</code> ，你最初位于数组的 <strong>第一个下标</strong> 。数组中的每个元素代表你在该位置可以跳跃的最大长度。 <strong>判断你是否能够到达最后一个下标</strong></p>
-<p><strong>示例 1：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：nums = [2,3,1,1,4]</span><br><span class="line">输出：true</span><br><span class="line">解释：可以先跳 1 步，从下标 0 到达下标 1, 然后再从下标 1 跳 3 步到达最后一个下标。</span><br></pre></td></tr></table></figure></li>
-</ul>
-<p>+++</p>
-<ul>
-<li><strong>分析：</strong>  </li>
-<li><ul>
-<li>本题的关键是对于每一步的把控，例如当处于<code>nums[0]</code>时，此时的值为<code>2</code>，也就是可以跳跃一步或者两步，这样下去对应数组中的每个数字都可以由不同的<code>跳跃方法</code>。</li>
-<li><strong>但是我们要注意：每个位置跳多少步不是关键，而是最后的跳跃范围是否可以覆盖到最后一个数（也就是终点）</strong> 那么我们可以尝试每次移动取最大的跳跃步数（目的是得到最大的范围），依次更新覆盖的范围。</li>
-<li><strong>本题的贪心算法的关键是：&#x3D;&#x3D;局部最优解&#x3D;&#x3D;，每次取最大的跳跃步数（取最大的覆盖范围）；&#x3D;&#x3D;整体最优解：&#x3D;&#x3D; 最后得到整体的最大覆盖范围，看看能否到达最后一个数（终点）</strong></li>
-</ul>
-</li>
-</ul>
-<p>+++</p>
-<ul>
-<li><p><strong>代码：</strong></p>
-</li>
-<li><pre><code class="Java">class Solution&#123;
-    public boolean canJump(int[] nums)&#123;
-        if(nums.length==1)&#123;
-            return true;//特例：第一个数字自己就是终点
-        &#125;
-        //开始覆盖范围
-        int cover=nums[0];//初始值
-        //在第一个数的覆盖范围内继续不断地更新最大覆盖范围
-        for(int i=0;i&lt;=cover;i++)&#123;
-        //这里之所以可以取等，因为我们要求的相当于是每个位置的数值，那当然可以取等，如nums[0]==3,那么我们可以跳跃三次到nums[3],再更新最大范围;
-        cover=Math.max(cover,i+nums[i]);//当前的编号，加上可跳跃的数值，即为范围
-        if(cover&gt;=nums.length-1)&#123;//覆盖范围可以到达最后一个数字的下标（终点）
-            return true;
-            &#125;  
-        &#125;
-        return false;
-    &#125;
-&#125;
-</code></pre>
-</li>
-</ul>
-<p>+++</p>
-<ul>
-<li><p><strong>总结</strong> </p>
-<ul>
-<li><p>**时间复杂度考虑最坏的情况，如果全部元素都是1，那么循环需要n-1次，时间复杂度为：O(n); **</p>
-</li>
-<li><p><strong>空间复杂度：由于只引入了若干变量，未占用内存存储空间：O(1)</strong></p>
-</li>
-</ul>
-<p>END~~</p>
-</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2023/07/05/Leetcode%2055%EF%BC%9A%E8%B7%B3%E8%B7%83%E6%B8%B8%E6%88%8F%EF%BC%88%E8%B4%AA%E5%BF%83%EF%BC%89/" data-id="cljprmhqm000a7kum6mjsb568" data-title="" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-Leetcode 1.两数之和" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2023/07/05/Leetcode%201.%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C/" class="article-date">
-  <time class="dt-published" datetime="2023-07-05T13:39:08.334Z" itemprop="datePublished">2023-07-05</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h3 id="Leetcode-1-两数之和"><a href="#Leetcode-1-两数之和" class="headerlink" title="Leetcode 1.两数之和"></a>Leetcode 1.两数之和</h3><ul>
-<li><p>给定一个整数数组 <code>nums</code> 和一个整数目标值 <code>target</code>，请你在该数组中找出 <strong>和为目标值</strong> <em><code>target</code></em> 的那 <strong>两个</strong> 整数，并返回它们的数组下标。</p>
-<p>你可以假设每种输入只会对应一个答案。但是，数组中同一个元素在答案里不能重复出现。</p>
-<p>你可以按任意顺序返回答案。</p>
-<p><strong>示例 1：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：nums = [2,7,11,15], target = 9</span><br><span class="line">输出：[0,1]</span><br><span class="line">解释：因为 nums[0] + nums[1] == 9 ，返回 [0, 1] 。</span><br></pre></td></tr></table></figure></li>
-</ul>
-<hr>
-<ul>
-<li><p><strong>分析：</strong>本题有好多种解法，这里选择两种常见的解法，一种是直接上循环，不断遍历数组；另外一种是利用哈希表，返回对应表的下标（利用<code>key</code> 和<code>value</code>）</p>
-<ul>
-<li><p><strong>方法1：利用遍历模拟</strong></p>
-<ul>
-<li>本题要求的是返回两个数字和为<code>target</code>的数组元素的下标，这里可以直接交换遍历，比如最简单的for循环，我们会把两个指针所指向的值之和，依次比较，最后返回数组元素的下标（构建新的数组）</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span>[] twoSum(<span class="type">int</span> []nums,<span class="type">int</span> target)&#123;</span><br><span class="line">        <span class="type">int</span> j=<span class="number">1</span>;</span><br><span class="line">        <span class="type">int</span> i=<span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> maxLen=nums.length-<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span>(nums[i]+nums[j]!=target)&#123;</span><br><span class="line">            <span class="keyword">if</span>(j==maxLen)&#125;&#123;</span><br><span class="line">            	i++;</span><br><span class="line">            	j=i;</span><br><span class="line">        &#125;</span><br><span class="line">        j++:</span><br><span class="line">        &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">int</span>[]&#123;i,j&#125;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><strong>时间复杂度：O(n^2^)</strong>,一个是i，另外一个是j的循环遍历，至少需要<strong>n(n-1)<strong>的步骤；</strong>空间复杂度为O(1)</strong></li>
-</ul>
-<hr>
-</li>
-<li><p><strong>方法2：Hash表</strong></p>
-<ul>
-<li>Hash表是一种数据结构关系，利用&#x3D;&#x3D;键(key)&#x3D;&#x3D;和&#x3D;&#x3D;值(value)&#x3D;&#x3D;的<code>一一对应</code>的关系，生成map。map目的用来存放我们访问过的元素，因为遍历数组的时候，需要记录我们之前遍历过哪些元素和对应的下标，这样才能找到与当前元素相匹配的（也就是相加等于target）</li>
-<li>在遍历数组的时候，只需要向map去查询是否有和目前遍历元素匹配的数值，如果有，就找到的匹配对，如果没有，就把目前遍历的元素放进map中，因为map存放的就是我们访问过的元素</li>
-<li>本题的map我们这样定义：<code>key</code>为数组中的num[i]值，对应的<code>value</code>为 ：下标元素i；</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span>[] twoSum(<span class="type">int</span>[] nums,<span class="type">int</span> target)&#123;</span><br><span class="line">        <span class="type">int</span>[]res=<span class="keyword">new</span> <span class="title class_">int</span>[<span class="number">2</span>];<span class="comment">//首先生成最后需要返回的数组，保存的是数组的元素下标</span></span><br><span class="line">        <span class="keyword">if</span>(nums==<span class="literal">null</span> || nums.length==<span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> res;<span class="comment">//考虑特例</span></span><br><span class="line">        &#125;</span><br><span class="line">        Map&lt;Integer,Integer&gt;map=<span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();<span class="comment">//建立HashMap</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;nums.length;i++)&#123;</span><br><span class="line">            <span class="type">int</span> temp=target-nums[i];<span class="comment">//从第i个元素开始，看看当前的元素数组中是否存在可以满足条件的值</span></span><br><span class="line">            <span class="keyword">if</span>(map.containsKey(temp))&#123;</span><br><span class="line">                res[<span class="number">1</span>]=i;</span><br><span class="line">                res[<span class="number">0</span>]=map.get(temp);<span class="comment">//这里的get返回的是满足条件的temp数组元素的下标，注意我们定义Value是数组元素的下标，对应的Key是数组元素的值</span></span><br><span class="line">                <span class="keyword">break</span>;<span class="comment">//跳出循环</span></span><br><span class="line">            &#125;</span><br><span class="line">            map.put(nums[i],i);<span class="comment">//如果没有找到匹配的对，对于大的循环而言，只需要在HashMap中添加对应的nums值和下标即可，为后续的元素查找匹配提供map数据资源。</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;<span class="comment">//返回需要的元素数组下标的新数组</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><strong>时间复杂度：O(n)<strong>，利用HashMap的数据结构大大提高了查找的效率，就相当于是额外开辟内存空间进行数组元素的值、下标的匹配关系映射，通过牺牲空间复杂度换取时间、效率的提高，</strong>空间复杂度为：O(n),（相当于为每个元素都开辟了n-1的空间）。</strong></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<hr>
-<ul>
-<li><strong>总结：</strong>这道题很经典，其实还有很多其他的解法，这里由于篇幅就不一一介绍了。对于不同的数据结构和算法而言，我们实现的目标、途径都是不同，同样，时间和空间的各自复杂度的考虑也存在差异，多加练习，多多增加对于每道题目的不同思考方式，继续加油！</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2023/07/05/Leetcode%201.%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C/" data-id="cljprmhqk00067kum5do0dk1m" data-title="" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2023/07/05/hello-world/" data-id="cljpok7w40001t0umgq1e0b6f" data-title="Hello World" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -746,11 +168,6 @@
 
   
 
-
-  <nav id="page-nav">
-    
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
-  </nav>
 
 </section>
         
@@ -781,23 +198,11 @@
       <ul>
         
           <li>
-            <a href="/2023/07/05/Leetcode%202379.%E5%BE%97%E5%88%B0K%E4%B8%AA%E9%BB%91%E5%9D%97%E7%9A%84%E6%9C%80%E5%B0%91%E6%B6%82%E8%89%B2%E6%AC%A1%E6%95%B0/">(no title)</a>
+            <a href="/2023/07/05/First-In/">First_In</a>
           </li>
         
           <li>
-            <a href="/2023/07/05/LeetCode%201105.%E5%A1%AB%E5%85%85%E4%B9%A6%E6%9E%B6/">(no title)</a>
-          </li>
-        
-          <li>
-            <a href="/2023/07/05/Leetcode%201048.%E6%9C%80%E9%95%BF%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%93%BE/">(no title)</a>
-          </li>
-        
-          <li>
-            <a href="/2023/07/05/LeetCode%201043%E5%88%86%E9%9A%94%E6%95%B0%E7%BB%84%E4%BB%A5%E5%BE%97%E5%88%B0%E6%9C%80%E5%A4%A7%E5%92%8C/">(no title)</a>
-          </li>
-        
-          <li>
-            <a href="/2023/07/05/Leetcode%201031.%E4%B8%A4%E4%B8%AA%E9%9D%9E%E9%87%8D%E5%8F%A0%E5%AD%90%E6%95%B0%E7%BB%84%E7%9A%84%E6%9C%80%E5%A4%A7%E5%92%8C/">(no title)</a>
+            <a href="/2023/07/05/hello-world/">Hello World</a>
           </li>
         
       </ul>
