@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://shakej96.github.io/2023/07/07/shuang-zhou-sai-100-t1-ba-qian-fen-gei-zui-duo-de-er-tong/</loc>
+    
+    <lastmod>2023-07-06</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://shakej96.github.io/2023/07/07/leetcode-1-liang-shu-zhi-he/</loc>
     
     <lastmod>2023-07-06</lastmod>
@@ -116,6 +125,13 @@
   
   <url>
     <loc>https://shakej96.github.io/tags/%E5%89%91%E6%8C%87Offer%EF%BC%88%E4%B8%93%E9%A1%B9%EF%BC%89/</loc>
+    <lastmod>2023-07-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://shakej96.github.io/tags/%E5%91%A8%E8%B5%9B/</loc>
     <lastmod>2023-07-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
