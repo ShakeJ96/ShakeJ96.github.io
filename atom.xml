@@ -2,11 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>ShakeJ96</title>
   
-  <subtitle>Codespace in Silence</subtitle>
+  <subtitle>ShakeJ&#39;s Codespace</subtitle>
   <link href="https://shakej96.github.io/atom.xml" rel="self"/>
   
   <link href="https://shakej96.github.io/"/>
-  <updated>2023-07-05T12:02:47.753Z</updated>
+  <updated>2023-07-06T14:56:32.824Z</updated>
   <id>https://shakej96.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://shakej96.github.io/2023/07/05/first-in/"/>
     <id>https://shakej96.github.io/2023/07/05/first-in/</id>
     <published>2023-07-05T09:50:05.000Z</published>
-    <updated>2023-07-05T12:02:47.753Z</updated>
+    <updated>2023-07-06T14:56:32.824Z</updated>
     
     
       
@@ -42,7 +42,7 @@
     <link href="https://shakej96.github.io/2023/07/05/hello-world/"/>
     <id>https://shakej96.github.io/2023/07/05/hello-world/</id>
     <published>2023-07-05T09:16:30.829Z</published>
-    <updated>2023-07-05T09:16:30.829Z</updated>
+    <updated>2023-07-06T14:56:32.825Z</updated>
     
     
       

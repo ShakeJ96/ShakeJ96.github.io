@@ -2,6 +2,24 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://shakej96.github.io/2023/07/05/hello-world/</loc>
+    
+    <lastmod>2023-07-06</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://shakej96.github.io/2023/07/05/first-in/</loc>
+    
+    <lastmod>2023-07-06</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://shakej96.github.io/404.html</loc>
     
     <lastmod>2023-07-06</lastmod>
@@ -50,24 +68,6 @@
     <loc>https://shakej96.github.io/categories/index.html</loc>
     
     <lastmod>2023-07-06</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://shakej96.github.io/2023/07/05/first-in/</loc>
-    
-    <lastmod>2023-07-05</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://shakej96.github.io/2023/07/05/hello-world/</loc>
-    
-    <lastmod>2023-07-05</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
