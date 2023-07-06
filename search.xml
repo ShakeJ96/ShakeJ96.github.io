@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>Offer26：重排链表</title>
+      <link href="/2023/07/07/offer26-chong-pai-lian-biao/"/>
+      <url>/2023/07/07/offer26-chong-pai-lian-biao/</url>
+      
+        <content type="html"><![CDATA[<h3 id="Offer26：重排链表"><a href="#Offer26：重排链表" class="headerlink" title="Offer26：重排链表"></a>Offer26：重排链表</h3><hr><h3 id="1-题目描述"><a href="#1-题目描述" class="headerlink" title="1. 题目描述"></a>1. 题目描述</h3><ul><li><p>给定一个单链表 <code>L</code> 的头节点 <code>head</code> ，单链表 <code>L</code> 表示为：</p><p><code>L0 → L1 → … → Ln-1 → Ln</code><br>请将其重新排列后变为：</p><pre class="line-numbers language-none"><code class="language-none">L0 → Ln → L1 → Ln-1 → L2 → Ln-2 → …<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>不能只是单纯的改变节点内部的值，而是需要实际的进行节点交换。</p><p><strong>示例 1:</strong></p><p><img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="https://pic.leetcode-cn.com/1626420311-PkUiGI-image.png" alt="img"></p><pre class="line-numbers language-none"><code class="language-none">输入: head = [1,2,3,4]输出: [1,4,2,3]<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><hr></li></ul><h3 id="2-解答分析"><a href="#2-解答分析" class="headerlink" title="2. 解答分析"></a>2. 解答分析</h3><ul><li><p><strong>分析：</strong> 这题不难发现，最后需要输出的链表其实是<code>前半部分</code>和<code>后半部分的翻转</code>,接着再头连着头，依次进行排序输出。</p><ul><li>所以最原始的方法是需要3个不同的函数功能。<ol><li><code>reorderList()</code>函数：主函数，用于均分两半链表，并将它们进行操作。</li><li>``reverse()`函数：翻转后半部分的链表。</li><li><code>link()</code>函数：用于连接前半部分链表、后半部分链表。</li></ol></li></ul><hr></li><li><p><strong>代码：</strong></p><pre class="line-numbers language-Java" data-language="Java"><code class="language-Java">class Solution{    public void recorderList(ListNode head){        ListNode dummy=new ListNode(0);        dummy.next=head;//哨兵        ListNode fast=dummy;//快指针        ListNode slow=dummy;//慢指针       while(fast!=null &amp;&amp; fast.next!=null){           slow=slow.next;           fast=fast.next.next;       }                ListNode temp=slow.next;//中间节点的指针暂定为temp        slow.next=null;//准备连接，slow.next为空了        link(head,reverse(temp),dummy);//开始连接    }    private ListNode reverse(ListNode head){//反转链表，注意指针的指向位置        ListNode prev=null;        ListNode cur=head;        while(cur!=null){            ListNode next=cur.next;            cur.next=prev;            prev=cur;            cur=next;        }        return prev;    }    private void link(ListNode node1,ListNode node2,ListNode head){//借助原链表的头结点head（在本题函数中指的是哨兵节点dummy）,按照题目要求连接前后两部分，新链表的头节点为prev        ListNode prev=head;        while(node1!=null &amp;&amp; node2!=null){            ListNode temp=node1.next;//当前node1节点的下一个位置为temp                       prev.next=node1;//prev指针指向node1部分第一个节点            node1.next=node2;//node1后面连的是反转后node2的第一个            prev=node2;//prev开始下一次连接                        node1=temp;//node1后移            node2=node2.next;//node2后移        }        if(node1!=null){            prev.next=node1;//这一个if是用来判断前半部分链表必须比后半部分多，当node1无法匹配连接node2时，直接连接返回node1的节点值。        }    }}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><hr></li></ul><h3 id="3-思考总结"><a href="#3-思考总结" class="headerlink" title="3. 思考总结"></a>3. 思考总结</h3><ul><li><p><strong>思考：</strong> 其实代码不用写三个函数，用在一个函数内部即可，不需要来回调用，实现<code>折半翻转再重连</code>即可。代码如下：</p><pre class="line-numbers language-Java" data-language="Java"><code class="language-Java">class Solution {    public void reorderList(ListNode head) {        ListNode f = head, s = head;        while (f.next != null &amp;&amp; f.next.next != null) {            s = s.next;//慢指针找到中间的节点            f = f.next.next;//快指针直接到末尾节点        }        ListNode t = s.next;//暂存的t节点是慢指针的下一位        f=null;//快指针此时位于最后一个节点，赋值为空        while (t != null) {//翻转            t = s.next;            s.next = f;            f = s;            s = t;        }        s = head;//这里是将后半部分翻转。此时快指针指向原链表的最后一位元素        while (s != null) {//再重新进行连接            t = s.next;//保留当前位置的下一位            s.next = f;//后半部分的最后一位            s = f;            f = t;        }    }}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><hr><p>END</p><p><img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="/2023/07/07/offer26-chong-pai-lian-biao/1.jpg" alt="1"></p></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> Leetcode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 算法 </tag>
+            
+            <tag> 剑指Offer（专项） </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Leetcode 1.两数之和</title>
       <link href="/2023/07/07/leetcode-1-liang-shu-zhi-he/"/>
       <url>/2023/07/07/leetcode-1-liang-shu-zhi-he/</url>
