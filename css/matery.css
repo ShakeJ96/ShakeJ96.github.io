@@ -2074,12 +2074,13 @@ footer .copy-right {
 
 /* 滚动条 */
 ::-webkit-scrollbar-thumb {
-    background-color: #379e6c;
+    background-color:  #c45ab6;
     background-image: -webkit-linear-gradient(45deg,rgba(255,255,255,.4) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.4) 50%,rgba(255,255,255,.4) 75%,transparent 75%,transparent);
     border-radius: 3em;
 }
 ::-webkit-scrollbar-track {
-    background-color: #c45ab6;
+    background-color: #379e6c;
+
     border-radius: 3em;
 }
 ::-webkit-scrollbar {
