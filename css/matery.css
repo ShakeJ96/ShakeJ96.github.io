@@ -950,6 +950,7 @@ article .article-tags .chip {
 
 #artDetail .article-tag {
     float: left;
+    line-height: 5;
 }
 
 #artDetail .article-tag .chip {
