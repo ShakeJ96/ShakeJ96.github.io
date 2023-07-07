@@ -33,7 +33,7 @@ body {
     color: #34495e;
 }
 
-h1 {
+/* h1 {
     margin: 48px 0 22px -5px;
     font-size: 2.0rem;
     font-weight: bold;
@@ -72,9 +72,9 @@ h6 {
     margin: 22px 0 4px -4px;
     font-size: 1.1rem;
     line-height: 1.1rem;
-}
+} */
 /* 洪卫 shw2018 modify 2019.08.31 */
-/* h1 {
+h1 {
     margin: 38px 0 22px -5px;
     font-size: 2.0rem;
     font-weight: bold;
@@ -113,7 +113,7 @@ h6 {
     margin: 16px 0 4px -4px;
     font-size: 1.1rem;
     line-height: 1.1rem;
-} */
+}
 
 p {
     font-size: 1rem;
@@ -373,7 +373,7 @@ header .side-nav .social-link {
 
 .cover-social-link {
     position: relative;
-    top: 18vh;
+    top: 20vh;
     text-align: center;
 }
 
@@ -424,7 +424,7 @@ header .go-back i {
     -webkit-animation: rainbow 30s infinite;
     /* 原值 60s, 洪卫 modify 2019.08*/
     animation: rainbow 30s infinite;
-    /* 原值 60s, 洪卫 modify 2019.08*/
+    
 }
 
 .bg-cover:before,
@@ -448,7 +448,7 @@ header .go-back i {
 .bg-cover .title {
     font-size: 4rem;
     font-weight: 700;
-    line-height: 1.85em;
+    line-height: 1.5em;
     margin-bottom: 20px;
     position: relative;
 }
@@ -578,7 +578,7 @@ header .go-back i {
 }
 
 .index-card {
-    margin-top: -50px;
+    margin-top: -10px;
     padding-top: 20px;
 }
 
@@ -610,8 +610,8 @@ header .go-back i {
 
 .music-player,
 .video-player {
-    margin-top: 10px;
-    margin-bottom: 10px;
+    margin-top: -10px;
+    padding-top: 30px;
 }
 
 .music,
@@ -620,7 +620,7 @@ header .go-back i {
 }
 
 #recommend-sections {
-    margin-top: -30px;
+    margin-top: 15px;
     padding-top: 30px;
 }
 
