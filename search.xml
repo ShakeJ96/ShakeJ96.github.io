@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>Leetcode 55：跳跃游戏</title>
+      <link href="/2023/07/08/leetcode-55-tiao-yue-you-xi/"/>
+      <url>/2023/07/08/leetcode-55-tiao-yue-you-xi/</url>
+      
+        <content type="html"><![CDATA[<h3 id="Leetcode-55：跳跃游戏（贪心）"><a href="#Leetcode-55：跳跃游戏（贪心）" class="headerlink" title="Leetcode 55：跳跃游戏（贪心）"></a>Leetcode 55：跳跃游戏（贪心）</h3><h3 id="1-题目说明"><a href="#1-题目说明" class="headerlink" title="1. 题目说明"></a>1. 题目说明</h3><ul><li><p>给定一个非负整数数组 <code>nums</code> ，你最初位于数组的 <strong>第一个下标</strong> 。数组中的每个元素代表你在该位置可以跳跃的最大长度。 <strong>判断你是否能够到达最后一个下标</strong></p><p><strong>示例 1：</strong></p><pre class="line-numbers language-none"><code class="language-none">输入：nums = [2,3,1,1,4]输出：true解释：可以先跳 1 步，从下标 0 到达下标 1, 然后再从下标 1 跳 3 步到达最后一个下标。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></li></ul><hr><h3 id="2-解答分析"><a href="#2-解答分析" class="headerlink" title="2. 解答分析"></a>2. 解答分析</h3><ul><li><strong>分析：</strong>  </li><li><ul><li>本题的关键是对于每一步的把控，例如当处于<code>nums[0]</code>时，此时的值为<code>2</code>，也就是可以跳跃一步或者两步，这样下去对应数组中的每个数字都可以由不同的<code>跳跃方法</code>。</li><li><strong>但是我们要注意：每个位置跳多少步不是关键，而是最后的跳跃范围是否可以覆盖到最后一个数（也就是终点）</strong> 那么我们可以尝试每次移动取最大的跳跃步数（目的是得到最大的范围），依次更新覆盖的范围。</li><li><strong>本题的贪心算法的关键是：==局部最优解==，每次取最大的跳跃步数（取最大的覆盖范围）；==整体最优解：== 最后得到整体的最大覆盖范围，看看能否到达最后一个数（终点）</strong></li></ul></li></ul><hr><ul><li><p><strong>代码：</strong></p></li><li><pre class=" language-Java"><code class="language-Java">class Solution{    public boolean canJump(int[] nums){        if(nums.length==1){            return true;//特例：第一个数字自己就是终点        }        //开始覆盖范围        int cover=nums[0];//初始值        //在第一个数的覆盖范围内继续不断地更新最大覆盖范围        for(int i=0;i<=cover;i++){        //这里之所以可以取等，因为我们要求的相当于是每个位置的数值，那当然可以取等，如nums[0]==3,那么我们可以跳跃三次到nums[3],再更新最大范围;        cover=Math.max(cover,i+nums[i]);//当前的编号，加上可跳跃的数值，即为范围        if(cover>=nums.length-1){//覆盖范围可以到达最后一个数字的下标（终点）            return true;            }          }        return false;    }}</code></pre></li></ul><hr><h3 id="3-总结"><a href="#3-总结" class="headerlink" title="3. 总结"></a>3. 总结</h3><ul><li><p>**时间复杂度考虑最坏的情况，如果全部元素都是1，那么循环需要n-1次，时间复杂度为：O(n); **</p></li><li><p><strong>空间复杂度：由于只引入了若干变量，未占用内存存储空间：O(1)</strong></p></li></ul><blockquote><p><span style="color:red;font-weight:3em;font-size:2em">继续努力</span></p></blockquote>]]></content>
+      
+      
+      <categories>
+          
+          <category> Leetcode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Leetcode </tag>
+            
+            <tag> 算法 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>双周赛100 T1：把钱分给最多的儿童</title>
       <link href="/2023/07/07/shuang-zhou-sai-100-t1-ba-qian-fen-gei-zui-duo-de-er-tong/"/>
       <url>/2023/07/07/shuang-zhou-sai-100-t1-ba-qian-fen-gei-zui-duo-de-er-tong/</url>
@@ -47,9 +74,9 @@
       
         <tags>
             
-            <tag> 剑指Offer（专项） </tag>
-            
             <tag> 算法 </tag>
+            
+            <tag> 剑指Offer（专项） </tag>
             
         </tags>
       
