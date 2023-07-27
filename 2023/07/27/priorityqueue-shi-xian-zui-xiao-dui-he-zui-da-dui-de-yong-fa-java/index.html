@@ -6,7 +6,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Leetcode 1.两数之和, ShakeJ">
+    <meta name="keywords" content="PriorityQueue实现最小堆和最大堆的用法[JAVA], ShakeJ">
     <meta name="description" content="Mark the Splendid Life">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -18,7 +18,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Leetcode 1.两数之和 | ShakeJ</title>
+    <title>PriorityQueue实现最小堆和最大堆的用法[JAVA] | ShakeJ</title>
     <link rel="icon" type="image/png" href="/icon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -474,12 +474,12 @@ charset="utf-8"></script> -->
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/3.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/2.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Leetcode 1.两数之和</h1>
+                    <h1 class="description center-align post-title">PriorityQueue实现最小堆和最大堆的用法[JAVA]</h1>
                 </div>
             </div>
         </div>
@@ -599,10 +599,6 @@ charset="utf-8"></script> -->
                                 <span class="chip bg-color">算法</span>
                             </a>
                         
-                            <a href="/tags/Leetcode%E5%88%B7%E9%A2%98/">
-                                <span class="chip bg-color">Leetcode刷题</span>
-                            </a>
-                        
                     </div>
                     
                 </div>
@@ -611,8 +607,8 @@ charset="utf-8"></script> -->
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/Leetcode/" class="post-category">
-                                Leetcode
+                            <a href="/categories/Java/" class="post-category">
+                                Java
                             </a>
                         
                     </div>
@@ -624,28 +620,28 @@ charset="utf-8"></script> -->
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2023-07-07
+                    2023-07-27
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-07-07
+                    2023-07-27
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1k
+                    1.1k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    3 分
+                    4 分
                 </div>
                 
 
@@ -669,77 +665,125 @@ charset="utf-8"></script> -->
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="Leetcode-1-两数之和"><a href="#Leetcode-1-两数之和" class="headerlink" title="Leetcode 1.两数之和"></a>Leetcode 1.两数之和</h3><h3 id="1-题目说明"><a href="#1-题目说明" class="headerlink" title="1. 题目说明"></a>1. 题目说明</h3><ul>
-<li><p>给定一个整数数组 <code>nums</code> 和一个整数目标值 <code>target</code>，请你在该数组中找出 <strong>和为目标值</strong> <em><code>target</code></em> 的那 <strong>两个</strong> 整数，并返回它们的数组下标。</p>
-<p>你可以假设每种输入只会对应一个答案。但是，数组中同一个元素在答案里不能重复出现。</p>
-<p>你可以按任意顺序返回答案。</p>
+                <h3 id="一、基本介绍"><a href="#一、基本介绍" class="headerlink" title="一、基本介绍"></a>一、基本介绍</h3><ol>
+<li><p><strong>介绍</strong></p>
+<p>PriorityQueue翻译为优先队列，“优先”指元素在队列中按一定的顺序（优先级）进行存放，“队列”指一种先进先出的数据结构。因此PriorityQueue可以实现按照一定的优先级存取元素。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="https://img-blog.csdnimg.cn/20210627101738888.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNDI0MDM3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+</li>
+<li><p><strong>用法</strong></p>
+</li>
+</ol>
+  <pre class="line-numbers language-java" data-language="java"><code class="language-java">//默认容量为 11
+  private static final int DEFAULT_INITIAL_CAPACITY = 11;
+  //1、无参构造，默认容量和默认排序方法
+  public PriorityQueue() {
+          this(DEFAULT_INITIAL_CAPACITY, null);
+      }
+  //2、指定容量
+  public PriorityQueue(int initialCapacity) {
+          this(initialCapacity, null);
+      }
+  //3、指定排序方法
+  public PriorityQueue(Comparator&lt;? super E&gt; comparator) {
+          this(DEFAULT_INITIAL_CAPACITY, comparator);
+      }
+  //4、指定容量和排序方法
+  public PriorityQueue(int initialCapacity,
+                           Comparator&lt;? super E&gt; comparator) {
+          // Note: This restriction of at least one is not actually needed,
+          // but continues for 1.5 compatibility
+          if (initialCapacity &lt; 1)
+              throw new IllegalArgumentException();
+          this.queue = new Object[initialCapacity];
+          this.comparator = comparator;
+      }
+  <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<blockquote>
+<p>在构造PriorityQueue时候我们可以指定初始容量和元素在队列中的排序方法，如果不指定，则默认初始容量为11，默认的排序方式是将元素从小到大进行排序。</p>
+</blockquote>
+<ol start="3">
+<li><strong>最小堆</strong></li>
+</ol>
+<p>  构造最小堆:</p>
+  <pre class="line-numbers language-java" data-language="java"><code class="language-java">PriorityQueue&lt;Integer&gt; minheap = new PriorityQueue&lt;&gt;();<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<ul>
+<li>使用无参构造，元素在队列中按照默认从小到大的顺序排列，可以保证每次出队列的元素都是队列中的最小的元素。</li>
+</ul>
+<ol start="4">
+<li><p><strong>最大堆</strong></p>
+<p>构造最大堆：</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">PriorityQueue&lt;Integer&gt; maxheap = new PriorityQueue&lt;&gt;(Collections.reverseOrder());<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<ul>
+<li>将排序方法指定为反序，元素是从大到小的顺序排列，也就是保证每次出队列的元素是队列中的最大的元素。</li>
+</ul>
+</li>
+</ol>
+<h3 id="二、常用的方法"><a href="#二、常用的方法" class="headerlink" title="二、常用的方法"></a>二、常用的方法</h3><ul>
+<li><p>以<code>Integer</code>的类型为例：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="https://img-blog.csdnimg.cn/20210627101232718.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNDI0MDM3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+</li>
+</ul>
+<p>​    </p>
+<hr>
+<h3 id="三、举例"><a href="#三、举例" class="headerlink" title="三、举例"></a>三、举例</h3><blockquote>
+<p>Leetcode 2208. 将数组和减半的最少操作次数</p>
+</blockquote>
+<h3 id="1-题目说明"><a href="#1-题目说明" class="headerlink" title="1. 题目说明"></a>1. 题目说明</h3><p>给你一个正整数数组 <code>nums</code> 。每一次操作中，你可以从 <code>nums</code> 中选择 <strong>任意</strong> 一个数并将它减小到 <strong>恰好</strong> 一半。（注意，在后续操作中你可以对减半过的数继续执行操作）</p>
+<p>==请你返回将 <code>nums</code> 数组和 <strong>至少</strong> 减少一半的 <strong>最少</strong> 操作数。==</p>
 <p><strong>示例 1：</strong></p>
-<pre class="line-numbers language-none"><code class="language-none">输入：nums = [2,7,11,15], target = 9
-输出：[0,1]
-解释：因为 nums[0] + nums[1] == 9 ，返回 [0, 1] 。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></li>
+<pre class="line-numbers language-none"><code class="language-none">输入：nums = [5,19,8,1]
+输出：3
+解释：初始 nums 的和为 5 + 19 + 8 + 1 = 33 。
+以下是将数组和减少至少一半的一种方法：
+选择数字 19 并减小为 9.5 。
+选择数字 9.5 并减小为 4.75 。
+选择数字 8 并减小为 4 。
+最终数组为 [5, 4.75, 4, 1] ，和为 5 + 4.75 + 4 + 1 = 14.75 。
+nums 的和减小了 33 - 14.75 = 18.25 ，减小的部分超过了初始数组和的一半，18.25 &gt;= 33/2 = 16.5 。
+我们需要 3 个操作实现题目要求，所以返回 3 。
+可以证明，无法通过少于 3 个操作使数组和减少至少一半。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<hr>
+<h3 id="2-分析解答"><a href="#2-分析解答" class="headerlink" title="2. 分析解答"></a>2. 分析解答</h3><ul>
+<li>常见的题目，由于每一次操作都会使得数组中的一个数字减半。要想使得总的数组中的减少的次数最少，<strong>其实就是从当前的数组中选取最大值进行减半的操作</strong></li>
+<li>这里可以利用大根堆（优先队列）维护数组中的所有数，每次都是从优先队列中取出最大值 ttt，将其减半，然后将减半后的数重新放入优先队列中，同时更新 <code>s</code>，直到 $s≤0$为止。那么此时的操作次数就是答案。</li>
+<li>用到的算法知识点是：贪心算法（每次选取队列中的最大值）+优先队列（大根堆，每次都更新排列）</li>
 </ul>
 <hr>
-<h3 id="2-解答分析"><a href="#2-解答分析" class="headerlink" title="2. 解答分析"></a>2. 解答分析</h3><ul>
-<li><p>本题有好多种解法，这里选择两种常见的解法，一种是直接上循环，不断遍历数组；另外一种是利用哈希表，返回对应表的下标（利用<code>key</code> 和<code>value</code>）</p>
-<ul>
-<li><h5 id="方法1：利用遍历模拟"><a href="#方法1：利用遍历模拟" class="headerlink" title="方法1：利用遍历模拟"></a><strong>方法1：利用遍历模拟</strong></h5><ul>
-<li>本题要求的是返回两个数字和为<code>target</code>的数组元素的下标，这里可以直接交换遍历，比如最简单的for循环，我们会把两个指针所指向的值之和，依次比较，最后返回数组元素的下标（构建新的数组）</li>
+<h3 id="3-代码实现"><a href="#3-代码实现" class="headerlink" title="3.代码实现"></a>3.代码实现</h3><ul>
+<li>Java代码（利用上述的<code>PriorityQueue</code>队列知识）</li>
 </ul>
-<pre class="line-numbers language-Java" data-language="Java"><code class="language-Java">class Solution{
-    public int[] twoSum(int []nums,int target){
-        int j=1;
-        int i=0;
-        int maxLen=nums.length-1;
-        while(nums[i]+nums[j]!=target){
-            if(j==maxLen)}{
-            	i++;
-            	j=i;
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">class Solution {
+    public int halveArray(int[] nums) {
+        double s=0;
+        PriorityQueue&lt;Double&gt; q = new PriorityQueue&lt;&gt;(Collections.reverseOrder());
+        //上述的是最大堆，确保每次都是队列中最大的数出来,元素从大到小排列
+        for(int i:nums){
+            q.offer(i*1.0);	//注意除半时候出现的浮点数值，先进行转换，添加队列中去
+            s+=i;	//s为根堆（优先队列）元素之和
         }
-        j++:
+        s/=2.0;	//取半
+        int ans=0;
+        while(s&gt;0){	//循环，直到s&lt;=0为止
+            double t =q.poll();	//队头元素出列（当前的最大值）
+            s-=t/2.0;  //元素值减半，从s值中减去
+            q.offer(t/2.0);  //更新队列中的元素，找到最大值
+            ++ans;
         }
-    return new int[]{i,j};
+        return ans;
     }
-}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <ul>
-<li><strong>时间复杂度：O(n^2^)</strong>,一个是i，另外一个是j的循环遍历，至少需要<strong>n(n-1)<strong>的步骤；</strong>空间复杂度为O(1)</strong></li>
-</ul>
-<hr>
+<li><p>**时间复杂度：$O(n * log_n)$**。</p>
 </li>
-<li><h5 id="方法2：Hash表"><a href="#方法2：Hash表" class="headerlink" title="方法2：Hash表"></a><strong>方法2：Hash表</strong></h5><ul>
-<li>Hash表是一种数据结构关系，利用==键(key)==和==值(value)==的<code>一一对应</code>的关系，生成map。map目的用来存放我们访问过的元素，因为遍历数组的时候，需要记录我们之前遍历过哪些元素和对应的下标，这样才能找到与当前元素相匹配的（也就是相加等于target）</li>
-<li>在遍历数组的时候，只需要向map去查询是否有和目前遍历元素匹配的数值，如果有，就找到的匹配对，如果没有，就把目前遍历的元素放进map中，因为map存放的就是我们访问过的元素</li>
-<li>本题的map我们这样定义：<code>key</code>为数组中的num[i]值，对应的<code>value</code>为 ：下标元素i；</li>
-</ul>
-<pre class="line-numbers language-Java" data-language="Java"><code class="language-Java">class Solution{
-    public int[] twoSum(int[] nums,int target){
-        int[]res=new int[2];//首先生成最后需要返回的数组，保存的是数组的元素下标
-        if(nums==null || nums.length==0){
-            return res;//考虑特例
-        }
-        Map&lt;Integer,Integer&gt;map=new HashMap&lt;&gt;();//建立HashMap
-        for(int i=0;i&lt;nums.length;i++){
-            int temp=target-nums[i];//从第i个元素开始，看看当前的元素数组中是否存在可以满足条件的值
-            if(map.containsKey(temp)){
-                res[1]=i;
-                res[0]=map.get(temp);//这里的get返回的是满足条件的temp数组元素的下标，注意我们定义Value是数组元素的下标，对应的Key是数组元素的值
-                break;//跳出循环
-            }
-            map.put(nums[i],i);//如果没有找到匹配的对，对于大的循环而言，只需要在HashMap中添加对应的nums值和下标即可，为后续的元素查找匹配提供map数据资源。
-        }
-        return res;//返回需要的元素数组下标的新数组
-    }
-}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<ul>
-<li><strong>时间复杂度：O(n)<strong>，利用HashMap的数据结构大大提高了查找的效率，就相当于是额外开辟内存空间进行数组元素的值、下标的匹配关系映射，通过牺牲空间复杂度换取时间、效率的提高，</strong>空间复杂度为：O(n),（相当于为每个元素都开辟了n-1的空间）。</strong></li>
-</ul>
-</li>
-</ul>
+<li><p>**空间复杂度：$O(n)$**，其中的n指的是数组的长度。</p>
 </li>
 </ul>
 <hr>
-<h3 id="3-总结"><a href="#3-总结" class="headerlink" title="3.总结"></a>3.总结</h3><p>​		这道题很经典，其实还有很多其他的解法，这里由于篇幅就不一一介绍了。对于不同的数据结构和算法而言，我们实现的目标、途径都是不同，同样，时间和空间的各自复杂度的考虑也存在差异，多加练习，多多增加对于每道题目的不同思考方式，继续加油！</p>
 
                 
             </div>
@@ -766,7 +810,7 @@ charset="utf-8"></script> -->
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://shakeJ96.github.io/2023/07/07/leetcode-1-liang-shu-zhi-he/">https://shakeJ96.github.io/2023/07/07/leetcode-1-liang-shu-zhi-he/</a>
+                    <a href="https://shakeJ96.github.io/2023/07/27/priorityqueue-shi-xian-zui-xiao-dui-he-zui-da-dui-de-yong-fa-java/">https://shakeJ96.github.io/2023/07/27/priorityqueue-shi-xian-zui-xiao-dui-he-zui-da-dui-de-yong-fa-java/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -806,10 +850,6 @@ charset="utf-8"></script> -->
                             
                                 <a href="/tags/%E7%AE%97%E6%B3%95/">
                                     <span class="chip bg-color">算法</span>
-                                </a>
-                            
-                                <a href="/tags/Leetcode%E5%88%B7%E9%A2%98/">
-                                    <span class="chip bg-color">Leetcode刷题</span>
                                 </a>
                             
                         </div>
@@ -979,50 +1019,48 @@ charset="utf-8"></script> -->
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2023/07/07/offer26-chong-pai-lian-biao/">
+                <a href="/2023/07/27/priorityqueue-shi-xian-zui-xiao-dui-he-zui-da-dui-de-yong-fa-java/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="Offer26：重排链表">
+                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="PriorityQueue实现最小堆和最大堆的用法[JAVA]">
                         
-                        <span class="card-title">Offer26：重排链表</span>
+                        <span class="card-title">PriorityQueue实现最小堆和最大堆的用法[JAVA]</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
+                            有关于队列和堆的用法，介绍代码和知识点
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2023-07-07
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-07-27
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Leetcode/" class="post-category">
-                                    Leetcode
+                            <a href="/categories/Java/" class="post-category">
+                                    Java
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
                     <a href="/tags/%E7%AE%97%E6%B3%95/">
                         <span class="chip bg-color">算法</span>
-                    </a>
-                    
-                    <a href="/tags/%E5%89%91%E6%8C%87Offer%EF%BC%88%E4%B8%93%E9%A1%B9%EF%BC%89/">
-                        <span class="chip bg-color">剑指Offer（专项）</span>
                     </a>
                     
                 </div>
@@ -1036,13 +1074,13 @@ charset="utf-8"></script> -->
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2023/07/05/first-in/">
+                <a href="/2023/07/10/xiao-shi-de-ta/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="First_In">
+                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="消失的她">
                         
-                        <span class="card-title">First_In</span>
+                        <span class="card-title">消失的她</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1053,12 +1091,16 @@ charset="utf-8"></script> -->
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-07-05
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-07-10
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            XKJ
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E6%9D%82%E8%B0%88/" class="post-category">
+                                    杂谈
+                                </a>
+                            
                             
                         </span>
                     </div>
@@ -1066,8 +1108,8 @@ charset="utf-8"></script> -->
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E6%9D%82%E8%B0%88/">
-                        <span class="chip bg-color">杂谈</span>
+                    <a href="/tags/%E5%BD%B1%E8%AF%84/">
+                        <span class="chip bg-color">影评</span>
                     </a>
                     
                 </div>

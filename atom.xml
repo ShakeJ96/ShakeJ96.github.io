@@ -6,7 +6,7 @@
   <link href="https://shakej96.github.io/atom.xml" rel="self"/>
   
   <link href="https://shakej96.github.io/"/>
-  <updated>2023-07-10T08:52:12.892Z</updated>
+  <updated>2023-07-27T10:21:25.763Z</updated>
   <id>https://shakej96.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>PriorityQueue实现最小堆和最大堆的用法[JAVA]</title>
+    <link href="https://shakej96.github.io/2023/07/27/priorityqueue-shi-xian-zui-xiao-dui-he-zui-da-dui-de-yong-fa-java/"/>
+    <id>https://shakej96.github.io/2023/07/27/priorityqueue-shi-xian-zui-xiao-dui-he-zui-da-dui-de-yong-fa-java/</id>
+    <published>2023-07-27T08:51:14.000Z</published>
+    <updated>2023-07-27T10:21:25.763Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h3 id=&quot;一、基本介绍&quot;&gt;&lt;a href=&quot;#一、基本介绍&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="Java" scheme="https://shakej96.github.io/categories/Java/"/>
+    
+    
+    <category term="算法" scheme="https://shakej96.github.io/tags/%E7%AE%97%E6%B3%95/"/>
+    
+  </entry>
   
   <entry>
     <title>消失的她</title>
@@ -62,9 +87,9 @@
     <category term="Leetcode" scheme="https://shakej96.github.io/categories/Leetcode/"/>
     
     
-    <category term="算法" scheme="https://shakej96.github.io/tags/%E7%AE%97%E6%B3%95/"/>
-    
     <category term="Leetcode" scheme="https://shakej96.github.io/tags/Leetcode/"/>
+    
+    <category term="算法" scheme="https://shakej96.github.io/tags/%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   
@@ -144,9 +169,9 @@
     <category term="Leetcode" scheme="https://shakej96.github.io/categories/Leetcode/"/>
     
     
-    <category term="Leetcode刷题" scheme="https://shakej96.github.io/tags/Leetcode%E5%88%B7%E9%A2%98/"/>
-    
     <category term="算法" scheme="https://shakej96.github.io/tags/%E7%AE%97%E6%B3%95/"/>
+    
+    <category term="Leetcode刷题" scheme="https://shakej96.github.io/tags/Leetcode%E5%88%B7%E9%A2%98/"/>
     
   </entry>
   

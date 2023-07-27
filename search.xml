@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>PriorityQueue实现最小堆和最大堆的用法[JAVA]</title>
+      <link href="/2023/07/27/priorityqueue-shi-xian-zui-xiao-dui-he-zui-da-dui-de-yong-fa-java/"/>
+      <url>/2023/07/27/priorityqueue-shi-xian-zui-xiao-dui-he-zui-da-dui-de-yong-fa-java/</url>
+      
+        <content type="html"><![CDATA[<h3 id="一、基本介绍"><a href="#一、基本介绍" class="headerlink" title="一、基本介绍"></a>一、基本介绍</h3><ol><li><p><strong>介绍</strong></p><p>PriorityQueue翻译为优先队列，“优先”指元素在队列中按一定的顺序（优先级）进行存放，“队列”指一种先进先出的数据结构。因此PriorityQueue可以实现按照一定的优先级存取元素。</p><p><img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="https://img-blog.csdnimg.cn/20210627101738888.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNDI0MDM3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p></li><li><p><strong>用法</strong></p></li></ol>  <pre class="line-numbers language-java" data-language="java"><code class="language-java">//默认容量为 11  private static final int DEFAULT_INITIAL_CAPACITY = 11;  //1、无参构造，默认容量和默认排序方法  public PriorityQueue() {          this(DEFAULT_INITIAL_CAPACITY, null);      }  //2、指定容量  public PriorityQueue(int initialCapacity) {          this(initialCapacity, null);      }  //3、指定排序方法  public PriorityQueue(Comparator&lt;? super E&gt; comparator) {          this(DEFAULT_INITIAL_CAPACITY, comparator);      }  //4、指定容量和排序方法  public PriorityQueue(int initialCapacity,                           Comparator&lt;? super E&gt; comparator) {          // Note: This restriction of at least one is not actually needed,          // but continues for 1.5 compatibility          if (initialCapacity &lt; 1)              throw new IllegalArgumentException();          this.queue = new Object[initialCapacity];          this.comparator = comparator;      }  <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><blockquote><p>在构造PriorityQueue时候我们可以指定初始容量和元素在队列中的排序方法，如果不指定，则默认初始容量为11，默认的排序方式是将元素从小到大进行排序。</p></blockquote><ol start="3"><li><strong>最小堆</strong></li></ol><p>  构造最小堆:</p>  <pre class="line-numbers language-java" data-language="java"><code class="language-java">PriorityQueue&lt;Integer&gt; minheap = new PriorityQueue&lt;&gt;();<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><ul><li>使用无参构造，元素在队列中按照默认从小到大的顺序排列，可以保证每次出队列的元素都是队列中的最小的元素。</li></ul><ol start="4"><li><p><strong>最大堆</strong></p><p>构造最大堆：</p><pre class="line-numbers language-java" data-language="java"><code class="language-java">PriorityQueue&lt;Integer&gt; maxheap = new PriorityQueue&lt;&gt;(Collections.reverseOrder());<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><ul><li>将排序方法指定为反序，元素是从大到小的顺序排列，也就是保证每次出队列的元素是队列中的最大的元素。</li></ul></li></ol><h3 id="二、常用的方法"><a href="#二、常用的方法" class="headerlink" title="二、常用的方法"></a>二、常用的方法</h3><ul><li><p>以<code>Integer</code>的类型为例：</p><p><img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="https://img-blog.csdnimg.cn/20210627101232718.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNDI0MDM3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p></li></ul><p>​    </p><hr><h3 id="三、举例"><a href="#三、举例" class="headerlink" title="三、举例"></a>三、举例</h3><blockquote><p>Leetcode 2208. 将数组和减半的最少操作次数</p></blockquote><h3 id="1-题目说明"><a href="#1-题目说明" class="headerlink" title="1. 题目说明"></a>1. 题目说明</h3><p>给你一个正整数数组 <code>nums</code> 。每一次操作中，你可以从 <code>nums</code> 中选择 <strong>任意</strong> 一个数并将它减小到 <strong>恰好</strong> 一半。（注意，在后续操作中你可以对减半过的数继续执行操作）</p><p>==请你返回将 <code>nums</code> 数组和 <strong>至少</strong> 减少一半的 <strong>最少</strong> 操作数。==</p><p><strong>示例 1：</strong></p><pre class="line-numbers language-none"><code class="language-none">输入：nums = [5,19,8,1]输出：3解释：初始 nums 的和为 5 + 19 + 8 + 1 = 33 。以下是将数组和减少至少一半的一种方法：选择数字 19 并减小为 9.5 。选择数字 9.5 并减小为 4.75 。选择数字 8 并减小为 4 。最终数组为 [5, 4.75, 4, 1] ，和为 5 + 4.75 + 4 + 1 = 14.75 。nums 的和减小了 33 - 14.75 = 18.25 ，减小的部分超过了初始数组和的一半，18.25 &gt;= 33/2 = 16.5 。我们需要 3 个操作实现题目要求，所以返回 3 。可以证明，无法通过少于 3 个操作使数组和减少至少一半。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><hr><h3 id="2-分析解答"><a href="#2-分析解答" class="headerlink" title="2. 分析解答"></a>2. 分析解答</h3><ul><li>常见的题目，由于每一次操作都会使得数组中的一个数字减半。要想使得总的数组中的减少的次数最少，<strong>其实就是从当前的数组中选取最大值进行减半的操作</strong></li><li>这里可以利用大根堆（优先队列）维护数组中的所有数，每次都是从优先队列中取出最大值 ttt，将其减半，然后将减半后的数重新放入优先队列中，同时更新 <code>s</code>，直到 $s≤0$为止。那么此时的操作次数就是答案。</li><li>用到的算法知识点是：贪心算法（每次选取队列中的最大值）+优先队列（大根堆，每次都更新排列）</li></ul><hr><h3 id="3-代码实现"><a href="#3-代码实现" class="headerlink" title="3.代码实现"></a>3.代码实现</h3><ul><li>Java代码（利用上述的<code>PriorityQueue</code>队列知识）</li></ul><pre class="line-numbers language-java" data-language="java"><code class="language-java">class Solution {    public int halveArray(int[] nums) {        double s=0;        PriorityQueue&lt;Double&gt; q = new PriorityQueue&lt;&gt;(Collections.reverseOrder());        //上述的是最大堆，确保每次都是队列中最大的数出来,元素从大到小排列        for(int i:nums){            q.offer(i*1.0);//注意除半时候出现的浮点数值，先进行转换，添加队列中去            s+=i;//s为根堆（优先队列）元素之和        }        s/=2.0;//取半        int ans=0;        while(s&gt;0){//循环，直到s&lt;=0为止            double t =q.poll();//队头元素出列（当前的最大值）            s-=t/2.0;  //元素值减半，从s值中减去            q.offer(t/2.0);  //更新队列中的元素，找到最大值            ++ans;        }        return ans;    }}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><ul><li><p>**时间复杂度：$O(n * log_n)$**。</p></li><li><p>**空间复杂度：$O(n)$**，其中的n指的是数组的长度。</p></li></ul><hr>]]></content>
+      
+      
+      <categories>
+          
+          <category> Java </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 算法 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>消失的她</title>
       <link href="/2023/07/10/xiao-shi-de-ta/"/>
       <url>/2023/07/10/xiao-shi-de-ta/</url>
@@ -45,9 +70,9 @@
       
         <tags>
             
-            <tag> 算法 </tag>
-            
             <tag> Leetcode </tag>
+            
+            <tag> 算法 </tag>
             
         </tags>
       
@@ -126,9 +151,9 @@
       
         <tags>
             
-            <tag> Leetcode刷题 </tag>
-            
             <tag> 算法 </tag>
+            
+            <tag> Leetcode刷题 </tag>
             
         </tags>
       
