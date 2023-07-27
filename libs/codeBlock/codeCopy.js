@@ -11,11 +11,12 @@ $(function () {
             try {
                 document.execCommand('copy') // Security exception may be thrown by some browsers.
                 $(ctx).prev('.codecopy_notice')
-                    .text("复制成功")
+                    // .text("复制成功")
                     .animate({
-                        opacity: 1,
-                        top: 30
-                    }, 450, function () {
+                        // opacity: 1,
+                        // top: 30
+                    },
+                     450, function () {
                         setTimeout(function () {
                             $(ctx).prev('.codecopy_notice').animate({
                                 opacity: 0,

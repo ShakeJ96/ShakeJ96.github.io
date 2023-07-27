@@ -137,6 +137,13 @@
 
   
   <url>
+    <loc>https://shakej96.github.io/tags/%E6%9D%82%E8%B0%88/</loc>
+    <lastmod>2023-07-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://shakej96.github.io/tags/Leetcode%E5%88%B7%E9%A2%98/</loc>
     <lastmod>2023-07-27</lastmod>
     <changefreq>weekly</changefreq>
@@ -145,13 +152,6 @@
   
   <url>
     <loc>https://shakej96.github.io/tags/%E7%AE%97%E6%B3%95/</loc>
-    <lastmod>2023-07-27</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://shakej96.github.io/tags/%E6%9D%82%E8%B0%88/</loc>
     <lastmod>2023-07-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -172,14 +172,14 @@
   </url>
   
   <url>
-    <loc>https://shakej96.github.io/tags/%E5%91%A8%E8%B5%9B/</loc>
+    <loc>https://shakej96.github.io/tags/%E5%BD%B1%E8%AF%84/</loc>
     <lastmod>2023-07-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://shakej96.github.io/tags/%E5%BD%B1%E8%AF%84/</loc>
+    <loc>https://shakej96.github.io/tags/%E5%91%A8%E8%B5%9B/</loc>
     <lastmod>2023-07-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
