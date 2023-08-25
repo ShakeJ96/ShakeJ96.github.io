@@ -6,7 +6,7 @@
   <link href="https://shakej96.github.io/atom.xml" rel="self"/>
   
   <link href="https://shakej96.github.io/"/>
-  <updated>2023-07-27T10:42:00.100Z</updated>
+  <updated>2023-08-25T15:49:30.652Z</updated>
   <id>https://shakej96.github.io/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Leetcode 560:和为k的子数组</title>
+    <link href="https://shakej96.github.io/2023/08/25/leetcode-560-he-wei-k-de-zi-shu-zu/"/>
+    <id>https://shakej96.github.io/2023/08/25/leetcode-560-he-wei-k-de-zi-shu-zu/</id>
+    <published>2023-08-25T13:42:40.000Z</published>
+    <updated>2023-08-25T15:49:30.652Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h3 id=&quot;leetcode-560%EF%BC%9A%E5%92%8C%E4%B8%BAk%E7%9A%84%E5%AD%90%E6%95%B0%E7%BB%84&quot; tabindex=&quot;-1&quot;&gt;Leetcode-560：和为k的子数组&lt;/h3&gt;
+&lt;h3</summary>
+        
+      
+    
+    
+    
+    <category term="Leetcode" scheme="https://shakej96.github.io/categories/Leetcode/"/>
+    
+    
+    <category term="算法" scheme="https://shakej96.github.io/tags/%E7%AE%97%E6%B3%95/"/>
+    
+    <category term="Leetcode" scheme="https://shakej96.github.io/tags/Leetcode/"/>
+    
+  </entry>
   
   <entry>
     <title>PriorityQueue实现最小堆和最大堆的用法[JAVA]</title>

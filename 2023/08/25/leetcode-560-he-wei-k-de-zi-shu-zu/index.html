@@ -6,7 +6,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="双周赛100 T1：把钱分给最多的儿童, xkj123456">
+    <meta name="keywords" content="Leetcode 560:和为k的子数组, xkj123456">
     <meta name="description" content="Mark the Splendid Life">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -18,7 +18,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>双周赛100 T1：把钱分给最多的儿童 | ShakeJ</title>
+    <title>Leetcode 560:和为k的子数组 | ShakeJ</title>
     <link rel="icon" type="image/png" href="/icon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -475,12 +475,12 @@ charset="utf-8"></script> -->
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/17.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/23.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">双周赛100 T1：把钱分给最多的儿童</h1>
+                    <h1 class="description center-align post-title">Leetcode 560:和为k的子数组</h1>
                 </div>
             </div>
         </div>
@@ -600,8 +600,8 @@ charset="utf-8"></script> -->
                                 <span class="chip bg-color">算法</span>
                             </a>
                         
-                            <a href="/tags/%E5%91%A8%E8%B5%9B/">
-                                <span class="chip bg-color">周赛</span>
+                            <a href="/tags/Leetcode/">
+                                <span class="chip bg-color">Leetcode</span>
                             </a>
                         
                     </div>
@@ -625,28 +625,28 @@ charset="utf-8"></script> -->
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2023-07-07
+                    2023-08-25
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-07-07
+                    2023-08-25
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    797
+                    1.3k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    2 分
+                    5 分
                 </div>
                 
 
@@ -670,98 +670,227 @@ charset="utf-8"></script> -->
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="%E5%8F%8C%E5%91%A8%E8%B5%9B100t1%EF%BC%9A%E5%B0%86%E9%92%B1%E5%88%86%E7%BB%99%E6%9C%80%E5%A4%9A%E7%9A%84%E5%84%BF%E7%AB%A5" tabindex="-1">双周赛100T1：将钱分给最多的儿童</h3>
+                <h3 id="leetcode-560%EF%BC%9A%E5%92%8C%E4%B8%BAk%E7%9A%84%E5%AD%90%E6%95%B0%E7%BB%84" tabindex="-1">Leetcode-560：和为k的子数组</h3>
 <h3 id="1.-%E9%A2%98%E7%9B%AE%E8%AF%B4%E6%98%8E" tabindex="-1">1. 题目说明</h3>
-<p>​	给你一个整数 <code>money</code> ，表示你总共有的钱数（单位为美元）和另一个整数 <code>children</code> ，表示你要将钱分配给多少个儿童。</p>
-<p>​	你需要按照如下规则分配：</p>
 <ul>
 <li>
-<p>所有的钱都必须被分配。</p>
-</li>
-<li>
-<p>每个儿童至少获得 <code>1</code> 美元。</p>
-</li>
-<li>
-<p>没有人获得 <code>4</code> 美元。</p>
-<p>请你按照上述规则分配金钱，并返回 <strong>最多</strong> 有多少个儿童获得 <strong>恰好</strong> <code>8</code> 美元。如果没有任何分配方案，返回 <code>-1</code>.</p>
-</li>
-</ul>
-<hr>
-<ul>
-<li>
-<p><strong>示例</strong>：</p>
-</li>
-<li>
-<pre><code>输入：money = 20, children = 3
-输出：1
-解释：
-最多获得 8 美元的儿童数为 1 。一种分配方案为：
-- 给第一个儿童分配 8 美元。
-- 给第二个儿童分配 9 美元。
-- 给第三个儿童分配 3 美元。
-没有分配方案能让获得 8 美元的儿童数超过 1 。
-</code></pre>
+<p>给定一个整数数组和一个整数 k，你需要找到该数组中和为 <strong>k</strong> 的<strong>连续的子数组</strong>的个数。</p>
+<blockquote>
+<p>示例 1 :</p>
+<p>输入:nums = [1,1,1], k = 2 输出: 2 , [1,1] 与 [1,1] 为两种不同的情况。</p>
+</blockquote>
 </li>
 </ul>
 <h3 id="2.-%E8%A7%A3%E7%AD%94%E5%88%86%E6%9E%90" tabindex="-1">2. 解答分析</h3>
 <ul>
-<li><strong>分析：</strong></li>
 <li>
-<ul>
-<li>最开始一以为这类题目都是直接模拟来做，但是发现限定条件有点多，主要是不好分类。这里<code>条件2:每个儿童至少获得1美元</code>，这里需要保证的是儿童分到的钱不为<code>0</code>，至少为<code>1</code>。<mark>换句话说就是先给每个儿童分配1美元</mark>  //对应的是：money-children。此时如果money&lt;0，那么直接返回-1。</li>
-<li>然后<code>目的：返回获得8美元的儿童的最大数量</code>，此时条件改为每个获得<code>7</code>美元的儿童最大个数，我们将此时的money / 7 ，让尽可能多的儿童分到<code>7</code>美元，并向下取整，并且需要同当前的儿童的个数进行对比，不能够超过儿童实际人数，返回的是<code>ans=Math.min(money/7,children);</code>并且此时的<code>money-=ans*7;//最后的钱数</code>,<code>children-=ans;//剩余的未分配的儿童人数</code>。</li>
-<li>此时开始判定<code>条件1和条件3：每个人都必须分配，没有儿童分到了4美元</code>。
-<ul>
-<li>
+<p>题目本质上是可以利用暴力解决的，也就是用双重循环进行和为<code>k</code>的子数组的个数统计即可，但是这里我们想利用更多的方法，主要分为3部分：</p>
 <ol>
-<li>如果此时剩余<code>0</code>人，也就是全部儿童都分完了（钱数都是<code>8</code>）,如果money&gt;0,说明还需要再分给一个儿童，也就是<code>ans-1</code>,有一个儿童不是8。</li>
-</ol>
+<li>
+<p><strong>暴力</strong></p>
 </li>
 <li>
-<ol start="2">
-<li>如果此时剩余1人（此时此人的钱数是<code>1</code>），且<code>money=3</code>,为了避免分配<code>4</code>美元，需要的是将此时的<code>3</code>分配给一个分到<code>8</code>的儿童，此时<code>ans-1</code>;</li>
-</ol>
+<p><strong>前缀和</strong></p>
 </li>
 <li>
-<ol start="3">
-<li>其余情况全部给一个人，如果这个人分配到<code>4</code>美元，那么它可以继续分给其他人，<code>ans</code>的总数保持不变。(<strong>也就是剩余money的值无非是mod7的正整数剩余系，4，5；6就进一位了，人数向下取整的时候要+1;对应的人数也是如此，剩余2、3…人数越多越可以分配剩余钱数不到4美元</strong>)。</li>
+<p><strong>前缀和+HashMap</strong></p>
+</li>
 </ol>
+<hr>
+</li>
+<li>
+<h3 id="%E2%91%A0-%E6%9A%B4%E5%8A%9B%E8%A7%A3%E6%B3%95" tabindex="-1"><strong>① 暴力解法</strong></h3>
+<ul>
+<li>直接上代码：</li>
+</ul>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">class Solution {
+    public int subarraySum(int[] nums, int k) {
+         int len = nums.length;
+         int sum = 0;
+         int count = 0;
+         //双重循环
+         for (int i = 0; i &lt; len; ++i) {
+             for (int j = i; j &lt; len; ++j) {
+                 sum += nums[j];
+                 //发现符合条件的区间
+                 if (sum == k) {
+                     count++;
+                 }
+             }
+             //记得归零，重新遍历
+             sum = 0;
+         }
+         return count;
+    }
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li><strong>复杂度分析</strong>：
+<ul>
+<li>时间复杂度：<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><msup><mi>N</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N^2)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></eq>，这里 $N $是数组的长度；</li>
+<li>空间复杂度：<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord">1</span><span class="mclose">)</span></span></span></span></eq>。</li>
+</ul>
 </li>
 </ul>
+<hr>
+</li>
+<li>
+<h3 id="%E2%91%A1%E5%89%8D%E7%BC%80%E5%92%8C" tabindex="-1">②前缀和</h3>
+<ul>
+<li>前缀和<code>pre[i]</code>的关键是找到前一个和后一个的关系，这里的连续子数组的元素之和恰好满足前缀求和的关系，所以可以采取。</li>
+<li>需要注意的是：
+<ol>
+<li>注意偏移，因为我们的<code>nums[2]</code>到<code>nums[4]</code>等于<code>pre[5]-pre[2]</code>，所以这样就可以得到<code>nums[i,j]</code>区间内的和</li>
+<li>前缀和是从<code>pre[1]</code>开始填充的</li>
+</ol>
+</li>
+<li>上代码：</li>
+</ul>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">class Solution {
+    public int subarraySum(int[] nums, int k) {
+        //前缀和数组
+        int[] presum = new int[nums.length+1];
+        for (int i = 0; i &lt; nums.length; i++) {
+            pre[i+1] = nums[i] + pre[i];
+        }
+        //统计个数
+        int count = 0;
+        for (int i = 0; i &lt; nums.length; ++i) {
+            for (int j = i; j &lt; nums.length; ++j) {
+              
+                if (pre[j+1] - pre[i] == k) {
+                    count++;
+                }
+            }
+        }
+        return count;
+    }
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li>
+<p><strong>复杂度分析</strong>：</p>
+<ul>
+<li>
+<p>时间复杂度：<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>N</mi><mn>2</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N2)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mord">2</span><span class="mclose">)</span></span></span></span></eq>，这里 N 是数组的长度；</p>
+</li>
+<li>
+<p>空间复杂度：<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span></eq>。</p>
 </li>
 </ul>
 </li>
 </ul>
 <hr>
-<h3 id="3.-%E5%85%B7%E4%BD%93%E4%BB%A3%E7%A0%81" tabindex="-1">3. 具体代码</h3>
-<ul>
-<li>
-<p><strong>代码</strong>：</p>
 </li>
 <li>
-<pre class="line-numbers language-language-Java"><code class="language-language-Java">class Solution{
-    public int distMoney(int money,int children){
-        money-=chilrdren;//最开始的每个人初始值要为1
-        if(money<0) return -1;//不满足每个儿童获得钱数至少为1的条件，返回-1、
-        int ans=Math.min(money/7,children);
-        money-=ans*7;
-        children-=ans;
-        if(children==0 && money>0
-          ||children==1 && money==3){
-            ans--;
+<h3 id="%E2%91%A2-%E5%89%8D%E7%BC%80%E5%92%8C-%2B-hashmap" tabindex="-1">③ 前缀和 + HashMap</h3>
+<ul>
+<li>
+<p>分析上述的前缀和方法不难看出：该代码虽然用到了前缀和数组，但是对比暴力法并没有提升性能，时间复杂度仍为<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><msup><mi>n</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n^2)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></eq>，空间复杂度成了 <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span></eq>。</p>
+</li>
+<li>
+<p>在两数之和的题目中，我们可以看出利用<code>HashMap</code>进行的遍历求解，只用遍历循环数组一次即可，这里我们同样采用的做法是，我们将数组的值和索引存入<code>map</code>中，当我们遍历到某一值 <code>x </code>时，判断 <code>map </code>中是否含有<code> target - x</code>即可。</p>
+</li>
+<li>
+<p>代码如下：</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">class Solution {
+    public int[] twoSum(int[] nums, int target) {
+
+        HashMap&lt;Integer,Integer&gt; map  = new HashMap&lt;&gt;();
+        //一次遍历
+        for (int i = 0; i &lt; nums.length; ++i) {
+            //存在时，我们用数组得值为 key，索引为 value
+            if (map.containsKey(target - nums[i])){              
+               return new int[]{i,map.get(target-nums[i])};
+            }
+            //存入值
+            map.put(nums[i],i);
         }
-        return ans;
+        //返回
+        return new int[]{};
+    }
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li>
+<blockquote>
+<p>我们完全可以通过 presum - k的个数获得 k 的个数,如图所示:</p>
+<img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="/2023/08/25/leetcode-560-he-wei-k-de-zi-shu-zu/presum-k.png" alt="presum-k" style="zoom:67%;">
+</blockquote>
+</li>
+<li>
+<p>本题的代码如下：</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">class Solution {
+    public int subarraySum(int[] nums, int k) {
+        if (nums.length == 0) {
+            return 0;
+        }
+        HashMap&lt;Integer,Integer&gt; map = new HashMap&lt;&gt;();
+        //细节，这里需要预存前缀和为 0 的情况，会漏掉前几位就满足的情况
+        //例如输入[1,1,0]，k = 2 如果没有这行代码，则会返回0,漏掉了1+1=2，和1+1+0=2的情况
+        //输入：[3,1,1,0] k = 2时则不会漏掉
+        //因为presum[3] - presum[0]表示前面 3 位的和，所以需要map.put(0,1),垫下底
+        map.put(0, 1);
+        int count = 0;
+        int presum = 0;
+        for (int x : nums) {
+            presum += x;
+            //当前前缀和已知，判断是否含有 presum - k的前缀和，那么我们就知道某一区间的和为 k 了。
+            if (map.containsKey(presum - k)) {
+                count += map.get(presum - k);//获取次数
+            }
+            //更新
+            map.put(presum,map.getOrDefault(presum,0) + 1);
+        }
+        return count;
     }
 }
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+//或者是：
+class Solution {
+    public int subarraySum(int[] nums, int k) {
+        /*
+        前缀和+HashMap(两数之和进阶版)
+        若存在i与j满足sum[i,j]=sum[j+1]-sum[i]=k，对于j+1，满足条件的i的个数可以先统计出来
+        前面符合条件的数据为:sum[i]=sum[j+1]-k，这里注意是i&lt;=j，因此需要先统计了前面的再更新当前的
+        与两数之和是差不多的思路，不过这个多了个前缀和
+        时间复杂度:O(N) 空间复杂度:O(N)
+         */
+        int res = 0;
+        // 前缀和还可以进一步空间优化
+        int sum = 0;
+        // 哈希表存储前缀和数组中缺少了某个数的个数
+        HashMap&lt;Integer, Integer&gt; map = new HashMap&lt;&gt;();
+        map.put(0, 1);  // 初始前缀和
+        for (int num : nums) {
+            sum += num;
+            // 先统计
+            res += map.getOrDefault(sum - k, 0);
+            // 再更新当前的
+            map.put(sum, map.getOrDefault(sum, 0) + 1);
+        }
+        return res;
+    }
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 </li>
 <li>
-<p><strong>总结：</strong> <strong>时间复杂度为O(1),未用到循环遍历</strong>；<strong>空间复杂度为：O(1)，仅使用了若干额外的变量。</strong></p>
+<p><strong>复杂度分析</strong>：</p>
+<ul>
+<li>
+<p>时间复杂度：<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span></eq>，这里 <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi></mrow><annotation encoding="application/x-tex">N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span></span></span></span></eq>是数组的长度；</p>
+</li>
+<li>
+<p>空间复杂度：<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span></eq>。</p>
+</li>
+</ul>
 </li>
 </ul>
 <hr>
-<p><span style="color:lightblue;font-size:30px;">END~</span></p>
-<img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="/2023/07/07/shuang-zhou-sai-100-t1-ba-qian-fen-gei-zui-duo-de-er-tong/2.jpg" alt="2" style="zoom:80%;">
+<blockquote>
+<p>开学了，还是会继续学习算法，刷力扣，博客也会经常更新自己的学习动态，加油哇！🤗👍</p>
+<p>大三希望有机会找到一份实习，前后端都行，美化简历😊</p>
+</blockquote>
+<img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="/2023/08/25/leetcode-560-he-wei-k-de-zi-shu-zu/Bupt.jpg" alt="Bupt" style="zoom:20%;">
+<center><span style="font-size:30px;color:red;font-weight:bolder;">END~</span><center>
+</center></center></li>
+</ul>
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/katex/dist/katex.min.css">
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/markdown-it-texmath/css/texmath.min.css">
 
@@ -790,7 +919,7 @@ charset="utf-8"></script> -->
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://shakeJ96.github.io/2023/07/07/shuang-zhou-sai-100-t1-ba-qian-fen-gei-zui-duo-de-er-tong/">https://shakeJ96.github.io/2023/07/07/shuang-zhou-sai-100-t1-ba-qian-fen-gei-zui-duo-de-er-tong/</a>
+                    <a href="https://shakeJ96.github.io/2023/08/25/leetcode-560-he-wei-k-de-zi-shu-zu/">https://shakeJ96.github.io/2023/08/25/leetcode-560-he-wei-k-de-zi-shu-zu/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -832,8 +961,8 @@ charset="utf-8"></script> -->
                                     <span class="chip bg-color">算法</span>
                                 </a>
                             
-                                <a href="/tags/%E5%91%A8%E8%B5%9B/">
-                                    <span class="chip bg-color">周赛</span>
+                                <a href="/tags/Leetcode/">
+                                    <span class="chip bg-color">Leetcode</span>
                                 </a>
                             
                         </div>
@@ -1003,17 +1132,18 @@ charset="utf-8"></script> -->
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2023/07/08/leetcode-55-tiao-yue-you-xi/">
+                <a href="/2023/08/25/leetcode-560-he-wei-k-de-zi-shu-zu/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="Leetcode 55：跳跃游戏">
+                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="Leetcode 560:和为k的子数组">
                         
-                        <span class="card-title">Leetcode 55：跳跃游戏</span>
+                        <span class="card-title">Leetcode 560:和为k的子数组</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1023,9 +1153,9 @@ charset="utf-8"></script> -->
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2023-07-08
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-08-25
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -1038,6 +1168,7 @@ charset="utf-8"></script> -->
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -1060,31 +1191,31 @@ charset="utf-8"></script> -->
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2023/07/07/offer26-chong-pai-lian-biao/">
+                <a href="/2023/07/27/priorityqueue-shi-xian-zui-xiao-dui-he-zui-da-dui-de-yong-fa-java/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="Offer26：重排链表">
+                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="PriorityQueue实现最小堆和最大堆的用法[JAVA]">
                         
-                        <span class="card-title">Offer26：重排链表</span>
+                        <span class="card-title">PriorityQueue实现最小堆和最大堆的用法[JAVA]</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
+                            有关于队列和堆的用法，介绍代码和知识点
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-07-07
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-07-27
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Leetcode/" class="post-category">
-                                    Leetcode
+                            <a href="/categories/Java/" class="post-category">
+                                    Java
                                 </a>
                             
                             
@@ -1096,10 +1227,6 @@ charset="utf-8"></script> -->
                     
                     <a href="/tags/%E7%AE%97%E6%B3%95/">
                         <span class="chip bg-color">算法</span>
-                    </a>
-                    
-                    <a href="/tags/%E5%89%91%E6%8C%87Offer%EF%BC%88%E4%B8%93%E9%A1%B9%EF%BC%89/">
-                        <span class="chip bg-color">剑指Offer（专项）</span>
                     </a>
                     
                 </div>
