@@ -161,9 +161,9 @@
     };
     loaded();
 })()
- </script><meta name="generator" content="Hexo 6.3.0">
+ </script><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="ShakeJ" type="application/atom+xml">
+
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/atom.xml" title="ShakeJ" type="application/atom+xml">
 <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 <!-- <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js"
@@ -674,63 +674,53 @@ charset="utf-8"></script> -->
 <li>如果 <code>moves[i] = 'R'</code> 或 <code>moves[i] = '_'</code> ，可以选择向右移动一个单位距离</li>
 </ul>
 <p>移动 <code>n</code> 次之后，请你找出可以到达的距离原点 <strong>最远</strong> 的点，并返回 <strong>从原点到这一点的距离</strong></p>
+<p><strong>示例1</strong>：</p>
+<pre class="line-numbers language-none"><code class="language-none">输入：moves = "L_RL__R"
+输出：3
+解释：可以到达的距离原点 0 最远的点是 -3 ，移动的序列为 "LLRLLLR" 。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<hr>
+<h3 id="1.2-%E8%A7%A3%E7%AD%94%E5%88%86%E6%9E%90" tabindex="-1">1.2 解答分析</h3>
+<ul>
+<li><strong>分析</strong>：对于距离原点的距离，<code>_</code>是可以随意替换的（可左可右），此时决定最大的距离的是<code>L</code>与<code>R</code>的个数问题，是否可以抵消？接着加上<code>_</code>的个数即可。下面是具体的代码方法
+<ul>
+<li>对于字符串的每一位，可以利用<code>charAt()</code>,也可以将字符串转化为字符串数组，利用<code>toCharArray</code>的方法。</li>
+<li><code>L和R的个数的抵消</code>，想到的是利用减法进行，但是需要绝对值<code>Math.abs()</code></li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="1.3-%E5%85%B7%E4%BD%93%E4%BB%A3%E7%A0%81" tabindex="-1">1.3 具体代码</h3>
 <ul>
 <li>
-<p><strong>示例1</strong>：</p>
+<p><strong>代码：</strong></p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">class Solution {
+    public int furthestDistanceFromOrigin(String moves) {
+    int distance=0;
+    int r=0,l=0;
+
+    for(char m:moves.toCharArray()){
+        if(m=='_'){
+            distance++;
+        }
+        if(m=='L'){
+            l++;
+        }
+        if(m=='R'){
+            r++;
+        }
+    }
+    distance=distance+Math.abs(r-l);
+    return distance;        
+    }
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li>
+<p>时间复杂度：<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span></eq>，其中 <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span></eq>为$ moves$的长度。</p>
 </li>
 <li>
-<pre><code>输入：moves = "L_RL__R"
-输出：3
-解释：可以到达的距离原点 0 最远的点是 -3 ，移动的序列为 "LLRLLLR" 。
-<pre class="line-numbers language-none"><code class="language-none">
-
-
----
-
-### 1.2 解答分析
-
-+ **分析**：对于距离原点的距离，`_`是可以随意替换的（可左可右），此时决定最大的距离的是`L`与`R`的个数问题，是否可以抵消？接着加上`_`的个数即可。下面是具体的代码方法
-  + 对于字符串的每一位，可以利用`charAt()`,也可以将字符串转化为字符串数组，利用`toCharArray`的方法。
-  + `L和R的个数的抵消`，想到的是利用减法进行，但是需要绝对值`Math.abs()`
-  
-
----
-
-### 1.3 具体代码
-
-+ **代码：**
-
-  ~~~java
-  class Solution {
-      public int furthestDistanceFromOrigin(String moves) {
-      int distance=0;
-      int r=0,l=0;
-  
-      for(char m:moves.toCharArray()){
-          if(m=='_'){
-              distance++;
-          }
-          if(m=='L'){
-              l++;
-          }
-          if(m=='R'){
-              r++;
-          }
-      }
-      distance=distance+Math.abs(r-l);
-      return distance;        
-      }
-  }<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-
-
-+ 时间复杂度：$O(n)$，其中 $n$为$ moves$的长度。
-
-+ 空间复杂度：$O(1)$。仅用到若干额外变量
-
-  
-
-</code></pre>
+<p>空间复杂度：<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord">1</span><span class="mclose">)</span></span></span></span></eq>。仅用到若干额外变量</p>
+</li>
+</ul>
 </li>
 </ul>
 <hr>
@@ -838,6 +828,7 @@ charset="utf-8"></script> -->
 <p>😉🤗</p>
 </blockquote>
 <img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="/2023/08/27/zhou-sai-360-t1-yu-t2/Cyberpunk's%20Bupt.jpg" alt="Cyberpunk's Bupt" style="zoom:20%;">
+<hr>
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/katex/dist/katex.min.css">
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/markdown-it-texmath/css/texmath.min.css">
 
