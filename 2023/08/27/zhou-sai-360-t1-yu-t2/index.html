@@ -6,7 +6,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="PriorityQueue实现最小堆和最大堆的用法[JAVA], xkj123456">
+    <meta name="keywords" content="周赛360 T1与T2, xkj123456">
     <meta name="description" content="Mark the Splendid Life">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -18,7 +18,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>PriorityQueue实现最小堆和最大堆的用法[JAVA] | ShakeJ</title>
+    <title>周赛360 T1与T2 | ShakeJ</title>
     <link rel="icon" type="image/png" href="/icon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -475,12 +475,12 @@ charset="utf-8"></script> -->
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/2.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/9.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">PriorityQueue实现最小堆和最大堆的用法[JAVA]</h1>
+                    <h1 class="description center-align post-title">周赛360 T1与T2</h1>
                 </div>
             </div>
         </div>
@@ -600,19 +600,14 @@ charset="utf-8"></script> -->
                                 <span class="chip bg-color">算法</span>
                             </a>
                         
+                            <a href="/tags/%E5%91%A8%E8%B5%9B/">
+                                <span class="chip bg-color">周赛</span>
+                            </a>
+                        
                     </div>
                     
                 </div>
                 <div class="col s5 right-align">
-                    
-                    <div class="post-cate">
-                        <i class="fas fa-bookmark fa-fw icon-category"></i>
-                        
-                            <a href="/categories/Java/" class="post-category">
-                                Java
-                            </a>
-                        
-                    </div>
                     
                 </div>
             </div>
@@ -621,28 +616,28 @@ charset="utf-8"></script> -->
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2023-07-27
+                    2023-08-27
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-07-27
+                    2023-08-28
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.1k
+                    1.2k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    4 分
+                    5 分
                 </div>
                 
 
@@ -666,132 +661,179 @@ charset="utf-8"></script> -->
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="%E4%B8%80%E3%80%81%E5%9F%BA%E6%9C%AC%E4%BB%8B%E7%BB%8D" tabindex="-1">一、基本介绍</h3>
-<ol>
-<li>
-<p><strong>介绍</strong></p>
-<p>PriorityQueue翻译为优先队列，“优先”指元素在队列中按一定的顺序（优先级）进行存放，“队列”指一种先进先出的数据结构。因此PriorityQueue可以实现按照一定的优先级存取元素。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="/2023/07/27/priorityqueue-shi-xian-zui-xiao-dui-he-zui-da-dui-de-yong-fa-java/%E7%AE%80%E4%BB%8B.png" alt="简介"></p>
-</li>
-<li>
-<p><strong>用法</strong></p>
-</li>
-</ol>
-  <pre class="line-numbers language-java" data-language="java"><code class="language-java">//默认容量为 11
-  private static final int DEFAULT_INITIAL_CAPACITY = 11;
-  //1、无参构造，默认容量和默认排序方法
-  public PriorityQueue() {
-          this(DEFAULT_INITIAL_CAPACITY, null);
-      }
-  //2、指定容量
-  public PriorityQueue(int initialCapacity) {
-          this(initialCapacity, null);
-      }
-  //3、指定排序方法
-  public PriorityQueue(Comparator&lt;? super E&gt; comparator) {
-          this(DEFAULT_INITIAL_CAPACITY, comparator);
-      }
-  //4、指定容量和排序方法
-  public PriorityQueue(int initialCapacity,
-                           Comparator&lt;? super E&gt; comparator) {
-          // Note: This restriction of at least one is not actually needed,
-          // but continues for 1.5 compatibility
-          if (initialCapacity &lt; 1)
-              throw new IllegalArgumentException();
-          this.queue = new Object[initialCapacity];
-          this.comparator = comparator;
-      }
-  <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+                <h3 id="%E5%91%A8%E8%B5%9B360%EF%BC%9At1%E4%B8%8Et2" tabindex="-1">周赛360：T1与T2</h3>
 <blockquote>
-<p>在构造PriorityQueue时候我们可以指定初始容量和元素在队列中的排序方法，如果不指定，则默认初始容量为11，默认的排序方式是将元素从小到大进行排序。</p>
+<p>要说的话：隔了好多天又开始比赛了，还是2题选手，这回的前两题感觉还是比较容易想到的；后续的2题不太熟，所以等掌握了之后再回来补题解。</p>
 </blockquote>
-<ol start="3">
-<li><strong>最小堆</strong></li>
-</ol>
-<p>构造最小堆:</p>
-  <pre class="line-numbers language-java" data-language="java"><code class="language-java">PriorityQueue&lt;Integer&gt; minheap = new PriorityQueue&lt;&gt;();<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="t1-.%E8%B7%9D%E7%A6%BB%E5%8E%9F%E7%82%B9%E6%9C%80%E8%BF%9C%E7%9A%84%E7%82%B9" tabindex="-1">T1 <a target="_blank" rel="noopener" href="https://leetcode.cn/problems/furthest-point-from-origin/">.距离原点最远的点</a></h3>
+<h3 id="1.1-%E9%A2%98%E7%9B%AE%E8%AF%B4%E6%98%8E" tabindex="-1">1.1 题目说明</h3>
+<p>给你一个长度为 <code>n</code> 的字符串 <code>moves</code> ，该字符串仅由字符 <code>'L'</code>、<code>'R'</code> 和 <code>'_'</code> 组成。字符串表示你在一条原点为 <code>0</code> 的数轴上的若干次移动。</p>
+<p>你的初始位置就在原点（<code>0</code>），第 <code>i</code> 次移动过程中，你可以根据对应字符选择移动方向：</p>
 <ul>
-<li>使用无参构造，元素在队列中按照默认从小到大的顺序排列，可以保证每次出队列的元素都是队列中的最小的元素。</li>
+<li>如果 <code>moves[i] = 'L'</code> 或 <code>moves[i] = '_'</code> ，可以选择向左移动一个单位距离</li>
+<li>如果 <code>moves[i] = 'R'</code> 或 <code>moves[i] = '_'</code> ，可以选择向右移动一个单位距离</li>
 </ul>
-<ol start="4">
-<li>
-<p><strong>最大堆</strong></p>
-<p>构造最大堆：</p>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java">PriorityQueue&lt;Integer&gt; maxheap = new PriorityQueue&lt;&gt;(Collections.reverseOrder());<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<ul>
-<li>将排序方法指定为反序，元素是从大到小的顺序排列，也就是保证每次出队列的元素是队列中的最大的元素。</li>
-</ul>
-</li>
-</ol>
-<h3 id="%E4%BA%8C%E3%80%81%E5%B8%B8%E7%94%A8%E7%9A%84%E6%96%B9%E6%B3%95" tabindex="-1">二、常用的方法</h3>
-<ul>
-<li>
-<p>以<code>Integer</code>的类型为例：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="/2023/07/27/priorityqueue-shi-xian-zui-xiao-dui-he-zui-da-dui-de-yong-fa-java/%E5%B8%B8%E8%A7%81%E7%94%A8%E6%B3%95.png" alt="常见用法"></p>
-</li>
-</ul>
-<p>​</p>
+<p>移动 <code>n</code> 次之后，请你找出可以到达的距离原点 <strong>最远</strong> 的点，并返回 <strong>从原点到这一点的距离</strong></p>
 <hr>
-<h3 id="%E4%B8%89%E3%80%81%E4%B8%BE%E4%BE%8B" tabindex="-1">三、举例</h3>
-<blockquote>
-<p>Leetcode 2208. 将数组和减半的最少操作次数</p>
-</blockquote>
-<h3 id="1.-%E9%A2%98%E7%9B%AE%E8%AF%B4%E6%98%8E" tabindex="-1">1. 题目说明</h3>
-<p>给你一个正整数数组 <code>nums</code> 。每一次操作中，你可以从 <code>nums</code> 中选择 <strong>任意</strong> 一个数并将它减小到 <strong>恰好</strong> 一半。（注意，在后续操作中你可以对减半过的数继续执行操作）</p>
-<p>请你返回将 <code>nums</code> 数组和 <strong>至少</strong> 减少一半的 <strong>最少</strong> 操作数。</p>
-<p><strong>示例 1：</strong></p>
-<pre class="line-numbers language-none"><code class="language-none">输入：nums = [5,19,8,1]
+<ul>
+<li>
+<p><strong>示例1</strong>：</p>
+</li>
+<li>
+<pre><code>输入：moves = "L_RL__R"
 输出：3
-解释：初始 nums 的和为 5 + 19 + 8 + 1 = 33 。
-以下是将数组和减少至少一半的一种方法：
-选择数字 19 并减小为 9.5 。
-选择数字 9.5 并减小为 4.75 。
-选择数字 8 并减小为 4 。
-最终数组为 [5, 4.75, 4, 1] ，和为 5 + 4.75 + 4 + 1 = 14.75 。
-nums 的和减小了 33 - 14.75 = 18.25 ，减小的部分超过了初始数组和的一半，18.25 &gt;= 33/2 = 16.5 。
-我们需要 3 个操作实现题目要求，所以返回 3 。
-可以证明，无法通过少于 3 个操作使数组和减少至少一半。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<hr>
-<h3 id="2.-%E5%88%86%E6%9E%90%E8%A7%A3%E7%AD%94" tabindex="-1">2. 分析解答</h3>
-<ul>
-<li>常见的题目，由于每一次操作都会使得数组中的一个数字减半。要想使得总的数组中的减少的次数最少，<strong>其实就是从当前的数组中选取最大值进行减半的操作</strong></li>
-<li>这里可以利用大根堆（优先队列）维护数组中的所有数，每次都是从优先队列中取出最大值 ttt，将其减半，然后将减半后的数重新放入优先队列中，同时更新 <code>s</code>，直到 <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi><mo>≤</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">s≤0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7719em;vertical-align:-0.136em;"></span><span class="mord mathnormal">s</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0</span></span></span></span></eq>为止。那么此时的操作次数就是答案。</li>
-<li>用到的算法知识点是：贪心算法（每次选取队列中的最大值）+优先队列（大根堆，每次都更新排列）</li>
+解释：可以到达的距离原点 0 最远的点是 -3 ，移动的序列为 "LLRLLLR" 。
+<pre class="line-numbers language-none"><code class="language-none">
+
+
+### 1.2 解答分析
+
++ **分析**：对于距离原点的距离，`_`是可以随意替换的（可左可右），此时决定最大的距离的是`L`与`R`的个数问题，是否可以抵消？接着加上`_`的个数即可。下面是具体的代码方法
+  + 对于字符串的每一位，可以利用`charAt()`,也可以将字符串转化为字符串数组，利用`toCharArray`的方法。
+  + `L和R的个数的抵消`，想到的是利用减法进行，但是需要绝对值`Math.abs()`、
+
+---
+
+### 1.3 具体代码
+
++ **代码：**
+
+  ~~~java
+  class Solution {
+      public int furthestDistanceFromOrigin(String moves) {
+      int distance=0;
+      int r=0,l=0;
+  
+      for(char m:moves.toCharArray()){
+          if(m=='_'){
+              distance++;
+          }
+          if(m=='L'){
+              l++;
+          }
+          if(m=='R'){
+              r++;
+          }
+      }
+      distance=distance+Math.abs(r-l);
+      return distance;        
+      }
+  }<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
++ 时间复杂度：$O(n)$，其中 $n$为$ moves$的长度。
+
++ 空间复杂度：$O(1)$。仅用到若干额外变量
+
+  
+
+</code></pre>
+</li>
 </ul>
 <hr>
-<h3 id="3.%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0" tabindex="-1">3.代码实现</h3>
+<h3 id="t2-%E6%89%BE%E5%87%BA%E7%BE%8E%E4%B8%BD%E6%95%B0%E7%BB%84%E7%9A%84%E6%9C%80%E5%B0%8F%E5%92%8C" tabindex="-1">T2 <a target="_blank" rel="noopener" href="https://leetcode.cn/problems/find-the-minimum-possible-sum-of-a-beautiful-array/">找出美丽数组的最小和</a></h3>
+<h3 id="2.1-%E9%A2%98%E7%9B%AE%E8%AF%B4%E6%98%8E" tabindex="-1">2.1 题目说明</h3>
+<p>给你两个正整数：<code>n</code> 和 <code>target</code> 。</p>
+<p>如果数组 <code>nums</code> 满足下述条件，则称其为 <strong>美丽数组</strong> 。</p>
 <ul>
-<li>Java代码（利用上述的<code>PriorityQueue</code>队列知识）</li>
+<li><code>nums.length == n</code>.</li>
+<li><code>nums</code> 由两两互不相同的正整数组成。</li>
+<li>在范围 <code>[0, n-1]</code> 内，<strong>不存在</strong> 两个 <strong>不同</strong> 下标 <code>i</code> 和 <code>j</code> ，使得 <code>nums[i] + nums[j] == target</code> 。</li>
 </ul>
+<p>返回符合条件的美丽数组所可能具备的 <strong>最小</strong> 和。</p>
+<p><strong>示例1：</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">输入：n = 2, target = 3
+输出：4
+解释：nums = [1,3] 是美丽数组。
+- nums 的长度为 n = 2 。
+- nums 由两两互不相同的正整数组成。
+- 不存在两个不同下标 i 和 j ，使得 nums[i] + nums[j] == 3 。
+可以证明 4 是符合条件的美丽数组所可能具备的最小和。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<hr>
+<h3 id="2.2-%E8%A7%A3%E7%AD%94%E5%88%86%E6%9E%90" tabindex="-1">2.2 解答分析</h3>
+<ul>
+<li>
+<p><strong>分析1</strong>:</p>
+<ul>
+<li>
+<p>这道题目需要用到贪心算法。一个简单的思路，假设我们期望加入1，那么 k - 1 就不再符合要求。但是1和k - 1之间，我们肯定选择1，因为很直观的1更小。因为提示给的范围很小1 &lt;= n, k &lt;= 50。暴力计数，只要n能满足。</p>
+</li>
+<li>
+<p>具体这里用到的是<code>HashSet</code>，利用对数据元素（Object）的储存功能进行配对。<code>HashSet</code>的用法中不存在<code>键值对</code>的说法，本题要用到的<code>contains()</code>也仅代表的是值功能</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>分析2</strong>：</p>
+<ul>
+<li>数学方法，对元素进行模拟（找规律），将<code>target</code>记作<code>k</code>,对于全体元素而言，比如<code>1和k-1</code>两个只能选一个，因此可以直到<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mi mathvariant="normal">/</mi><mi mathvariant="normal">/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">k//2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mord">//2</span></span></span></span></eq>(表示向下取整,数学上直接<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mi mathvariant="normal">/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">k/2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mord">/2</span></span></span></span></eq>)，此时可以假设<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi><mo>=</mo><mo stretchy="false">(</mo><mi>m</mi><mi>i</mi><mi>n</mi><mo stretchy="false">(</mo><mi>k</mi><mi mathvariant="normal">/</mi><mi mathvariant="normal">/</mi><mn>2</mn><mo separator="true">,</mo><mi>n</mi><mo stretchy="false">)</mo><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">m=(min(k//2,n))</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">m</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal">min</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mord">//2</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">n</span><span class="mclose">))</span></span></span></span></eq>,元素和为<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mn>1</mn><mo>+</mo><mi>m</mi><mo stretchy="false">)</mo><mi>m</mi><mi mathvariant="normal">/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">(1+m)m/2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">m</span><span class="mclose">)</span><span class="mord mathnormal">m</span><span class="mord">/2</span></span></span></span></eq></li>
+<li>同时，剩余的<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>−</mo><mi>m</mi></mrow><annotation encoding="application/x-tex">n-m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">m</span></span></span></span></eq>个数，只能从<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span></span></span></span></eq>后面开始选，那么第二段就是从<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span></span></span></span></eq>到<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>+</mo><mi>n</mi><mo>−</mo><mi>m</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">k+n-m-1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7778em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">m</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span></eq>，元素和这里与上面雷同</li>
+<li>将上述的两段之和相加即可</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="2.3-%E5%85%B7%E4%BD%93%E4%BB%A3%E7%A0%81" tabindex="-1">2.3 具体代码</h3>
+<ul>
+<li>
+<p><strong>代码1：贪心算法</strong></p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java">class Solution {
-    public int halveArray(int[] nums) {
-        double s=0;
-        PriorityQueue&lt;Double&gt; q = new PriorityQueue&lt;&gt;(Collections.reverseOrder());
-        //上述的是最大堆，确保每次都是队列中最大的数出来,元素从大到小排列
-        for(int i:nums){
-            q.offer(i*1.0);	//注意除半时候出现的浮点数值，先进行转换，添加队列中去
-            s+=i;	//s为根堆（优先队列）元素之和
+    public long minimumPossibleSum(int n, int target) {
+    long res = 0;
+    int i = 1;
+    Set&lt;Integer&gt; set=new HashSet&lt;&gt;();
+    while(n&gt;0){
+        if(!(set.contains(i))){
+            set.add(target-i);
+            res+=i;
+            n--;
         }
-        s/=2.0;	//取半
-        int ans=0;
-        while(s&gt;0){	//循环，直到s&lt;=0为止
-            double t =q.poll();	//队头元素出列（当前的最大值）
-            s-=t/2.0;  //元素值减半，从s值中减去
-            q.offer(t/2.0);  //更新队列中的元素，找到最大值
-            ++ans;
+        i++;
         }
-        return ans;
+        return res;
     }
-}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+}
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
 <li>
-<p><strong>时间复杂度：<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo>∗</mo><mi>l</mi><mi>o</mi><msub><mi>g</mi><mi>n</mi></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n * log_n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">o</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></eq>​</strong>。</p>
+<p>时间复杂度：<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mi>l</mi><mi>o</mi><mi>g</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(nlog(n))</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">o</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mclose">))</span></span></span></span></eq></p>
+<blockquote>
+<p>其中的<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>l</mi><mi>o</mi><mi>g</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">log(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">o</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span></eq>是<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi><mi>e</mi><mi>t</mi><mi mathvariant="normal">.</mi><mi>c</mi><mi>o</mi><mi>n</mi><mi>t</mi><mi>a</mi><mi>i</mi><mi>n</mi><mi>s</mi><mo stretchy="false">(</mo><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">set.contains()</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">se</span><span class="mord mathnormal">t</span><span class="mord">.</span><span class="mord mathnormal">co</span><span class="mord mathnormal">n</span><span class="mord mathnormal">t</span><span class="mord mathnormal">ain</span><span class="mord mathnormal">s</span><span class="mopen">(</span><span class="mclose">)</span></span></span></span></eq>的时间复杂度</p>
+</blockquote>
 </li>
 <li>
-<p><strong>空间复杂度：<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span></eq>​</strong>，其中的n指的是数组的长度。</p>
+<p>空间复杂度：<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span></eq></p>
+<blockquote>
+<p>HashSet额外开辟的存储空间n</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>代码2：数学模拟</strong></p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">class Solution {
+    public long minimumPossibleSum(int n, int k) {
+        long m = Math.min(k / 2, n);
+        return (m * (m + 1) + (k * 2 + n - m - 1) * (n - m)) / 2;
+    }
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>​</p>
+<ul>
+<li>
+<p>时间复杂度：<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord">1</span><span class="mclose">)</span></span></span></span></eq></p>
+</li>
+<li>
+<p>空间复杂度：<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord">1</span><span class="mclose">)</span></span></span></span></eq></p>
+</li>
+</ul>
 </li>
 </ul>
 <hr>
+<h3 id="%E6%80%BB%E7%BB%93" tabindex="-1">总结</h3>
+<blockquote>
+<p>路漫漫其修远兮，吾将上下而求索。刷题的路还很长，开学了要每天坚持学习算法知识，希望可以早日有所突破吧！加油，奥力给！</p>
+<p>😉🤗</p>
+</blockquote>
+<img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="/2023/08/27/zhou-sai-360-t1-yu-t2/Cyberpunk's%20Bupt.jpg" alt="Cyberpunk's Bupt" style="zoom:20%;">
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/katex/dist/katex.min.css">
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/markdown-it-texmath/css/texmath.min.css">
 
@@ -820,7 +862,7 @@ nums 的和减小了 33 - 14.75 = 18.25 ，减小的部分超过了初始数组�
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://shakeJ96.github.io/2023/07/27/priorityqueue-shi-xian-zui-xiao-dui-he-zui-da-dui-de-yong-fa-java/">https://shakeJ96.github.io/2023/07/27/priorityqueue-shi-xian-zui-xiao-dui-he-zui-da-dui-de-yong-fa-java/</a>
+                    <a href="https://shakeJ96.github.io/2023/08/27/zhou-sai-360-t1-yu-t2/">https://shakeJ96.github.io/2023/08/27/zhou-sai-360-t1-yu-t2/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -860,6 +902,10 @@ nums 的和减小了 33 - 14.75 = 18.25 ，减小的部分超过了初始数组�
                             
                                 <a href="/tags/%E7%AE%97%E6%B3%95/">
                                     <span class="chip bg-color">算法</span>
+                                </a>
+                            
+                                <a href="/tags/%E5%91%A8%E8%B5%9B/">
+                                    <span class="chip bg-color">周赛</span>
                                 </a>
                             
                         </div>
@@ -1029,9 +1075,60 @@ nums 的和减小了 33 - 14.75 = 18.25 ，减小的部分超过了初始数组�
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
+            <div class="card">
+                <a href="/2023/08/27/zhou-sai-360-t1-yu-t2/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="周赛360 T1与T2">
+                        
+                        <span class="card-title">周赛360 T1与T2</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-08-27
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            XKJ
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E7%AE%97%E6%B3%95/">
+                        <span class="chip bg-color">算法</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%91%A8%E8%B5%9B/">
+                        <span class="chip bg-color">周赛</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
             <div class="card">
                 <a href="/2023/08/25/leetcode-560-he-wei-k-de-zi-shu-zu/">
                     <div class="card-image">
@@ -1049,9 +1146,9 @@ nums 的和减小了 33 - 14.75 = 18.25 ，减小的部分超过了初始数组�
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2023-08-25
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-08-25
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -1073,55 +1170,6 @@ nums 的和减小了 33 - 14.75 = 18.25 ，减小的部分超过了初始数组�
                     
                     <a href="/tags/%E7%AE%97%E6%B3%95/">
                         <span class="chip bg-color">算法</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2023/07/10/xiao-shi-de-ta/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="消失的她">
-                        
-                        <span class="card-title">消失的她</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-07-10
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/%E6%9D%82%E8%B0%88/" class="post-category">
-                                    杂谈
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/%E5%BD%B1%E8%AF%84/">
-                        <span class="chip bg-color">影评</span>
                     </a>
                     
                 </div>
