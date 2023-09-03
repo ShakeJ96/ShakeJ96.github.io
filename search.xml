@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>Leetcode 918. 环形子数组的最大和</title>
+      <link href="/2023/09/03/leetcode-918-huan-xing-zi-shu-zu-de-zui-da-he/"/>
+      <url>/2023/09/03/leetcode-918-huan-xing-zi-shu-zu-de-zui-da-he/</url>
+      
+        <content type="html"><![CDATA[<h3 id="leetcode-918.-%E7%8E%AF%E5%BD%A2%E5%AD%90%E6%95%B0%E7%BB%84%E7%9A%84%E6%9C%80%E5%A4%A7%E5%92%8C" tabindex="-1"><a href="https://leetcode.cn/problems/maximum-sum-circular-subarray/">Leetcode 918. 环形子数组的最大和</a></h3><blockquote><p>概要：子数组的最大和利用的是动态规划/滑动窗口的思想，对于环形子数组，需要考虑的是前后元素之间的大小关系，比如[1,2,3,-4]，在环形数组中即为：[1,2,3,-4,1,2,3,-4…],我们要利用动态规划，找到区间子数组最小值和最大值，分别进行判断操作。</p></blockquote><h3 id="1.-%E9%A2%98%E7%9B%AE%E8%AF%B4%E6%98%8E" tabindex="-1">1. 题目说明</h3><ul><li><p>给定一个长度为 <code>n</code> 的<strong>环形整数数组</strong> <code>nums</code> ，返回 <em><code>nums</code> 的非空 <strong>子数组</strong> 的最大可能和</em> 。</p></li><li><p><strong>环形数组</strong> 意味着数组的末端将会与开头相连呈环状。形式上， <code>nums[i]</code> 的下一个元素是 <code>nums[(i + 1) % n]</code> ， <code>nums[i]</code> 的前一个元素是 <code>nums[(i - 1 + n) % n]</code> 。</p></li><li><p><strong>子数组</strong> 最多只能包含固定缓冲区 <code>nums</code> 中的每个元素一次。形式上，对于子数组 <code>nums[i], nums[i + 1], ..., nums[j]</code> ，不存在 <code>i &lt;= k1, k2 &lt;= j</code> 其中 <code>k1 % n == k2 % n</code> 。</p></li></ul><p><strong>示例 1：</strong></p><pre class="line-numbers language-none"><code class="language-none">输入：nums = [1,-2,3,-2]输出：3解释：从子数组 [3] 得到最大和 3<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><p>​</p><hr><h3 id="2.-%E8%A7%A3%E7%AD%94%E5%88%86%E6%9E%90" tabindex="-1">2. 解答分析</h3><ul><li><p>首先需要明确的是：<code>环形子数组的最大和</code>包含两种可能性，一是直接动态规划得到子数组的最大和<code>MaxF</code>，二是环形子数组的出现循环，此时需要将元素之和<code>sum</code>减去子数组中的区间最小值<code>minS</code>后的值同<code>MaxS</code>进行比较.</p><ul><li><p>具体而言：由于是循环数组，我们可以选择将某一个区间剔除，计算剩余部分的最大子数组和。剔除的区间就是使得 <code>minS</code>取最小值的那个区间。</p></li><li><p>如果我们将剔除的区间放在数组的开头或结尾，那么剩余的部分即包含了原始数组的循环部分。</p><p>因此，<code>sum - minS</code> 就代表了考虑循环的情况下，剔除特定区间后剩余部分的最大子数组和。</p></li></ul></li><li><p>动态规划包含了对于数组元素的选或不选的问题，这里直接遍历即可.</p></li></ul><hr><h3 id="3.-%E5%85%B7%E4%BD%93%E4%BB%A3%E7%A0%81" tabindex="-1">3. 具体代码</h3><ul><li><p>该算法使用了动态规划的思想。通过遍历数组<code>nums</code>，维护以下变量：</p><ul><li><code>maxS</code>：最大子数组和，初值设为<code>负无穷大</code>。</li><li><code>minS</code>：最小子数组和，初值设为<code>0</code>（因为可以为空数组）。</li><li><code>maxF</code>：以当前元素为结尾的最大子数组和。</li><li><code>minF</code>：以当前元素为结尾的最小子数组和。</li><li><code>sum</code>：数组<code>nums</code>的总和。</li></ul></li><li><p><strong>代码如下：</strong></p></li></ul><pre class="line-numbers language-java" data-language="java"><code class="language-java">class Solution{    public int maxSubarraySumCircular(int[] nums){        int maxS = Integer.MIN_VALUE; // 最大子数组和，不能为空        int minS = 0; // 最小子数组和，可以为空        int maxF = 0, minF = 0, sum = 0;        for (int x : nums) {            // 以 nums[i-1] 结尾的子数组选或不选（取 max）+ x = 以 x 结尾的最大子数组和            maxF = Math.max(maxF, 0) + x;            maxS = Math.max(maxS, maxF);            // 以 nums[i-1] 结尾的子数组选或不选（取 min）+ x = 以 x 结尾的最小子数组和            minF = Math.min(minF, 0) + x;            minS = Math.min(minS, minF);            sum += x;        }        return sum == minS ? maxS : Math.max(maxS, sum - minS);    }}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><ul><li><p><strong>复杂度分析</strong></p><ul><li><strong>时间复杂度</strong>：<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span></eq>,其中的n代表数组<code>nums</code>的长度，代码使用了<strong>1次遍历进行计算最大子数组和最小子数组</strong></li><li><strong>空间复杂度</strong>：<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord">1</span><span class="mclose">)</span></span></span></span></eq>,代码中仅使用了若干常数，为开辟新的存储空间</li></ul><p>​</p><hr><center><span style="font-size:30px;color:orange;font-weight:bolder">继续努力✊</span></center></li></ul><link rel="stylesheet" href="//cdn.jsdelivr.net/npm/katex/dist/katex.min.css"><link rel="stylesheet" href="//cdn.jsdelivr.net/npm/markdown-it-texmath/css/texmath.min.css">]]></content>
+      
+      
+      <categories>
+          
+          <category> Leetcode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Leetcode </tag>
+            
+            <tag> 算法 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>周赛360 T1与T2</title>
       <link href="/2023/08/27/zhou-sai-360-t1-yu-t2/"/>
       <url>/2023/08/27/zhou-sai-360-t1-yu-t2/</url>
