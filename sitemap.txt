@@ -1,3 +1,4 @@
+https://shakej96.github.io/2023/09/04/san-bu-zou-tao-lu-di-gui-wen-ti/
 https://shakej96.github.io/2023/09/03/leetcode-918-huan-xing-zi-shu-zu-de-zui-da-he/
 https://shakej96.github.io/2023/08/25/leetcode-560-he-wei-k-de-zi-shu-zu/
 https://shakej96.github.io/2023/08/27/zhou-sai-360-t1-yu-t2/
@@ -20,8 +21,10 @@ https://shakej96.github.io/tags/%E6%9D%82%E8%B0%88/
 https://shakej96.github.io/tags/Leetcode/
 https://shakej96.github.io/tags/%E7%AE%97%E6%B3%95/
 https://shakej96.github.io/tags/%E5%89%91%E6%8C%87Offer%EF%BC%88%E4%B8%93%E9%A1%B9%EF%BC%89/
+https://shakej96.github.io/tags/%E9%80%92%E5%BD%92/
 https://shakej96.github.io/tags/%E5%91%A8%E8%B5%9B/
 https://shakej96.github.io/tags/%E5%BD%B1%E8%AF%84/
 https://shakej96.github.io/categories/Leetcode/
 https://shakej96.github.io/categories/Java/
+https://shakej96.github.io/categories/%E7%AE%97%E6%B3%95/
 https://shakej96.github.io/categories/%E6%9D%82%E8%B0%88/
