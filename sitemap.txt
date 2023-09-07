@@ -1,7 +1,7 @@
+https://shakej96.github.io/2023/09/04/san-bu-zou-tao-lu-di-gui-wen-ti/
 https://shakej96.github.io/2023/09/07/leetcode-1921-xiao-mie-guai-wu-de-zui-da-shu-liang/
 https://shakej96.github.io/2023/07/27/priorityqueue-shi-xian-zui-xiao-dui-he-zui-da-dui-de-yong-fa-java/
 https://shakej96.github.io/2023/07/07/shuang-zhou-sai-100-t1-ba-qian-fen-gei-zui-duo-de-er-tong/
-https://shakej96.github.io/2023/09/04/san-bu-zou-tao-lu-di-gui-wen-ti/
 https://shakej96.github.io/2023/09/03/leetcode-918-huan-xing-zi-shu-zu-de-zui-da-he/
 https://shakej96.github.io/2023/08/25/leetcode-560-he-wei-k-de-zi-shu-zu/
 https://shakej96.github.io/2023/08/27/zhou-sai-360-t1-yu-t2/
