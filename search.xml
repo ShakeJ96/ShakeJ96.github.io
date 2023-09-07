@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>Leetcode 1921.消灭怪物的最大数量</title>
+      <link href="/2023/09/07/leetcode-1921-xiao-mie-guai-wu-de-zui-da-shu-liang/"/>
+      <url>/2023/09/07/leetcode-1921-xiao-mie-guai-wu-de-zui-da-shu-liang/</url>
+      
+        <content type="html"><![CDATA[<h3 id="leetcode-1921.-%E6%B6%88%E7%81%AD%E6%80%AA%E7%89%A9%E7%9A%84%E6%9C%80%E5%A4%A7%E6%95%B0%E9%87%8F" tabindex="-1"><a href="https://leetcode.cn/problems/eliminate-maximum-number-of-monsters/">Leetcode 1921. 消灭怪物的最大数量</a></h3><blockquote><p>概要：本题是在比较孤傲五移动的次数和我们可以走的次数，其中需要判断的是每一次移动之后，怪物移动的距离是否会比人移动的次数多。这里重要的思想是移动的次数问题，需要满足取余的思想</p></blockquote><h3 id="1.-%E9%A2%98%E7%9B%AE%E8%AF%B4%E6%98%8E" tabindex="-1">1. 题目说明</h3><ul><li>你正在玩一款电子游戏，在游戏中你需要保护城市免受怪物侵袭。给你一个 <strong>下标从 0 开始</strong> 且长度为 <code>n</code> 的整数数组 <code>dist</code> ，其中 <code>dist[i]</code> 是第 <code>i</code> 个怪物与城市的 <strong>初始距离</strong>（单位：米）。</li><li>怪物以 <strong>恒定</strong> 的速度走向城市。给你一个长度为 <code>n</code> 的整数数组 <code>speed</code> 表示每个怪物的速度，其中 <code>speed[i]</code> 是第 <code>i</code> 个怪物的速度（单位：米/分）。</li><li>怪物从 <strong>第 0 分钟</strong> 时开始移动。你有一把武器，并可以 <strong>选择</strong> 在每一分钟的开始时使用，包括第 0 分钟。但是你无法在一分钟的中间使用武器。这种武器威力惊人，一次可以消灭任一还活着的怪物。</li><li>一旦任一怪物到达城市，你就输掉了这场游戏。如果某个怪物 <strong>恰</strong> 在某一分钟开始时到达城市，这会被视为 <strong>输掉</strong> 游戏，在你可以使用武器之前，游戏就会结束。</li><li>返回在你输掉游戏前可以消灭的怪物的 <strong>最大</strong> 数量。如果你可以在所有怪物到达城市前将它们全部消灭，返回 <code>n</code> 。</li></ul><p><strong>示例 1：</strong></p><pre class="line-numbers language-none"><code class="language-none">输入：dist = [1,3,4], speed = [1,1,1]输出：3解释：第 0 分钟开始时，怪物的距离是 [1,3,4]，你消灭了第一个怪物。第 1 分钟开始时，怪物的距离是 [X,2,3]，你没有消灭任何怪物。第 2 分钟开始时，怪物的距离是 [X,1,2]，你消灭了第二个怪物。第 3 分钟开始时，怪物的距离是 [X,X,1]，你消灭了第三个怪物。所有 3 个怪物都可以被消灭。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>​</p><hr><h3 id="2.-%E8%A7%A3%E7%AD%94%E5%88%86%E6%9E%90" tabindex="-1">2. 解答分析</h3><ul><li><p><code>dist[]</code>数组表示的距离，<code>speed[]</code>表示的是移动的速度（每次移动的距离），所以可见对于怪物而言，需要计算的就是移动<code>所需的时间</code>，或者说是<code>次数</code>问题</p></li><li><p>那对于人而言，每分钟我们都可以杀一只怪兽，如果怪兽在我们击杀前到达，<strong>也就是<mark>人杀死怪物需要的次数</mark>比<mark>怪物到达城市所需的次数</mark>多</strong>的话，则会输掉比赛。</p></li><li><p>所以返回的是可以杀死多少个这样的怪物，是人可以拥有的移动的次数<code>i</code>（人每移动一次杀死一只怪兽）</p></li></ul><hr><h3 id="3.-%E5%85%B7%E4%BD%93%E4%BB%A3%E7%A0%81" tabindex="-1">3. 具体代码</h3><ul><li>首先引入数组<code>arr[]</code>，用于表示每只怪兽到达需要的时间（次数）</li><li>接着遍历所有的怪兽数组<code>dist[]</code>,补充当前的<code>arr[]</code>数组</li><li>接着排序，对<code>arr[]</code>数组进行排序，<strong>其实就是危险性的排序</strong></li><li>遍历当前的<code>arr[]</code>数组，判断当前的人的移动次数和对应的的怪兽次数比较</li></ul><p><strong>java代码如下：</strong></p><pre class="line-numbers language-Java" data-language="Java"><code class="language-Java">class Solution {    public int eliminateMaximum(int[] dist, int[] speed) {        //java, 排序        int n = dist.length;        //记录每只怪兽到达需要的时间        int[] arr = new int[n];        for (int i = 0; i &lt; n; i++) {            if (dist[i] == 0) return 0;//如果距离为0.此时怪兽已经到达            arr[i] = dist[i] % speed[i] == 0 ? dist[i] / speed[i] - 1: dist[i] / speed[i];//之所以取余，是因为speed[i]每一次都是以speed[i]的速度增长，而不是单纯地走一步++，            //如果此时的取余为0，说明还可以让它走商减1次（除去最后遇到的那次），也就是剩余商-1次机会            //如果此时的取余不为0，说明还剩下商次机会，不用减1，是因为不会刚好遇到        }        //排序，对所有的arr时间进行排序        Arrays.sort(arr);        //每分钟我们都可以杀一只怪兽，如果怪兽在我们击杀前到达，则会输掉比赛        for (int i = 1; i &lt; n; i++) {//i表示次数问题            if (arr[i] &lt; i) return i;        }        return n;    }}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><ul><li><p><strong>复杂度分析</strong></p><ul><li><p><strong>时间复杂度:</strong><eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mi>l</mi><mi>o</mi><mi>g</mi><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(nlogn)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">o</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span></eq></p><blockquote><ol><li>首先，对于遍历数组 <code>dist</code> 和 <code>speed</code> 来计算 <code>arr</code> 数组的时间复杂度是 O(n)，其中 n 是数组的长度。</li><li>接下来，对 <code>arr</code> 数组进行排序的时间复杂度是 O(nlogn)，其中 n 是数组的长度。</li><li>最后，再次遍历 <code>arr</code> 数组进行比较的时间复杂度是 O(n)</li></ol></blockquote></li><li><p><strong>空间复杂度：</strong><eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span></eq></p><blockquote><p>该代码仅仅使用了一个数组的长度来存储每只怪兽会到达的时间，n为数组的长度，在这之后并未使用额外的空间了</p></blockquote><p>​<br>​</p><hr></li></ul></li></ul><center><span style="color:#0f39;font-size:30px;font-weight:bolder">END👌</span></center><link rel="stylesheet" href="//cdn.jsdelivr.net/npm/katex/dist/katex.min.css"><link rel="stylesheet" href="//cdn.jsdelivr.net/npm/markdown-it-texmath/css/texmath.min.css">]]></content>
+      
+      
+      <categories>
+          
+          <category> Leetcode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Leetcode </tag>
+            
+            <tag> 算法 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>三步走套路递归问题</title>
       <link href="/2023/09/04/san-bu-zou-tao-lu-di-gui-wen-ti/"/>
       <url>/2023/09/04/san-bu-zou-tao-lu-di-gui-wen-ti/</url>
