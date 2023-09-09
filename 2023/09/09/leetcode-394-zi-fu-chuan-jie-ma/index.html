@@ -6,7 +6,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="周赛360 T1与T2, xkj123456">
+    <meta name="keywords" content="Leetcode 394.字符串解码, xkj123456">
     <meta name="description" content="Mark the Splendid Life">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -18,7 +18,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>周赛360 T1与T2 | ShakeJ</title>
+    <title>Leetcode 394.字符串解码 | ShakeJ</title>
     <link rel="icon" type="image/png" href="/icon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -475,12 +475,12 @@ charset="utf-8"></script> -->
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/9.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/10.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">周赛360 T1与T2</h1>
+                    <h1 class="description center-align post-title">Leetcode 394.字符串解码</h1>
                 </div>
             </div>
         </div>
@@ -596,12 +596,16 @@ charset="utf-8"></script> -->
                     
                     <div class="article-tag">
                         
+                            <a href="/tags/Leetcode/">
+                                <span class="chip bg-color">Leetcode</span>
+                            </a>
+                        
                             <a href="/tags/%E7%AE%97%E6%B3%95/">
                                 <span class="chip bg-color">算法</span>
                             </a>
                         
-                            <a href="/tags/%E5%91%A8%E8%B5%9B/">
-                                <span class="chip bg-color">周赛</span>
+                            <a href="/tags/%E6%A0%88/">
+                                <span class="chip bg-color">栈</span>
                             </a>
                         
                     </div>
@@ -625,28 +629,28 @@ charset="utf-8"></script> -->
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2023-08-27
+                    2023-09-09
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-08-29
+                    2023-09-09
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.2k
+                    1.1k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    5 分
+                    4 分
                 </div>
                 
 
@@ -670,182 +674,129 @@ charset="utf-8"></script> -->
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="%E5%91%A8%E8%B5%9B360%EF%BC%9At1%E4%B8%8Et2" tabindex="-1">周赛360：T1与T2</h3>
+                <h3 id="leetcode-394.-%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%A7%A3%E7%A0%81" tabindex="-1"><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/decode-string/">Leetcode 394. 字符串解码</a></h3>
 <blockquote>
-<p>要说的话：隔了好多天又开始比赛了，还是2题选手，这回的前两题感觉还是比较容易想到的；后续的2题不太熟，所以等掌握了之后再回来补题解。</p>
+<p>摘要：本题名为字符串的解码，实际上分为两部分，一部分是字符串出现的次数；另外一部分是子字符串。本题引入数据结构是栈，通过对"[ ]"括号的分类，判断入栈出栈的时机，对全部的字符串进行解码。</p>
 </blockquote>
-<h3 id="t1-.%E8%B7%9D%E7%A6%BB%E5%8E%9F%E7%82%B9%E6%9C%80%E8%BF%9C%E7%9A%84%E7%82%B9" tabindex="-1">T1 <a target="_blank" rel="noopener" href="https://leetcode.cn/problems/furthest-point-from-origin/">.距离原点最远的点</a></h3>
-<h3 id="1.1-%E9%A2%98%E7%9B%AE%E8%AF%B4%E6%98%8E" tabindex="-1">1.1 题目说明</h3>
-<p>给你一个长度为 <code>n</code> 的字符串 <code>moves</code> ，该字符串仅由字符 <code>'L'</code>、<code>'R'</code> 和 <code>'_'</code> 组成。字符串表示你在一条原点为 <code>0</code> 的数轴上的若干次移动。</p>
-<p>你的初始位置就在原点（<code>0</code>），第 <code>i</code> 次移动过程中，你可以根据对应字符选择移动方向：</p>
-<ul>
-<li>如果 <code>moves[i] = 'L'</code> 或 <code>moves[i] = '_'</code> ，可以选择向左移动一个单位距离</li>
-<li>如果 <code>moves[i] = 'R'</code> 或 <code>moves[i] = '_'</code> ，可以选择向右移动一个单位距离</li>
-</ul>
-<p>移动 <code>n</code> 次之后，请你找出可以到达的距离原点 <strong>最远</strong> 的点，并返回 <strong>从原点到这一点的距离</strong></p>
 <p>​</p>
-<p><strong>示例1</strong>：</p>
-<pre class="line-numbers language-none"><code class="language-none">输入：moves = "L_RL__R"
-输出：3
-解释：可以到达的距离原点 0 最远的点是 -3 ，移动的序列为 "LLRLLLR" 。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<p>​</p>
-<hr>
-<h3 id="1.2-%E8%A7%A3%E7%AD%94%E5%88%86%E6%9E%90" tabindex="-1">1.2 解答分析</h3>
+<h3 id="1.-%E9%A2%98%E7%9B%AE%E8%AF%B4%E6%98%8E" tabindex="-1">1. 题目说明</h3>
 <ul>
-<li><strong>分析</strong>：对于距离原点的距离，<code>_</code>是可以随意替换的（可左可右），此时决定最大的距离的是<code>L</code>与<code>R</code>的个数问题，是否可以抵消？接着加上<code>_</code>的个数即可。下面是具体的代码方法
-<ul>
-<li>对于字符串的每一位，可以利用<code>charAt()</code>,也可以将字符串转化为字符串数组，利用<code>toCharArray</code>的方法。</li>
-<li><code>L和R的个数的抵消</code>，想到的是利用减法进行，但是需要绝对值<code>Math.abs()</code></li>
-</ul>
+<li>
+<p>给定一个经过编码的字符串，返回它解码后的字符串。</p>
+</li>
+<li>
+<p>编码规则为: <code>k[encoded_string]</code>，表示其中方括号内部的 <code>encoded_string</code> 正好重复 <code>k</code> 次。注意 <code>k</code> 保证为正整数。</p>
+</li>
+<li>
+<p>你可以认为输入字符串总是有效的；输入字符串中没有额外的空格，且输入的方括号总是符合格式要求的。</p>
+</li>
+<li>
+<p>此外，你可以认为原始数据不包含数字，所有的数字只表示重复的次数 <code>k</code> ，例如不会出现像 <code>3a</code> 或 <code>2[4]</code> 的输入。</p>
+<p><strong>示例 1：</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">输入：s = "3[a]2[bc]"
+输出："aaabcbc"<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p><strong>示例 2：</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">输入：s = "3[a2[c]]"
+输出："accaccacc"<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 </li>
 </ul>
 <hr>
-<h3 id="1.3-%E5%85%B7%E4%BD%93%E4%BB%A3%E7%A0%81" tabindex="-1">1.3 具体代码</h3>
+<h3 id="2.-%E8%A7%A3%E7%AD%94%E5%88%86%E6%9E%90" tabindex="-1">2. 解答分析</h3>
 <ul>
 <li>
-<p><strong>代码：</strong></p>
+<p>一看到题目想到的是对数字和字符进行分类，但是后来考虑到这是通过<code>字符串</code>的形式进行的解码，而且对数字和字符串的匹配关系存在==“[ ]“<mark>的要求，所以这里就对</mark>”[ ]”==进行讨论，<strong>将引入辅助栈对数字和字符串进行匹配</strong>，算法的流程如下：</p>
+<ol>
+<li>
+<p>构建辅助栈 <code>stack</code>， 遍历字符串 <code>s</code> 中每个字符 c；</p>
+<ul>
+<li>
+<p>当 c 为数字时，将数字字符转化为数字 <code>multi</code>，用于后续倍数计算；</p>
+</li>
+<li>
+<p>当 c 为字母时，在<code> res</code> 尾部添加 c；</p>
+</li>
+<li>
+<p>当 c 为 <code>[</code> 时，将当前 <code>multi </code>和 <code>res</code> 入栈，并分别置空置 0：</p>
+<ul>
+<li>记录此 <code>[</code> 前的临时结果<code> res</code> 至栈，用于发现对应 <code>]</code> 后的拼接操作；</li>
+<li>记录此 <code>[</code> 前的倍数 <code>multi</code> 至栈，用于发现对应 <code>] </code>后，获取 <code>multi × [...]</code> 字符串。</li>
+<li>进入到新<code>[</code>后，<code>res </code>和 <code>multi</code> 重新记录。</li>
+</ul>
+</li>
+<li>
+<p>当 c 为<code>]</code>时，<code>stack</code> 出栈，拼接字符串 <code>res = last_res + cur_multi * res</code>，其中:</p>
+<ul>
+<li><code>last_res</code>是上个 [ 到当前 [ 的字符串，例如 <code>"3[a2[c]]" </code>中的 <code>a</code>；</li>
+<li><code>cur_multi</code>是当前 [ 到 ] 内字符串的重复倍数，例如 <code>"3[a2[c]]"</code> 中的 <code>2</code>。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>返回字符串<code> res</code>。</p>
+</li>
+</ol>
+</li>
+<li>
+<p>其实就是对所有的字符进行划分，引入两个栈空间对数字和字符进行存储，这里要用到的是<code>LinkedList</code>的数据结构链表，对字符串进行拼接。</p>
+</li>
+</ul>
+<hr>
+<h3 id="3.-%E5%85%B7%E4%BD%93%E4%BB%A3%E7%A0%81" tabindex="-1">3. 具体代码</h3>
+<ul>
+<li>
+<p><strong>Java代码如下：</strong></p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java">class Solution {
-    public int furthestDistanceFromOrigin(String moves) {
-    int distance=0;
-    int r=0,l=0;
-
-    for(char m:moves.toCharArray()){
-        if(m=='_'){
-            distance++;
+    public String decodeString(String s) {
+        //首先需要注意的是对于字符串的拼接和次数的限制.这里还有‘[]’的要求，其实有提示就是需要栈的进出
+        StringBuffer res=new StringBuffer();
+        int multi=0;
+        LinkedList&lt;Integer&gt; stack_multi=new LinkedList&lt;&gt;();
+        LinkedList&lt;String&gt; stack_res=new LinkedList&lt;&gt;();
+        for(Character c:s.toCharArray()){
+            if(c=='['){
+                stack_multi.addLast(multi);//添加数字的栈
+                stack_res.addLast(res.toString());//在当前的栈的末尾添加新遍历后的元素
+                multi=0;//对应的清0
+                res=new StringBuffer();//res重置为空的字符串，便于后续的存储
+            }
+            else if(c==']'){
+                StringBuffer tmp=new StringBuffer();//添加暂时的中间变量
+                int cur_multi=stack_multi.removeLast();//弹出最后的元素，并且在弹出后首先清除
+                for(int i=0;i&lt;cur_multi;i++){
+                    tmp.append(res);//遍历需要复写的次数
+                }
+                res=new StringBuffer(stack_res.removeLast()+tmp);//返回特定的字符串，为下一次遍历做准备
+            }
+            else if(c&gt;='0' &amp;&amp; c&lt;='9'){
+                multi=multi*10+Integer.parseInt(c+"");//先将字符'c'转化为字符串的形式，后来当遇到一个数字字符时，将其转换为整数，并将其累积到乘数中，让多个字符形成字符串的格式
+            }
+            else res.append(c);//字符串直接拼接
         }
-        if(m=='L'){
-            l++;
-        }
-        if(m=='R'){
-            r++;
-        }
+        return res.toString();
     }
-    distance=distance+Math.abs(r-l);
-    return distance;        
-    }
-}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>​</p>
-<ul>
-<li>
-<p>时间复杂度：<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span></eq>，其中 <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span></eq>为$ moves$的长度。</p>
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 </li>
 <li>
-<p>空间复杂度：<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord">1</span><span class="mclose">)</span></span></span></span></eq>。仅用到若干额外变量</p>
+<p><strong>复杂度分析：</strong></p>
+<ul>
+<li>
+<p>时间复杂度：<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span></eq>，通过一次遍历<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi></mrow><annotation encoding="application/x-tex">s</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">s</span></span></span></span></eq></p>
+</li>
+<li>
+<p>空间复杂度：<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span></eq>,辅助栈在极端情况下是需要使用线性空间的，也就是调用太多次==”[ ]“==,比如：<code>2[2[2[a]]]</code></p>
 </li>
 </ul>
 </li>
 </ul>
 <hr>
-<h3 id="t2-%E6%89%BE%E5%87%BA%E7%BE%8E%E4%B8%BD%E6%95%B0%E7%BB%84%E7%9A%84%E6%9C%80%E5%B0%8F%E5%92%8C" tabindex="-1">T2 <a target="_blank" rel="noopener" href="https://leetcode.cn/problems/find-the-minimum-possible-sum-of-a-beautiful-array/">找出美丽数组的最小和</a></h3>
-<h3 id="2.1-%E9%A2%98%E7%9B%AE%E8%AF%B4%E6%98%8E" tabindex="-1">2.1 题目说明</h3>
-<p>给你两个正整数：<code>n</code> 和 <code>target</code> 。</p>
-<p>如果数组 <code>nums</code> 满足下述条件，则称其为 <strong>美丽数组</strong> 。</p>
-<ul>
-<li><code>nums.length == n</code>.</li>
-<li><code>nums</code> 由两两互不相同的正整数组成。</li>
-<li>在范围 <code>[0, n-1]</code> 内，<strong>不存在</strong> 两个 <strong>不同</strong> 下标 <code>i</code> 和 <code>j</code> ，使得 <code>nums[i] + nums[j] == target</code> 。</li>
-</ul>
-<p>返回符合条件的美丽数组所可能具备的 <strong>最小</strong> 和。</p>
-<p>​</p>
-<p><strong>示例1：</strong></p>
-<pre class="line-numbers language-none"><code class="language-none">输入：n = 2, target = 3
-输出：4
-解释：nums = [1,3] 是美丽数组。
-- nums 的长度为 n = 2 。
-- nums 由两两互不相同的正整数组成。
-- 不存在两个不同下标 i 和 j ，使得 nums[i] + nums[j] == 3 。
-可以证明 4 是符合条件的美丽数组所可能具备的最小和。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>​</p>
-<hr>
-<h3 id="2.2-%E8%A7%A3%E7%AD%94%E5%88%86%E6%9E%90" tabindex="-1">2.2 解答分析</h3>
-<ul>
-<li>
-<p><strong>分析1</strong>:</p>
-<ul>
-<li>
-<p>这道题目需要用到贪心算法。一个简单的思路，假设我们期望加入1，那么 k - 1 就不再符合要求。但是1和k - 1之间，我们肯定选择1，因为很直观的1更小。因为提示给的范围很小1 &lt;= n, k &lt;= 50。暴力计数，只要n能满足。</p>
-</li>
-<li>
-<p>具体这里用到的是<code>HashSet</code>，利用对数据元素（Object）的储存功能进行配对。<code>HashSet</code>的用法中不存在<code>键值对</code>的说法，本题要用到的<code>contains()</code>也仅代表的是值功能</p>
-</li>
-</ul>
-</li>
-<li>
-<p><strong>分析2</strong>：</p>
-<ul>
-<li>数学方法，对元素进行模拟（找规律），将<code>target</code>记作<code>k</code>,对于全体元素而言，比如<code>1和k-1</code>两个只能选一个，因此可以直到<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mi mathvariant="normal">/</mi><mi mathvariant="normal">/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">k//2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mord">//2</span></span></span></span></eq>(表示向下取整,数学上直接<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mi mathvariant="normal">/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">k/2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mord">/2</span></span></span></span></eq>)，此时可以假设<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi><mo>=</mo><mo stretchy="false">(</mo><mi>m</mi><mi>i</mi><mi>n</mi><mo stretchy="false">(</mo><mi>k</mi><mi mathvariant="normal">/</mi><mi mathvariant="normal">/</mi><mn>2</mn><mo separator="true">,</mo><mi>n</mi><mo stretchy="false">)</mo><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">m=(min(k//2,n))</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">m</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal">min</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mord">//2</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">n</span><span class="mclose">))</span></span></span></span></eq>,元素和为<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mn>1</mn><mo>+</mo><mi>m</mi><mo stretchy="false">)</mo><mi>m</mi><mi mathvariant="normal">/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">(1+m)m/2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">m</span><span class="mclose">)</span><span class="mord mathnormal">m</span><span class="mord">/2</span></span></span></span></eq></li>
-<li>同时，剩余的<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>−</mo><mi>m</mi></mrow><annotation encoding="application/x-tex">n-m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">m</span></span></span></span></eq>个数，只能从<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span></span></span></span></eq>后面开始选，那么第二段就是从<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span></span></span></span></eq>到<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>+</mo><mi>n</mi><mo>−</mo><mi>m</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">k+n-m-1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7778em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">m</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span></eq>，元素和这里与上面雷同</li>
-<li>将上述的两段之和相加即可</li>
-</ul>
-</li>
-</ul>
-<hr>
-<h3 id="2.3-%E5%85%B7%E4%BD%93%E4%BB%A3%E7%A0%81" tabindex="-1">2.3 具体代码</h3>
-<ul>
-<li>
-<p><strong>代码1：贪心算法</strong></p>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java">class Solution {
-    public long minimumPossibleSum(int n, int target) {
-    long res = 0;
-    int i = 1;
-    Set&lt;Integer&gt; set=new HashSet&lt;&gt;();
-    while(n&gt;0){
-        if(!(set.contains(i))){
-            set.add(target-i);
-            res+=i;
-            n--;
-        }
-        i++;
-        }
-        return res;
-    }
-}
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>​</p>
-<ul>
-<li>
-<p>时间复杂度：<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mi>l</mi><mi>o</mi><mi>g</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(nlog(n))</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">o</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mclose">))</span></span></span></span></eq></p>
 <blockquote>
-<p>其中的<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>l</mi><mi>o</mi><mi>g</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">log(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">o</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span></eq>是<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi><mi>e</mi><mi>t</mi><mi mathvariant="normal">.</mi><mi>c</mi><mi>o</mi><mi>n</mi><mi>t</mi><mi>a</mi><mi>i</mi><mi>n</mi><mi>s</mi><mo stretchy="false">(</mo><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">set.contains()</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">se</span><span class="mord mathnormal">t</span><span class="mord">.</span><span class="mord mathnormal">co</span><span class="mord mathnormal">n</span><span class="mord mathnormal">t</span><span class="mord mathnormal">ain</span><span class="mord mathnormal">s</span><span class="mopen">(</span><span class="mclose">)</span></span></span></span></eq>的时间复杂度</p>
+<p>插一句题外话：最近开始投实习了，也希望可以在工作项目中得到提升吧，刷题大多数情况下是有思路，但是写得不规范，导致总是会有小错误。在接下来的日子里，继续学习沉淀，希望可以在大三找到一份实习工作，压力🍐++;</p>
 </blockquote>
-</li>
-<li>
-<p>空间复杂度：<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span></eq></p>
-<blockquote>
-<p>HashSet额外开辟的存储空间n</p>
-</blockquote>
-</li>
-</ul>
-</li>
-<li>
-<p><strong>代码2：数学模拟</strong></p>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java">class Solution {
-    public long minimumPossibleSum(int n, int k) {
-        long m = Math.min(k / 2, n);
-        return (m * (m + 1) + (k * 2 + n - m - 1) * (n - m)) / 2;
-    }
-}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>​</p>
-<ul>
-<li>
-<p>时间复杂度：<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord">1</span><span class="mclose">)</span></span></span></span></eq></p>
-</li>
-<li>
-<p>空间复杂度：<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord">1</span><span class="mclose">)</span></span></span></span></eq></p>
-</li>
-</ul>
-</li>
-</ul>
-<hr>
-<h3 id="%E6%80%BB%E7%BB%93" tabindex="-1">总结</h3>
-<blockquote>
-<p>路漫漫其修远兮，吾将上下而求索。刷题的路还很长，开学了要每天坚持学习算法知识，希望可以早日有所突破吧！加油，奥力给！</p>
-<p>😉🤗</p>
-</blockquote>
-<img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="/2023/08/27/zhou-sai-360-t1-yu-t2/Cyberpunk&amp;Bupt.jpg" alt="Cyberpunk&amp;Bupt" style="zoom:25%;">
+<center><span style="text-align:center;font-size:30px;background-color:lightblue;">我会努力的！👌</span>  
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/katex/dist/katex.min.css">
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/markdown-it-texmath/css/texmath.min.css">
-
+</center>
                 
             </div>
             <hr/>
@@ -871,7 +822,7 @@ charset="utf-8"></script> -->
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://shakeJ96.github.io/2023/08/27/zhou-sai-360-t1-yu-t2/">https://shakeJ96.github.io/2023/08/27/zhou-sai-360-t1-yu-t2/</a>
+                    <a href="https://shakeJ96.github.io/2023/09/09/leetcode-394-zi-fu-chuan-jie-ma/">https://shakeJ96.github.io/2023/09/09/leetcode-394-zi-fu-chuan-jie-ma/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -909,12 +860,16 @@ charset="utf-8"></script> -->
                     
                         <div class="article-tag">
                             
+                                <a href="/tags/Leetcode/">
+                                    <span class="chip bg-color">Leetcode</span>
+                                </a>
+                            
                                 <a href="/tags/%E7%AE%97%E6%B3%95/">
                                     <span class="chip bg-color">算法</span>
                                 </a>
                             
-                                <a href="/tags/%E5%91%A8%E8%B5%9B/">
-                                    <span class="chip bg-color">周赛</span>
+                                <a href="/tags/%E6%A0%88/">
+                                    <span class="chip bg-color">栈</span>
                                 </a>
                             
                         </div>
@@ -1084,17 +1039,18 @@ charset="utf-8"></script> -->
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2023/09/03/leetcode-918-huan-xing-zi-shu-zu-de-zui-da-he/">
+                <a href="/2023/09/09/leetcode-394-zi-fu-chuan-jie-ma/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="Leetcode 918. 环形子数组的最大和">
+                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="Leetcode 394.字符串解码">
                         
-                        <span class="card-title">Leetcode 918. 环形子数组的最大和</span>
+                        <span class="card-title">Leetcode 394.字符串解码</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1104,9 +1060,9 @@ charset="utf-8"></script> -->
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2023-09-03
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-09-09
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -1119,6 +1075,7 @@ charset="utf-8"></script> -->
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -1128,6 +1085,10 @@ charset="utf-8"></script> -->
                     
                     <a href="/tags/%E7%AE%97%E6%B3%95/">
                         <span class="chip bg-color">算法</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%A0%88/">
+                        <span class="chip bg-color">栈</span>
                     </a>
                     
                 </div>
@@ -1141,13 +1102,13 @@ charset="utf-8"></script> -->
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2023/08/25/leetcode-560-he-wei-k-de-zi-shu-zu/">
+                <a href="/2023/09/07/leetcode-1921-xiao-mie-guai-wu-de-zui-da-shu-liang/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="Leetcode 560:和为k的子数组">
+                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="Leetcode 1921.消灭怪物的最大数量">
                         
-                        <span class="card-title">Leetcode 560:和为k的子数组</span>
+                        <span class="card-title">Leetcode 1921.消灭怪物的最大数量</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1158,7 +1119,7 @@ charset="utf-8"></script> -->
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-08-25
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-09-07
                             </span>
                         <span class="publish-author">
                             
