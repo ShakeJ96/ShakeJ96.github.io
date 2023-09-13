@@ -767,7 +767,7 @@ charset="utf-8"></script> -->
                 type: 'pie',
                 radius: '50%',
                 color: ['#6772e5', '#ff9e0f', '#fa755a', '#3ecf8e', '#82d3f4', '#ab47bc', '#525f7f', '#f51c47', '#26A69A'],
-                data: [{"name":"实习","value":2},{"name":"Leetcode","value":9},{"name":"Java","value":1},{"name":"算法","value":1},{"name":"杂谈","value":1}],
+                data: [{"name":"Leetcode","value":9},{"name":"实习","value":2},{"name":"Java","value":1},{"name":"算法","value":1},{"name":"杂谈","value":1}],
                 itemStyle: {
                     emphasis: {
                         shadowBlur: 10,
@@ -980,12 +980,6 @@ charset="utf-8"></script> -->
             
             
             
-            <a href="/tags/%E5%89%8D%E7%AB%AF%E5%87%86%E5%A4%87/">
-                <span class="chip center-align waves-effect waves-light chip-default">前端准备</span>
-            </a>
-            
-            
-            
             <a href="/tags/Leetcode/">
                 <span class="chip center-align waves-effect waves-light chip-default">Leetcode</span>
             </a>
@@ -994,6 +988,12 @@ charset="utf-8"></script> -->
             
             <a href="/tags/%E7%AE%97%E6%B3%95/">
                 <span class="chip center-align waves-effect waves-light chip-default">算法</span>
+            </a>
+            
+            
+            
+            <a href="/tags/%E5%89%8D%E7%AB%AF%E5%87%86%E5%A4%87/">
+                <span class="chip center-align waves-effect waves-light chip-default">前端准备</span>
             </a>
             
             
@@ -1010,14 +1010,14 @@ charset="utf-8"></script> -->
             
             
             
-            <a href="/tags/%E5%91%A8%E8%B5%9B/">
-                <span class="chip center-align waves-effect waves-light chip-default">周赛</span>
+            <a href="/tags/%E9%80%92%E5%BD%92/">
+                <span class="chip center-align waves-effect waves-light chip-default">递归</span>
             </a>
             
             
             
-            <a href="/tags/%E9%80%92%E5%BD%92/">
-                <span class="chip center-align waves-effect waves-light chip-default">递归</span>
+            <a href="/tags/%E5%91%A8%E8%B5%9B/">
+                <span class="chip center-align waves-effect waves-light chip-default">周赛</span>
             </a>
             
             
@@ -1143,7 +1143,7 @@ charset="utf-8"></script> -->
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">16.5k</span>&nbsp;字
+                class="white-color">16.7k</span>&nbsp;字
             
             
             
@@ -1291,8 +1291,8 @@ charset="utf-8"></script> -->
     $(document).ready(function () {
 
         var int = setInterval(fixCount, 50);  // 50ms周期检测函数
-        var pvcountOffset = 80000;  // 初始化首次数据
-        var uvcountOffset = 20000;
+        var pvcountOffset = 0;  // 初始化首次数据
+        var uvcountOffset = 0;
 
         function fixCount() {
             if (document.getElementById("busuanzi_container_site_pv").style.display != "none") {
