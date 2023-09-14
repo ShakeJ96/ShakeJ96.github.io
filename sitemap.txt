@@ -22,8 +22,8 @@ https://shakej96.github.io/about/index.html
 https://shakej96.github.io/tags/index.html
 https://shakej96.github.io/categories/index.html
 https://shakej96.github.io/
-https://shakej96.github.io/tags/%E6%9D%82%E8%B0%88/
 https://shakej96.github.io/tags/%E5%89%8D%E7%AB%AF%E5%87%86%E5%A4%87/
+https://shakej96.github.io/tags/%E6%9D%82%E8%B0%88/
 https://shakej96.github.io/tags/Leetcode/
 https://shakej96.github.io/tags/%E7%AE%97%E6%B3%95/
 https://shakej96.github.io/tags/%E6%A0%88/
