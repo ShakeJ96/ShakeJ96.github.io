@@ -628,7 +628,7 @@ charset="utf-8"></script> -->
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-09-04
+                    2023-09-15
                 </div>
                 
 
@@ -706,17 +706,15 @@ charset="utf-8"></script> -->
 <p>在构造PriorityQueue时候我们可以指定初始容量和元素在队列中的排序方法，如果不指定，则默认初始容量为11，默认的排序方式是将元素从小到大进行排序。</p>
 </blockquote>
 <ol start="3">
-<li><strong>最小堆</strong></li>
+<li><strong>最小堆构造</strong></li>
 </ol>
-<p>构造最小堆:</p>
   <pre class="line-numbers language-java" data-language="java"><code class="language-java">PriorityQueue&lt;Integer&gt; minheap = new PriorityQueue&lt;&gt;();<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <ul>
 <li>使用无参构造，元素在队列中按照默认从小到大的顺序排列，可以保证每次出队列的元素都是队列中的最小的元素。</li>
 </ul>
 <ol start="4">
 <li>
-<p><strong>最大堆</strong></p>
-<p>构造最大堆：</p>
+<p><strong>最大堆构造</strong></p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java">PriorityQueue&lt;Integer&gt; maxheap = new PriorityQueue&lt;&gt;(Collections.reverseOrder());<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <ul>
 <li>将排序方法指定为反序，元素是从大到小的顺序排列，也就是保证每次出队列的元素是队列中的最大的元素。</li>
