@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>西门子远程办公 Day1</title>
+      <link href="/2023/09/20/xi-men-zi-yuan-cheng-ban-gong-day1/"/>
+      <url>/2023/09/20/xi-men-zi-yuan-cheng-ban-gong-day1/</url>
+      
+        <content type="html"><![CDATA[<h3 id="%E8%A5%BF%E9%97%A8%E5%AD%90%E8%BF%9C%E7%A8%8B%E5%AE%9E%E4%B9%A0day1" tabindex="-1">西门子远程实习Day1</h3><ul><li><p><strong>时间安排？</strong></p><blockquote><p>今天有个早八的软件工程基础，老师还是一如既往地PPT讲解。8:30开始等Leader的邮件，结果差不多10:30才等到。从10:30一直工作到下午6:00，中间花了20分钟吃午饭。</p></blockquote></li><li><p><strong>任务分配？</strong></p><blockquote><p>今天主要是认识熟悉测试开发的平台<code>AEM Editor</code>,Leader下发的任务是完成19个文档网页的上传和测试。平台好多功能组件都不是很熟，也的确花费了大量时间进行复盘和尝试。最后只完整发布了<code>4</code>份测试报告，不过Leader说不着急，明天可以继续做。</p></blockquote></li><li><p><strong>后续安排？</strong></p><blockquote><ul><li>特意问了Leader明天是否需要到公司实地办公，她的回答是先不用。由于入职手续还没办理完成(我的招商银行工资卡还在申请制作当中),实习ID卡也没有办理好，所以目前还是远程办公。</li><li>远程实习是节约了大量的通勤时间，但是感觉询问和交流的效率稍低。希望在中秋、国庆假期之前可以实际去趟公司吧。</li></ul></blockquote></li><li><p><strong>收获感想</strong></p><blockquote><ol><li>工作遇到不会的不要着急，要多问多想多记录，比如今天的数据库上传的时候出现问题。通过询问之后才得知需要<code>Assets</code>保存<code>Properties</code>才可以成功上链。不同的公司要求不一样，实习作为一种特殊的工作经历，试错成本相对比较低了，对新人比较友好。</li><li>实习的时间相对比较轻松，远程实习就更是了。所以要好好利用空余时间抓紧学习知识。最近几天比较忙，<code>Leetcode</code>刷得较少。争取今年把里面的所有算法知识点学完，多练习、多理解、多举一反三。为明年的暑期实习和秋招做准备吧，加油！</li></ol></blockquote><p>​</p><img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="/2023/09/20/xi-men-zi-yuan-cheng-ban-gong-day1/%E6%A8%A1%E7%BB%84%E5%88%B6%E4%BD%9C.jpg" alt="模组制作" style="zoom:50%;"><blockquote><p>放一张今天解决的页面排版模板，认识组件太重要了😭~</p></blockquote></li></ul><center><span style="color:green;font-size:20px;">不断前进！😊</span></center><link rel="stylesheet" href="//cdn.jsdelivr.net/npm/katex/dist/katex.min.css"><link rel="stylesheet" href="//cdn.jsdelivr.net/npm/markdown-it-texmath/css/texmath.min.css">]]></content>
+      
+      
+      <categories>
+          
+          <category> 实习 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 远程实习 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>双周赛113: 前3题</title>
       <link href="/2023/09/17/shuang-zhou-sai-113-qian-3-ti/"/>
       <url>/2023/09/17/shuang-zhou-sai-113-qian-3-ti/</url>
