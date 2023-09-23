@@ -632,7 +632,7 @@ charset="utf-8"></script> -->
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-08-29
+                    2023-09-24
                 </div>
                 
 
@@ -675,7 +675,7 @@ charset="utf-8"></script> -->
 <p>要说的话：隔了好多天又开始比赛了，还是2题选手，这回的前两题感觉还是比较容易想到的；后续的2题不太熟，所以等掌握了之后再回来补题解。</p>
 </blockquote>
 <h3 id="t1-.%E8%B7%9D%E7%A6%BB%E5%8E%9F%E7%82%B9%E6%9C%80%E8%BF%9C%E7%9A%84%E7%82%B9" tabindex="-1">T1 <a target="_blank" rel="noopener" href="https://leetcode.cn/problems/furthest-point-from-origin/">.距离原点最远的点</a></h3>
-<h3 id="1.1-%E9%A2%98%E7%9B%AE%E8%AF%B4%E6%98%8E" tabindex="-1">1.1 题目说明</h3>
+<h4 id="1.1-%E9%A2%98%E7%9B%AE%E8%AF%B4%E6%98%8E" tabindex="-1">1.1 题目说明</h4>
 <p>给你一个长度为 <code>n</code> 的字符串 <code>moves</code> ，该字符串仅由字符 <code>'L'</code>、<code>'R'</code> 和 <code>'_'</code> 组成。字符串表示你在一条原点为 <code>0</code> 的数轴上的若干次移动。</p>
 <p>你的初始位置就在原点（<code>0</code>），第 <code>i</code> 次移动过程中，你可以根据对应字符选择移动方向：</p>
 <ul>
@@ -690,7 +690,7 @@ charset="utf-8"></script> -->
 解释：可以到达的距离原点 0 最远的点是 -3 ，移动的序列为 "LLRLLLR" 。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>​</p>
 <hr>
-<h3 id="1.2-%E8%A7%A3%E7%AD%94%E5%88%86%E6%9E%90" tabindex="-1">1.2 解答分析</h3>
+<h4 id="1.2-%E8%A7%A3%E7%AD%94%E5%88%86%E6%9E%90" tabindex="-1">1.2 解答分析</h4>
 <ul>
 <li><strong>分析</strong>：对于距离原点的距离，<code>_</code>是可以随意替换的（可左可右），此时决定最大的距离的是<code>L</code>与<code>R</code>的个数问题，是否可以抵消？接着加上<code>_</code>的个数即可。下面是具体的代码方法
 <ul>
@@ -700,7 +700,7 @@ charset="utf-8"></script> -->
 </li>
 </ul>
 <hr>
-<h3 id="1.3-%E5%85%B7%E4%BD%93%E4%BB%A3%E7%A0%81" tabindex="-1">1.3 具体代码</h3>
+<h4 id="1.3-%E5%85%B7%E4%BD%93%E4%BB%A3%E7%A0%81" tabindex="-1">1.3 具体代码</h4>
 <ul>
 <li>
 <p><strong>代码：</strong></p>
@@ -737,7 +737,7 @@ charset="utf-8"></script> -->
 </ul>
 <hr>
 <h3 id="t2-%E6%89%BE%E5%87%BA%E7%BE%8E%E4%B8%BD%E6%95%B0%E7%BB%84%E7%9A%84%E6%9C%80%E5%B0%8F%E5%92%8C" tabindex="-1">T2 <a target="_blank" rel="noopener" href="https://leetcode.cn/problems/find-the-minimum-possible-sum-of-a-beautiful-array/">找出美丽数组的最小和</a></h3>
-<h3 id="2.1-%E9%A2%98%E7%9B%AE%E8%AF%B4%E6%98%8E" tabindex="-1">2.1 题目说明</h3>
+<h4 id="2.1-%E9%A2%98%E7%9B%AE%E8%AF%B4%E6%98%8E" tabindex="-1">2.1 题目说明</h4>
 <p>给你两个正整数：<code>n</code> 和 <code>target</code> 。</p>
 <p>如果数组 <code>nums</code> 满足下述条件，则称其为 <strong>美丽数组</strong> 。</p>
 <ul>
@@ -757,7 +757,7 @@ charset="utf-8"></script> -->
 可以证明 4 是符合条件的美丽数组所可能具备的最小和。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>​</p>
 <hr>
-<h3 id="2.2-%E8%A7%A3%E7%AD%94%E5%88%86%E6%9E%90" tabindex="-1">2.2 解答分析</h3>
+<h4 id="2.2-%E8%A7%A3%E7%AD%94%E5%88%86%E6%9E%90" tabindex="-1">2.2 解答分析</h4>
 <ul>
 <li>
 <p><strong>分析1</strong>:</p>
@@ -780,7 +780,7 @@ charset="utf-8"></script> -->
 </li>
 </ul>
 <hr>
-<h3 id="2.3-%E5%85%B7%E4%BD%93%E4%BB%A3%E7%A0%81" tabindex="-1">2.3 具体代码</h3>
+<h4 id="2.3-%E5%85%B7%E4%BD%93%E4%BB%A3%E7%A0%81" tabindex="-1">2.3 具体代码</h4>
 <ul>
 <li>
 <p><strong>代码1：贪心算法</strong></p>
