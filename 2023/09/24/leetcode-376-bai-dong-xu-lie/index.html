@@ -6,7 +6,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="双周赛100 T1：把钱分给最多的儿童, xkj123456">
+    <meta name="keywords" content="Leetcode 376.摆动序列, xkj123456">
     <meta name="description" content="Mark the Splendid Life">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -18,7 +18,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>双周赛100 T1：把钱分给最多的儿童 | ShakeJ</title>
+    <title>Leetcode 376.摆动序列 | ShakeJ</title>
     <link rel="icon" type="image/png" href="/icon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -475,12 +475,12 @@ charset="utf-8"></script> -->
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/17.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/23.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">双周赛100 T1：把钱分给最多的儿童</h1>
+                    <h1 class="description center-align post-title">Leetcode 376.摆动序列</h1>
                 </div>
             </div>
         </div>
@@ -596,12 +596,12 @@ charset="utf-8"></script> -->
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E7%AE%97%E6%B3%95/">
-                                <span class="chip bg-color">算法</span>
+                            <a href="/tags/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/">
+                                <span class="chip bg-color">贪心算法</span>
                             </a>
                         
-                            <a href="/tags/%E5%91%A8%E8%B5%9B/">
-                                <span class="chip bg-color">周赛</span>
+                            <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">
+                                <span class="chip bg-color">动态规划</span>
                             </a>
                         
                     </div>
@@ -625,28 +625,28 @@ charset="utf-8"></script> -->
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2023-07-07
+                    2023-09-24
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-09-04
+                    2023-09-24
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    797
+                    1.5k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    2 分
+                    6 分
                 </div>
                 
 
@@ -670,98 +670,174 @@ charset="utf-8"></script> -->
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="%E5%8F%8C%E5%91%A8%E8%B5%9B100t1%EF%BC%9A%E5%B0%86%E9%92%B1%E5%88%86%E7%BB%99%E6%9C%80%E5%A4%9A%E7%9A%84%E5%84%BF%E7%AB%A5" tabindex="-1">双周赛100T1：将钱分给最多的儿童</h3>
+                <h3 id="leetcode-376.-%E6%91%86%E5%8A%A8%E5%BA%8F%E5%88%97" tabindex="-1"><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/wiggle-subsequence/">Leetcode 376. 摆动序列</a></h3>
+<blockquote>
+<p>以后就分类进行刷题，包含课程和代码随想录中的部分题目。形成一定的大纲和刷题的思路。</p>
+</blockquote>
+<p>​</p>
 <h3 id="1.-%E9%A2%98%E7%9B%AE%E8%AF%B4%E6%98%8E" tabindex="-1">1. 题目说明</h3>
-<p>​	给你一个整数 <code>money</code> ，表示你总共有的钱数（单位为美元）和另一个整数 <code>children</code> ，表示你要将钱分配给多少个儿童。</p>
-<p>​	你需要按照如下规则分配：</p>
+<p>如果连续数字之间的差严格地在正数和负数之间交替，则数字序列称为 **摆动序列 。**第一个差（如果存在的话）可能是正数或负数。仅有一个元素或者含两个不等元素的序列也视作摆动序列。</p>
 <ul>
-<li>
-<p>所有的钱都必须被分配。</p>
-</li>
-<li>
-<p>每个儿童至少获得 <code>1</code> 美元。</p>
-</li>
-<li>
-<p>没有人获得 <code>4</code> 美元。</p>
-<p>请你按照上述规则分配金钱，并返回 <strong>最多</strong> 有多少个儿童获得 <strong>恰好</strong> <code>8</code> 美元。如果没有任何分配方案，返回 <code>-1</code>.</p>
-</li>
+<li>例如， <code>[1, 7, 4, 9, 2, 5]</code> 是一个 <strong>摆动序列</strong> ，因为差值 <code>(6, -3, 5, -7, 3)</code> 是正负交替出现的。</li>
+<li>相反，<code>[1, 4, 7, 2, 5]</code> 和 <code>[1, 7, 4, 5, 5]</code> 不是摆动序列，第一个序列是因为它的前两个差值都是正数，第二个序列是因为它的最后一个差值为零。</li>
 </ul>
+<p><strong>子序列</strong> 可以通过从原始序列中删除一些（也可以不删除）元素来获得，剩下的元素保持其原始顺序。</p>
+<p>给你一个整数数组 <code>nums</code> ，返回 <code>nums</code> 中作为 <strong>摆动序列</strong> 的 <strong>最长子序列的长度</strong> 。</p>
+<p><strong>示例 1：</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">输入：nums = [1,7,4,9,2,5]
+输出：6
+解释：整个序列均为摆动序列，各元素之间的差值为 (6, -3, 5, -7, 3) 。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p><strong>示例 2：</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">输入：nums = [1,17,5,10,13,15,10,5,16,8]
+输出：7
+解释：这个序列包含几个长度为 7 摆动序列。
+其中一个是 [1, 17, 10, 13, 10, 16, 8] ，各元素之间的差值为 (16, -7, 3, -3, 6, -8) 。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p><strong>示例 3：</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">输入：nums = [1,2,3,4,5,6,7,8,9]
+输出：2<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>​</p>
 <hr>
-<ul>
-<li>
-<p><strong>示例</strong>：</p>
-</li>
-<li>
-<pre><code>输入：money = 20, children = 3
-输出：1
-解释：
-最多获得 8 美元的儿童数为 1 。一种分配方案为：
-- 给第一个儿童分配 8 美元。
-- 给第二个儿童分配 9 美元。
-- 给第三个儿童分配 3 美元。
-没有分配方案能让获得 8 美元的儿童数超过 1 。
-</code></pre>
-</li>
-</ul>
 <h3 id="2.-%E8%A7%A3%E7%AD%94%E5%88%86%E6%9E%90" tabindex="-1">2. 解答分析</h3>
-<ul>
-<li><strong>分析：</strong></li>
-<li>
-<ul>
-<li>最开始一以为这类题目都是直接模拟来做，但是发现限定条件有点多，主要是不好分类。这里<code>条件2:每个儿童至少获得1美元</code>，这里需要保证的是儿童分到的钱不为<code>0</code>，至少为<code>1</code>。<mark>换句话说就是先给每个儿童分配1美元</mark>  //对应的是：money-children。此时如果money&lt;0，那么直接返回-1。</li>
-<li>然后<code>目的：返回获得8美元的儿童的最大数量</code>，此时条件改为每个获得<code>7</code>美元的儿童最大个数，我们将此时的money / 7 ，让尽可能多的儿童分到<code>7</code>美元，并向下取整，并且需要同当前的儿童的个数进行对比，不能够超过儿童实际人数，返回的是<code>ans=Math.min(money/7,children);</code>并且此时的<code>money-=ans*7;//最后的钱数</code>,<code>children-=ans;//剩余的未分配的儿童人数</code>。</li>
-<li>此时开始判定<code>条件1和条件3：每个人都必须分配，没有儿童分到了4美元</code>。
+<h4 id="2.1-%E6%80%9D%E8%B7%AF1%EF%BC%88%E8%B4%AA%E5%BF%83%E8%A7%A3%E6%B3%95%EF%BC%89" tabindex="-1">2.1 思路1（贪心解法）</h4>
 <ul>
 <li>
-<ol>
-<li>如果此时剩余<code>0</code>人，也就是全部儿童都分完了（钱数都是<code>8</code>）,如果money&gt;0,说明还需要再分给一个儿童，也就是<code>ans-1</code>,有一个儿童不是8。</li>
-</ol>
+<p>对题目要求的分析就是通过从原始序列中删除（也可以不删除）元素来获得子序列，剩下的元素保持其原始顺序，其实要求就是下图所示即可。</p>
 </li>
 <li>
-<ol start="2">
-<li>如果此时剩余1人（此时此人的钱数是<code>1</code>），且<code>money=3</code>,为了避免分配<code>4</code>美元，需要的是将此时的<code>3</code>分配给一个分到<code>8</code>的儿童，此时<code>ans-1</code>;</li>
-</ol>
+<p><img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="https://code-thinking-1253855093.file.myqcloud.com/pics/20201124174327597.png" alt="376.摆动序列"></p>
+<blockquote>
+<p><strong>局部最优：删除单调坡度上的节点（不包括单调坡度两端的节点），那么这个坡度就可以有两个局部峰值</strong>。</p>
+<p><strong>整体最优：整个序列有最多的局部峰值，从而达到最长摆动序列</strong>。</p>
+<p>局部最优可以推出全局最优，并无法举出反例，那么可以试试贪心。</p>
+</blockquote>
 </li>
 <li>
-<ol start="3">
-<li>其余情况全部给一个人，如果这个人分配到<code>4</code>美元，那么它可以继续分给其他人，<code>ans</code>的总数保持不变。(<strong>也就是剩余money的值无非是mod7的正整数剩余系，4，5；6就进一位了，人数向下取整的时候要+1;对应的人数也是如此，剩余2、3…人数越多越可以分配剩余钱数不到4美元</strong>)。</li>
-</ol>
+<p>实际上的操作并不用删除元素，而是统计峰值的数量就行。定义两个指针<code>prediff(nums[i]-nums[i-1])</code>和<code>curdiff(nums[i+1]-nums[i])</code>.</p>
+<p>这里可能会出现3中情况，如下：</p>
+<ul>
+<li>
+<p>上下坡中有平坡</p>
+<blockquote>
+<p>前一个指针可能为0，比如[1,2,2,2,1]的情况，需要将中间的3个2进行判断比较。</p>
+</blockquote>
+</li>
+<li>
+<p>数组首尾两端</p>
+<blockquote>
+<p>统计峰值的时候，数组最左边和最右边可能是波峰或者波谷。</p>
+</blockquote>
+</li>
+<li>
+<p>单调坡度有平坡</p>
+<blockquote>
+<p>如果在一个单调坡度上有平坡，例如[1,2,2,2,3,4]。可以看出，如果是在前后变化的时候进行峰值的记录，那么会在第3个2的地方进行记录，但是此时并不是最长的峰值，所以我们需要另外更新<code>preDiff</code>的变化位置。需要在摆动进行变化的时候进行更新。</p>
+</blockquote>
 </li>
 </ul>
 </li>
-</ul>
-</li>
-</ul>
-<hr>
-<h3 id="3.-%E5%85%B7%E4%BD%93%E4%BB%A3%E7%A0%81" tabindex="-1">3. 具体代码</h3>
-<ul>
 <li>
-<p><strong>代码</strong>：</p>
-</li>
-<li>
-<pre class="line-numbers language-language-Java"><code class="language-language-Java">class Solution{
-    public int distMoney(int money,int children){
-        money-=chilrdren;//最开始的每个人初始值要为1
-        if(money<0) return -1;//不满足每个儿童获得钱数至少为1的条件，返回-1、
-        int ans=Math.min(money/7,children);
-        money-=ans*7;
-        children-=ans;
-        if(children==0 && money>0
-          ||children==1 && money==3){
-            ans--;
+<h4 id="2.2-%E5%85%B7%E4%BD%93%E4%BB%A3%E7%A0%81%EF%BC%88%E8%B4%AA%E5%BF%83%EF%BC%89" tabindex="-1">2.2 具体代码（贪心）</h4>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">class Solution {
+    public int wiggleMaxLength(int[] nums) {
+        if (nums.length &lt;= 1) {
+            return nums.length;
         }
-        return ans;
+        //当前差值
+        int curDiff = 0;
+        //上一个差值
+        int preDiff = 0;
+        int count = 1; //峰值的个数，序列默认序列的最右边有一个峰值
+        for (int i = 1; i &lt; nums.length; i++) {
+            //得到当前差值
+            curDiff = nums[i] - nums[i - 1];
+            //如果当前差值和上一个差值为一正一负
+            //等于0的情况表示初始时的preDiff
+            if ((curDiff &gt; 0 &amp;&amp; preDiff &lt;= 0) || (curDiff &lt; 0 &amp;&amp; preDiff &gt;= 0)) {
+                count++;
+                preDiff = curDiff;// 注意这里，只在摆动变化的时候更新prediff
+            }
+        }
+        return count;
     }
-}
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 </li>
 <li>
-<p><strong>总结：</strong> <strong>时间复杂度为O(1),未用到循环遍历</strong>；<strong>空间复杂度为：O(1)，仅使用了若干额外的变量。</strong></p>
+<p><strong>复杂度分析：</strong></p>
+<ul>
+<li>
+<p><strong>时间复杂度：<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span></eq></strong>,由于对数组进行遍历，数组的长度为<code>N</code>.</p>
+</li>
+<li>
+<p><strong>空间复杂度：<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord">1</span><span class="mclose">)</span></span></span></span></eq></strong>,并未引入额外的存储空间。</p>
+</li>
+</ul>
 </li>
 </ul>
 <hr>
-<p><span style="color:lightblue;font-size:30px;">END~</span></p>
-<img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="/2023/07/07/shuang-zhou-sai-100-t1-ba-qian-fen-gei-zui-duo-de-er-tong/2.jpg" alt="2" style="zoom:80%;">
+<h4 id="2.3-%E6%80%9D%E8%B7%AF2%EF%BC%88%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%EF%BC%89" tabindex="-1">2.3 思路2（动态规划）</h4>
+<ul>
+<li>
+<p>本题之所以可以想到动态规划，实际上是由于每一处的峰值都需要和前面的状态进行比较，如果是需要考虑个数。要么作为山峰(即<code>nums[i]&gt;nums[i-1]</code>)，要么作为山谷(即<code>nums[i]&lt;nums[i-1]</code>)</p>
+<ul>
+<li>设 dp 状态<code>dp[i][0]</code>，表示考虑前 i 个数，第 i 个数作为山峰的摆动子序列的最长长度</li>
+<li>设 dp 状态<code>dp[i][1]</code>，表示考虑前 i 个数，第 i 个数作为山谷的摆动子序列的最长长度</li>
+</ul>
+<p>则转移方程为：</p>
+<ul>
+<li><code>dp[i][0] = max(dp[i][0], dp[j][1] + 1)</code>，其中<code>0 &lt; j &lt; i</code>且<code>nums[j] &lt; nums[i]</code>，表示将 nums[i]接到前面某个山谷后面，作为山峰。</li>
+<li><code>dp[i][1] = max(dp[i][1], dp[j][0] + 1)</code>，其中<code>0 &lt; j &lt; i</code>且<code>nums[j] &gt; nums[i]</code>，表示将 nums[i]接到前面某个山峰后面，作为山谷。</li>
+</ul>
+</li>
+<li>
+<p><strong>初始状态</strong></p>
+<ul>
+<li>由于一个属可以接到前面的某个数后面，也可以自身为子序列的期典，所以初始的状态为：<code>dp[0][0]=dp[0][1]=1</code></li>
+</ul>
+</li>
+</ul>
+<p>​</p>
+<h4 id="2.4-%E5%85%B7%E4%BD%93%E4%BB%A3%E7%A0%81%EF%BC%88dp%EF%BC%89" tabindex="-1">2.4 具体代码（dp）</h4>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">// DP
+class Solution {
+    public int wiggleMaxLength(int[] nums) {
+        // 0 i 作为波峰的最大长度
+        // 1 i 作为波谷的最大长度
+        int dp[][] = new int[nums.length][2];
+
+        dp[0][0] = dp[0][1] = 1;
+        for (int i = 1; i &lt; nums.length; i++){
+            //i 自己可以成为波峰或者波谷
+            dp[i][0] = dp[i][1] = 1;
+
+            for (int j = 0; j &lt; i; j++){
+                if (nums[j] &gt; nums[i]){
+                    // i 是波谷
+                    dp[i][1] = Math.max(dp[i][1], dp[j][0] + 1);
+                }
+                if (nums[j] &lt; nums[i]){
+                    // i 是波峰
+                    dp[i][0] = Math.max(dp[i][0], dp[j][1] + 1);
+                }
+            }
+        }
+
+        return Math.max(dp[nums.length - 1][0], dp[nums.length - 1][1]);
+    }
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li>
+<p><strong>复杂度分析：</strong></p>
+</li>
+<li>
+<p><strong>时间复杂度：<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><msup><mi>n</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n^2)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></eq></strong> 两个<code>for</code>循环，总共进行力<code>n(n-1)/2</code>次比较操作。</p>
+</li>
+<li>
+<p><strong>空间复杂度：<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span></eq></strong> 二维数组保存每个位置。</p>
+</li>
+</ul>
+<blockquote>
+<center><span style="color:#e324;font-size:2em;">END~</span>
+</center></blockquote>
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/katex/dist/katex.min.css">
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/markdown-it-texmath/css/texmath.min.css">
 
@@ -790,7 +866,7 @@ charset="utf-8"></script> -->
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://shakeJ96.github.io/2023/07/07/shuang-zhou-sai-100-t1-ba-qian-fen-gei-zui-duo-de-er-tong/">https://shakeJ96.github.io/2023/07/07/shuang-zhou-sai-100-t1-ba-qian-fen-gei-zui-duo-de-er-tong/</a>
+                    <a href="https://shakeJ96.github.io/2023/09/24/leetcode-376-bai-dong-xu-lie/">https://shakeJ96.github.io/2023/09/24/leetcode-376-bai-dong-xu-lie/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -828,12 +904,12 @@ charset="utf-8"></script> -->
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E7%AE%97%E6%B3%95/">
-                                    <span class="chip bg-color">算法</span>
+                                <a href="/tags/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/">
+                                    <span class="chip bg-color">贪心算法</span>
                                 </a>
                             
-                                <a href="/tags/%E5%91%A8%E8%B5%9B/">
-                                    <span class="chip bg-color">周赛</span>
+                                <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">
+                                    <span class="chip bg-color">动态规划</span>
                                 </a>
                             
                         </div>
@@ -1003,66 +1079,18 @@ charset="utf-8"></script> -->
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2023/07/08/leetcode-55-tiao-yue-you-xi/">
+                <a href="/2023/09/24/leetcode-376-bai-dong-xu-lie/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="Leetcode 55：跳跃游戏">
+                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="Leetcode 376.摆动序列">
                         
-                        <span class="card-title">Leetcode 55：跳跃游戏</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2023-07-08
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/Leetcode/" class="post-category">
-                                    Leetcode
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/">
-                        <span class="chip bg-color">贪心算法</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2023/07/07/offer26-chong-pai-lian-biao/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="Offer26：重排链表">
-                        
-                        <span class="card-title">Offer26：重排链表</span>
+                        <span class="card-title">Leetcode 376.摆动序列</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1073,7 +1101,7 @@ charset="utf-8"></script> -->
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-07-07
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-09-24
                             </span>
                         <span class="publish-author">
                             
@@ -1087,15 +1115,65 @@ charset="utf-8"></script> -->
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E7%AE%97%E6%B3%95/">
-                        <span class="chip bg-color">算法</span>
+                    <a href="/tags/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/">
+                        <span class="chip bg-color">贪心算法</span>
                     </a>
                     
-                    <a href="/tags/%E5%89%91%E6%8C%87Offer%EF%BC%88%E4%B8%93%E9%A1%B9%EF%BC%89/">
-                        <span class="chip bg-color">剑指Offer（专项）</span>
+                    <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">
+                        <span class="chip bg-color">动态规划</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2023/09/23/hua-wei-0920-0923-qiu-zhao-bi-shi/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="华为0920/0923秋招笔试">
+                        
+                        <span class="card-title">华为0920/0923秋招笔试</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-09-23
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E9%9D%A2%E8%AF%95%E7%9C%9F%E9%A2%98/" class="post-category">
+                                    面试真题
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/2023%E5%A4%A7%E5%8E%82%E7%A7%8B%E6%8B%9B/">
+                        <span class="chip bg-color">2023大厂秋招</span>
                     </a>
                     
                 </div>

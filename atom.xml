@@ -6,7 +6,7 @@
   <link href="https://shakej96.github.io/atom.xml" rel="self"/>
   
   <link href="https://shakej96.github.io/"/>
-  <updated>2023-09-23T16:23:51.620Z</updated>
+  <updated>2023-09-24T05:01:23.098Z</updated>
   <id>https://shakej96.github.io/</id>
   
   <author>
@@ -17,11 +17,38 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Leetcode 376.摆动序列</title>
+    <link href="https://shakej96.github.io/2023/09/24/leetcode-376-bai-dong-xu-lie/"/>
+    <id>https://shakej96.github.io/2023/09/24/leetcode-376-bai-dong-xu-lie/</id>
+    <published>2023-09-24T04:00:00.000Z</published>
+    <updated>2023-09-24T05:01:23.098Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h3 id=&quot;leetcode-376.-%E6%91%86%E5%8A%A8%E5%BA%8F%E5%88%97&quot; tabindex=&quot;-1&quot;&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="Leetcode" scheme="https://shakej96.github.io/categories/Leetcode/"/>
+    
+    
+    <category term="贪心算法" scheme="https://shakej96.github.io/tags/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/"/>
+    
+    <category term="动态规划" scheme="https://shakej96.github.io/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
+    
+  </entry>
+  
+  <entry>
     <title>华为0920/0923秋招笔试</title>
     <link href="https://shakej96.github.io/2023/09/23/hua-wei-0920-0923-qiu-zhao-bi-shi/"/>
     <id>https://shakej96.github.io/2023/09/23/hua-wei-0920-0923-qiu-zhao-bi-shi/</id>
     <published>2023-09-23T15:34:59.000Z</published>
-    <updated>2023-09-23T16:23:51.620Z</updated>
+    <updated>2023-09-24T06:45:57.352Z</updated>
     
     
       
@@ -389,7 +416,7 @@
     <link href="https://shakej96.github.io/2023/07/08/leetcode-55-tiao-yue-you-xi/"/>
     <id>https://shakej96.github.io/2023/07/08/leetcode-55-tiao-yue-you-xi/</id>
     <published>2023-07-08T03:49:04.000Z</published>
-    <updated>2023-09-13T04:27:35.315Z</updated>
+    <updated>2023-09-24T04:05:24.550Z</updated>
     
     
       
@@ -405,9 +432,7 @@
     <category term="Leetcode" scheme="https://shakej96.github.io/categories/Leetcode/"/>
     
     
-    <category term="Leetcode" scheme="https://shakej96.github.io/tags/Leetcode/"/>
-    
-    <category term="算法" scheme="https://shakej96.github.io/tags/%E7%AE%97%E6%B3%95/"/>
+    <category term="贪心算法" scheme="https://shakej96.github.io/tags/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   
@@ -515,27 +540,6 @@
     
     
     <category term="杂谈" scheme="https://shakej96.github.io/tags/%E6%9D%82%E8%B0%88/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hello World</title>
-    <link href="https://shakej96.github.io/2023/07/05/hello-world/"/>
-    <id>https://shakej96.github.io/2023/07/05/hello-world/</id>
-    <published>2023-07-05T09:16:30.829Z</published>
-    <updated>2023-07-06T14:56:32.825Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot;&gt;documentation&lt;/a&gt;</summary>
-        
-      
-    
-    
-    
     
   </entry>
   
