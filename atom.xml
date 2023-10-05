@@ -6,7 +6,7 @@
   <link href="https://shakej96.github.io/atom.xml" rel="self"/>
   
   <link href="https://shakej96.github.io/"/>
-  <updated>2023-10-05T15:43:42.614Z</updated>
+  <updated>2023-10-05T15:44:38.051Z</updated>
   <id>https://shakej96.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://shakej96.github.io/2023/10/05/leetcode-mai-mai-gu-piao-de-zui-jia-shi-ji-xi-lie/"/>
     <id>https://shakej96.github.io/2023/10/05/leetcode-mai-mai-gu-piao-de-zui-jia-shi-ji-xi-lie/</id>
     <published>2023-10-05T08:31:55.000Z</published>
-    <updated>2023-10-05T15:43:42.614Z</updated>
+    <updated>2023-10-05T15:44:38.051Z</updated>
     
     
       
@@ -39,9 +39,9 @@
     
     <category term="算法" scheme="https://shakej96.github.io/tags/%E7%AE%97%E6%B3%95/"/>
     
-    <category term="动态规划" scheme="https://shakej96.github.io/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
+    <category term="贪心算法" scheme="https://shakej96.github.io/tags/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/"/>
     
-    <category term="贪心" scheme="https://shakej96.github.io/tags/%E8%B4%AA%E5%BF%83/"/>
+    <category term="动态规划" scheme="https://shakej96.github.io/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
     
   </entry>
   
