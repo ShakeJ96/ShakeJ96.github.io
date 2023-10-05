@@ -304,14 +304,14 @@
   </url>
   
   <url>
-    <loc>https://shakej96.github.io/tags/%E6%9D%82%E8%B0%88/</loc>
+    <loc>https://shakej96.github.io/tags/%E5%89%8D%E7%AB%AF%E5%87%86%E5%A4%87/</loc>
     <lastmod>2023-10-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://shakej96.github.io/tags/%E5%89%8D%E7%AB%AF%E5%87%86%E5%A4%87/</loc>
+    <loc>https://shakej96.github.io/tags/%E6%9D%82%E8%B0%88/</loc>
     <lastmod>2023-10-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -347,6 +347,13 @@
   
   <url>
     <loc>https://shakej96.github.io/tags/%E6%A0%88/</loc>
+    <lastmod>2023-10-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://shakej96.github.io/tags/%E8%B4%AA%E5%BF%83/</loc>
     <lastmod>2023-10-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -432,14 +439,14 @@
   </url>
   
   <url>
-    <loc>https://shakej96.github.io/categories/%E9%9D%A2%E8%AF%95%E7%9C%9F%E9%A2%98/</loc>
+    <loc>https://shakej96.github.io/categories/Java/</loc>
     <lastmod>2023-10-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://shakej96.github.io/categories/Java/</loc>
+    <loc>https://shakej96.github.io/categories/%E9%9D%A2%E8%AF%95%E7%9C%9F%E9%A2%98/</loc>
     <lastmod>2023-10-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
