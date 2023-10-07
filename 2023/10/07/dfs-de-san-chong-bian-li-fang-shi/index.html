@@ -6,7 +6,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="HTML/CSS知识准备, xkj123456">
+    <meta name="keywords" content="DFS的三种遍历方式, xkj123456">
     <meta name="description" content="Mark the Splendid Life">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -18,7 +18,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>HTML/CSS知识准备 | ShakeJ</title>
+    <title>DFS的三种遍历方式 | ShakeJ</title>
     <link rel="icon" type="image/png" href="/icon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -475,12 +475,12 @@ charset="utf-8"></script> -->
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/9.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/2.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">HTML/CSS知识准备</h1>
+                    <h1 class="description center-align post-title">DFS的三种遍历方式</h1>
                 </div>
             </div>
         </div>
@@ -596,8 +596,12 @@ charset="utf-8"></script> -->
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E5%89%8D%E7%AB%AF%E5%87%86%E5%A4%87/">
-                                <span class="chip bg-color">前端准备</span>
+                            <a href="/tags/%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2/">
+                                <span class="chip bg-color">优先搜索</span>
+                            </a>
+                        
+                            <a href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/">
+                                <span class="chip bg-color">二叉树</span>
                             </a>
                         
                     </div>
@@ -608,8 +612,8 @@ charset="utf-8"></script> -->
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E5%AE%9E%E4%B9%A0/" class="post-category">
-                                实习
+                            <a href="/categories/%E7%AE%97%E6%B3%95/" class="post-category">
+                                算法
                             </a>
                         
                     </div>
@@ -621,14 +625,14 @@ charset="utf-8"></script> -->
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2023-09-11
+                    2023-10-07
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-09-13
+                    2023-10-07
                 </div>
                 
 
@@ -666,320 +670,233 @@ charset="utf-8"></script> -->
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="html%2Fcss%E7%9F%A5%E8%AF%86%E5%82%A8%E5%A4%87" tabindex="-1">HTML/CSS知识储备</h3>
+                <h3 id="dfs%E7%9A%84%E4%B8%89%E7%A7%8D%E9%81%8D%E5%8E%86%E6%96%B9%E5%BC%8F" tabindex="-1">DFS的三种遍历方式</h3>
 <blockquote>
-<p>bg：前几天在论坛里找到了<code>西门子</code>的内推，本想试一试就把简历制作发过去了。没想到回复邮件通知面试，面试的岗位是：内网/外网技术支持实习生,主要负责网页的运行维护、新闻推送页面制作等。我觉得挺好的，虽然平时也会主动去学习相关的web开发的工作，但是真正面试还是第一次，要好好准备，希望这次可以有学习体验的机会。明天下午进行面试，主要考察网页相关的知识，现在把HTML/CSS知识重新梳理复习一遍，明天加油！！！</p>
+<p>之前写过有关BFS和DFS的优先遍历方式的区别和联系。其中对BFS总结稍微详细一些，用到队列的数据结构，还有对层序遍历的用法分析。这次详细说说DFS的3种基础的遍历方式，可以将两者进行归纳总结一起来复习。</p>
 </blockquote>
-<h2 id="html" tabindex="-1">HTML</h2>
-<ul>
-<li>
-<p>HTML的定义：<strong>是一种超文本标记语言</strong>，不是编程语言，<strong>利用标记标签来描述网页。</strong></p>
-</li>
-<li>
-<p>HTML的标签：利用尖括号包围、成对出现、有开始有结束的标签、开放标签和闭合标签</p>
-</li>
-<li>
-<p><strong>HTML的元素</strong>：</p>
-<ul>
-<li>标题是通过<code>&lt;h1&gt;--&gt;&lt;h6&gt;</code>的标签进行定义，按重要级从小到大</li>
-<li>段落是通过<code>&lt;p&gt;</code>的标签进行定义，分行</li>
-<li>链接是通过<code>&lt;a&gt;</code>标签进行定义的，主要还有<code>href</code>的属性值，后面接的是链接的对应的网页地址</li>
-<li>图像是利用<code>&lt;img&gt;</code>标签进行定义，注意<code>src</code>属性值表示对应图片的存储位置</li>
-<li>空的html元素：虽然没有实际的内容，但是还是需要返回和关闭标签，注意<code>&lt;br /&gt;</code>的用法，在开始标签中添加斜杠</li>
-<li>html中的标签对大小写不敏感，但是大多数网站都可以实现大写的<code>HTML</code>标签.</li>
-</ul>
-</li>
-</ul>
 <p>​</p>
+<h3 id="%E4%BA%8C%E5%8F%89%E6%A0%91" tabindex="-1">二叉树</h3>
 <ul>
 <li>
-<p><strong>HTML的属性</strong></p>
-<ul>
-<li>这里的属性太多了，挑选一些常见的属性实例
-<ul>
-<li><code>align="center"</code> 直接写在开始标签中，用于将文本对齐居中</li>
-<li><code>body</code>主体中的属性，比如改变颜色，可以设置为<code>background-color:yellow;</code>同样也可以设置为<code>&lt;body bgcolor="yellow"&gt;</code>来表示</li>
-<li><code>&lt;table&gt;</code>定义为HTML的表格样式</li>
-<li>同样的在HTML中，对属性和属性值大小写并不敏感</li>
-<li><strong>属性值（也就是具体的选值）需要被包含在双引号之中</strong></li>
-</ul>
+<p><code>树</code>是一种比较常见的数据结构，其中核心是包括<code>根</code>和<code>叶子</code>，这些节点都是具有一定联系。而其中，最具有代表性的是<code>二叉树</code>。</p>
 </li>
-</ul>
+<li>
+<p><code>二叉树</code>。顾名思义，指的是树的分支最多存在两个流向。二叉树的根节点可能存在子节点，子节点又是对应子树的根节点。更为详尽地，子节点包含两个方向，一左一右。<strong>因此最好的处理方法是利用递归对二叉树各个节点流向进行遍历</strong></p>
+<img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="/2023/10/07/dfs-de-san-chong-bian-li-fang-shi/%E4%BA%8C%E5%8F%89%E6%A0%91%E4%B8%BE%E4%BE%8B.png" alt="二叉树举例" style="zoom:67%;">
 </li>
-</ul>
+<li>
+<p>数据结构类型定义如下：</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">public class TreeNode{
+    int val;//节点的值
+    TreeNode left;//左节点
+    TreeNode right;//右节点
+    
+    TreeNode(int x){
+        val=x;
+    }
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>​</p>
-<ul>
-<li><strong>HTML的标题</strong></li>
-<li>需要根据具体的样式选取标签，也就是前文所说的<code>&lt;h1&gt;...&lt;h6&gt;</code>等，其中都是根据标题文字的重要性进行的排列，依次降低
-<ul>
-<li>默认情况下，浏览器会自动地在标题的前后添加空行</li>
-<li><code>HTML</code>的水平线，例如<code>&lt;hr /&gt;</code>,直接在当前界面中添加水平分割线</li>
-</ul>
 </li>
 </ul>
-<p>​</p>
+<hr>
+<h3 id="%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84dfs" tabindex="-1">二叉树的DFS</h3>
 <ul>
 <li>
-<p><strong>HTML段落</strong></p>
+<p>本文探讨的是有关深度优先搜索的算法关系，<code>DFS</code>按照遍历的顺序可分为三类：</p>
 <ul>
-<li>浏览器会自动地在段落前后添加空行（<code>&lt;p&gt;是块级元素</code>）</li>
+<li>中序遍历（左、根、右）</li>
+<li>前序遍历（根、左、右）</li>
+<li>后序遍历（左、右、根）</li>
 </ul>
 </li>
-</ul>
+<li>
+<p>对于<code>深度优先搜索</code>的遍历而言，由于是<code>在一条路上走到头，再进行回溯重新走</code>，所以一方面可以利用<code>递归思想</code>进行操作，另外一方面也可以用到<code>迭代思想</code>，利用<code>栈</code>的基本数据结构实现。本质上都相同，但是在代码量方面就存在很大的差异了。下面讨论的处理方式也分别用这两种方法进行实现。</p>
+<img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="/2023/10/07/dfs-de-san-chong-bian-li-fang-shi/%E4%BA%8C%E5%8F%89%E6%A0%91%E4%B8%BE%E4%BE%8B.png" alt="二叉树举例" style="zoom:67%;">
 <p>​</p>
+</li>
+</ul>
+<hr>
+<h4 id="1.-%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86" tabindex="-1">1. 中序遍历</h4>
 <ul>
 <li>
-<p><strong>HTML样式（这个是重点！）</strong></p>
+<p>按照中序遍历的顺序，先遍历二叉树的左子树，然后遍历二叉树的根节点，最后是二叉树的右子树。对于上图子树的遍历而言，依次的顺序是:<code>[4,2,5,1,6,3,7]</code></p>
 <ol>
-<li>
-<p><strong>直接style用法</strong></p>
-<blockquote>
-<p>比如说是:</p>
-<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token special-attr"><span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token value css language-css"><span class="token property">background-color</span><span class="token punctuation">:</span>green<span class="token punctuation">;</span><span class="token property">font-size</span><span class="token punctuation">:</span>20px<span class="token punctuation">;</span><span class="token property">text-align</span><span class="token punctuation">:</span>center</span><span class="token punctuation">"</span></span></span><span class="token punctuation">&gt;</span></span>This is an apple!<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-</blockquote>
-</li>
-<li>
-<p><strong>附加文件CSS</strong></p>
-</li>
+<li><strong>递归操作代码实现</strong>：</li>
 </ol>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">public List&lt;Integer&gt;inOrderTraversal(TreeNode root){
+    List&lt;Integer&gt; nodes=new LinkedList&lt;&gt;();//由于最后返回的是列表[,,,],所以需要用到LinkedList
+    dfs(root,nodes);
+    return nodes;
+}
+public void dfs(TreeNode root,List&lt;Integer&gt;nodes){
+    if(root!=null){
+        dfs(root.left,nodes);
+        nodes.add(root.val);
+        dfs(root.right,nodes);
+    }
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li>可以看出上述的代码逻辑比较清晰，按照左、根、右的套路进行操作，但是如果二叉树的深度比较大（根节点到叶节点的最长路径的长度），我们进行<code>左操作</code>的次数太多的话，会导致栈溢出的问题，对空间浪费较为严重。</li>
+<li>我们如果将<code>递归</code>换成<code>迭代</code>操作的话，需要引入<code>栈</code>的数据结构。对于中序遍历而言，我们在到达<code>根节点</code>的时候不进行遍历写入值的操作，而是进一步顺着左子节点找到叶节点，再进行回溯寻找父节点。这要求我们每次遍历二叉树的时候将遇到的每个节点都存储在栈中，方便查询。</li>
+</ul>
+<ol start="2">
+<li><strong>迭代操作代码实现</strong>：</li>
+</ol>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">public List&lt;Integer&gt; inOrderTraversal(TreeNode root){
+    List&lt;Integer&gt; nodes=new LinkedList&lt;&gt;();
+    Stack&lt;TreeNode&gt; stack=new Stack&lt;&gt;();//引入栈的数据结构
+    TreeNode cur=root;//cur表示当前的节点，位置位于root
+    while(cur!=null || !stack.isEmpty()){//当前节点不为空，并且栈中存在元素值得时候
+        while(cur!=null){
+            stack.push(cur);//根元素入栈
+            cur=cur.left;//指针向左
+        }
+        //当左遍历完成之后
+        cur=stack.pop();//栈顶元素出栈，也就是最远的左子节点的位置元素出栈
+        nodes.add(cur.val);//遍历，添加节点值
+        cur=cur.right;//指针向右
+    }
+    return nodes;
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
 <li>
-<p><code>&lt;em&gt;和&lt;i&gt;的区别：</code></p>
-<ul>
-<li>
-<p><code>&lt;em&gt;</code>表示的是浏览器中的文本为强调的内容，但是最后</p>
-</li>
-<li>
-<p><code>&lt;i&gt;</code>本身就是斜体字符的样式</p>
-</li>
-<li>
-<p><code>&lt;strong&gt;</code>，这个标签也同样是强调文本的意思，但是它强调的程度更强一些，直接加粗字体的用法</p>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
+<p>这里有个思考：左子节点遍历完之后为什么指针就指向右节点了？之前理解存在误区，所谓的<code>根节点</code>，其实是对应这上一层的<code>左节点</code>。二叉树中实际只有左右两个分支和最初的<code>root</code>节点，只是我们按层进行划分的时候存在<code>根和子</code>的区别。</p>
 <p>​</p>
-<ul>
-<li>
-<p><strong>HTML引用</strong></p>
-<ul>
-<li>
-<p><code>&lt;q&gt;</code>，元素是简短的引用，浏览器通常会直接对<code>&lt;q&gt;</code>元素包围引号</p>
-</li>
-<li>
-<p><code>&lt;blockquote&gt;</code> ,通常是对元素定义被引用的节</p>
-</li>
-<li>
-<p><code>cite</code>,表示引用的数据的地址与来源</p>
-</li>
-<li>
-<p><code>abbr</code>,元素定义缩写或首字母缩略语</p>
-<p>对缩写进行标记能够成为为浏览器、翻译系统以及搜索引擎提供有用的信息。比如</p>
-<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>abbr</span> <span class="token attr-name">title</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>World Health Organization<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>WHO<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>abbr</span><span class="token punctuation">&gt;</span></span> 成立于 1948 年。<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
-输出就是：WHO....<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-</li>
-<li>
-<p><code>dfn</code>，元素定义项目或缩写</p>
-</li>
-<li>
-<p><code>address</code>元素定义文档或者文章的联系信息（作者/拥有者）,此元素通常以斜体进行表示</p>
-</li>
-<li>
-<p><code>cite</code>，该元素是著作的标题，通常会以斜体显示<code>&lt;cite&gt;</code>的元素</p>
 </li>
 </ul>
 </li>
 </ul>
-<p>​</p>
+<hr>
+<h4 id="2.-%E5%89%8D%E5%BA%8F%E9%81%8D%E5%8E%86" tabindex="-1">2. 前序遍历</h4>
 <ul>
 <li>
-<p><strong>HTML CSS</strong></p>
-<blockquote>
-<p>上述的html的样式引入比较浅显，这里具体分类分析一下：</p>
-</blockquote>
+<p>按照前序遍历的顺序，先遍历二叉树的根节点，然后遍历二叉树的左子树，最后是二叉树的右子树。对于上图子树的遍历而言，依次的顺序是:<code>[1,2,4,5,3,6,7]</code>。</p>
+</li>
+<li>
+<p><strong>由于前序遍历和中序遍历的代码思考逻辑很像，这里就直接贴出两种方式的对应代码，进行比较即可。</strong></p>
 <ol>
-<li>
-<p><strong>外部样式表</strong></p>
-<blockquote>
-<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">&gt;</span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span> <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>stylesheet<span class="token punctuation">"</span></span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text/css<span class="token punctuation">"</span></span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>mystyle.css<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">&gt;</span></span>
-<span class="token comment">&lt;!--上述代码中的rel表示当前引入的是外部样式表，type样式表示当前被链接文件的类型，href指定文件的存储路径和位置--&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-</blockquote>
-</li>
-<li>
-<p><strong>内部样式表</strong></p>
-<blockquote>
-<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">&gt;</span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>style</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text/css<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token style"><span class="token language-css">
-<span class="token selector">body</span> <span class="token punctuation">{</span><span class="token property">background-color</span><span class="token punctuation">:</span> red<span class="token punctuation">}</span>
-<span class="token selector">p</span> <span class="token punctuation">{</span><span class="token property">margin-left</span><span class="token punctuation">:</span> 20px<span class="token punctuation">}</span>
-</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>style</span><span class="token punctuation">&gt;</span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">&gt;</span></span>
-<span class="token comment">&lt;!--注意是直接在head内部定义css样式--&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-</blockquote>
-</li>
-<li>
-<p><strong>内联样式</strong></p>
-<blockquote>
-<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token special-attr"><span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token value css language-css"><span class="token property">color</span><span class="token punctuation">:</span> red<span class="token punctuation">;</span> <span class="token property">margin-left</span><span class="token punctuation">:</span> 20px</span><span class="token punctuation">"</span></span></span><span class="token punctuation">&gt;</span></span>
-This is a paragraph
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
-<span class="token comment">&lt;!--注意是在标签头内部直接进行样式style的书写--&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-</blockquote>
-</li>
+<li><strong>递归操作代码实现</strong>：</li>
 </ol>
-<ul>
-<li><code>&lt;span&gt;</code>表示的是定义文档中的行内较小的一块或者是区域。</li>
-<li><code>&lt;div&gt;</code>定义文档中的节或者是区域（块级）</li>
-</ul>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">public List&lt;Integer&gt;PreOrderTraversal(TreeNode root){
+    List&lt;Integer&gt; nodes=new LinkedList&lt;&gt;();//由于最后返回的是列表[,,,],所以需要用到LinkedList
+    dfs(root,nodes);
+    return nodes;
+}
+public void dfs(TreeNode root,List&lt;Integer&gt;nodes){
+    if(root!=null){
+        nodes.add(root.val);//记录当前（根）节点的值
+        dfs(root.left,nodes);
+        dfs(root.right,nodes);
+    }
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>​</p>
+<ol start="2">
+<li><strong>迭代操作代码实现</strong>：</li>
+</ol>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">public List&lt;Integer&gt; inOrderTraversal(TreeNode root){
+    List&lt;Integer&gt; nodes=new LinkedList&lt;&gt;();
+    Stack&lt;TreeNode&gt; stack=new Stack&lt;&gt;();//引入栈的数据结构
+    TreeNode cur=root;//cur表示当前的节点，位置位于root
+    while(cur!=null || !stack.isEmpty()){//当前节点不为空，并且栈中存在元素值得时候
+        while(cur!=null){
+            nodes.add(cur.val);//遍历，添加节点值
+            stack.push(cur);//根元素入栈
+            cur=cur.left;//指针向左
+        }
+        //当左遍历完成之后
+        cur=stack.pop();//栈顶元素出栈，也就是最远的左子节点的位置元素出栈
+        cur=cur.right;//指针向右
+    }
+    return nodes;
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>​</p>
 </li>
 </ul>
-<p>​</p>
+<hr>
+<h4 id="3.-%E5%90%8E%E5%BA%8F%E9%81%8D%E5%8E%86" tabindex="-1">3. 后序遍历</h4>
 <ul>
 <li>
-<p><strong>HTML超链接</strong></p>
+<p>按照后序遍历的顺序，先遍历二叉树的左子树，然后遍历二叉树的右子树，最后是二叉树的根节点。对于上图子树的遍历而言，依次的顺序是:<code>[4,5,2,6,7,3,1]</code>。</p>
 <ol>
-<li>
-<p>通过使用 href 属性 - 创建指向另一个文档的链接，<strong>也就是规定链接的目标</strong></p>
-</li>
-<li>
-<p>通过使用 name 属性 - 创建文档内的书签，也就是给</p>
-</li>
-<li>
-<p>其中的<code>target</code>属性：</p>
-<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>http://www.w3school.com.cn/<span class="token punctuation">"</span></span> <span class="token attr-name">target</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>_blank<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Visit W3School!<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">&gt;</span></span>
-
-<span class="token comment">&lt;!--上述的代码表示会将新创建的超链接窗口定义为一个新的网页窗口--&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-</li>
+<li><strong>递归操作代码实现</strong>：</li>
 </ol>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">public List&lt;Integer&gt;PreOrderTraversal(TreeNode root){
+    List&lt;Integer&gt; nodes=new LinkedList&lt;&gt;();//由于最后返回的是列表[,,,],所以需要用到LinkedList
+    dfs(root,nodes);
+    return nodes;
+}
+public void dfs(TreeNode root,List&lt;Integer&gt;nodes){
+    if(root!=null){
+        dfs(root.left,nodes);
+        dfs(root.right,nodes);
+        nodes.add(root.val);//记录当前（根）节点的值
+    }
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>​</p>
 </li>
 <li>
-<p><strong>HTML图像</strong></p>
+<p>和中序、前序遍历方法相比，后序遍历的迭代方法复杂一些。当到达某个节点时，如果之前没遍历过它的右子树就得遍历一下，遍历过了才可以遍历此节点。</p>
 </li>
 <li>
-<p><code>&lt;img&gt;</code>标签，使用的是<code>src</code>源属性，指的是图像的<code>URL</code>地址关系，<code>&lt;img src="url" /&gt;</code></p>
-</li>
-<li>
-<p>替换文本属性<code>&lt;Alt&gt;</code>,表示的是为图像定义一串预备的可替换的文本，替换文本属性的值是用户自己定义的。</p>
-<ul>
-<li>
-<p><code>&lt;area&gt;标签的coords属性规定了客户端图像映射到鼠标敏感的区域的坐标</code></p>
-<ul>
-<li>如下面代码：</li>
-</ul>
-<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>area</span> <span class="token attr-name">shape</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>circle<span class="token punctuation">"</span></span> <span class="token attr-name">coords</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>180,139,14<span class="token punctuation">"</span></span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>venus.htm<span class="token punctuation">"</span></span> <span class="token attr-name">alt</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Venus<span class="token punctuation">"</span></span> <span class="token punctuation">/&gt;</span></span>
-<span class="token comment">&lt;!--这里的 x 和 y 定义了圆心的位置（"0,0" 是图像左上角的坐标），r 是以像素为单位的圆形半径。--&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-</li>
-</ul>
-<p>​</p>
-</li>
-<li>
-<p><strong>HTML表格</strong></p>
-<ul>
-<li>
-<p>表格是由<code>&lt;table&gt;</code>标签进行定义，每个表格都有若干行<code>&lt;tr&gt;</code>，每行是会被分割为若干个单元格<code>&lt;td&gt;</code>。数据单元格的内容，包含文本、图片、列表、段落、表单、水平线、表格等等。</p>
-<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>table</span> <span class="token attr-name">border</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>1<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span> <span class="token comment">&lt;!--border="1"表示1个像素，也就是1px--&gt;</span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>tr</span><span class="token punctuation">&gt;</span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>td</span><span class="token punctuation">&gt;</span></span>row 1, cell 1<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>td</span><span class="token punctuation">&gt;</span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>td</span><span class="token punctuation">&gt;</span></span>row 1, cell 2<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>td</span><span class="token punctuation">&gt;</span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>tr</span><span class="token punctuation">&gt;</span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>tr</span><span class="token punctuation">&gt;</span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>td</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>td</span><span class="token punctuation">&gt;</span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>td</span><span class="token punctuation">&gt;</span></span>row 2, cell 2<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>td</span><span class="token punctuation">&gt;</span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>tr</span><span class="token punctuation">&gt;</span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>table</span><span class="token punctuation">&gt;</span></span>
-<span class="token comment">&lt;!--tr是行，td是列--&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-</li>
-<li>
-<p>*<strong>表格跨行、跨列操作</strong></p>
-<p><code>&lt;colspan&gt;</code>实现单元格的跨列操作，使用<code>&lt;rowspan&gt;</code>实现单元格的跨行操作。</p>
-<blockquote>
-<p>其中的colspan="0"表示浏览器横跨到列的最后一列，对应rowspan也是一样,其余的直接数字就表示跨的列/行。</p>
-</blockquote>
-<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>table</span> <span class="token attr-name">border</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>1<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>tr</span><span class="token punctuation">&gt;</span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>th</span><span class="token punctuation">&gt;</span></span>星期一<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>th</span><span class="token punctuation">&gt;</span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>th</span><span class="token punctuation">&gt;</span></span>星期二<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>th</span><span class="token punctuation">&gt;</span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>tr</span><span class="token punctuation">&gt;</span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>tr</span><span class="token punctuation">&gt;</span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>td</span> <span class="token attr-name">colspan</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>2<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>星期天<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>td</span><span class="token punctuation">&gt;</span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>tr</span><span class="token punctuation">&gt;</span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>table</span><span class="token punctuation">&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p><img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="/2023/09/11/html-css-zhi-shi-zhun-bei/%E8%B7%A8%E5%88%97%E8%A1%A8%E5%B1%95%E7%A4%BA.jpg" alt="跨列表展示"></p>
+<p>如果此前右子树已经遍历过了，那么在右子树中最后一个遍历的节点应该是右子树的根节点，也就是当前节点的右子节点。</p>
+<ol start="2">
+<li><strong>迭代操作代码实现：</strong></li>
+</ol>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">public List&lt;Integer&gt; inOrderTraversal(TreeNode root){
+      List&lt;Integer&gt; nodes=new LinkedList&lt;&gt;();
+      Stack&lt;TreeNode&gt; stack=new Stack&lt;&gt;();//引入栈的数据结构
+      TreeNode cur=root;//cur表示当前的节点，位置位于root
+      
+      TreeNode prev=null;//遍历过的前一个节点
+      
+      while(cur!=null || !stack.isEmpty()){//当前节点不为空，并且栈中存在元素值得时候
+          while(cur!=null){
+              stack.push(cur);//根元素入栈
+              cur=cur.left;//指针向左
+          }
+          //当左遍历完成之后
+          cur=stack.peek();//返回栈顶元素，但是并不出栈
+          
+          if(cur.right!=null &amp;&amp; cur.right!=prev){//有右子树但是没遍历过
+              cur=cur.right;//指针向右
+              
+          }else{//没有右子树或者右子树已经遍历过
+              
+              stack.pop();//栈顶元素出栈，也就是最远的左子节点的位置元素出栈
+              nodes.add(cur.val);//遍历当前的值
+              prev=cur;//指向当前的父节点
+              cur=null;//cur清空
+          }
+     
+      }
+      return nodes;
+  }  <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>​</p>
 </li>
 </ul>
-</li>
-<li>
-<p><strong>HTML列表</strong></p>
+<hr>
+<h3 id="%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90" tabindex="-1">复杂度分析</h3>
+<h4 id="%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6" tabindex="-1">时间复杂度</h4>
 <ul>
-<li><strong>无序列表</strong><code>&lt;ul&gt;,每个列表项始于&lt;li&gt;</code></li>
-<li><strong>有序列表</strong><code>&lt;ol&gt;</code>，每个列表项始于<code>&lt;li&gt;标签</code></li>
+<li>无论是哪种遍历算法，还是递归或迭代，如果此时的二叉树的节点个数为<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span></eq>，那么此时的时间复杂度为<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span></eq>。因为总共需要遍历<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span></eq>个节点。</li>
 </ul>
-</li>
-</ul>
-<p>​</p>
+<h4 id="%E7%A9%BA%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6" tabindex="-1">空间复杂度</h4>
 <ul>
 <li>
-<p><strong>HTML的块</strong></p>
+<p>如果二叉树的深度为<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span></span></span></span></eq>，那么空间复杂度为<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>k</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(k)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mclose">)</span></span></span></span></eq>。</p>
+</li>
+<li>
+<p>在二叉树中，深度<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>h</mi></mrow><annotation encoding="application/x-tex">h</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal">h</span></span></span></span></eq>的取值范围是<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">[</mo><mi>l</mi><mi>o</mi><msub><mi>g</mi><mn>2</mn></msub><mi>n</mi><mo>+</mo><mn>1</mn><mtext>，</mtext><mi>n</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[log_2 n+1，n]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">o</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mord cjk_fallback">，</span><span class="mord mathnormal">n</span><span class="mclose">]</span></span></span></span></eq>。也就是最小值为<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>l</mi><mi>o</mi><msub><mi>g</mi><mn>2</mn></msub><mi>n</mi><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">log_2 n+1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">o</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span></eq>,最大值为<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span></eq>。</p>
 <ul>
 <li>
-<p>大多数的HTML元素被定义为块级元素或者是内联元素，对于<strong>HTML块级元素</strong>来说，其在浏览器显示的时候，通常会以新行来开始或者结束。</p>
-<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span><span class="token punctuation">&gt;</span></span>,<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>,<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ul</span><span class="token punctuation">&gt;</span></span>,<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>table</span><span class="token punctuation">&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-</li>
-<li>
-<p><strong>HTML的内联元素</strong></p>
-<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup">常见的有：<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>b</span><span class="token punctuation">&gt;</span></span>,<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>td</span><span class="token punctuation">&gt;</span></span>,<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span><span class="token punctuation">&gt;</span></span>,<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span><span class="token punctuation">&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-</li>
-<li>
-<p><strong>HTML<code>&lt;span&gt;</code>元素</strong></p>
-<blockquote>
-<p><code>&lt;span&gt;</code>元素可用于部分文本设置样式属性</p>
-</blockquote>
+<p>举个简单的例子：包含7个节点的二叉树最少为<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>3</mn></mrow><annotation encoding="application/x-tex">3</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">3</span></span></span></span></eq>层（每层分别为<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mtext>，</mtext><mn>2</mn><mtext>，</mtext><mn>4</mn></mrow><annotation encoding="application/x-tex">1，2，4</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord">1</span><span class="mord cjk_fallback">，</span><span class="mord">2</span><span class="mord cjk_fallback">，</span><span class="mord">4</span></span></span></span></eq>），最多可能有<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>7</mn></mrow><annotation encoding="application/x-tex">7</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">7</span></span></span></span></eq>层（每层都是<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span></eq>）</p>
 <p>​</p>
 </li>
 </ul>
 </li>
-<li>
-<p><strong>HTML的id属性</strong></p>
-<ul>
-<li>
-<p>id属性指定HTML元素中唯一id，属性的值在HTML文档中国也必须是唯一的。</p>
-<blockquote>
-<p>这点和类名不一样，一个类名可以由多个元素共同使用，但是一个id属性只能由一个元素使用</p>
-</blockquote>
-</li>
 </ul>
-</li>
-</ul>
-<p>​</p>
-<ul>
-<li>
-<p><strong>HTML Iframe</strong></p>
-<ul>
-<li>
-<p><code>Iframe</code>通常用于在网页内显示网页，主要是用于嵌套网页</p>
-<p><code>&lt;iframe src="https://shakej96.github.io/"&gt;&lt;/iframe&gt;,&lt;!--URL 指向隔离页面的位置。--&gt;</code></p>
-</li>
-<li>
-<pre class="line-numbers language-language-html"><code class="language-language-html"><iframe src="https://shakej96.github.io/"></iframe>
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-</li>
-<li>
-<p>同样是可以设置高度和宽度</p>
-</li>
-<li>
-<p><code>Iframe</code> :<code>frameborder</code>的属性规定是否显示周围的边框。</p>
-</li>
-</ul>
-<p>​</p>
-<p style="color:red;font-size:20px;" align="center">先写这么多吧，基本的HTML操作应该都复习到了，后续再添加上常用的CSS。</p><center>明天面试加油😊</center>
-</li>
-</ul>
+<hr>
+<center><span style="color:lightblue;font-size:30px;">继续努力😊</span></center>
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/katex/dist/katex.min.css">
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/markdown-it-texmath/css/texmath.min.css">
 
@@ -1008,7 +925,7 @@ This is a paragraph
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://shakeJ96.github.io/2023/09/11/html-css-zhi-shi-zhun-bei/">https://shakeJ96.github.io/2023/09/11/html-css-zhi-shi-zhun-bei/</a>
+                    <a href="https://shakeJ96.github.io/2023/10/07/dfs-de-san-chong-bian-li-fang-shi/">https://shakeJ96.github.io/2023/10/07/dfs-de-san-chong-bian-li-fang-shi/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -1046,8 +963,12 @@ This is a paragraph
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E5%89%8D%E7%AB%AF%E5%87%86%E5%A4%87/">
-                                    <span class="chip bg-color">前端准备</span>
+                                <a href="/tags/%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2/">
+                                    <span class="chip bg-color">优先搜索</span>
+                                </a>
+                            
+                                <a href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/">
+                                    <span class="chip bg-color">二叉树</span>
                                 </a>
                             
                         </div>
@@ -1217,17 +1138,18 @@ This is a paragraph
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2023/09/13/xi-men-zi-shi-xi-mian-shi-jing-yan-tie/">
+                <a href="/2023/10/07/dfs-de-san-chong-bian-li-fang-shi/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="西门子实习面试经验帖">
+                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="DFS的三种遍历方式">
                         
-                        <span class="card-title">西门子实习面试经验帖</span>
+                        <span class="card-title">DFS的三种遍历方式</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1237,26 +1159,31 @@ This is a paragraph
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2023-09-13
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-10-07
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E5%AE%9E%E4%B9%A0/" class="post-category">
-                                    实习
+                            <a href="/categories/%E7%AE%97%E6%B3%95/" class="post-category">
+                                    算法
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E4%BC%81%E4%B8%9A%E9%9D%A2%E8%AF%95/">
-                        <span class="chip bg-color">企业面试</span>
+                    <a href="/tags/%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2/">
+                        <span class="chip bg-color">优先搜索</span>
+                    </a>
+                    
+                    <a href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/">
+                        <span class="chip bg-color">二叉树</span>
                     </a>
                     
                 </div>
@@ -1270,13 +1197,13 @@ This is a paragraph
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2023/09/09/leetcode-394-zi-fu-chuan-jie-ma/">
+                <a href="/2023/10/05/leetcode-mai-mai-gu-piao-de-zui-jia-shi-ji-xi-lie/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="Leetcode 394.字符串解码">
+                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="Leetcode.买卖股票的最佳时机(系列)">
                         
-                        <span class="card-title">Leetcode 394.字符串解码</span>
+                        <span class="card-title">Leetcode.买卖股票的最佳时机(系列)</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1287,7 +1214,7 @@ This is a paragraph
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-09-09
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-10-05
                             </span>
                         <span class="publish-author">
                             
@@ -1304,16 +1231,16 @@ This is a paragraph
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Leetcode/">
-                        <span class="chip bg-color">Leetcode</span>
-                    </a>
-                    
                     <a href="/tags/%E7%AE%97%E6%B3%95/">
                         <span class="chip bg-color">算法</span>
                     </a>
                     
-                    <a href="/tags/%E6%A0%88/">
-                        <span class="chip bg-color">栈</span>
+                    <a href="/tags/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/">
+                        <span class="chip bg-color">贪心算法</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">
+                        <span class="chip bg-color">动态规划</span>
                     </a>
                     
                 </div>
