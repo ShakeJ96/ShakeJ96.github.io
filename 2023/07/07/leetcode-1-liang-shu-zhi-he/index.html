@@ -694,7 +694,7 @@ charset="utf-8"></script> -->
 <ul>
 <li>本题要求的是返回两个数字和为<code>target</code>的数组元素的下标，这里可以直接交换遍历，比如最简单的for循环，我们会把两个指针所指向的值之和，依次比较，最后返回数组元素的下标（构建新的数组）</li>
 </ul>
- <pre class="line-numbers language-Java" data-language="Java"><code class="language-Java">class Solution{
+<pre class="line-numbers language-Java" data-language="Java"><code class="language-Java">class Solution{
     public int[] twoSum(int []nums,int target){
         int j=1;
         int i=0;
@@ -715,11 +715,14 @@ charset="utf-8"></script> -->
 <p>​</p>
 </li>
 </ul>
-<hr>
 <h4 id="%E6%96%B9%E6%B3%952%EF%BC%9Ahash%E8%A1%A8" tabindex="-1">方法2：Hash表</h4>
 <ul>
 <li>Hash表是一种数据结构关系，利用<code>键(key)</code>和<code>值(value)</code>的<code>一一对应</code>的关系，生成map。map目的用来存放我们访问过的元素，因为遍历数组的时候，需要记录我们之前遍历过哪些元素和对应的下标，这样才能找到与当前元素相匹配的（也就是相加等于target）</li>
-<li>在遍历数组的时候，只需要向map去查询是否有和目前遍历元素匹配的数值，如果有，就找到的匹配对，如果没有，就把目前遍历的元素放进map中，因为map存放的就是我们访问过的元素</li>
+</ul>
+</li>
+<li>
+<p>在遍历数组的时候，只需要向map去查询是否有和目前遍历元素匹配的数值，如果有，就找到的匹配对，如果没有，就把目前遍历的元素放进map中，因为map存放的就是我们访问过的元素</p>
+<ul>
 <li>本题的map我们这样定义：<code>key</code>为数组中的num[i]值，对应的<code>value</code>为 ：下标元素i；</li>
 </ul>
 <pre class="line-numbers language-Java" data-language="Java"><code class="language-Java">class Solution{
@@ -744,6 +747,7 @@ charset="utf-8"></script> -->
 </li>
 <li>
 <p><strong>时间复杂度：O(n)</strong>，利用HashMap的数据结构大大提高了查找的效率，就相当于是额外开辟内存空间进行数组元素的值、下标的匹配关系映射，通过牺牲空间复杂度换取时间、效率的提高，<strong>空间复杂度为：O(n),（相当于为每个元素都开辟了n-1的空间）。</strong></p>
+<p>​</p>
 </li>
 </ul>
 <hr>
@@ -1643,7 +1647,7 @@ $(function () {
     </script>
     
   
-
+<script src="/live2dw/lib/L2Dwidget.min.js?243708c68e3ad401cd4432916889e600"></script><script>L2Dwidget.init({"dialog":{"enable":true,"hitokoto":true},"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"left","width":120,"height":160,"superSample":2,"voffset":0,"hoffset":20},"mobile":{"show":false},"react":{"opacity":0.7,"opacityOnHover":0.2}});</script>
         <style>
             [bg-lazy] {
                 background-image: none !important;
@@ -1656,6 +1660,6 @@ $(function () {
                 preloadRatio: 3,
                 processImages: null,
             };
-        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(r){r.imageLazyLoadSetting.processImages=t;var e=r.imageLazyLoadSetting.isSPA,n=r.imageLazyLoadSetting.preloadRatio||1,c=a();function a(){var t=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")),e=Array.prototype.slice.call(document.querySelectorAll("[bg-lazy]"));return t.concat(e)}function t(){e&&(c=a());for(var t,o=0;o<c.length;o++)0<=(t=(t=c[o]).getBoundingClientRect()).bottom&&0<=t.left&&t.top<=(r.innerHeight*n||document.documentElement.clientHeight*n)&&function(){var t,e,n,a,i=c[o];e=function(){c=c.filter(function(t){return i!==t}),r.imageLazyLoadSetting.onImageLoaded&&r.imageLazyLoadSetting.onImageLoaded(i)},(t=i).hasAttribute("bg-lazy")?(t.removeAttribute("bg-lazy"),e&&e()):(n=new Image,a=t.getAttribute("data-original"),n.onload=function(){t.src=a,t.removeAttribute("data-original"),e&&e()},t.src!==a&&(n.src=a))}()}function i(){clearTimeout(t.tId),t.tId=setTimeout(t,500)}t(),document.addEventListener("scroll",i),r.addEventListener("resize",i),r.addEventListener("orientationchange",i)}(this);</script><script src="/live2dw/lib/L2Dwidget.min.js?243708c68e3ad401cd4432916889e600"></script><script>L2Dwidget.init({"dialog":{"enable":true,"hitokoto":true},"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"left","width":120,"height":160,"superSample":2,"voffset":0,"hoffset":20},"mobile":{"show":false},"react":{"opacity":0.7,"opacityOnHover":0.2}});</script></body>
+        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(r){r.imageLazyLoadSetting.processImages=t;var e=r.imageLazyLoadSetting.isSPA,n=r.imageLazyLoadSetting.preloadRatio||1,c=a();function a(){var t=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")),e=Array.prototype.slice.call(document.querySelectorAll("[bg-lazy]"));return t.concat(e)}function t(){e&&(c=a());for(var t,o=0;o<c.length;o++)0<=(t=(t=c[o]).getBoundingClientRect()).bottom&&0<=t.left&&t.top<=(r.innerHeight*n||document.documentElement.clientHeight*n)&&function(){var t,e,n,a,i=c[o];e=function(){c=c.filter(function(t){return i!==t}),r.imageLazyLoadSetting.onImageLoaded&&r.imageLazyLoadSetting.onImageLoaded(i)},(t=i).hasAttribute("bg-lazy")?(t.removeAttribute("bg-lazy"),e&&e()):(n=new Image,a=t.getAttribute("data-original"),n.onload=function(){t.src=a,t.removeAttribute("data-original"),e&&e()},t.src!==a&&(n.src=a))}()}function i(){clearTimeout(t.tId),t.tId=setTimeout(t,500)}t(),document.addEventListener("scroll",i),r.addEventListener("resize",i),r.addEventListener("orientationchange",i)}(this);</script></body>
 
 </html>
