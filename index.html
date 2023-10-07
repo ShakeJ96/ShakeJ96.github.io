@@ -552,7 +552,7 @@ charset="utf-8"></script> -->
 
 <script>
     // 随机切换 banner 图.  Switch banner image.
-    var bannerUrl = "/medias/banner/" + Math.floor(24 % new Date().getDay()+Math.random()*24) + '.jpg'; //new Date().getDay() Math.random()*24
+    var bannerUrl = "/medias/banner/" + Math.floor(Math.random()*24) + '.jpg'; //new Date().getDay() Math.random()*24
     $('.bg-cover').css('background-image', 'url(' + bannerUrl + ')');
 </script>
 
