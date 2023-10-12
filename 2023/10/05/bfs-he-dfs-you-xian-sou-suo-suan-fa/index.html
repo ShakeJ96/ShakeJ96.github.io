@@ -161,11 +161,11 @@
     };
     loaded();
 })()
- </script><meta name="generator" content="Hexo 6.3.0">
-<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/atom.xml" title="ShakeJ" type="application/atom+xml">
+ </script><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="ShakeJ" type="application/atom+xml">
 <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
-<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
 <!-- <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js"
 
 charset="utf-8"></script> -->
@@ -632,21 +632,21 @@ charset="utf-8"></script> -->
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-10-07
+                    2023-10-12
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.5k
+                    2k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    6 分
+                    8 分
                 </div>
                 
 
@@ -864,7 +864,69 @@ class PreorderTraversal {
 </ul>
 <img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="/2023/10/05/bfs-he-dfs-you-xian-sou-suo-suan-fa/result2.jpg" alt="result2" style="zoom:50%;">
 <p>​</p>
-<h3 id="%E5%8A%A8%E5%9B%BE%E6%AF%94%E5%AF%B9" tabindex="-1">动图比对</h3>
+<h4 id="dfs%E4%B8%80%E9%81%93%E4%BE%8B%E9%A2%98%EF%BC%9A" tabindex="-1">DFS一道例题：</h4>
+<ul>
+<li>
+<p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/3Etpl5/description/">LCR 049. 求根节点到叶节点数字之和 </a></p>
+<p>​</p>
+</li>
+</ul>
+<h5 id="%E9%A2%98%E7%9B%AE%E8%AF%B4%E6%98%8E%EF%BC%9A" tabindex="-1">题目说明：</h5>
+<p>给定一个二叉树的根节点 <code>root</code> ，树中每个节点都存放有一个 <code>0</code> 到 <code>9</code> 之间的数字。</p>
+<p>每条从根节点到叶节点的路径都代表一个数字：</p>
+<ul>
+<li>例如，从根节点到叶节点的路径 <code>1 -&gt; 2 -&gt; 3</code> 表示数字 <code>123</code> 。</li>
+</ul>
+<p>计算从根节点到叶节点生成的 <strong>所有数字之和</strong> 。</p>
+<p><strong>叶节点</strong> 是指没有子节点的节点。</p>
+<p><strong>示例 1：</strong></p>
+<img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="/2023/10/05/bfs-he-dfs-you-xian-sou-suo-suan-fa/num1tree.jpg" alt="num1tree" style="zoom:50%;">
+<pre class="line-numbers language-none"><code class="language-none">输入：root = [1,2,3]
+输出：25
+解释：
+从根到叶子节点路径 1-&gt;2 代表数字 12
+从根到叶子节点路径 1-&gt;3 代表数字 13
+因此，数字总和 = 12 + 13 = 25<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>​</p>
+<h5 id="%E8%A7%A3%E7%AD%94%E5%88%86%E6%9E%90" tabindex="-1">解答分析</h5>
+<ul>
+<li>
+<p>该如何计算路径中表示的数字呢？顺着子节点的指针路径向下遍历二叉树，每达到一个节点，相当于在路径表示的数字末尾添加一位数字。</p>
+</li>
+<li>
+<p>对于每次遍历都是<code>path=path*10+root.val;</code>仔细观察可以看出应该是典型的二叉树前序遍历，每个得出的数字都是计算当前节点的路径到头，最后再计算子节点的路径表示的数字。</p>
+</li>
+<li>
+<p>利用<code>dfs</code>实现的是递归调用，这里注意<strong>三部曲</strong>：</p>
+<ul>
+<li><strong>找到最后递归的终止条件</strong></li>
+<li><strong>找到上一次递归的返回值</strong></li>
+<li><strong>找到本次递归的具体操作</strong></li>
+</ul>
+<p>​</p>
+</li>
+</ul>
+<h5 id="%E5%85%B7%E4%BD%93%E4%BB%A3%E7%A0%81-2" tabindex="-1">具体代码</h5>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">class Solution{
+	public int sumNumbers(TreeNode root){
+   		return dfs(root,0);//输入的数和数字结果
+	}
+	private int dfs(){//每一次遍历到当前路径尽头
+ 		if(root==null){	//终止条件
+            return 0;
+        }
+        //本次递归级的具体操作
+        path=path*10+root.val;//当前递归中的每次数字的统计
+        if(root.left==null &amp;&amp; root.right==null){
+            return path;
+        }
+        return dfs(root.left,path)+dfs(root.right,path);//上一级返回值
+	}
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>​</p>
+<p>​</p>
+<hr>
+<h3 id="bfs%E5%92%8Cdfs%E7%9A%84%E5%8A%A8%E5%9B%BE%E6%AF%94%E5%AF%B9" tabindex="-1">BFS和DFS的动图比对</h3>
 <img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="/2023/10/05/bfs-he-dfs-you-xian-sou-suo-suan-fa/DFS%20AND%20BFS.gif" alt="DFS AND BFS" style="zoom:50%;">
 <hr>
 <center><span style="color:orange;font-size:30px;">End~</span></center>
@@ -1410,7 +1472,7 @@ class PreorderTraversal {
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">40.3k</span>&nbsp;字
+                class="white-color">40.9k</span>&nbsp;字
             
             
             
