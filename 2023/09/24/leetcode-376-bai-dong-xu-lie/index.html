@@ -164,7 +164,7 @@
  </script><meta name="generator" content="Hexo 6.3.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <link rel="alternate" href="/atom.xml" title="ShakeJ" type="application/atom+xml"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
-</head>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 <!-- <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js"
 
 charset="utf-8"></script> -->
@@ -661,6 +661,9 @@ charset="utf-8"></script> -->
         <hr class="clearfix">
 
         
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
 
         
 
@@ -680,11 +683,17 @@ charset="utf-8"></script> -->
 <p><strong>子序列</strong> 可以通过从原始序列中删除一些（也可以不删除）元素来获得，剩下的元素保持其原始顺序。</p>
 <p>给你一个整数数组 <code>nums</code> ，返回 <code>nums</code> 中作为 <strong>摆动序列</strong> 的 <strong>最长子序列的长度</strong> 。</p>
 <p><strong>示例 1：</strong></p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：nums = [1,7,4,9,2,5]</span><br><span class="line">输出：6</span><br><span class="line">解释：整个序列均为摆动序列，各元素之间的差值为 (6, -3, 5, -7, 3) 。</span><br></pre></td></tr></tbody></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">输入：nums = [1,7,4,9,2,5]
+输出：6
+解释：整个序列均为摆动序列，各元素之间的差值为 (6, -3, 5, -7, 3) 。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p><strong>示例 2：</strong></p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">输入：nums = [1,17,5,10,13,15,10,5,16,8]</span><br><span class="line">输出：7</span><br><span class="line">解释：这个序列包含几个长度为 7 摆动序列。</span><br><span class="line">其中一个是 [1, 17, 10, 13, 10, 16, 8] ，各元素之间的差值为 (16, -7, 3, -3, 6, -8) 。</span><br></pre></td></tr></tbody></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">输入：nums = [1,17,5,10,13,15,10,5,16,8]
+输出：7
+解释：这个序列包含几个长度为 7 摆动序列。
+其中一个是 [1, 17, 10, 13, 10, 16, 8] ，各元素之间的差值为 (16, -7, 3, -3, 6, -8) 。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <p><strong>示例 3：</strong></p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：nums = [1,2,3,4,5,6,7,8,9]</span><br><span class="line">输出：2</span><br></pre></td></tr></tbody></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">输入：nums = [1,2,3,4,5,6,7,8,9]
+输出：2<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p>​</p>
 <hr>
 <h3 id="2.-%E8%A7%A3%E7%AD%94%E5%88%86%E6%9E%90" tabindex="-1">2. 解答分析</h3>
@@ -727,7 +736,29 @@ charset="utf-8"></script> -->
 </li>
 <li>
 <h4 id="2.2-%E5%85%B7%E4%BD%93%E4%BB%A3%E7%A0%81%EF%BC%88%E8%B4%AA%E5%BF%83%EF%BC%89" tabindex="-1">2.2 具体代码（贪心）</h4>
-<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> {</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">wiggleMaxLength</span><span class="params">(<span class="type">int</span>[] nums)</span> {</span><br><span class="line">        <span class="keyword">if</span> (nums.length &lt;= <span class="number">1</span>) {</span><br><span class="line">            <span class="keyword">return</span> nums.length;</span><br><span class="line">        }</span><br><span class="line">        <span class="comment">//当前差值</span></span><br><span class="line">        <span class="type">int</span> <span class="variable">curDiff</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="comment">//上一个差值</span></span><br><span class="line">        <span class="type">int</span> <span class="variable">preDiff</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">count</span> <span class="operator">=</span> <span class="number">1</span>; <span class="comment">//峰值的个数，序列默认序列的最右边有一个峰值</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>; i &lt; nums.length; i++) {</span><br><span class="line">            <span class="comment">//得到当前差值</span></span><br><span class="line">            curDiff = nums[i] - nums[i - <span class="number">1</span>];</span><br><span class="line">            <span class="comment">//如果当前差值和上一个差值为一正一负</span></span><br><span class="line">            <span class="comment">//等于0的情况表示初始时的preDiff</span></span><br><span class="line">            <span class="keyword">if</span> ((curDiff &gt; <span class="number">0</span> &amp;&amp; preDiff &lt;= <span class="number">0</span>) || (curDiff &lt; <span class="number">0</span> &amp;&amp; preDiff &gt;= <span class="number">0</span>)) {</span><br><span class="line">                count++;</span><br><span class="line">                preDiff = curDiff;<span class="comment">// 注意这里，只在摆动变化的时候更新prediff</span></span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">return</span> count;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">class Solution {
+    public int wiggleMaxLength(int[] nums) {
+        if (nums.length &lt;= 1) {
+            return nums.length;
+        }
+        //当前差值
+        int curDiff = 0;
+        //上一个差值
+        int preDiff = 0;
+        int count = 1; //峰值的个数，序列默认序列的最右边有一个峰值
+        for (int i = 1; i &lt; nums.length; i++) {
+            //得到当前差值
+            curDiff = nums[i] - nums[i - 1];
+            //如果当前差值和上一个差值为一正一负
+            //等于0的情况表示初始时的preDiff
+            if ((curDiff &gt; 0 &amp;&amp; preDiff &lt;= 0) || (curDiff &lt; 0 &amp;&amp; preDiff &gt;= 0)) {
+                count++;
+                preDiff = curDiff;// 注意这里，只在摆动变化的时候更新prediff
+            }
+        }
+        return count;
+    }
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 </li>
 <li>
 <p><strong>复杂度分析：</strong></p>
@@ -765,7 +796,33 @@ charset="utf-8"></script> -->
 </ul>
 <p>​</p>
 <h4 id="2.4-%E5%85%B7%E4%BD%93%E4%BB%A3%E7%A0%81%EF%BC%88dp%EF%BC%89" tabindex="-1">2.4 具体代码（dp）</h4>
-<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// DP</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> {</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">wiggleMaxLength</span><span class="params">(<span class="type">int</span>[] nums)</span> {</span><br><span class="line">        <span class="comment">// 0 i 作为波峰的最大长度</span></span><br><span class="line">        <span class="comment">// 1 i 作为波谷的最大长度</span></span><br><span class="line">        <span class="type">int</span> dp[][] = <span class="keyword">new</span> <span class="title class_">int</span>[nums.length][<span class="number">2</span>];</span><br><span class="line"></span><br><span class="line">        dp[<span class="number">0</span>][<span class="number">0</span>] = dp[<span class="number">0</span>][<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>; i &lt; nums.length; i++){</span><br><span class="line">            <span class="comment">//i 自己可以成为波峰或者波谷</span></span><br><span class="line">            dp[i][<span class="number">0</span>] = dp[i][<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> <span class="number">0</span>; j &lt; i; j++){</span><br><span class="line">                <span class="keyword">if</span> (nums[j] &gt; nums[i]){</span><br><span class="line">                    <span class="comment">// i 是波谷</span></span><br><span class="line">                    dp[i][<span class="number">1</span>] = Math.max(dp[i][<span class="number">1</span>], dp[j][<span class="number">0</span>] + <span class="number">1</span>);</span><br><span class="line">                }</span><br><span class="line">                <span class="keyword">if</span> (nums[j] &lt; nums[i]){</span><br><span class="line">                    <span class="comment">// i 是波峰</span></span><br><span class="line">                    dp[i][<span class="number">0</span>] = Math.max(dp[i][<span class="number">0</span>], dp[j][<span class="number">1</span>] + <span class="number">1</span>);</span><br><span class="line">                }</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> Math.max(dp[nums.length - <span class="number">1</span>][<span class="number">0</span>], dp[nums.length - <span class="number">1</span>][<span class="number">1</span>]);</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">// DP
+class Solution {
+    public int wiggleMaxLength(int[] nums) {
+        // 0 i 作为波峰的最大长度
+        // 1 i 作为波谷的最大长度
+        int dp[][] = new int[nums.length][2];
+
+        dp[0][0] = dp[0][1] = 1;
+        for (int i = 1; i &lt; nums.length; i++){
+            //i 自己可以成为波峰或者波谷
+            dp[i][0] = dp[i][1] = 1;
+
+            for (int j = 0; j &lt; i; j++){
+                if (nums[j] &gt; nums[i]){
+                    // i 是波谷
+                    dp[i][1] = Math.max(dp[i][1], dp[j][0] + 1);
+                }
+                if (nums[j] &lt; nums[i]){
+                    // i 是波峰
+                    dp[i][0] = Math.max(dp[i][0], dp[j][1] + 1);
+                }
+            }
+        }
+
+        return Math.max(dp[nums.length - 1][0], dp[nums.length - 1][1]);
+    }
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
 <li>
 <p><strong>复杂度分析：</strong></p>
@@ -1316,7 +1373,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">48k</span>&nbsp;字
+                class="white-color">47.8k</span>&nbsp;字
             
             
             
@@ -1675,10 +1732,10 @@ $(function () {
     if (windowWidth > 768) {
         document.write('<script type="text/javascript" src="https://apip.weatherdt.com/float/static/js/r.js?v=1111"><\/script>');
     }
-    </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    </script>
     
   
-<script src="/live2dw/lib/L2Dwidget.min.js?243708c68e3ad401cd4432916889e600"></script><script>L2Dwidget.init({"dialog":{"enable":true,"hitokoto":true},"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"left","width":120,"height":160,"superSample":2,"voffset":0,"hoffset":20},"mobile":{"show":false},"react":{"opacity":0.7,"opacityOnHover":0.2}});</script>
+
         <style>
             [bg-lazy] {
                 background-image: none !important;
@@ -1691,6 +1748,6 @@ $(function () {
                 preloadRatio: 3,
                 processImages: null,
             };
-        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(r){r.imageLazyLoadSetting.processImages=t;var e=r.imageLazyLoadSetting.isSPA,n=r.imageLazyLoadSetting.preloadRatio||1,c=a();function a(){var t=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")),e=Array.prototype.slice.call(document.querySelectorAll("[bg-lazy]"));return t.concat(e)}function t(){e&&(c=a());for(var t,o=0;o<c.length;o++)0<=(t=(t=c[o]).getBoundingClientRect()).bottom&&0<=t.left&&t.top<=(r.innerHeight*n||document.documentElement.clientHeight*n)&&function(){var t,e,n,a,i=c[o];e=function(){c=c.filter(function(t){return i!==t}),r.imageLazyLoadSetting.onImageLoaded&&r.imageLazyLoadSetting.onImageLoaded(i)},(t=i).hasAttribute("bg-lazy")?(t.removeAttribute("bg-lazy"),e&&e()):(n=new Image,a=t.getAttribute("data-original"),n.onload=function(){t.src=a,t.removeAttribute("data-original"),e&&e()},t.src!==a&&(n.src=a))}()}function i(){clearTimeout(t.tId),t.tId=setTimeout(t,500)}t(),document.addEventListener("scroll",i),r.addEventListener("resize",i),r.addEventListener("orientationchange",i)}(this);</script></body>
+        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(r){r.imageLazyLoadSetting.processImages=t;var e=r.imageLazyLoadSetting.isSPA,n=r.imageLazyLoadSetting.preloadRatio||1,c=a();function a(){var t=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")),e=Array.prototype.slice.call(document.querySelectorAll("[bg-lazy]"));return t.concat(e)}function t(){e&&(c=a());for(var t,o=0;o<c.length;o++)0<=(t=(t=c[o]).getBoundingClientRect()).bottom&&0<=t.left&&t.top<=(r.innerHeight*n||document.documentElement.clientHeight*n)&&function(){var t,e,n,a,i=c[o];e=function(){c=c.filter(function(t){return i!==t}),r.imageLazyLoadSetting.onImageLoaded&&r.imageLazyLoadSetting.onImageLoaded(i)},(t=i).hasAttribute("bg-lazy")?(t.removeAttribute("bg-lazy"),e&&e()):(n=new Image,a=t.getAttribute("data-original"),n.onload=function(){t.src=a,t.removeAttribute("data-original"),e&&e()},t.src!==a&&(n.src=a))}()}function i(){clearTimeout(t.tId),t.tId=setTimeout(t,500)}t(),document.addEventListener("scroll",i),r.addEventListener("resize",i),r.addEventListener("orientationchange",i)}(this);</script><!-- hexo-inject:begin --><!-- hexo-inject:end --><script src="/live2dw/lib/L2Dwidget.min.js?243708c68e3ad401cd4432916889e600"></script><script>L2Dwidget.init({"dialog":{"enable":true,"hitokoto":true},"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"left","width":120,"height":160,"superSample":2,"voffset":0,"hoffset":20},"mobile":{"show":false},"react":{"opacity":0.7,"opacityOnHover":0.2}});</script></body>
 
 </html>

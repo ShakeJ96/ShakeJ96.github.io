@@ -164,7 +164,7 @@
  </script><meta name="generator" content="Hexo 6.3.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <link rel="alternate" href="/atom.xml" title="ShakeJ" type="application/atom+xml"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
-</head>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 <!-- <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js"
 
 charset="utf-8"></script> -->
@@ -665,6 +665,9 @@ charset="utf-8"></script> -->
         <hr class="clearfix">
 
         
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
 
         
 
@@ -681,9 +684,14 @@ charset="utf-8"></script> -->
 <p>你只能选择 <strong>某一天</strong> 买入这只股票，并选择在 <strong>未来的某一个不同的日子</strong> 卖出该股票。设计一个算法来计算你所能获取的最大利润。</p>
 <p>返回你可以从这笔交易中获取的最大利润。如果你不能获取任何利润，返回 <code>0</code> 。</p>
 <p><strong>示例 1：</strong></p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">输入：[7,1,5,3,6,4]</span><br><span class="line">输出：5</span><br><span class="line">解释：在第 2 天（股票价格 = 1）的时候买入，在第 5 天（股票价格 = 6）的时候卖出，最大利润 = 6-1 = 5 。</span><br><span class="line">	（注意利润不能是 7-1 = 6, 因为卖出价格需要大于买入价格；同时，你不能在买入前卖出股票。）</span><br></pre></td></tr></tbody></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">输入：[7,1,5,3,6,4]
+输出：5
+解释：在第 2 天（股票价格 = 1）的时候买入，在第 5 天（股票价格 = 6）的时候卖出，最大利润 = 6-1 = 5 。
+	（注意利润不能是 7-1 = 6, 因为卖出价格需要大于买入价格；同时，你不能在买入前卖出股票。）<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <p><strong>示例 2：</strong></p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：prices = [7,6,4,3,1]</span><br><span class="line">输出：0</span><br><span class="line">解释：在这种情况下, 没有交易完成, 所以最大利润为 0。</span><br></pre></td></tr></tbody></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">输入：prices = [7,6,4,3,1]
+输出：0
+解释：在这种情况下, 没有交易完成, 所以最大利润为 0。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p><strong>提示：</strong></p>
 <ul>
 <li>
@@ -714,7 +722,16 @@ charset="utf-8"></script> -->
 </ul>
 <hr>
 <h4 id="1.3-%E5%85%B7%E4%BD%93%E4%BB%A3%E7%A0%81" tabindex="-1">1.3 具体代码</h4>
-<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> {</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">maxProfit</span><span class="params">(<span class="type">int</span>[] prices)</span> {</span><br><span class="line">        <span class="type">int</span> cost=Integer.MAX_VALUE,profit=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> price:prices){</span><br><span class="line">            cost=Math.min(cost,price);<span class="comment">//找到最小的买入值</span></span><br><span class="line">            profit=Math.max(profit,price-cost);<span class="comment">//不断更新利润的最大值</span></span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">return</span> profit;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">class Solution {
+    public int maxProfit(int[] prices) {
+        int cost=Integer.MAX_VALUE,profit=0;
+        for(int price:prices){
+            cost=Math.min(cost,price);//找到最小的买入值
+            profit=Math.max(profit,price-cost);//不断更新利润的最大值
+        }
+        return profit;
+    }
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
 <li>
 <p><strong>复杂度分析：</strong></p>
@@ -736,11 +753,20 @@ charset="utf-8"></script> -->
 <p>在每一天，你可以决定是否购买和/或出售股票。你在任何时候 <strong>最多</strong> 只能持有 <strong>一股</strong> 股票。你也可以先购买，然后在 <strong>同一天</strong> 出售。</p>
 <p>返回 你能获得的 <strong>最大</strong> 利润 。</p>
 <p><strong>示例 1：</strong></p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">输入：prices = [7,1,5,3,6,4]</span><br><span class="line">输出：7</span><br><span class="line">解释：在第 2 天（股票价格 = 1）的时候买入，在第 3 天（股票价格 = 5）的时候卖出, 这笔交易所能获得利润 = 5 - 1 = 4 。</span><br><span class="line">     随后，在第 4 天（股票价格 = 3）的时候买入，在第 5 天（股票价格 = 6）的时候卖出, 这笔交易所能获得利润 = 6 - 3 = 3 。</span><br><span class="line">     总利润为 4 + 3 = 7 。</span><br></pre></td></tr></tbody></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">输入：prices = [7,1,5,3,6,4]
+输出：7
+解释：在第 2 天（股票价格 = 1）的时候买入，在第 3 天（股票价格 = 5）的时候卖出, 这笔交易所能获得利润 = 5 - 1 = 4 。
+     随后，在第 4 天（股票价格 = 3）的时候买入，在第 5 天（股票价格 = 6）的时候卖出, 这笔交易所能获得利润 = 6 - 3 = 3 。
+     总利润为 4 + 3 = 7 。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><strong>示例 2：</strong></p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">输入：prices = [1,2,3,4,5]</span><br><span class="line">输出：4</span><br><span class="line">解释：在第 1 天（股票价格 = 1）的时候买入，在第 5 天 （股票价格 = 5）的时候卖出, 这笔交易所能获得利润 = 5 - 1 = 4 。</span><br><span class="line">     总利润为 4 。</span><br></pre></td></tr></tbody></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">输入：prices = [1,2,3,4,5]
+输出：4
+解释：在第 1 天（股票价格 = 1）的时候买入，在第 5 天 （股票价格 = 5）的时候卖出, 这笔交易所能获得利润 = 5 - 1 = 4 。
+     总利润为 4 。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <p><strong>示例 3：</strong></p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：prices = [7,6,4,3,1]</span><br><span class="line">输出：0</span><br><span class="line">解释：在这种情况下, 交易无法获得正利润，所以不参与交易可以获得最大利润，最大利润为 0 。</span><br></pre></td></tr></tbody></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">输入：prices = [7,6,4,3,1]
+输出：0
+解释：在这种情况下, 交易无法获得正利润，所以不参与交易可以获得最大利润，最大利润为 0 。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p><strong>提示：</strong></p>
 <ul>
 <li>
@@ -772,7 +798,52 @@ charset="utf-8"></script> -->
 </ul>
 <hr>
 <h4 id="2.3-%E5%85%B7%E4%BD%93%E4%BB%A3%E7%A0%81" tabindex="-1">2.3 具体代码</h4>
-<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//思路1：</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> {</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">maxProfit</span><span class="params">(<span class="type">int</span>[] prices)</span> {</span><br><span class="line">        <span class="type">int</span> <span class="variable">profit</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>; i &lt; prices.length; i++) {</span><br><span class="line">            <span class="type">int</span> <span class="variable">tmp</span> <span class="operator">=</span> prices[i] - prices[i - <span class="number">1</span>];<span class="comment">//计算相邻两天的差值</span></span><br><span class="line">            <span class="keyword">if</span> (tmp &gt; <span class="number">0</span>) profit += tmp;</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">return</span> profit;</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="comment">//思路2：和思路1雷同，但是代码可能好理解一些</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> {</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">maxProfit</span><span class="params">(<span class="type">int</span>[] prices)</span> {</span><br><span class="line">        <span class="type">int</span> min=prices[<span class="number">0</span>],max=prices[<span class="number">0</span>],ans=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;prices.length;i++){</span><br><span class="line">            <span class="keyword">if</span>(max&gt;prices[i]){<span class="comment">//不断找到较大的值</span></span><br><span class="line">                ans+=max-min;</span><br><span class="line">                max=prices[i];</span><br><span class="line">                min=prices[i];</span><br><span class="line">            }<span class="keyword">else</span>{<span class="comment">//相等的时候左指针不动，右指针右移</span></span><br><span class="line">                max=prices[i];</span><br><span class="line">            }</span><br><span class="line">        } </span><br><span class="line">        ans+=max-min;<span class="comment">//包含最后一位的卖出可能存在的差值，如[1,2,3,4,5]，最后max等于5，此时min等于1，最后需要做差</span></span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="comment">//思路3：动态规划,这里做简单地处理，给出状态转移方程，分为持有和不持有的两种状态</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> {</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">maxProfit</span><span class="params">(<span class="type">int</span>[] prices)</span> {</span><br><span class="line">        <span class="type">int</span> <span class="variable">n</span> <span class="operator">=</span> prices.length;</span><br><span class="line">        <span class="type">int</span>[][] dp = <span class="keyword">new</span> <span class="title class_">int</span>[n][<span class="number">2</span>];</span><br><span class="line">        dp[<span class="number">0</span>][<span class="number">0</span>] = <span class="number">0</span>;<span class="comment">//不持有（第0天）</span></span><br><span class="line">        dp[<span class="number">0</span>][<span class="number">1</span>] = -prices[<span class="number">0</span>];<span class="comment">//持有（第0天）</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>; i &lt; n; i++) {</span><br><span class="line">            dp[i][<span class="number">0</span>] = Math.max(dp[i - <span class="number">1</span>][<span class="number">0</span>], dp[i - <span class="number">1</span>][<span class="number">1</span>] + prices[i]); <span class="comment">//对于今天不持有，可以从两个状态转移过来：1. 昨天也不持有；2. 昨天持有，今天卖出。两者取较大值。</span></span><br><span class="line"></span><br><span class="line">            dp[i][<span class="number">1</span>] = Math.max(dp[i - <span class="number">1</span>][<span class="number">1</span>], dp[i - <span class="number">1</span>][<span class="number">0</span>] - prices[i]);<span class="comment">//对于今天持有，可以从两个状态转移过来：1. 昨天也持有；2. 昨天不持有，今天买入。两者取较大值。</span></span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">return</span> dp[n - <span class="number">1</span>][<span class="number">0</span>];</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">//思路1：
+class Solution {
+    public int maxProfit(int[] prices) {
+        int profit = 0;
+        for (int i = 1; i &lt; prices.length; i++) {
+            int tmp = prices[i] - prices[i - 1];//计算相邻两天的差值
+            if (tmp &gt; 0) profit += tmp;
+        }
+        return profit;
+    }
+}
+
+//思路2：和思路1雷同，但是代码可能好理解一些
+class Solution {
+    public int maxProfit(int[] prices) {
+        int min=prices[0],max=prices[0],ans=0;
+        for(int i=0;i&lt;prices.length;i++){
+            if(max&gt;prices[i]){//不断找到较大的值
+                ans+=max-min;
+                max=prices[i];
+                min=prices[i];
+            }else{//相等的时候左指针不动，右指针右移
+                max=prices[i];
+            }
+        } 
+        ans+=max-min;//包含最后一位的卖出可能存在的差值，如[1,2,3,4,5]，最后max等于5，此时min等于1，最后需要做差
+        return ans;
+    }
+}
+
+//思路3：动态规划,这里做简单地处理，给出状态转移方程，分为持有和不持有的两种状态
+class Solution {
+    public int maxProfit(int[] prices) {
+        int n = prices.length;
+        int[][] dp = new int[n][2];
+        dp[0][0] = 0;//不持有（第0天）
+        dp[0][1] = -prices[0];//持有（第0天）
+        for (int i = 1; i &lt; n; i++) {
+            dp[i][0] = Math.max(dp[i - 1][0], dp[i - 1][1] + prices[i]); //对于今天不持有，可以从两个状态转移过来：1. 昨天也不持有；2. 昨天持有，今天卖出。两者取较大值。
+
+            dp[i][1] = Math.max(dp[i - 1][1], dp[i - 1][0] - prices[i]);//对于今天持有，可以从两个状态转移过来：1. 昨天也持有；2. 昨天不持有，今天买入。两者取较大值。
+        }
+        return dp[n - 1][0];
+    }
+}
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
 <li>
 <p><strong>复杂度分析：</strong></p>
@@ -794,13 +865,23 @@ charset="utf-8"></script> -->
 <p>设计一个算法来计算你所能获取的最大利润。你最多可以完成 <strong>两笔</strong> 交易。</p>
 <p>**注意：**你不能同时参与多笔交易（你必须在再次购买前出售掉之前的股票）。</p>
 <p><strong>示例 1:</strong></p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">输入：prices = [3,3,5,0,0,3,1,4]</span><br><span class="line">输出：6</span><br><span class="line">解释：在第 4 天（股票价格 = 0）的时候买入，在第 6 天（股票价格 = 3）的时候卖出，这笔交易所能获得利润 = 3-0 = 3 。</span><br><span class="line">     随后，在第 7 天（股票价格 = 1）的时候买入，在第 8 天 （股票价格 = 4）的时候卖出，这笔交易所能获得利润 = 4-1 = 3 。</span><br></pre></td></tr></tbody></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">输入：prices = [3,3,5,0,0,3,1,4]
+输出：6
+解释：在第 4 天（股票价格 = 0）的时候买入，在第 6 天（股票价格 = 3）的时候卖出，这笔交易所能获得利润 = 3-0 = 3 。
+     随后，在第 7 天（股票价格 = 1）的时候买入，在第 8 天 （股票价格 = 4）的时候卖出，这笔交易所能获得利润 = 4-1 = 3 。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <p><strong>示例 2：</strong></p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">输入：prices = [1,2,3,4,5]</span><br><span class="line">输出：4</span><br><span class="line">解释：在第 1 天（股票价格 = 1）的时候买入，在第 5 天 （股票价格 = 5）的时候卖出, 这笔交易所能获得利润 = 5-1 = 4 。   </span><br><span class="line">     注意你不能在第 1 天和第 2 天接连购买股票，之后再将它们卖出。   </span><br><span class="line">     因为这样属于同时参与了多笔交易，你必须在再次购买前出售掉之前的股票。</span><br></pre></td></tr></tbody></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">输入：prices = [1,2,3,4,5]
+输出：4
+解释：在第 1 天（股票价格 = 1）的时候买入，在第 5 天 （股票价格 = 5）的时候卖出, 这笔交易所能获得利润 = 5-1 = 4 。   
+     注意你不能在第 1 天和第 2 天接连购买股票，之后再将它们卖出。   
+     因为这样属于同时参与了多笔交易，你必须在再次购买前出售掉之前的股票。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><strong>示例 3：</strong></p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：prices = [7,6,4,3,1] </span><br><span class="line">输出：0 </span><br><span class="line">解释：在这个情况下, 没有交易完成, 所以最大利润为 0。</span><br></pre></td></tr></tbody></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">输入：prices = [7,6,4,3,1] 
+输出：0 
+解释：在这个情况下, 没有交易完成, 所以最大利润为 0。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p><strong>示例 4：</strong></p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：prices = [1]</span><br><span class="line">输出：0</span><br></pre></td></tr></tbody></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">输入：prices = [1]
+输出：0<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p><strong>提示：</strong></p>
 <ul>
 <li>
@@ -859,7 +940,42 @@ charset="utf-8"></script> -->
 </ul>
 <hr>
 <h4 id="3.3-%E5%85%B7%E4%BD%93%E4%BB%A3%E7%A0%81" tabindex="-1">3.3 具体代码</h4>
-<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Solution</span> {</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">maxProfit</span><span class="params">(<span class="type">int</span>[] prices)</span> {</span><br><span class="line">        <span class="type">int</span> <span class="variable">len</span> <span class="operator">=</span> prices.length;</span><br><span class="line">        <span class="keyword">if</span> (len &lt; <span class="number">2</span>) {</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        }</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 第 2 维的 0 没有意义，1 表示交易进行了 1 次，2 表示交易进行了 2 次</span></span><br><span class="line">        <span class="comment">// 为了使得第 2 维的数值 1 和 2 有意义，这里将第 2 维的长度设置为 3</span></span><br><span class="line">        <span class="type">int</span>[][][] dp = <span class="keyword">new</span> <span class="title class_">int</span>[len][<span class="number">3</span>][<span class="number">2</span>];</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 理解如下初始化</span></span><br><span class="line">        <span class="comment">// 第 3 维规定了必须持股，因此是 -prices[0]</span></span><br><span class="line">        dp[<span class="number">0</span>][<span class="number">1</span>][<span class="number">1</span>] = -prices[<span class="number">0</span>];</span><br><span class="line">        <span class="comment">// 还没发生的交易，持股的时候应该初始化为负无穷</span></span><br><span class="line">        dp[<span class="number">0</span>][<span class="number">2</span>][<span class="number">1</span>] = Integer.MIN_VALUE;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;len;i++){</span><br><span class="line">            <span class="comment">//如果今天要持有股票，应该比较继续持有昨天的股票好，还是今天才开始买股票好</span></span><br><span class="line">            <span class="comment">//(此时只交易了一次，所以是今天才买入的)</span></span><br><span class="line">            dp[i][<span class="number">1</span>][<span class="number">1</span>]=Math.max(dp[i-<span class="number">1</span>][<span class="number">1</span>][<span class="number">1</span>],-prices[i]);</span><br><span class="line">            </span><br><span class="line">            <span class="comment">//如果今天持有现金，应该比较昨天持有现金好，还是昨天持有股票加上今天的股价好</span></span><br><span class="line">            dp[i][<span class="number">1</span>][<span class="number">0</span>]=Math.max(dp[i-<span class="number">1</span>][<span class="number">1</span>][<span class="number">0</span>],dp[i-<span class="number">1</span>][<span class="number">1</span>][<span class="number">1</span>]+prices[i]);</span><br><span class="line">            </span><br><span class="line">            <span class="comment">//如果今天要持有股票，应该比较继续持有昨天股票好，还是今天才开始买股票好</span></span><br><span class="line">            <span class="comment">//(此时交易了两次，所以用昨天的现金买股票)</span></span><br><span class="line">            dp[i][<span class="number">2</span>][<span class="number">1</span>]=Math.max(dp[i-<span class="number">1</span>][<span class="number">2</span>][<span class="number">1</span>],dp[i-<span class="number">1</span>][<span class="number">1</span>][<span class="number">0</span>]-prices[i]);</span><br><span class="line">            </span><br><span class="line">            <span class="comment">//如果今天要持有现金，应该比较昨天持有现金好，还是昨天持有股票加上今天的股价好</span></span><br><span class="line">            dp[i][<span class="number">2</span>][<span class="number">0</span>]=Math.max(dp[i-<span class="number">1</span>][<span class="number">2</span>][<span class="number">0</span>],dp[i-<span class="number">1</span>][<span class="number">2</span>][<span class="number">1</span>]+prices[i]);</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">return</span> Math.max(dp[len - <span class="number">1</span>][<span class="number">1</span>][<span class="number">0</span>], dp[len - <span class="number">1</span>][<span class="number">2</span>][<span class="number">0</span>]);</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">public class Solution {
+
+    public int maxProfit(int[] prices) {
+        int len = prices.length;
+        if (len &lt; 2) {
+            return 0;
+        }
+
+        // 第 2 维的 0 没有意义，1 表示交易进行了 1 次，2 表示交易进行了 2 次
+        // 为了使得第 2 维的数值 1 和 2 有意义，这里将第 2 维的长度设置为 3
+        int[][][] dp = new int[len][3][2];
+
+        // 理解如下初始化
+        // 第 3 维规定了必须持股，因此是 -prices[0]
+        dp[0][1][1] = -prices[0];
+        // 还没发生的交易，持股的时候应该初始化为负无穷
+        dp[0][2][1] = Integer.MIN_VALUE;
+
+        for(int i=1;i&lt;len;i++){
+            //如果今天要持有股票，应该比较继续持有昨天的股票好，还是今天才开始买股票好
+            //(此时只交易了一次，所以是今天才买入的)
+            dp[i][1][1]=Math.max(dp[i-1][1][1],-prices[i]);
+            
+            //如果今天持有现金，应该比较昨天持有现金好，还是昨天持有股票加上今天的股价好
+            dp[i][1][0]=Math.max(dp[i-1][1][0],dp[i-1][1][1]+prices[i]);
+            
+            //如果今天要持有股票，应该比较继续持有昨天股票好，还是今天才开始买股票好
+            //(此时交易了两次，所以用昨天的现金买股票)
+            dp[i][2][1]=Math.max(dp[i-1][2][1],dp[i-1][1][0]-prices[i]);
+            
+            //如果今天要持有现金，应该比较昨天持有现金好，还是昨天持有股票加上今天的股价好
+            dp[i][2][0]=Math.max(dp[i-1][2][0],dp[i-1][2][1]+prices[i]);
+        }
+        return Math.max(dp[len - 1][1][0], dp[len - 1][2][0]);
+    }
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
 <li>
 <p><strong>复杂度分析：</strong></p>
@@ -1426,7 +1542,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">48k</span>&nbsp;字
+                class="white-color">47.8k</span>&nbsp;字
             
             
             
@@ -1785,10 +1901,10 @@ $(function () {
     if (windowWidth > 768) {
         document.write('<script type="text/javascript" src="https://apip.weatherdt.com/float/static/js/r.js?v=1111"><\/script>');
     }
-    </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    </script>
     
   
-<script src="/live2dw/lib/L2Dwidget.min.js?243708c68e3ad401cd4432916889e600"></script><script>L2Dwidget.init({"dialog":{"enable":true,"hitokoto":true},"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"left","width":120,"height":160,"superSample":2,"voffset":0,"hoffset":20},"mobile":{"show":false},"react":{"opacity":0.7,"opacityOnHover":0.2}});</script>
+
         <style>
             [bg-lazy] {
                 background-image: none !important;
@@ -1801,6 +1917,6 @@ $(function () {
                 preloadRatio: 3,
                 processImages: null,
             };
-        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(r){r.imageLazyLoadSetting.processImages=t;var e=r.imageLazyLoadSetting.isSPA,n=r.imageLazyLoadSetting.preloadRatio||1,c=a();function a(){var t=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")),e=Array.prototype.slice.call(document.querySelectorAll("[bg-lazy]"));return t.concat(e)}function t(){e&&(c=a());for(var t,o=0;o<c.length;o++)0<=(t=(t=c[o]).getBoundingClientRect()).bottom&&0<=t.left&&t.top<=(r.innerHeight*n||document.documentElement.clientHeight*n)&&function(){var t,e,n,a,i=c[o];e=function(){c=c.filter(function(t){return i!==t}),r.imageLazyLoadSetting.onImageLoaded&&r.imageLazyLoadSetting.onImageLoaded(i)},(t=i).hasAttribute("bg-lazy")?(t.removeAttribute("bg-lazy"),e&&e()):(n=new Image,a=t.getAttribute("data-original"),n.onload=function(){t.src=a,t.removeAttribute("data-original"),e&&e()},t.src!==a&&(n.src=a))}()}function i(){clearTimeout(t.tId),t.tId=setTimeout(t,500)}t(),document.addEventListener("scroll",i),r.addEventListener("resize",i),r.addEventListener("orientationchange",i)}(this);</script></body>
+        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(r){r.imageLazyLoadSetting.processImages=t;var e=r.imageLazyLoadSetting.isSPA,n=r.imageLazyLoadSetting.preloadRatio||1,c=a();function a(){var t=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")),e=Array.prototype.slice.call(document.querySelectorAll("[bg-lazy]"));return t.concat(e)}function t(){e&&(c=a());for(var t,o=0;o<c.length;o++)0<=(t=(t=c[o]).getBoundingClientRect()).bottom&&0<=t.left&&t.top<=(r.innerHeight*n||document.documentElement.clientHeight*n)&&function(){var t,e,n,a,i=c[o];e=function(){c=c.filter(function(t){return i!==t}),r.imageLazyLoadSetting.onImageLoaded&&r.imageLazyLoadSetting.onImageLoaded(i)},(t=i).hasAttribute("bg-lazy")?(t.removeAttribute("bg-lazy"),e&&e()):(n=new Image,a=t.getAttribute("data-original"),n.onload=function(){t.src=a,t.removeAttribute("data-original"),e&&e()},t.src!==a&&(n.src=a))}()}function i(){clearTimeout(t.tId),t.tId=setTimeout(t,500)}t(),document.addEventListener("scroll",i),r.addEventListener("resize",i),r.addEventListener("orientationchange",i)}(this);</script><!-- hexo-inject:begin --><!-- hexo-inject:end --><script src="/live2dw/lib/L2Dwidget.min.js?243708c68e3ad401cd4432916889e600"></script><script>L2Dwidget.init({"dialog":{"enable":true,"hitokoto":true},"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"left","width":120,"height":160,"superSample":2,"voffset":0,"hoffset":20},"mobile":{"show":false},"react":{"opacity":0.7,"opacityOnHover":0.2}});</script></body>
 
 </html>

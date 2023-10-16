@@ -164,7 +164,7 @@
  </script><meta name="generator" content="Hexo 6.3.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <link rel="alternate" href="/atom.xml" title="ShakeJ" type="application/atom+xml"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
-</head>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 <!-- <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js"
 
 charset="utf-8"></script> -->
@@ -665,6 +665,9 @@ charset="utf-8"></script> -->
         <hr class="clearfix">
 
         
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
 
         
 
@@ -689,9 +692,11 @@ charset="utf-8"></script> -->
 <li>
 <p>此外，你可以认为原始数据不包含数字，所有的数字只表示重复的次数 <code>k</code> ，例如不会出现像 <code>3a</code> 或 <code>2[4]</code> 的输入。</p>
 <p><strong>示例 1：</strong></p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：s = "3[a]2[bc]"</span><br><span class="line">输出："aaabcbc"</span><br></pre></td></tr></tbody></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">输入：s = "3[a]2[bc]"
+输出："aaabcbc"<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p><strong>示例 2：</strong></p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：s = "3[a2[c]]"</span><br><span class="line">输出："accaccacc"</span><br></pre></td></tr></tbody></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">输入：s = "3[a2[c]]"
+输出："accaccacc"<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 </li>
 </ul>
 <hr>
@@ -740,7 +745,36 @@ charset="utf-8"></script> -->
 <ul>
 <li>
 <p><strong>Java代码如下：</strong></p>
-<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> {</span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">decodeString</span><span class="params">(String s)</span> {</span><br><span class="line">        <span class="comment">//首先需要注意的是对于字符串的拼接和次数的限制.这里还有‘[]’的要求，其实有提示就是需要栈的进出</span></span><br><span class="line">        StringBuffer res=<span class="keyword">new</span> <span class="title class_">StringBuffer</span>();</span><br><span class="line">        <span class="type">int</span> multi=<span class="number">0</span>;</span><br><span class="line">        LinkedList&lt;Integer&gt; stack_multi=<span class="keyword">new</span> <span class="title class_">LinkedList</span>&lt;&gt;();</span><br><span class="line">        LinkedList&lt;String&gt; stack_res=<span class="keyword">new</span> <span class="title class_">LinkedList</span>&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span>(Character c:s.toCharArray()){</span><br><span class="line">            <span class="keyword">if</span>(c==<span class="string">'['</span>){</span><br><span class="line">                stack_multi.addLast(multi);<span class="comment">//添加数字的栈</span></span><br><span class="line">                stack_res.addLast(res.toString());<span class="comment">//在当前的栈的末尾添加新遍历后的元素</span></span><br><span class="line">                multi=<span class="number">0</span>;<span class="comment">//对应的清0</span></span><br><span class="line">                res=<span class="keyword">new</span> <span class="title class_">StringBuffer</span>();<span class="comment">//res重置为空的字符串，便于后续的存储</span></span><br><span class="line">            }</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(c==<span class="string">']'</span>){</span><br><span class="line">                StringBuffer tmp=<span class="keyword">new</span> <span class="title class_">StringBuffer</span>();<span class="comment">//添加暂时的中间变量</span></span><br><span class="line">                <span class="type">int</span> cur_multi=stack_multi.removeLast();<span class="comment">//弹出最后的元素，并且在弹出后首先清除</span></span><br><span class="line">                <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;cur_multi;i++){</span><br><span class="line">                    tmp.append(res);<span class="comment">//遍历需要复写的次数</span></span><br><span class="line">                }</span><br><span class="line">                res=<span class="keyword">new</span> <span class="title class_">StringBuffer</span>(stack_res.removeLast()+tmp);<span class="comment">//返回特定的字符串，为下一次遍历做准备</span></span><br><span class="line">            }</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(c&gt;=<span class="string">'0'</span> &amp;&amp; c&lt;=<span class="string">'9'</span>){</span><br><span class="line">                multi=multi*<span class="number">10</span>+Integer.parseInt(c+<span class="string">""</span>);<span class="comment">//先将字符'c'转化为字符串的形式，后来当遇到一个数字字符时，将其转换为整数，并将其累积到乘数中，让多个字符形成字符串的格式</span></span><br><span class="line">            }</span><br><span class="line">            <span class="keyword">else</span> res.append(c);<span class="comment">//字符串直接拼接</span></span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">return</span> res.toString();</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">class Solution {
+    public String decodeString(String s) {
+        //首先需要注意的是对于字符串的拼接和次数的限制.这里还有‘[]’的要求，其实有提示就是需要栈的进出
+        StringBuffer res=new StringBuffer();
+        int multi=0;
+        LinkedList&lt;Integer&gt; stack_multi=new LinkedList&lt;&gt;();
+        LinkedList&lt;String&gt; stack_res=new LinkedList&lt;&gt;();
+        for(Character c:s.toCharArray()){
+            if(c=='['){
+                stack_multi.addLast(multi);//添加数字的栈
+                stack_res.addLast(res.toString());//在当前的栈的末尾添加新遍历后的元素
+                multi=0;//对应的清0
+                res=new StringBuffer();//res重置为空的字符串，便于后续的存储
+            }
+            else if(c==']'){
+                StringBuffer tmp=new StringBuffer();//添加暂时的中间变量
+                int cur_multi=stack_multi.removeLast();//弹出最后的元素，并且在弹出后首先清除
+                for(int i=0;i&lt;cur_multi;i++){
+                    tmp.append(res);//遍历需要复写的次数
+                }
+                res=new StringBuffer(stack_res.removeLast()+tmp);//返回特定的字符串，为下一次遍历做准备
+            }
+            else if(c&gt;='0' &amp;&amp; c&lt;='9'){
+                multi=multi*10+Integer.parseInt(c+"");//先将字符'c'转化为字符串的形式，后来当遇到一个数字字符时，将其转换为整数，并将其累积到乘数中，让多个字符形成字符串的格式
+            }
+            else res.append(c);//字符串直接拼接
+        }
+        return res.toString();
+    }
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 </li>
 <li>
 <p><strong>复杂度分析：</strong></p>
@@ -1303,7 +1337,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">48k</span>&nbsp;字
+                class="white-color">47.8k</span>&nbsp;字
             
             
             
@@ -1662,10 +1696,10 @@ $(function () {
     if (windowWidth > 768) {
         document.write('<script type="text/javascript" src="https://apip.weatherdt.com/float/static/js/r.js?v=1111"><\/script>');
     }
-    </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    </script>
     
   
-<script src="/live2dw/lib/L2Dwidget.min.js?243708c68e3ad401cd4432916889e600"></script><script>L2Dwidget.init({"dialog":{"enable":true,"hitokoto":true},"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"left","width":120,"height":160,"superSample":2,"voffset":0,"hoffset":20},"mobile":{"show":false},"react":{"opacity":0.7,"opacityOnHover":0.2}});</script>
+
         <style>
             [bg-lazy] {
                 background-image: none !important;
@@ -1678,6 +1712,6 @@ $(function () {
                 preloadRatio: 3,
                 processImages: null,
             };
-        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(r){r.imageLazyLoadSetting.processImages=t;var e=r.imageLazyLoadSetting.isSPA,n=r.imageLazyLoadSetting.preloadRatio||1,c=a();function a(){var t=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")),e=Array.prototype.slice.call(document.querySelectorAll("[bg-lazy]"));return t.concat(e)}function t(){e&&(c=a());for(var t,o=0;o<c.length;o++)0<=(t=(t=c[o]).getBoundingClientRect()).bottom&&0<=t.left&&t.top<=(r.innerHeight*n||document.documentElement.clientHeight*n)&&function(){var t,e,n,a,i=c[o];e=function(){c=c.filter(function(t){return i!==t}),r.imageLazyLoadSetting.onImageLoaded&&r.imageLazyLoadSetting.onImageLoaded(i)},(t=i).hasAttribute("bg-lazy")?(t.removeAttribute("bg-lazy"),e&&e()):(n=new Image,a=t.getAttribute("data-original"),n.onload=function(){t.src=a,t.removeAttribute("data-original"),e&&e()},t.src!==a&&(n.src=a))}()}function i(){clearTimeout(t.tId),t.tId=setTimeout(t,500)}t(),document.addEventListener("scroll",i),r.addEventListener("resize",i),r.addEventListener("orientationchange",i)}(this);</script></body>
+        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(r){r.imageLazyLoadSetting.processImages=t;var e=r.imageLazyLoadSetting.isSPA,n=r.imageLazyLoadSetting.preloadRatio||1,c=a();function a(){var t=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")),e=Array.prototype.slice.call(document.querySelectorAll("[bg-lazy]"));return t.concat(e)}function t(){e&&(c=a());for(var t,o=0;o<c.length;o++)0<=(t=(t=c[o]).getBoundingClientRect()).bottom&&0<=t.left&&t.top<=(r.innerHeight*n||document.documentElement.clientHeight*n)&&function(){var t,e,n,a,i=c[o];e=function(){c=c.filter(function(t){return i!==t}),r.imageLazyLoadSetting.onImageLoaded&&r.imageLazyLoadSetting.onImageLoaded(i)},(t=i).hasAttribute("bg-lazy")?(t.removeAttribute("bg-lazy"),e&&e()):(n=new Image,a=t.getAttribute("data-original"),n.onload=function(){t.src=a,t.removeAttribute("data-original"),e&&e()},t.src!==a&&(n.src=a))}()}function i(){clearTimeout(t.tId),t.tId=setTimeout(t,500)}t(),document.addEventListener("scroll",i),r.addEventListener("resize",i),r.addEventListener("orientationchange",i)}(this);</script><!-- hexo-inject:begin --><!-- hexo-inject:end --><script src="/live2dw/lib/L2Dwidget.min.js?243708c68e3ad401cd4432916889e600"></script><script>L2Dwidget.init({"dialog":{"enable":true,"hitokoto":true},"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"left","width":120,"height":160,"superSample":2,"voffset":0,"hoffset":20},"mobile":{"show":false},"react":{"opacity":0.7,"opacityOnHover":0.2}});</script></body>
 
 </html>
