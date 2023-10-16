@@ -2186,17 +2186,20 @@ footer .copy-right {
 }
 
 /* 滚动条 */
+::-webkit-scrollbar-thumb{
+    background-color: rgb(156, 156, 156);
+    border-radius: 3em;
+}
 ::-webkit-scrollbar-thumb:hover {
-    background-color:   #c45ab6;
-    /* background-color: linear-gradient(to bottom, #bf30ac 0%, #0f9d58 100%); */
-     background-image: linear-gradient(to bottom, #c45ab6 0%, #0f9d58 10 0%);/*-webkit-linear-gradient(45deg,rgba(255,255,255,.4) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.4) 50%,rgba(255,255,255,.4) 75%,transparent 75%,transparent); */
+    background-color: linear-gradient(to bottom, #c45ab6 0%, #0f9d58 100%);
+    background-image: linear-gradient(to bottom, #c45ab6 0%, #0f9d58 100%);/*-webkit-linear-gradient(45deg,rgba(255,255,255,.4) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.4) 50%,rgba(255,255,255,.4) 75%,transparent 75%,transparent); */
     border-radius: 3em;
 }
 /* ::-webkit-scrollbar-track {
     background-color:  #379e6c;
 } */
 ::-webkit-scrollbar {
-    width: 5px;
+    width: 8px;
     height: 5px;
 }
 
