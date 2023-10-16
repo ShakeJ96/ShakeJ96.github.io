@@ -1,6 +1,7 @@
 // 代码块收缩
+
 $(function () {
-  var $code_expand = $('<i class="fa fa-angle-down code-expand" aria-hidden="true"></i>');
+  var $code_expand = $('<i class="fas fa-angle-up code-expand" aria-hidden="true"></i>');
 
   $('.code-area').prepend($code_expand);
   $('.code-expand').on('click', function () {
