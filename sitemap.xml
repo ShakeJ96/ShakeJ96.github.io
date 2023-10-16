@@ -433,13 +433,6 @@
   </url>
   
   <url>
-    <loc>https://shakej96.github.io/tags/%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/</loc>
-    <lastmod>2023-10-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://shakej96.github.io/tags/%E5%BD%B1%E8%AF%84/</loc>
     <lastmod>2023-10-16</lastmod>
     <changefreq>weekly</changefreq>
@@ -447,7 +440,7 @@
   </url>
   
   <url>
-    <loc>https://shakej96.github.io/tags/%E4%BC%81%E4%B8%9A%E9%9D%A2%E8%AF%95/</loc>
+    <loc>https://shakej96.github.io/tags/%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/</loc>
     <lastmod>2023-10-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -455,6 +448,13 @@
   
   <url>
     <loc>https://shakej96.github.io/tags/%E8%BF%9C%E7%A8%8B%E5%AE%9E%E4%B9%A0/</loc>
+    <lastmod>2023-10-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://shakej96.github.io/tags/%E4%BC%81%E4%B8%9A%E9%9D%A2%E8%AF%95/</loc>
     <lastmod>2023-10-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
