@@ -164,7 +164,7 @@
  </script><meta name="generator" content="Hexo 6.3.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <link rel="alternate" href="/atom.xml" title="ShakeJ" type="application/atom+xml"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+</head>
 <!-- <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js"
 
 charset="utf-8"></script> -->
@@ -657,9 +657,6 @@ charset="utf-8"></script> -->
         <hr class="clearfix">
 
         
-        <!-- 是否加载使用自带的 prismjs. -->
-        <link rel="stylesheet" href="/libs/prism/prism.css">
-        
 
         
 
@@ -683,9 +680,7 @@ charset="utf-8"></script> -->
 <p>当两个事件存在某个非空的交集时（即，某些时刻是两个事件都包含的），则认为出现 <strong>冲突</strong> 。</p>
 <p>如果两个事件之间存在冲突，返回 <code>true</code> ；否则，返回 <code>false</code> 。</p>
 <p><strong>示例 1：</strong></p>
-<pre class="line-numbers language-none"><code class="language-none">输入：event1 = ["01:15","02:00"], event2 = ["02:00","03:00"]
-输出：true
-解释：两个事件在 2:00 出现交集。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：event1 = ["01:15","02:00"], event2 = ["02:00","03:00"]</span><br><span class="line">输出：true</span><br><span class="line">解释：两个事件在 2:00 出现交集。</span><br></pre></td></tr></tbody></table></figure>
 <p>​</p>
 <h4 id="2.-%E8%A7%A3%E7%AD%94%E5%88%86%E6%9E%90" tabindex="-1">2. 解答分析</h4>
 <ul>
@@ -702,11 +697,7 @@ charset="utf-8"></script> -->
 </li>
 </ul>
 <h4 id="3.-%E5%85%B7%E4%BD%93%E4%BB%A3%E7%A0%81" tabindex="-1">3. 具体代码</h4>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java">class Solution {
-    public boolean haveConflict(String[] event1, String[] event2) {
-        return event1[0].compareTo(event2[1]) &lt;= 0 &amp;&amp; event1[1].compareTo(event2[0]) &gt;= 0;
-    }
-}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> {</span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">haveConflict</span><span class="params">(String[] event1, String[] event2)</span> {</span><br><span class="line">        <span class="keyword">return</span> event1[<span class="number">0</span>].compareTo(event2[<span class="number">1</span>]) &lt;= <span class="number">0</span> &amp;&amp; event1[<span class="number">1</span>].compareTo(event2[<span class="number">0</span>]) &gt;= <span class="number">0</span>;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 <ul>
 <li>
 <p><strong>复杂度分析</strong></p>
@@ -731,15 +722,11 @@ charset="utf-8"></script> -->
 <p>数字以 <em>数组形式</em> 给出：数组由若干 0 和 1 组成，按最高有效位到最低有效位的顺序排列。例如，<code>arr = [1,1,0,1]</code> 表示数字 <code>(-2)^3 + (-2)^2 + (-2)^0 = -3</code>。<em>数组形式</em> 中的数字 <code>arr</code> 也同样不含前导零：即 <code>arr == [0]</code> 或 <code>arr[0] == 1</code>。</p>
 <p>返回相同表示形式的 <code>arr1</code> 和 <code>arr2</code> 相加的结果。两数的表示形式为：不含前导零、由若干 0 和 1 组成的数组。</p>
 <p><strong>示例 1：</strong></p>
-<pre class="line-numbers language-none"><code class="language-none">输入：arr1 = [1,1,1,1,1], arr2 = [1,0,1]
-输出：[1,0,0,0,0]
-解释：arr1 表示 11，arr2 表示 5，输出表示 16 。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：arr1 = [1,1,1,1,1], arr2 = [1,0,1]</span><br><span class="line">输出：[1,0,0,0,0]</span><br><span class="line">解释：arr1 表示 11，arr2 表示 5，输出表示 16 。</span><br></pre></td></tr></tbody></table></figure>
 <p><strong>示例 2：</strong></p>
-<pre class="line-numbers language-none"><code class="language-none">输入：arr1 = [0], arr2 = [0]
-输出：[0]<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：arr1 = [0], arr2 = [0]</span><br><span class="line">输出：[0]</span><br></pre></td></tr></tbody></table></figure>
 <p><strong>示例 3：</strong></p>
-<pre class="line-numbers language-none"><code class="language-none">输入：arr1 = [0], arr2 = [1]
-输出：[1]<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：arr1 = [0], arr2 = [1]</span><br><span class="line">输出：[1]</span><br></pre></td></tr></tbody></table></figure>
 <p><strong>提示：</strong></p>
 <ul>
 <li>
@@ -765,32 +752,7 @@ charset="utf-8"></script> -->
 <li>然后，我们将<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">x</span></span></span></span></eq>加入到答案数组中去，继续处理下一位。</li>
 <li>遍历结束后，去除答案数组中末尾的<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0</span></span></span></span></eq>，并将数组反转，即可得到最终的答案。</li>
 </ul>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java">class Solution {
-    public int[] addNegabinary(int[] arr1, int[] arr2) {
-        int i = arr1.length - 1, j = arr2.length - 1;
-        List&lt;Integer&gt; ans = new ArrayList&lt;&gt;();
-        for (int c = 0; i &gt;= 0 || j &gt;= 0 || c != 0; --i, --j) {
-            int a = i &lt; 0 ? 0 : arr1[i];
-            int b = j &lt; 0 ? 0 : arr2[j];
-            int x = a + b + c;
-            c = 0;
-            if (x &gt;= 2) {
-                x -= 2;
-                c -= 1;
-            } else if (x == -1) {
-                x = 1;
-                c += 1;
-            }
-            ans.add(x);
-        }
-        while (ans.size() &gt; 1 &amp;&amp; ans.get(ans.size() - 1) == 0) {
-            ans.remove(ans.size() - 1);
-        }
-        Collections.reverse(ans);
-        return ans.stream().mapToInt(x -&gt; x).toArray();
-    }
-}
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> {</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span>[] addNegabinary(<span class="type">int</span>[] arr1, <span class="type">int</span>[] arr2) {</span><br><span class="line">        <span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> arr1.length - <span class="number">1</span>, j = arr2.length - <span class="number">1</span>;</span><br><span class="line">        List&lt;Integer&gt; ans = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">c</span> <span class="operator">=</span> <span class="number">0</span>; i &gt;= <span class="number">0</span> || j &gt;= <span class="number">0</span> || c != <span class="number">0</span>; --i, --j) {</span><br><span class="line">            <span class="type">int</span> <span class="variable">a</span> <span class="operator">=</span> i &lt; <span class="number">0</span> ? <span class="number">0</span> : arr1[i];</span><br><span class="line">            <span class="type">int</span> <span class="variable">b</span> <span class="operator">=</span> j &lt; <span class="number">0</span> ? <span class="number">0</span> : arr2[j];</span><br><span class="line">            <span class="type">int</span> <span class="variable">x</span> <span class="operator">=</span> a + b + c;</span><br><span class="line">            c = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">if</span> (x &gt;= <span class="number">2</span>) {</span><br><span class="line">                x -= <span class="number">2</span>;</span><br><span class="line">                c -= <span class="number">1</span>;</span><br><span class="line">            } <span class="keyword">else</span> <span class="keyword">if</span> (x == -<span class="number">1</span>) {</span><br><span class="line">                x = <span class="number">1</span>;</span><br><span class="line">                c += <span class="number">1</span>;</span><br><span class="line">            }</span><br><span class="line">            ans.add(x);</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">while</span> (ans.size() &gt; <span class="number">1</span> &amp;&amp; ans.get(ans.size() - <span class="number">1</span>) == <span class="number">0</span>) {</span><br><span class="line">            ans.remove(ans.size() - <span class="number">1</span>);</span><br><span class="line">        }</span><br><span class="line">        Collections.reverse(ans);</span><br><span class="line">        <span class="keyword">return</span> ans.stream().mapToInt(x -&gt; x).toArray();</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
 <ul>
 <li>
 <p><strong>复杂度分析</strong>：</p>
@@ -802,41 +764,7 @@ charset="utf-8"></script> -->
 <p><strong>还有另外一种思路：</strong></p>
 </li>
 </ul>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java">class Solution {
-    public int[] addNegabinary(int[] arr1, int[] arr2) {
-        int n1 = arr1.length,n2 = arr2.length;
-        ArrayDeque&lt;Integer&gt; q = new ArrayDeque&lt;&gt;();
-        //方法中使用了一个双端队列 q 存储计算结果，从低位开始逐位相加。
-        //按照-2进制相加的思路，每一位有-1,0,1,2,3五种情况
-        for (int i = n1-1,j = n2-1,add = 0;i &gt;= 0 || j &gt;= 0 || add != 0;i--,j--) {
-            int cur = (i&gt;=0 ? arr1[i] : 0) + (j&gt;=0 ? arr2[j] : 0) + add;
-            if (cur == 0 || cur == 1) {//不进位
-                add = 0;
-                q.addFirst(cur);
-            }
-            else if (cur == 2) {//进位-1，当前位为0
-                add = -1;
-                q.addFirst(0);
-            }
-            else if (cur == -1) {//从前一位借1，等价于进位1，当前位为1
-                add = 1;
-                q.addFirst(1);
-            }
-            else if (cur == 3) {//进位-1，当前位为1
-                add = -1;
-                q.addFirst(1);
-            }
-        }
-        //如果不是[0]的情况，则去掉前导零
-        while (q.size() &gt; 1 &amp;&amp; q.peek() == 0) q.pollFirst();
-        int sz = q.size();
-        int[] res = new int[sz];
-        for (int i = 0; i &lt; sz; i++) {
-            res[i] = q.pollFirst();
-        }
-        return res;
-    }
-}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> {</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span>[] addNegabinary(<span class="type">int</span>[] arr1, <span class="type">int</span>[] arr2) {</span><br><span class="line">        <span class="type">int</span> <span class="variable">n1</span> <span class="operator">=</span> arr1.length,n2 = arr2.length;</span><br><span class="line">        ArrayDeque&lt;Integer&gt; q = <span class="keyword">new</span> <span class="title class_">ArrayDeque</span>&lt;&gt;();</span><br><span class="line">        <span class="comment">//方法中使用了一个双端队列 q 存储计算结果，从低位开始逐位相加。</span></span><br><span class="line">        <span class="comment">//按照-2进制相加的思路，每一位有-1,0,1,2,3五种情况</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> n1-<span class="number">1</span>,j = n2-<span class="number">1</span>,add = <span class="number">0</span>;i &gt;= <span class="number">0</span> || j &gt;= <span class="number">0</span> || add != <span class="number">0</span>;i--,j--) {</span><br><span class="line">            <span class="type">int</span> <span class="variable">cur</span> <span class="operator">=</span> (i&gt;=<span class="number">0</span> ? arr1[i] : <span class="number">0</span>) + (j&gt;=<span class="number">0</span> ? arr2[j] : <span class="number">0</span>) + add;</span><br><span class="line">            <span class="keyword">if</span> (cur == <span class="number">0</span> || cur == <span class="number">1</span>) {<span class="comment">//不进位</span></span><br><span class="line">                add = <span class="number">0</span>;</span><br><span class="line">                q.addFirst(cur);</span><br><span class="line">            }</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (cur == <span class="number">2</span>) {<span class="comment">//进位-1，当前位为0</span></span><br><span class="line">                add = -<span class="number">1</span>;</span><br><span class="line">                q.addFirst(<span class="number">0</span>);</span><br><span class="line">            }</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (cur == -<span class="number">1</span>) {<span class="comment">//从前一位借1，等价于进位1，当前位为1</span></span><br><span class="line">                add = <span class="number">1</span>;</span><br><span class="line">                q.addFirst(<span class="number">1</span>);</span><br><span class="line">            }</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (cur == <span class="number">3</span>) {<span class="comment">//进位-1，当前位为1</span></span><br><span class="line">                add = -<span class="number">1</span>;</span><br><span class="line">                q.addFirst(<span class="number">1</span>);</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">        <span class="comment">//如果不是[0]的情况，则去掉前导零</span></span><br><span class="line">        <span class="keyword">while</span> (q.size() &gt; <span class="number">1</span> &amp;&amp; q.peek() == <span class="number">0</span>) q.pollFirst();</span><br><span class="line">        <span class="type">int</span> <span class="variable">sz</span> <span class="operator">=</span> q.size();</span><br><span class="line">        <span class="type">int</span>[] res = <span class="keyword">new</span> <span class="title class_">int</span>[sz];</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; sz; i++) {</span><br><span class="line">            res[i] = q.pollFirst();</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 <p>​</p>
 <hr>
 <h3 id="10.07-%E6%89%93%E5%8D%A1" tabindex="-1">10.07 打卡</h3>
@@ -847,15 +775,11 @@ charset="utf-8"></script> -->
 <p>你有一套活字字模 <code>tiles</code>，其中每个字模上都刻有一个字母 <code>tiles[i]</code>。返回你可以印出的非空字母序列的数目。</p>
 <p>**注意：**本题中，每个活字字模只能使用一次。</p>
 <p><strong>示例 1：</strong></p>
-<pre class="line-numbers language-none"><code class="language-none">输入："AAB"
-输出：8
-解释：可能的序列为 "A", "B", "AA", "AB", "BA", "AAB", "ABA", "BAA"。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入："AAB"</span><br><span class="line">输出：8</span><br><span class="line">解释：可能的序列为 "A", "B", "AA", "AB", "BA", "AAB", "ABA", "BAA"。</span><br></pre></td></tr></tbody></table></figure>
 <p><strong>示例 2：</strong></p>
-<pre class="line-numbers language-none"><code class="language-none">输入："AAABBC"
-输出：188<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入："AAABBC"</span><br><span class="line">输出：188</span><br></pre></td></tr></tbody></table></figure>
 <p><strong>示例 3：</strong></p>
-<pre class="line-numbers language-none"><code class="language-none">输入："V"
-输出：1<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入："V"</span><br><span class="line">输出：1</span><br></pre></td></tr></tbody></table></figure>
 <p><strong>提示：</strong></p>
 <ul>
 <li>
@@ -874,40 +798,7 @@ charset="utf-8"></script> -->
 </li>
 </ul>
 <h4 id="3.-%E5%85%B7%E4%BD%93%E4%BB%A3%E7%A0%81-1" tabindex="-1">3. 具体代码</h4>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java">public class Solution {
-
-    public int numTilePossibilities(String tiles) {
-        int[] count = new int[26]; //count表示英文字符
-        char[] charArray = tiles.toCharArray();
-        for (char c : charArray) {
-            count[c - 'A']++;
-        }
-        // tiles 里所有的信息都存在 count 里，对 count 执行深度优先遍历即可
-        return dfs(count);
-    }
-
-    /**
-     * 设计递归函数的返回值
-     *
-     * 在当前的频数数组下，可以产生的排列数
-     */
-    private int dfs(int[] count) {
-        // 递归终止条件是：当前没有可以用的字符（没有显示递归终止条件）
-        int res=0;
-        for (int i = 0; i &lt; 26; i++) {
-            if (count[i] == 0) {
-                continue;
-            }
-            res++;
-            count[i]--;
-
-            res += dfs(count);
-            // 只需要重置字符频数数组
-            count[i]++;
-        }
-        return res;
-    }
-}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Solution</span> {</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">numTilePossibilities</span><span class="params">(String tiles)</span> {</span><br><span class="line">        <span class="type">int</span>[] count = <span class="keyword">new</span> <span class="title class_">int</span>[<span class="number">26</span>]; <span class="comment">//count表示英文字符</span></span><br><span class="line">        <span class="type">char</span>[] charArray = tiles.toCharArray();</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">char</span> c : charArray) {</span><br><span class="line">            count[c - <span class="string">'A'</span>]++;</span><br><span class="line">        }</span><br><span class="line">        <span class="comment">// tiles 里所有的信息都存在 count 里，对 count 执行深度优先遍历即可</span></span><br><span class="line">        <span class="keyword">return</span> dfs(count);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 设计递归函数的返回值</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * 在当前的频数数组下，可以产生的排列数</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> <span class="title function_">dfs</span><span class="params">(<span class="type">int</span>[] count)</span> {</span><br><span class="line">        <span class="comment">// 递归终止条件是：当前没有可以用的字符（没有显示递归终止条件）</span></span><br><span class="line">        <span class="type">int</span> res=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; <span class="number">26</span>; i++) {</span><br><span class="line">            <span class="keyword">if</span> (count[i] == <span class="number">0</span>) {</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            }</span><br><span class="line">            res++;</span><br><span class="line">            count[i]--;</span><br><span class="line"></span><br><span class="line">            res += dfs(count);</span><br><span class="line">            <span class="comment">// 只需要重置字符频数数组</span></span><br><span class="line">            count[i]++;</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 <ul>
 <li>
 <p><strong>复杂度分析：</strong></p>
@@ -1479,7 +1370,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">47.8k</span>&nbsp;字
+                class="white-color">48k</span>&nbsp;字
             
             
             
@@ -1838,10 +1729,10 @@ $(function () {
     if (windowWidth > 768) {
         document.write('<script type="text/javascript" src="https://apip.weatherdt.com/float/static/js/r.js?v=1111"><\/script>');
     }
-    </script>
+    </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
     
   
-<script src="/live2dw/lib/L2Dwidget.min.js?243708c68e3ad401cd4432916889e600"></script><script>L2Dwidget.init({"dialog":{"enable":true,"hitokoto":true},"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"left","width":120,"height":160,"superSample":2,"voffset":0,"hoffset":20},"mobile":{"show":false},"react":{"opacity":0.7,"opacityOnHover":0.2}});</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+<script src="/live2dw/lib/L2Dwidget.min.js?243708c68e3ad401cd4432916889e600"></script><script>L2Dwidget.init({"dialog":{"enable":true,"hitokoto":true},"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"left","width":120,"height":160,"superSample":2,"voffset":0,"hoffset":20},"mobile":{"show":false},"react":{"opacity":0.7,"opacityOnHover":0.2}});</script>
         <style>
             [bg-lazy] {
                 background-image: none !important;

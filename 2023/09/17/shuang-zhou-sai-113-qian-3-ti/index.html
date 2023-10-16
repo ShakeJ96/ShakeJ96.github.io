@@ -164,7 +164,7 @@
  </script><meta name="generator" content="Hexo 6.3.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <link rel="alternate" href="/atom.xml" title="ShakeJ" type="application/atom+xml"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+</head>
 <!-- <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js"
 
 charset="utf-8"></script> -->
@@ -638,7 +638,7 @@ charset="utf-8"></script> -->
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.6k
+                    2.7k
                 </div>
                 
 
@@ -661,9 +661,6 @@ charset="utf-8"></script> -->
         <hr class="clearfix">
 
         
-        <!-- 是否加载使用自带的 prismjs. -->
-        <link rel="stylesheet" href="/libs/prism/prism.css">
-        
 
         
 
@@ -679,16 +676,9 @@ charset="utf-8"></script> -->
 <p>给你一个长度为 <code>n</code> 下标从 <strong>0</strong> 开始的数组 <code>nums</code> ，数组中的元素为 <strong>互不相同</strong> 的正整数。请你返回让 <code>nums</code> 成为递增数组的 <strong>最少右移</strong> 次数，如果无法得到递增数组，返回 <code>-1</code> 。</p>
 <p>一次 <strong>右移</strong> 指的是同时对所有下标进行操作，将下标为 <code>i</code> 的元素移动到下标 <code>(i + 1) % n</code> 处。</p>
 <p><strong>示例 1：</strong></p>
-<pre class="line-numbers language-none"><code class="language-none">输入：nums = [3,4,5,1,2]
-输出：2
-解释：
-第一次右移后，nums = [2,3,4,5,1] 。
-第二次右移后，nums = [1,2,3,4,5] 。
-现在 nums 是递增数组了，所以答案为 2 。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">输入：nums = [3,4,5,1,2]</span><br><span class="line">输出：2</span><br><span class="line">解释：</span><br><span class="line">第一次右移后，nums = [2,3,4,5,1] 。</span><br><span class="line">第二次右移后，nums = [1,2,3,4,5] 。</span><br><span class="line">现在 nums 是递增数组了，所以答案为 2 。</span><br></pre></td></tr></tbody></table></figure>
 <p><strong>示例 2：</strong></p>
-<pre class="line-numbers language-none"><code class="language-none">输入：nums = [2,1,4]
-输出：-1
-解释：无法将数组变为递增数组。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：nums = [2,1,4]</span><br><span class="line">输出：-1</span><br><span class="line">解释：无法将数组变为递增数组。</span><br></pre></td></tr></tbody></table></figure>
 <p><strong>提示：</strong></p>
 <ul>
 <li>
@@ -731,32 +721,7 @@ charset="utf-8"></script> -->
 </ul>
 <hr>
 <h4 id="1.3-%E5%85%B7%E4%BD%93%E4%BB%A3%E7%A0%81" tabindex="-1">1.3 具体代码</h4>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java">class Solution{
-    public int minimumRightShift(List&lt;Integer&gt;nums){
-        //注意题干给出恶的是List列表，此时获取nums中的元素用到get方法，长度用size()函数方法
-        int n=nums.size();
-        //a[]是当前排序好的结果元素，作为标准
-        int[] a=new int[n];
-        for(int i=0;i&lt;n;i++){
-            a[i]=nums.get(i);
-        }
-        Arrays.sort(a);
-        //枚举需要右移的次数，同时开始每一位的判定
-        for(int x=0;x&lt;n;x++){//x若移动n次和0次的效果相同
-            boolean flag=true;//用于判断每一次移动后的数组元素和标准数组的每一位是否相同，作为判断哨兵
-            for(int i=0;i&lt;n;i++){
-                if(nums.get(i)!=a[(i+x)%n]){
-                    f=false;
-                    break;
-                }
-            }
-            if(f){
-                return x;//返回当前右移统计的次数
-            }
-        }
-        return -1;//特例，没有则返回-1
-    }
-}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>{</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">minimumRightShift</span><span class="params">(List&lt;Integer&gt;nums)</span>{</span><br><span class="line">        <span class="comment">//注意题干给出恶的是List列表，此时获取nums中的元素用到get方法，长度用size()函数方法</span></span><br><span class="line">        <span class="type">int</span> n=nums.size();</span><br><span class="line">        <span class="comment">//a[]是当前排序好的结果元素，作为标准</span></span><br><span class="line">        <span class="type">int</span>[] a=<span class="keyword">new</span> <span class="title class_">int</span>[n];</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;n;i++){</span><br><span class="line">            a[i]=nums.get(i);</span><br><span class="line">        }</span><br><span class="line">        Arrays.sort(a);</span><br><span class="line">        <span class="comment">//枚举需要右移的次数，同时开始每一位的判定</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> x=<span class="number">0</span>;x&lt;n;x++){<span class="comment">//x若移动n次和0次的效果相同</span></span><br><span class="line">            <span class="type">boolean</span> flag=<span class="literal">true</span>;<span class="comment">//用于判断每一次移动后的数组元素和标准数组的每一位是否相同，作为判断哨兵</span></span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;n;i++){</span><br><span class="line">                <span class="keyword">if</span>(nums.get(i)!=a[(i+x)%n]){</span><br><span class="line">                    f=<span class="literal">false</span>;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                }</span><br><span class="line">            }</span><br><span class="line">            <span class="keyword">if</span>(f){</span><br><span class="line">                <span class="keyword">return</span> x;<span class="comment">//返回当前右移统计的次数</span></span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">return</span> -<span class="number">1</span>;<span class="comment">//特例，没有则返回-1</span></span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 <p>​</p>
 <ul>
 <li>
@@ -789,14 +754,7 @@ charset="utf-8"></script> -->
 </ul>
 <p>请你返回一个整数，表示执行以上操作任意次后（可以执行 <strong>0</strong> 次），<code>nums</code> 数组的 <strong>最小</strong> 数组长度。</p>
 <p><strong>示例 1：</strong></p>
-<pre class="line-numbers language-none"><code class="language-none">输入：nums = [1,3,4,9]
-输出：0
-解释：一开始，nums = [1, 3, 4, 9] 。
-第一次操作，我们选择下标 0 和 1 ，满足 nums[0] &lt; nums[1] &lt;=&gt; 1 &lt; 3 。
-删除下标 0 和 1 处的元素，nums 变成 [4, 9] 。
-下一次操作，我们选择下标 0 和 1 ，满足 nums[0] &lt; nums[1] &lt;=&gt; 4 &lt; 9 。
-删除下标 0 和 1 处的元素，nums 变成空数组 [] 。
-所以，可以得到的最小数组长度为 0 。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">输入：nums = [1,3,4,9]</span><br><span class="line">输出：0</span><br><span class="line">解释：一开始，nums = [1, 3, 4, 9] 。</span><br><span class="line">第一次操作，我们选择下标 0 和 1 ，满足 nums[0] &lt; nums[1] &lt;=&gt; 1 &lt; 3 。</span><br><span class="line">删除下标 0 和 1 处的元素，nums 变成 [4, 9] 。</span><br><span class="line">下一次操作，我们选择下标 0 和 1 ，满足 nums[0] &lt; nums[1] &lt;=&gt; 4 &lt; 9 。</span><br><span class="line">删除下标 0 和 1 处的元素，nums 变成空数组 [] 。</span><br><span class="line">所以，可以得到的最小数组长度为 0 。</span><br></pre></td></tr></tbody></table></figure>
 <hr>
 <h4 id="2.2-%E8%A7%A3%E7%AD%94%E5%88%86%E6%9E%90" tabindex="-1">2.2 解答分析</h4>
 <ul>
@@ -809,24 +767,7 @@ charset="utf-8"></script> -->
 </ul>
 <hr>
 <h4 id="2.3-%E5%85%B7%E4%BD%93%E4%BB%A3%E7%A0%81" tabindex="-1">2.3 具体代码</h4>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java">class Solution{
-    public int minLengthAfterRemovals(List&lt;Integer&gt; nums){
-        //统计数组中相同元素出现的次数，找出出现次数最多的元素；首先判断是否可以被消除(也就是次数小于等于总数的一半)。如果行，则直接判断奇偶性即可；如果不行，计算最后剩余的次数
-        HashMap&lt;Integer,Integer&gt; map=new HashMap&lt;&gt;();
-        int max=0;
-        for(int n:nums){
-            int curcount=mao.getOrDefault(n,0)+1;
-            max=Math.max(max,curcount);
-            map.put(n,curcount);//每次遇到新的键、值都更新
-        }
-        int len=nums.size();
-        if(2*max&lt;=len){
-            return len%2;//判断数组长度的奇偶性
-        }else{
-            return max-(len-max);////计算的是出现次数最多的数比其他数多的次数,也是最后多出来的次数
-		}
-    }
-}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>{</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">minLengthAfterRemovals</span><span class="params">(List&lt;Integer&gt; nums)</span>{</span><br><span class="line">        <span class="comment">//统计数组中相同元素出现的次数，找出出现次数最多的元素；首先判断是否可以被消除(也就是次数小于等于总数的一半)。如果行，则直接判断奇偶性即可；如果不行，计算最后剩余的次数</span></span><br><span class="line">        HashMap&lt;Integer,Integer&gt; map=<span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line">        <span class="type">int</span> max=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> n:nums){</span><br><span class="line">            <span class="type">int</span> curcount=mao.getOrDefault(n,<span class="number">0</span>)+<span class="number">1</span>;</span><br><span class="line">            max=Math.max(max,curcount);</span><br><span class="line">            map.put(n,curcount);<span class="comment">//每次遇到新的键、值都更新</span></span><br><span class="line">        }</span><br><span class="line">        <span class="type">int</span> len=nums.size();</span><br><span class="line">        <span class="keyword">if</span>(<span class="number">2</span>*max&lt;=len){</span><br><span class="line">            <span class="keyword">return</span> len%<span class="number">2</span>;<span class="comment">//判断数组长度的奇偶性</span></span><br><span class="line">        }<span class="keyword">else</span>{</span><br><span class="line">            <span class="keyword">return</span> max-(len-max);<span class="comment">////计算的是出现次数最多的数比其他数多的次数,也是最后多出来的次数</span></span><br><span class="line">		}</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 <p>​</p>
 <ul>
 <li>
@@ -855,15 +796,9 @@ charset="utf-8"></script> -->
 <p>我们定义两个点 <code>(x1, y1)</code> 和 <code>(x2, y2)</code> 的 <strong>距离</strong> 为 <code>(x1 XOR x2) + (y1 XOR y2)</code> ，<code>XOR</code> 指的是按位异或运算。</p>
 <p>请你返回满足 <code>i &lt; j</code> 且点 <code>i</code> 和点 <code>j</code>之间距离为 <code>k</code> 的点对数目。</p>
 <p><strong>示例 1：</strong></p>
-<pre class="line-numbers language-none"><code class="language-none">输入：coordinates = [[1,2],[4,2],[1,3],[5,2]], k = 5
-输出：2
-解释：以下点对距离为 k ：
-- (0, 1)：(1 XOR 4) + (2 XOR 2) = 5 。
-- (2, 3)：(1 XOR 5) + (3 XOR 2) = 5 。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">输入：coordinates = [[1,2],[4,2],[1,3],[5,2]], k = 5</span><br><span class="line">输出：2</span><br><span class="line">解释：以下点对距离为 k ：</span><br><span class="line">- (0, 1)：(1 XOR 4) + (2 XOR 2) = 5 。</span><br><span class="line">- (2, 3)：(1 XOR 5) + (3 XOR 2) = 5 。</span><br></pre></td></tr></tbody></table></figure>
 <p><strong>示例 2：</strong></p>
-<pre class="line-numbers language-none"><code class="language-none">输入：coordinates = [[1,3],[1,3],[1,3],[1,3],[1,3]], k = 0
-输出：10
-解释：任何两个点之间的距离都为 0 ，所以总共有 10 组点对。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：coordinates = [[1,3],[1,3],[1,3],[1,3],[1,3]], k = 0</span><br><span class="line">输出：10</span><br><span class="line">解释：任何两个点之间的距离都为 0 ，所以总共有 10 组点对。</span><br></pre></td></tr></tbody></table></figure>
 <p><strong>提示：</strong></p>
 <ul>
 <li><code>2 &lt;= coordinates.length &lt;= 50000</code></li>
@@ -896,26 +831,7 @@ charset="utf-8"></script> -->
 <p>​</p>
 <hr>
 <h4 id="3.3-%E5%85%B7%E4%BD%93%E4%BB%A3%E7%A0%81" tabindex="-1">3.3 具体代码</h4>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java">class Solution{
-    private static final long mul=1000000;
-    public int countPairs(List&lt;List&lt;Integer&gt;&gt; coordinates,int k){
-        HashMap&lt;Long,Integer&gt;count =new HashMap&lt;&gt;();
-        int res=0;
-        for(List&lt;Integer&gt;coor:coordinates){
-            int x=coor.get(0),y=coor.get(1);//获取当前点对的x和y的值
-            
-            for(int i=0;i&lt;=k;i++){
-                int xt=i^x,yt=(k-i)^y;//异或操作
-                long find=xt*mul+yt;//乘法计算转化为唯一的find值
-                res+=count.getOrDefault(find,0);//统计出现和为k的数对的次数
-            }
-            
-            long key=x*mul+y;
-            count.put(key,count.getOrDefault(key,0)+1);//将当前坐标出现的次数更新到HashMapcount中。如果key已存在，则将其对应的值加1；若不存在，则初始化为1。
-        }
-        return res;
-    }
-}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>{</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">long</span> mul=<span class="number">1000000</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">countPairs</span><span class="params">(List&lt;List&lt;Integer&gt;&gt; coordinates,<span class="type">int</span> k)</span>{</span><br><span class="line">        HashMap&lt;Long,Integer&gt;count =<span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line">        <span class="type">int</span> res=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(List&lt;Integer&gt;coor:coordinates){</span><br><span class="line">            <span class="type">int</span> x=coor.get(<span class="number">0</span>),y=coor.get(<span class="number">1</span>);<span class="comment">//获取当前点对的x和y的值</span></span><br><span class="line">            </span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;=k;i++){</span><br><span class="line">                <span class="type">int</span> xt=i^x,yt=(k-i)^y;<span class="comment">//异或操作</span></span><br><span class="line">                <span class="type">long</span> find=xt*mul+yt;<span class="comment">//乘法计算转化为唯一的find值</span></span><br><span class="line">                res+=count.getOrDefault(find,<span class="number">0</span>);<span class="comment">//统计出现和为k的数对的次数</span></span><br><span class="line">            }</span><br><span class="line">            </span><br><span class="line">            <span class="type">long</span> key=x*mul+y;</span><br><span class="line">            count.put(key,count.getOrDefault(key,<span class="number">0</span>)+<span class="number">1</span>);<span class="comment">//将当前坐标出现的次数更新到HashMapcount中。如果key已存在，则将其对应的值加1；若不存在，则初始化为1。</span></span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 <p>​</p>
 <ul>
 <li>
@@ -1480,7 +1396,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">47.8k</span>&nbsp;字
+                class="white-color">48k</span>&nbsp;字
             
             
             
@@ -1839,10 +1755,10 @@ $(function () {
     if (windowWidth > 768) {
         document.write('<script type="text/javascript" src="https://apip.weatherdt.com/float/static/js/r.js?v=1111"><\/script>');
     }
-    </script>
+    </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
     
   
-<script src="/live2dw/lib/L2Dwidget.min.js?243708c68e3ad401cd4432916889e600"></script><script>L2Dwidget.init({"dialog":{"enable":true,"hitokoto":true},"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"left","width":120,"height":160,"superSample":2,"voffset":0,"hoffset":20},"mobile":{"show":false},"react":{"opacity":0.7,"opacityOnHover":0.2}});</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+<script src="/live2dw/lib/L2Dwidget.min.js?243708c68e3ad401cd4432916889e600"></script><script>L2Dwidget.init({"dialog":{"enable":true,"hitokoto":true},"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"left","width":120,"height":160,"superSample":2,"voffset":0,"hoffset":20},"mobile":{"show":false},"react":{"opacity":0.7,"opacityOnHover":0.2}});</script>
         <style>
             [bg-lazy] {
                 background-image: none !important;

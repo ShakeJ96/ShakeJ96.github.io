@@ -164,7 +164,7 @@
  </script><meta name="generator" content="Hexo 6.3.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <link rel="alternate" href="/atom.xml" title="ShakeJ" type="application/atom+xml"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+</head>
 <!-- <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js"
 
 charset="utf-8"></script> -->
@@ -661,9 +661,6 @@ charset="utf-8"></script> -->
         <hr class="clearfix">
 
         
-        <!-- 是否加载使用自带的 prismjs. -->
-        <link rel="stylesheet" href="/libs/prism/prism.css">
-        
 
         
 
@@ -682,14 +679,7 @@ charset="utf-8"></script> -->
 <li>返回在你输掉游戏前可以消灭的怪物的 <strong>最大</strong> 数量。如果你可以在所有怪物到达城市前将它们全部消灭，返回 <code>n</code> 。</li>
 </ul>
 <p><strong>示例 1：</strong></p>
-<pre class="line-numbers language-none"><code class="language-none">输入：dist = [1,3,4], speed = [1,1,1]
-输出：3
-解释：
-第 0 分钟开始时，怪物的距离是 [1,3,4]，你消灭了第一个怪物。
-第 1 分钟开始时，怪物的距离是 [X,2,3]，你没有消灭任何怪物。
-第 2 分钟开始时，怪物的距离是 [X,1,2]，你消灭了第二个怪物。
-第 3 分钟开始时，怪物的距离是 [X,X,1]，你消灭了第三个怪物。
-所有 3 个怪物都可以被消灭。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">输入：dist = [1,3,4], speed = [1,1,1]</span><br><span class="line">输出：3</span><br><span class="line">解释：</span><br><span class="line">第 0 分钟开始时，怪物的距离是 [1,3,4]，你消灭了第一个怪物。</span><br><span class="line">第 1 分钟开始时，怪物的距离是 [X,2,3]，你没有消灭任何怪物。</span><br><span class="line">第 2 分钟开始时，怪物的距离是 [X,1,2]，你消灭了第二个怪物。</span><br><span class="line">第 3 分钟开始时，怪物的距离是 [X,X,1]，你消灭了第三个怪物。</span><br><span class="line">所有 3 个怪物都可以被消灭。</span><br></pre></td></tr></tbody></table></figure>
 <p>​</p>
 <hr>
 <h3 id="2.-%E8%A7%A3%E7%AD%94%E5%88%86%E6%9E%90" tabindex="-1">2. 解答分析</h3>
@@ -713,27 +703,7 @@ charset="utf-8"></script> -->
 <li>遍历当前的<code>arr[]</code>数组，判断当前的人的移动次数和对应的的怪兽次数比较</li>
 </ul>
 <p><strong>java代码如下：</strong></p>
-<pre class="line-numbers language-Java" data-language="Java"><code class="language-Java">class Solution {
-    public int eliminateMaximum(int[] dist, int[] speed) {
-        //java, 排序
-        int n = dist.length;
-        //记录每只怪兽到达需要的时间
-        int[] arr = new int[n];
-        for (int i = 0; i &lt; n; i++) {
-            if (dist[i] == 0) return 0;//如果距离为0.此时怪兽已经到达
-            arr[i] = dist[i] % speed[i] == 0 ? dist[i] / speed[i] - 1: dist[i] / speed[i];//之所以取余，是因为speed[i]每一次都是以speed[i]的速度增长，而不是单纯地走一步++，
-            //如果此时的取余为0，说明还可以让它走商减1次（除去最后遇到的那次），也就是剩余商-1次机会
-            //如果此时的取余不为0，说明还剩下商次机会，不用减1，是因为不会刚好遇到
-        }
-        //排序，对所有的arr时间进行排序
-        Arrays.sort(arr);
-        //每分钟我们都可以杀一只怪兽，如果怪兽在我们击杀前到达，则会输掉比赛
-        for (int i = 1; i &lt; n; i++) {//i表示次数问题
-            if (arr[i] &lt; i) return i;
-        }
-        return n;
-    }
-}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> {</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">eliminateMaximum</span><span class="params">(<span class="type">int</span>[] dist, <span class="type">int</span>[] speed)</span> {</span><br><span class="line">        <span class="comment">//java, 排序</span></span><br><span class="line">        <span class="type">int</span> <span class="variable">n</span> <span class="operator">=</span> dist.length;</span><br><span class="line">        <span class="comment">//记录每只怪兽到达需要的时间</span></span><br><span class="line">        <span class="type">int</span>[] arr = <span class="keyword">new</span> <span class="title class_">int</span>[n];</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; n; i++) {</span><br><span class="line">            <span class="keyword">if</span> (dist[i] == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;<span class="comment">//如果距离为0.此时怪兽已经到达</span></span><br><span class="line">            arr[i] = dist[i] % speed[i] == <span class="number">0</span> ? dist[i] / speed[i] - <span class="number">1</span>: dist[i] / speed[i];<span class="comment">//之所以取余，是因为speed[i]每一次都是以speed[i]的速度增长，而不是单纯地走一步++，</span></span><br><span class="line">            <span class="comment">//如果此时的取余为0，说明还可以让它走商减1次（除去最后遇到的那次），也就是剩余商-1次机会</span></span><br><span class="line">            <span class="comment">//如果此时的取余不为0，说明还剩下商次机会，不用减1，是因为不会刚好遇到</span></span><br><span class="line">        }</span><br><span class="line">        <span class="comment">//排序，对所有的arr时间进行排序</span></span><br><span class="line">        Arrays.sort(arr);</span><br><span class="line">        <span class="comment">//每分钟我们都可以杀一只怪兽，如果怪兽在我们击杀前到达，则会输掉比赛</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>; i &lt; n; i++) {<span class="comment">//i表示次数问题</span></span><br><span class="line">            <span class="keyword">if</span> (arr[i] &lt; i) <span class="keyword">return</span> i;</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">return</span> n;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 <ul>
 <li>
 <p><strong>复杂度分析</strong></p>
@@ -1309,7 +1279,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">47.8k</span>&nbsp;字
+                class="white-color">48k</span>&nbsp;字
             
             
             
@@ -1668,10 +1638,10 @@ $(function () {
     if (windowWidth > 768) {
         document.write('<script type="text/javascript" src="https://apip.weatherdt.com/float/static/js/r.js?v=1111"><\/script>');
     }
-    </script>
+    </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
     
   
-<script src="/live2dw/lib/L2Dwidget.min.js?243708c68e3ad401cd4432916889e600"></script><script>L2Dwidget.init({"dialog":{"enable":true,"hitokoto":true},"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"left","width":120,"height":160,"superSample":2,"voffset":0,"hoffset":20},"mobile":{"show":false},"react":{"opacity":0.7,"opacityOnHover":0.2}});</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+<script src="/live2dw/lib/L2Dwidget.min.js?243708c68e3ad401cd4432916889e600"></script><script>L2Dwidget.init({"dialog":{"enable":true,"hitokoto":true},"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"left","width":120,"height":160,"superSample":2,"voffset":0,"hoffset":20},"mobile":{"show":false},"react":{"opacity":0.7,"opacityOnHover":0.2}});</script>
         <style>
             [bg-lazy] {
                 background-image: none !important;

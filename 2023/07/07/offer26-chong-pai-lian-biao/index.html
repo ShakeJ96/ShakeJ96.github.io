@@ -164,7 +164,7 @@
  </script><meta name="generator" content="Hexo 6.3.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <link rel="alternate" href="/atom.xml" title="ShakeJ" type="application/atom+xml"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+</head>
 <!-- <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js"
 
 charset="utf-8"></script> -->
@@ -638,7 +638,7 @@ charset="utf-8"></script> -->
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    746
+                    747
                 </div>
                 
 
@@ -661,9 +661,6 @@ charset="utf-8"></script> -->
         <hr class="clearfix">
 
         
-        <!-- 是否加载使用自带的 prismjs. -->
-        <link rel="stylesheet" href="/libs/prism/prism.css">
-        
 
         
 
@@ -677,12 +674,11 @@ charset="utf-8"></script> -->
 <p>给定一个单链表 <code>L</code> 的头节点 <code>head</code> ，单链表 <code>L</code> 表示为：</p>
 <p><code>L0 → L1 → … → Ln-1 → Ln</code><br>
 请将其重新排列后变为：</p>
-<pre class="line-numbers language-none"><code class="language-none">L0 → Ln → L1 → Ln-1 → L2 → Ln-2 → …<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">L0 → Ln → L1 → Ln-1 → L2 → Ln-2 → …</span><br></pre></td></tr></tbody></table></figure>
 <p>不能只是单纯的改变节点内部的值，而是需要实际的进行节点交换。</p>
 <p><strong>示例 1:</strong></p>
 <p><img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="https://pic.leetcode-cn.com/1626420311-PkUiGI-image.png" alt="img"></p>
-<pre class="line-numbers language-none"><code class="language-none">输入: head = [1,2,3,4]
-输出: [1,4,2,3]<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: head = [1,2,3,4]</span><br><span class="line">输出: [1,4,2,3]</span><br></pre></td></tr></tbody></table></figure>
 <hr>
 </li>
 </ul>
@@ -703,49 +699,7 @@ charset="utf-8"></script> -->
 </li>
 <li>
 <p><strong>代码：</strong></p>
-<pre class="line-numbers language-Java" data-language="Java"><code class="language-Java">class Solution{
-    public void recorderList(ListNode head){
-        ListNode dummy=new ListNode(0);
-        dummy.next=head;//哨兵
-        ListNode fast=dummy;//快指针
-        ListNode slow=dummy;//慢指针
-       while(fast!=null &amp;&amp; fast.next!=null){
-           slow=slow.next;
-           fast=fast.next.next;
-       }
-        
-        ListNode temp=slow.next;//中间节点的指针暂定为temp
-        slow.next=null;//准备连接，slow.next为空了
-        link(head,reverse(temp),dummy);//开始连接
-    }
-    private ListNode reverse(ListNode head){//反转链表，注意指针的指向位置
-        ListNode prev=null;
-        ListNode cur=head;
-        while(cur!=null){
-            ListNode next=cur.next;
-            cur.next=prev;
-            prev=cur;
-            cur=next;
-        }
-        return prev;
-    }
-    private void link(ListNode node1,ListNode node2,ListNode head){//借助原链表的头结点head（在本题函数中指的是哨兵节点dummy）,按照题目要求连接前后两部分，新链表的头节点为prev
-        ListNode prev=head;
-        while(node1!=null &amp;&amp; node2!=null){
-            ListNode temp=node1.next;//当前node1节点的下一个位置为temp
-            
-           	prev.next=node1;//prev指针指向node1部分第一个节点
-            node1.next=node2;//node1后面连的是反转后node2的第一个
-            prev=node2;//prev开始下一次连接
-            
-            node1=temp;//node1后移
-            node2=node2.next;//node2后移
-        }
-        if(node1!=null){
-            prev.next=node1;//这一个if是用来判断前半部分链表必须比后半部分多，当node1无法匹配连接node2时，直接连接返回node1的节点值。
-        }
-    }
-}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>{</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">recorderList</span><span class="params">(ListNode head)</span>{</span><br><span class="line">        ListNode dummy=<span class="keyword">new</span> <span class="title class_">ListNode</span>(<span class="number">0</span>);</span><br><span class="line">        dummy.next=head;<span class="comment">//哨兵</span></span><br><span class="line">        ListNode fast=dummy;<span class="comment">//快指针</span></span><br><span class="line">        ListNode slow=dummy;<span class="comment">//慢指针</span></span><br><span class="line">       <span class="keyword">while</span>(fast!=<span class="literal">null</span> &amp;&amp; fast.next!=<span class="literal">null</span>){</span><br><span class="line">           slow=slow.next;</span><br><span class="line">           fast=fast.next.next;</span><br><span class="line">       }</span><br><span class="line">        </span><br><span class="line">        ListNode temp=slow.next;<span class="comment">//中间节点的指针暂定为temp</span></span><br><span class="line">        slow.next=<span class="literal">null</span>;<span class="comment">//准备连接，slow.next为空了</span></span><br><span class="line">        link(head,reverse(temp),dummy);<span class="comment">//开始连接</span></span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">private</span> ListNode <span class="title function_">reverse</span><span class="params">(ListNode head)</span>{<span class="comment">//反转链表，注意指针的指向位置</span></span><br><span class="line">        ListNode prev=<span class="literal">null</span>;</span><br><span class="line">        ListNode cur=head;</span><br><span class="line">        <span class="keyword">while</span>(cur!=<span class="literal">null</span>){</span><br><span class="line">            ListNode next=cur.next;</span><br><span class="line">            cur.next=prev;</span><br><span class="line">            prev=cur;</span><br><span class="line">            cur=next;</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">return</span> prev;</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">link</span><span class="params">(ListNode node1,ListNode node2,ListNode head)</span>{<span class="comment">//借助原链表的头结点head（在本题函数中指的是哨兵节点dummy）,按照题目要求连接前后两部分，新链表的头节点为prev</span></span><br><span class="line">        ListNode prev=head;</span><br><span class="line">        <span class="keyword">while</span>(node1!=<span class="literal">null</span> &amp;&amp; node2!=<span class="literal">null</span>){</span><br><span class="line">            ListNode temp=node1.next;<span class="comment">//当前node1节点的下一个位置为temp</span></span><br><span class="line">            </span><br><span class="line">           	prev.next=node1;<span class="comment">//prev指针指向node1部分第一个节点</span></span><br><span class="line">            node1.next=node2;<span class="comment">//node1后面连的是反转后node2的第一个</span></span><br><span class="line">            prev=node2;<span class="comment">//prev开始下一次连接</span></span><br><span class="line">            </span><br><span class="line">            node1=temp;<span class="comment">//node1后移</span></span><br><span class="line">            node2=node2.next;<span class="comment">//node2后移</span></span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">if</span>(node1!=<span class="literal">null</span>){</span><br><span class="line">            prev.next=node1;<span class="comment">//这一个if是用来判断前半部分链表必须比后半部分多，当node1无法匹配连接node2时，直接连接返回node1的节点值。</span></span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 <hr>
 </li>
 </ul>
@@ -753,32 +707,7 @@ charset="utf-8"></script> -->
 <ul>
 <li>
 <p><strong>思考：</strong> 其实代码不用写三个函数，用在一个函数内部即可，不需要来回调用，实现<code>折半翻转再重连</code>即可。代码如下：</p>
-<pre class="line-numbers language-Java" data-language="Java"><code class="language-Java">class Solution {
-    public void reorderList(ListNode head) {
-        ListNode f = head, s = head;
-        while (f.next != null &amp;&amp; f.next.next != null) {
-            s = s.next;//慢指针找到中间的节点
-            f = f.next.next;//快指针直接到末尾节点
-        }
-
-        ListNode t = s.next;//暂存的t节点是慢指针的下一位
-        f=null;//快指针此时位于最后一个节点，赋值为空
-        while (t != null) {//翻转
-            t = s.next;
-            s.next = f;
-            f = s;
-            s = t;
-        }
-        s = head;//这里是将后半部分翻转。此时快指针指向原链表的最后一位元素
-
-        while (s != null) {//再重新进行连接
-            t = s.next;//保留当前位置的下一位
-            s.next = f;//后半部分的最后一位
-            s = f;
-            f = t;
-        }
-    }
-}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> {</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">reorderList</span><span class="params">(ListNode head)</span> {</span><br><span class="line">        <span class="type">ListNode</span> <span class="variable">f</span> <span class="operator">=</span> head, s = head;</span><br><span class="line">        <span class="keyword">while</span> (f.next != <span class="literal">null</span> &amp;&amp; f.next.next != <span class="literal">null</span>) {</span><br><span class="line">            s = s.next;<span class="comment">//慢指针找到中间的节点</span></span><br><span class="line">            f = f.next.next;<span class="comment">//快指针直接到末尾节点</span></span><br><span class="line">        }</span><br><span class="line"></span><br><span class="line">        <span class="type">ListNode</span> <span class="variable">t</span> <span class="operator">=</span> s.next;<span class="comment">//暂存的t节点是慢指针的下一位</span></span><br><span class="line">        f=<span class="literal">null</span>;<span class="comment">//快指针此时位于最后一个节点，赋值为空</span></span><br><span class="line">        <span class="keyword">while</span> (t != <span class="literal">null</span>) {<span class="comment">//翻转</span></span><br><span class="line">            t = s.next;</span><br><span class="line">            s.next = f;</span><br><span class="line">            f = s;</span><br><span class="line">            s = t;</span><br><span class="line">        }</span><br><span class="line">        s = head;<span class="comment">//这里是将后半部分翻转。此时快指针指向原链表的最后一位元素</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (s != <span class="literal">null</span>) {<span class="comment">//再重新进行连接</span></span><br><span class="line">            t = s.next;<span class="comment">//保留当前位置的下一位</span></span><br><span class="line">            s.next = f;<span class="comment">//后半部分的最后一位</span></span><br><span class="line">            s = f;</span><br><span class="line">            f = t;</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 <hr>
 <p>END</p>
 <p><img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="/2023/07/07/offer26-chong-pai-lian-biao/1.jpg" alt="1"></p>
@@ -1328,7 +1257,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">47.8k</span>&nbsp;字
+                class="white-color">48k</span>&nbsp;字
             
             
             
@@ -1687,10 +1616,10 @@ $(function () {
     if (windowWidth > 768) {
         document.write('<script type="text/javascript" src="https://apip.weatherdt.com/float/static/js/r.js?v=1111"><\/script>');
     }
-    </script>
+    </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
     
   
-<script src="/live2dw/lib/L2Dwidget.min.js?243708c68e3ad401cd4432916889e600"></script><script>L2Dwidget.init({"dialog":{"enable":true,"hitokoto":true},"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"left","width":120,"height":160,"superSample":2,"voffset":0,"hoffset":20},"mobile":{"show":false},"react":{"opacity":0.7,"opacityOnHover":0.2}});</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+<script src="/live2dw/lib/L2Dwidget.min.js?243708c68e3ad401cd4432916889e600"></script><script>L2Dwidget.init({"dialog":{"enable":true,"hitokoto":true},"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"left","width":120,"height":160,"superSample":2,"voffset":0,"hoffset":20},"mobile":{"show":false},"react":{"opacity":0.7,"opacityOnHover":0.2}});</script>
         <style>
             [bg-lazy] {
                 background-image: none !important;

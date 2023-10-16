@@ -164,7 +164,7 @@
  </script><meta name="generator" content="Hexo 6.3.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <link rel="alternate" href="/atom.xml" title="ShakeJ" type="application/atom+xml"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+</head>
 <!-- <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js"
 
 charset="utf-8"></script> -->
@@ -661,9 +661,6 @@ charset="utf-8"></script> -->
         <hr class="clearfix">
 
         
-        <!-- 是否加载使用自带的 prismjs. -->
-        <link rel="stylesheet" href="/libs/prism/prism.css">
-        
 
         
 
@@ -705,83 +702,7 @@ charset="utf-8"></script> -->
 <img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="/2023/10/05/bfs-he-dfs-you-xian-sou-suo-suan-fa/bfs%E5%92%8C%E5%B1%82%E5%BA%8F%E9%81%8D%E5%8E%86.png" alt="bfs和层序遍历" style="zoom:50%;">
 <p>​</p>
 <h4 id="%E5%85%B7%E4%BD%93%E4%BB%A3%E7%A0%81" tabindex="-1">具体代码</h4>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java">import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-
-public class BFSTraversal {
-    //二叉树的层序遍历
-    public List&lt;List&lt;Integer&gt;&gt; levelOrder(TreeNode root) {
-        List&lt;List&lt;Integer&gt;&gt; result = new ArrayList&lt;&gt;();
-        if (root == null) return result;
-
-        LinkedList&lt;TreeNode&gt; queue = new LinkedList&lt;&gt;();
-        queue.offer(root);
-
-        while (!queue.isEmpty()) {
-            int levelSize = queue.size();
-             //在每一层遍历开始前，先记录队列中的结点数量n（也就是这一层的结点数量），然后一口气处理完这一层的n个结点。将当前层的所有结点出队列，再将下一层的所有结点入队列，这样就实现了层序遍历。
-            List&lt;Integer&gt; levelNodes = new ArrayList&lt;&gt;();//每一层一个List数组
-           
-            for (int i = 0; i &lt; levelSize; i++) {
-                TreeNode node = queue.poll();
-                levelNodes.add(node.val);
-
-                if (node.left != null)
-                    queue.offer(node.left);
-                if (node.right != null)
-                    queue.offer(node.right);
-            }
-            result.add(levelNodes);//[[,]]
-        }
-
-        return result;
-    }
-
-    // 二叉树的广度遍历
-    public List&lt;Integer&gt; BfsBinary(TreeNode root){
-        List&lt;Integer&gt; resultList = new ArrayList&lt;&gt;();
-        if (root == null) return result;
-        
-        LinkedList&lt;TreeNode&gt; queue = new LinkedList&lt;&gt;();
-
-        queue.add(root);//offer()比add()稍好，可以对异常处理有所调控,但一般刷题都行
-
-        while (!queue.isEmpty()){
-            TreeNode node = queue.poll();
-            resultList.add(node.val);
-            if(node.left != null){
-                queue.add(node.left);
-            }
-            if(node.right != null){
-                queue.add(node.right);
-            }
-        }
-
-        return resultList;
-    }
-
-    public static void main(String[] args) {
-        // 创建一棵二叉树示例
-        TreeNode root = new TreeNode(1);
-        root.left = new TreeNode(2);
-        root.right = new TreeNode(3);
-        root.left.left = new TreeNode(4);
-        root.left.right = new TreeNode(5);
-
-        // 实例化BFSTraversal对象
-        BFSTraversal traversal = new BFSTraversal();
-        // 调用levelOrder方法进行广度优先遍历(但是是层序遍历)，区分每一层，返回二维数组
-        List&lt;List&lt;Integer&gt;&gt; result = traversal.levelOrder(root);
-        // 输出结果
-        System.out.println("层序遍历输出："+result);
-
-        //广度优先搜索，BFS 的遍历结果是一个一维数组，无法区分每一层
-        BFSTraversal t=new BFSTraversal();
-        List&lt;Integer&gt; result1=t.BfsBinary(root);
-        System.out.println("Bfs遍历输出："+result1);
-    }
-}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.LinkedList;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">BFSTraversal</span> {</span><br><span class="line">    <span class="comment">//二叉树的层序遍历</span></span><br><span class="line">    <span class="keyword">public</span> List&lt;List&lt;Integer&gt;&gt; <span class="title function_">levelOrder</span><span class="params">(TreeNode root)</span> {</span><br><span class="line">        List&lt;List&lt;Integer&gt;&gt; result = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        <span class="keyword">if</span> (root == <span class="literal">null</span>) <span class="keyword">return</span> result;</span><br><span class="line"></span><br><span class="line">        LinkedList&lt;TreeNode&gt; queue = <span class="keyword">new</span> <span class="title class_">LinkedList</span>&lt;&gt;();</span><br><span class="line">        queue.offer(root);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (!queue.isEmpty()) {</span><br><span class="line">            <span class="type">int</span> <span class="variable">levelSize</span> <span class="operator">=</span> queue.size();</span><br><span class="line">             <span class="comment">//在每一层遍历开始前，先记录队列中的结点数量n（也就是这一层的结点数量），然后一口气处理完这一层的n个结点。将当前层的所有结点出队列，再将下一层的所有结点入队列，这样就实现了层序遍历。</span></span><br><span class="line">            List&lt;Integer&gt; levelNodes = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();<span class="comment">//每一层一个List数组</span></span><br><span class="line">           </span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; levelSize; i++) {</span><br><span class="line">                <span class="type">TreeNode</span> <span class="variable">node</span> <span class="operator">=</span> queue.poll();</span><br><span class="line">                levelNodes.add(node.val);</span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span> (node.left != <span class="literal">null</span>)</span><br><span class="line">                    queue.offer(node.left);</span><br><span class="line">                <span class="keyword">if</span> (node.right != <span class="literal">null</span>)</span><br><span class="line">                    queue.offer(node.right);</span><br><span class="line">            }</span><br><span class="line">            result.add(levelNodes);<span class="comment">//[[,]]</span></span><br><span class="line">        }</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 二叉树的广度遍历</span></span><br><span class="line">    <span class="keyword">public</span> List&lt;Integer&gt; <span class="title function_">BfsBinary</span><span class="params">(TreeNode root)</span>{</span><br><span class="line">        List&lt;Integer&gt; resultList = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        <span class="keyword">if</span> (root == <span class="literal">null</span>) <span class="keyword">return</span> result;</span><br><span class="line">        </span><br><span class="line">        LinkedList&lt;TreeNode&gt; queue = <span class="keyword">new</span> <span class="title class_">LinkedList</span>&lt;&gt;();</span><br><span class="line"></span><br><span class="line">        queue.add(root);<span class="comment">//offer()比add()稍好，可以对异常处理有所调控,但一般刷题都行</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (!queue.isEmpty()){</span><br><span class="line">            <span class="type">TreeNode</span> <span class="variable">node</span> <span class="operator">=</span> queue.poll();</span><br><span class="line">            resultList.add(node.val);</span><br><span class="line">            <span class="keyword">if</span>(node.left != <span class="literal">null</span>){</span><br><span class="line">                queue.add(node.left);</span><br><span class="line">            }</span><br><span class="line">            <span class="keyword">if</span>(node.right != <span class="literal">null</span>){</span><br><span class="line">                queue.add(node.right);</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> resultList;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> {</span><br><span class="line">        <span class="comment">// 创建一棵二叉树示例</span></span><br><span class="line">        <span class="type">TreeNode</span> <span class="variable">root</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">TreeNode</span>(<span class="number">1</span>);</span><br><span class="line">        root.left = <span class="keyword">new</span> <span class="title class_">TreeNode</span>(<span class="number">2</span>);</span><br><span class="line">        root.right = <span class="keyword">new</span> <span class="title class_">TreeNode</span>(<span class="number">3</span>);</span><br><span class="line">        root.left.left = <span class="keyword">new</span> <span class="title class_">TreeNode</span>(<span class="number">4</span>);</span><br><span class="line">        root.left.right = <span class="keyword">new</span> <span class="title class_">TreeNode</span>(<span class="number">5</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 实例化BFSTraversal对象</span></span><br><span class="line">        <span class="type">BFSTraversal</span> <span class="variable">traversal</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">BFSTraversal</span>();</span><br><span class="line">        <span class="comment">// 调用levelOrder方法进行广度优先遍历(但是是层序遍历)，区分每一层，返回二维数组</span></span><br><span class="line">        List&lt;List&lt;Integer&gt;&gt; result = traversal.levelOrder(root);</span><br><span class="line">        <span class="comment">// 输出结果</span></span><br><span class="line">        System.out.println(<span class="string">"层序遍历输出："</span>+result);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//广度优先搜索，BFS 的遍历结果是一个一维数组，无法区分每一层</span></span><br><span class="line">        BFSTraversal t=<span class="keyword">new</span> <span class="title class_">BFSTraversal</span>();</span><br><span class="line">        List&lt;Integer&gt; result1=t.BfsBinary(root);</span><br><span class="line">        System.out.println(<span class="string">"Bfs遍历输出："</span>+result1);</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 <ul>
 <li>
 <p><strong>运行结果如图所示</strong>：</p>
@@ -810,54 +731,7 @@ public class BFSTraversal {
 </li>
 </ul>
 <h4 id="%E5%85%B7%E4%BD%93%E4%BB%A3%E7%A0%81-1" tabindex="-1">具体代码</h4>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java">import java.util.*;
-
-//dfs深度优先,以二叉树的前序遍历为例
-class TreeNode {
-    int val;
-    TreeNode left;
-    TreeNode right;
-
-    TreeNode(int val) {
-        this.val = val;
-    }
-}
-
-class PreorderTraversal {
-    public List&lt;Integer&gt; preorderTraversal(TreeNode root) {
-        List&lt;Integer&gt; result = new ArrayList&lt;&gt;();
-        if (root == null) return result;
-
-        dfs(root, result);
-        return result;
-    }
-
-    private void dfs(TreeNode root, List&lt;Integer&gt; result) {//递归，隐含地调用系统的栈，递归地调用左右子树，最后将值存储在result序列中。
-        if (root == null) return;
-
-        result.add(root.val);
-        dfs(root.left, result);
-        dfs(root.right, result);
-    }
-
-    public static void main(String[] args) {
-        // 创建一棵二叉树示例
-        TreeNode root = new TreeNode(1);
-        root.left = new TreeNode(2);
-        root.right = new TreeNode(3);
-        root.left.left = new TreeNode(4);
-        root.left.right = new TreeNode(5);
-
-        // 实例化PreorderTraversal对象
-        PreorderTraversal traversal = new PreorderTraversal();
-
-        // 调用preorderTraversal方法进行前序遍历（dfs）
-        List&lt;Integer&gt; result = traversal.preorderTraversal(root);
-
-        // 输出结果
-        System.out.println("DFS遍历输出："+result);
-    }
-}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"></span><br><span class="line"><span class="comment">//dfs深度优先,以二叉树的前序遍历为例</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">TreeNode</span> {</span><br><span class="line">    <span class="type">int</span> val;</span><br><span class="line">    TreeNode left;</span><br><span class="line">    TreeNode right;</span><br><span class="line"></span><br><span class="line">    TreeNode(<span class="type">int</span> val) {</span><br><span class="line">        <span class="built_in">this</span>.val = val;</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">PreorderTraversal</span> {</span><br><span class="line">    <span class="keyword">public</span> List&lt;Integer&gt; <span class="title function_">preorderTraversal</span><span class="params">(TreeNode root)</span> {</span><br><span class="line">        List&lt;Integer&gt; result = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        <span class="keyword">if</span> (root == <span class="literal">null</span>) <span class="keyword">return</span> result;</span><br><span class="line"></span><br><span class="line">        dfs(root, result);</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">dfs</span><span class="params">(TreeNode root, List&lt;Integer&gt; result)</span> {<span class="comment">//递归，隐含地调用系统的栈，递归地调用左右子树，最后将值存储在result序列中。</span></span><br><span class="line">        <span class="keyword">if</span> (root == <span class="literal">null</span>) <span class="keyword">return</span>;</span><br><span class="line"></span><br><span class="line">        result.add(root.val);</span><br><span class="line">        dfs(root.left, result);</span><br><span class="line">        dfs(root.right, result);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> {</span><br><span class="line">        <span class="comment">// 创建一棵二叉树示例</span></span><br><span class="line">        <span class="type">TreeNode</span> <span class="variable">root</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">TreeNode</span>(<span class="number">1</span>);</span><br><span class="line">        root.left = <span class="keyword">new</span> <span class="title class_">TreeNode</span>(<span class="number">2</span>);</span><br><span class="line">        root.right = <span class="keyword">new</span> <span class="title class_">TreeNode</span>(<span class="number">3</span>);</span><br><span class="line">        root.left.left = <span class="keyword">new</span> <span class="title class_">TreeNode</span>(<span class="number">4</span>);</span><br><span class="line">        root.left.right = <span class="keyword">new</span> <span class="title class_">TreeNode</span>(<span class="number">5</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 实例化PreorderTraversal对象</span></span><br><span class="line">        <span class="type">PreorderTraversal</span> <span class="variable">traversal</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">PreorderTraversal</span>();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 调用preorderTraversal方法进行前序遍历（dfs）</span></span><br><span class="line">        List&lt;Integer&gt; result = traversal.preorderTraversal(root);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 输出结果</span></span><br><span class="line">        System.out.println(<span class="string">"DFS遍历输出："</span>+result);</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 <ul>
 <li><strong>运行结果如图所示</strong>：</li>
 </ul>
@@ -880,12 +754,7 @@ class PreorderTraversal {
 <p><strong>叶节点</strong> 是指没有子节点的节点。</p>
 <p><strong>示例 1：</strong></p>
 <img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="/2023/10/05/bfs-he-dfs-you-xian-sou-suo-suan-fa/num1tree.jpg" alt="num1tree" style="zoom:50%;">
-<pre class="line-numbers language-none"><code class="language-none">输入：root = [1,2,3]
-输出：25
-解释：
-从根到叶子节点路径 1-&gt;2 代表数字 12
-从根到叶子节点路径 1-&gt;3 代表数字 13
-因此，数字总和 = 12 + 13 = 25<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">输入：root = [1,2,3]</span><br><span class="line">输出：25</span><br><span class="line">解释：</span><br><span class="line">从根到叶子节点路径 1-&gt;2 代表数字 12</span><br><span class="line">从根到叶子节点路径 1-&gt;3 代表数字 13</span><br><span class="line">因此，数字总和 = 12 + 13 = 25</span><br></pre></td></tr></tbody></table></figure>
 <p>​</p>
 <h5 id="%E8%A7%A3%E7%AD%94%E5%88%86%E6%9E%90" tabindex="-1">解答分析</h5>
 <ul>
@@ -906,22 +775,7 @@ class PreorderTraversal {
 </li>
 </ul>
 <h5 id="%E5%85%B7%E4%BD%93%E4%BB%A3%E7%A0%81-2" tabindex="-1">具体代码</h5>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java">class Solution{
-	public int sumNumbers(TreeNode root){
-   		return dfs(root,0);//输入的数和数字结果
-	}
-	private int dfs(){//每一次遍历到当前路径尽头
- 		if(root==null){	//终止条件
-            return 0;
-        }
-        //本次递归级的具体操作
-        path=path*10+root.val;//当前递归中的每次数字的统计
-        if(root.left==null &amp;&amp; root.right==null){
-            return path;
-        }
-        return dfs(root.left,path)+dfs(root.right,path);//上一级返回值
-	}
-}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>{</span><br><span class="line">	<span class="keyword">public</span> <span class="type">int</span> <span class="title function_">sumNumbers</span><span class="params">(TreeNode root)</span>{</span><br><span class="line">   		<span class="keyword">return</span> dfs(root,<span class="number">0</span>);<span class="comment">//输入的数和数字结果</span></span><br><span class="line">	}</span><br><span class="line">	<span class="keyword">private</span> <span class="type">int</span> <span class="title function_">dfs</span><span class="params">()</span>{<span class="comment">//每一次遍历到当前路径尽头</span></span><br><span class="line"> 		<span class="keyword">if</span>(root==<span class="literal">null</span>){	<span class="comment">//终止条件</span></span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        }</span><br><span class="line">        <span class="comment">//本次递归级的具体操作</span></span><br><span class="line">        path=path*<span class="number">10</span>+root.val;<span class="comment">//当前递归中的每次数字的统计</span></span><br><span class="line">        <span class="keyword">if</span>(root.left==<span class="literal">null</span> &amp;&amp; root.right==<span class="literal">null</span>){</span><br><span class="line">            <span class="keyword">return</span> path;</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">return</span> dfs(root.left,path)+dfs(root.right,path);<span class="comment">//上一级返回值</span></span><br><span class="line">	}</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 <p>​</p>
 <p>​</p>
 <hr>
@@ -1477,7 +1331,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">47.8k</span>&nbsp;字
+                class="white-color">48k</span>&nbsp;字
             
             
             
@@ -1836,10 +1690,10 @@ $(function () {
     if (windowWidth > 768) {
         document.write('<script type="text/javascript" src="https://apip.weatherdt.com/float/static/js/r.js?v=1111"><\/script>');
     }
-    </script>
+    </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
     
   
-<script src="/live2dw/lib/L2Dwidget.min.js?243708c68e3ad401cd4432916889e600"></script><script>L2Dwidget.init({"dialog":{"enable":true,"hitokoto":true},"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"left","width":120,"height":160,"superSample":2,"voffset":0,"hoffset":20},"mobile":{"show":false},"react":{"opacity":0.7,"opacityOnHover":0.2}});</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+<script src="/live2dw/lib/L2Dwidget.min.js?243708c68e3ad401cd4432916889e600"></script><script>L2Dwidget.init({"dialog":{"enable":true,"hitokoto":true},"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"left","width":120,"height":160,"superSample":2,"voffset":0,"hoffset":20},"mobile":{"show":false},"react":{"opacity":0.7,"opacityOnHover":0.2}});</script>
         <style>
             [bg-lazy] {
                 background-image: none !important;

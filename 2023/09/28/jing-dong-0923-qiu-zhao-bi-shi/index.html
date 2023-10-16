@@ -164,7 +164,7 @@
  </script><meta name="generator" content="Hexo 6.3.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <link rel="alternate" href="/atom.xml" title="ShakeJ" type="application/atom+xml"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+</head>
 <!-- <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js"
 
 charset="utf-8"></script> -->
@@ -657,9 +657,6 @@ charset="utf-8"></script> -->
         <hr class="clearfix">
 
         
-        <!-- 是否加载使用自带的 prismjs. -->
-        <link rel="stylesheet" href="/libs/prism/prism.css">
-        
 
         
 
@@ -683,10 +680,9 @@ charset="utf-8"></script> -->
 <p>输出一个整数，表示最少需要花多少钱才能得到1到n个不同的魔法药剂，蓝色或者红色都可以。</p>
 <p><strong>示例1</strong></p>
 <p><strong>输入</strong></p>
-<pre class="line-numbers language-none"><code class="language-none">5
-2 4 10 1 3<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">5</span><br><span class="line">2 4 10 1 3</span><br></pre></td></tr></tbody></table></figure>
 <p><strong>输出</strong></p>
-<pre class="line-numbers language-none"><code class="language-none">16<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">16</span><br></pre></td></tr></tbody></table></figure>
 <p><strong>说明</strong></p>
 <p>红色药剂的价格分别为[2, 4, 10, 1, 3]。</p>
 <p>蓝色药剂的价格分别为[14, 4, 6, 7, 3]。<code>这里注意蓝色药剂合成用到的红色试剂的种类，给定的顺序即可</code></p>
@@ -698,43 +694,7 @@ charset="utf-8"></script> -->
 <li>处理思路是使用贪心算法，首先将红色药剂价格和蓝色药剂价格分别存储在两个List中。接着，遍历每一个蓝色药剂，计算用哪两种红色药剂来组合可以得到最小价格，将该价格存储在price List中。最后，遍历price List，将各个价格累加起来，即为最终的答案。</li>
 </ul>
 <h4 id="3.-%E5%85%B7%E4%BD%93%E4%BB%A3%E7%A0%81" tabindex="-1">3. 具体代码</h4>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java">import java.util.*;
-
-public class title1 {
-        public static void main(String[] args) {
-            Scanner scanner=new Scanner(System.in);
-            int n = scanner.nextInt();
-            List&lt;Long&gt; red = new ArrayList&lt;&gt;();
-            List&lt;Long&gt; price = new ArrayList&lt;&gt;();
-
-            for (int i = 0; i &lt; n; i++) {
-                red.add(scanner.nextLong());
-                price.add(1000005L);
-            }
-
-            List&lt;List&lt;Long&gt;&gt; blue = new ArrayList&lt;&gt;();
-            for (int i = 0; i &lt; n; i++) {
-                List&lt;Long&gt; temp = new ArrayList&lt;&gt;();
-                temp.add(scanner.nextLong());
-                temp.add(scanner.nextLong());
-                temp.set(0, temp.get(0) - 1);
-                temp.set(1, temp.get(1) - 1);
-                blue.add(temp);
-            }
-            for (int i = 0; i &lt; n; i++) {
-                long minPrice = Math.min(red.get(i), red.get(blue.get(i).get(0).intValue()) + red.get(blue.get(i).get(1).intValue()));
-                price.set(i, minPrice);
-            }
-
-            long ans = 0;
-            for (long x : price) {
-                ans += x;
-            }
-
-            System.out.println(ans);
-        }
-}
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">title1</span> {</span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> {</span><br><span class="line">            Scanner scanner=<span class="keyword">new</span> <span class="title class_">Scanner</span>(System.in);</span><br><span class="line">            <span class="type">int</span> <span class="variable">n</span> <span class="operator">=</span> scanner.nextInt();</span><br><span class="line">            List&lt;Long&gt; red = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">            List&lt;Long&gt; price = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line"></span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; n; i++) {</span><br><span class="line">                red.add(scanner.nextLong());</span><br><span class="line">                price.add(<span class="number">1000005L</span>);</span><br><span class="line">            }</span><br><span class="line"></span><br><span class="line">            List&lt;List&lt;Long&gt;&gt; blue = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; n; i++) {</span><br><span class="line">                List&lt;Long&gt; temp = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">                temp.add(scanner.nextLong());</span><br><span class="line">                temp.add(scanner.nextLong());</span><br><span class="line">                temp.set(<span class="number">0</span>, temp.get(<span class="number">0</span>) - <span class="number">1</span>);</span><br><span class="line">                temp.set(<span class="number">1</span>, temp.get(<span class="number">1</span>) - <span class="number">1</span>);</span><br><span class="line">                blue.add(temp);</span><br><span class="line">            }</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; n; i++) {</span><br><span class="line">                <span class="type">long</span> <span class="variable">minPrice</span> <span class="operator">=</span> Math.min(red.get(i), red.get(blue.get(i).get(<span class="number">0</span>).intValue()) + red.get(blue.get(i).get(<span class="number">1</span>).intValue()));</span><br><span class="line">                price.set(i, minPrice);</span><br><span class="line">            }</span><br><span class="line"></span><br><span class="line">            <span class="type">long</span> <span class="variable">ans</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">long</span> x : price) {</span><br><span class="line">                ans += x;</span><br><span class="line">            }</span><br><span class="line"></span><br><span class="line">            System.out.println(ans);</span><br><span class="line">        }</span><br><span class="line">}</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
 <ul>
 <li>
 <p><strong>复杂度分析：</strong></p>
@@ -761,10 +721,9 @@ public class title1 {
 <p>输出一个整数，表示答案</p>
 <p><strong>示例</strong></p>
 <p><strong>输入</strong></p>
-<pre class="line-numbers language-none"><code class="language-none">5
-6 2 4 5 1<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">5</span><br><span class="line">6 2 4 5 1</span><br></pre></td></tr></tbody></table></figure>
 <p><strong>输出</strong></p>
-<pre class="line-numbers language-none"><code class="language-none">1<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1</span><br></pre></td></tr></tbody></table></figure>
 <h4 id="2.-%E8%A7%A3%E7%AD%94%E5%88%86%E6%9E%90" tabindex="-1">2. 解答分析</h4>
 <ul>
 <li>
@@ -785,41 +744,7 @@ public class title1 {
 </li>
 </ul>
 <h4 id="3.-%E5%85%B7%E4%BD%93%E4%BB%A3%E7%A0%81-1" tabindex="-1">3. 具体代码</h4>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java">import java.util.ArrayList;
-import java.util.Scanner;
-import java.util.List;
-
-public class title2 {
-    public static void main(String[] args){
-        Scanner in=new Scanner(System.in);
-        int n=in.nextInt();
-        List&lt;Integer&gt; arr=new ArrayList&lt;&gt;();
-        for(int i=0;i&lt;n;i++){
-            arr.add(in.nextInt());
-        }
-        List&lt;Integer&gt;nums=new ArrayList&lt;&gt;();
-        int len=1,ans=0;
-        for(int i=1;i&lt;n;i++) {//从第二个元素开始迭代
-            if (arr.get(i) &gt;= arr.get(i - 1)) {
-                len++;//记录最长的子数组的长度
-            } else {//遇到非递增子数组时，判断此时的子数组的长度大于3即可
-                if (len &gt;= 3) {
-                    nums.add(len);
-                    len = 0;
-                }
-            }
-        }
-            if(len&gt;=3){
-                nums.add(len);//检查最后的序列
-            }
-            for(int x:nums){//遍历每个满足的子数组的长度，从中间的元素开始进行替换
-                ans+=(x-1)/2;//3个改一个，4个改中间1个，5个改1个+3个的情况...
-            }
-        System.out.println(ans);
-        in.close();
-    }
-}
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">title2</span> {</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span>{</span><br><span class="line">        Scanner in=<span class="keyword">new</span> <span class="title class_">Scanner</span>(System.in);</span><br><span class="line">        <span class="type">int</span> n=in.nextInt();</span><br><span class="line">        List&lt;Integer&gt; arr=<span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;n;i++){</span><br><span class="line">            arr.add(in.nextInt());</span><br><span class="line">        }</span><br><span class="line">        List&lt;Integer&gt;nums=<span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        <span class="type">int</span> len=<span class="number">1</span>,ans=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;n;i++) {<span class="comment">//从第二个元素开始迭代</span></span><br><span class="line">            <span class="keyword">if</span> (arr.get(i) &gt;= arr.get(i - <span class="number">1</span>)) {</span><br><span class="line">                len++;<span class="comment">//记录最长的子数组的长度</span></span><br><span class="line">            } <span class="keyword">else</span> {<span class="comment">//遇到非递增子数组时，判断此时的子数组的长度大于3即可</span></span><br><span class="line">                <span class="keyword">if</span> (len &gt;= <span class="number">3</span>) {</span><br><span class="line">                    nums.add(len);</span><br><span class="line">                    len = <span class="number">0</span>;</span><br><span class="line">                }</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">            <span class="keyword">if</span>(len&gt;=<span class="number">3</span>){</span><br><span class="line">                nums.add(len);<span class="comment">//检查最后的序列</span></span><br><span class="line">            }</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> x:nums){<span class="comment">//遍历每个满足的子数组的长度，从中间的元素开始进行替换</span></span><br><span class="line">                ans+=(x-<span class="number">1</span>)/<span class="number">2</span>;<span class="comment">//3个改一个，4个改中间1个，5个改1个+3个的情况...</span></span><br><span class="line">            }</span><br><span class="line">        System.out.println(ans);</span><br><span class="line">        in.close();</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
 <ul>
 <li><strong>复杂度分析：</strong>
 <ul>
@@ -1371,7 +1296,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">47.8k</span>&nbsp;字
+                class="white-color">48k</span>&nbsp;字
             
             
             
@@ -1730,10 +1655,10 @@ $(function () {
     if (windowWidth > 768) {
         document.write('<script type="text/javascript" src="https://apip.weatherdt.com/float/static/js/r.js?v=1111"><\/script>');
     }
-    </script>
+    </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
     
   
-<script src="/live2dw/lib/L2Dwidget.min.js?243708c68e3ad401cd4432916889e600"></script><script>L2Dwidget.init({"dialog":{"enable":true,"hitokoto":true},"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"left","width":120,"height":160,"superSample":2,"voffset":0,"hoffset":20},"mobile":{"show":false},"react":{"opacity":0.7,"opacityOnHover":0.2}});</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+<script src="/live2dw/lib/L2Dwidget.min.js?243708c68e3ad401cd4432916889e600"></script><script>L2Dwidget.init({"dialog":{"enable":true,"hitokoto":true},"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"left","width":120,"height":160,"superSample":2,"voffset":0,"hoffset":20},"mobile":{"show":false},"react":{"opacity":0.7,"opacityOnHover":0.2}});</script>
         <style>
             [bg-lazy] {
                 background-image: none !important;

@@ -164,7 +164,7 @@
  </script><meta name="generator" content="Hexo 6.3.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <link rel="alternate" href="/atom.xml" title="ShakeJ" type="application/atom+xml"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+</head>
 <!-- <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js"
 
 charset="utf-8"></script> -->
@@ -657,9 +657,6 @@ charset="utf-8"></script> -->
         <hr class="clearfix">
 
         
-        <!-- 是否加载使用自带的 prismjs. -->
-        <link rel="stylesheet" href="/libs/prism/prism.css">
-        
 
         
 
@@ -676,45 +673,21 @@ charset="utf-8"></script> -->
 <p><strong>用法</strong></p>
 </li>
 </ol>
-  <pre class="line-numbers language-java" data-language="java"><code class="language-java">//默认容量为 11
-  private static final int DEFAULT_INITIAL_CAPACITY = 11;
-  //1、无参构造，默认容量和默认排序方法
-  public PriorityQueue() {
-          this(DEFAULT_INITIAL_CAPACITY, null);
-      }
-  //2、指定容量
-  public PriorityQueue(int initialCapacity) {
-          this(initialCapacity, null);
-      }
-  //3、指定排序方法
-  public PriorityQueue(Comparator&lt;? super E&gt; comparator) {
-          this(DEFAULT_INITIAL_CAPACITY, comparator);
-      }
-  //4、指定容量和排序方法
-  public PriorityQueue(int initialCapacity,
-                           Comparator&lt;? super E&gt; comparator) {
-          // Note: This restriction of at least one is not actually needed,
-          // but continues for 1.5 compatibility
-          if (initialCapacity &lt; 1)
-              throw new IllegalArgumentException();
-          this.queue = new Object[initialCapacity];
-          this.comparator = comparator;
-      }
-  <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+  <figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//默认容量为 11</span></span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">int</span> <span class="variable">DEFAULT_INITIAL_CAPACITY</span> <span class="operator">=</span> <span class="number">11</span>;</span><br><span class="line">  <span class="comment">//1、无参构造，默认容量和默认排序方法</span></span><br><span class="line">  <span class="keyword">public</span> <span class="title function_">PriorityQueue</span><span class="params">()</span> {</span><br><span class="line">          <span class="built_in">this</span>(DEFAULT_INITIAL_CAPACITY, <span class="literal">null</span>);</span><br><span class="line">      }</span><br><span class="line">  <span class="comment">//2、指定容量</span></span><br><span class="line">  <span class="keyword">public</span> <span class="title function_">PriorityQueue</span><span class="params">(<span class="type">int</span> initialCapacity)</span> {</span><br><span class="line">          <span class="built_in">this</span>(initialCapacity, <span class="literal">null</span>);</span><br><span class="line">      }</span><br><span class="line">  <span class="comment">//3、指定排序方法</span></span><br><span class="line">  <span class="keyword">public</span> <span class="title function_">PriorityQueue</span><span class="params">(Comparator&lt;? <span class="built_in">super</span> E&gt; comparator)</span> {</span><br><span class="line">          <span class="built_in">this</span>(DEFAULT_INITIAL_CAPACITY, comparator);</span><br><span class="line">      }</span><br><span class="line">  <span class="comment">//4、指定容量和排序方法</span></span><br><span class="line">  <span class="keyword">public</span> <span class="title function_">PriorityQueue</span><span class="params">(<span class="type">int</span> initialCapacity,</span></span><br><span class="line"><span class="params">                           Comparator&lt;? <span class="built_in">super</span> E&gt; comparator)</span> {</span><br><span class="line">          <span class="comment">// Note: This restriction of at least one is not actually needed,</span></span><br><span class="line">          <span class="comment">// but continues for 1.5 compatibility</span></span><br><span class="line">          <span class="keyword">if</span> (initialCapacity &lt; <span class="number">1</span>)</span><br><span class="line">              <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">IllegalArgumentException</span>();</span><br><span class="line">          <span class="built_in">this</span>.queue = <span class="keyword">new</span> <span class="title class_">Object</span>[initialCapacity];</span><br><span class="line">          <span class="built_in">this</span>.comparator = comparator;</span><br><span class="line">      }</span><br><span class="line">  </span><br></pre></td></tr></tbody></table></figure>
 <blockquote>
 <p>在构造PriorityQueue时候我们可以指定初始容量和元素在队列中的排序方法，如果不指定，则默认初始容量为11，默认的排序方式是将元素从小到大进行排序。</p>
 </blockquote>
 <ol start="3">
 <li><strong>最小堆构造</strong></li>
 </ol>
-  <pre class="line-numbers language-java" data-language="java"><code class="language-java">PriorityQueue&lt;Integer&gt; minheap = new PriorityQueue&lt;&gt;();<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+  <figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PriorityQueue&lt;Integer&gt; minheap = <span class="keyword">new</span> <span class="title class_">PriorityQueue</span>&lt;&gt;();</span><br></pre></td></tr></tbody></table></figure>
 <ul>
 <li>使用无参构造，元素在队列中按照默认从小到大的顺序排列，可以保证每次出队列的元素都是队列中的最小的元素。</li>
 </ul>
 <ol start="4">
 <li>
 <p><strong>最大堆构造</strong></p>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java">PriorityQueue&lt;Integer&gt; maxheap = new PriorityQueue&lt;&gt;(Collections.reverseOrder());<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PriorityQueue&lt;Integer&gt; maxheap = <span class="keyword">new</span> <span class="title class_">PriorityQueue</span>&lt;&gt;(Collections.reverseOrder());</span><br></pre></td></tr></tbody></table></figure>
 <ul>
 <li>将排序方法指定为反序，元素是从大到小的顺序排列，也就是保证每次出队列的元素是队列中的最大的元素。</li>
 </ul>
@@ -737,17 +710,7 @@ charset="utf-8"></script> -->
 <p>给你一个正整数数组 <code>nums</code> 。每一次操作中，你可以从 <code>nums</code> 中选择 <strong>任意</strong> 一个数并将它减小到 <strong>恰好</strong> 一半。（注意，在后续操作中你可以对减半过的数继续执行操作）</p>
 <p>请你返回将 <code>nums</code> 数组和 <strong>至少</strong> 减少一半的 <strong>最少</strong> 操作数。</p>
 <p><strong>示例 1：</strong></p>
-<pre class="line-numbers language-none"><code class="language-none">输入：nums = [5,19,8,1]
-输出：3
-解释：初始 nums 的和为 5 + 19 + 8 + 1 = 33 。
-以下是将数组和减少至少一半的一种方法：
-选择数字 19 并减小为 9.5 。
-选择数字 9.5 并减小为 4.75 。
-选择数字 8 并减小为 4 。
-最终数组为 [5, 4.75, 4, 1] ，和为 5 + 4.75 + 4 + 1 = 14.75 。
-nums 的和减小了 33 - 14.75 = 18.25 ，减小的部分超过了初始数组和的一半，18.25 &gt;= 33/2 = 16.5 。
-我们需要 3 个操作实现题目要求，所以返回 3 。
-可以证明，无法通过少于 3 个操作使数组和减少至少一半。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">输入：nums = [5,19,8,1]</span><br><span class="line">输出：3</span><br><span class="line">解释：初始 nums 的和为 5 + 19 + 8 + 1 = 33 。</span><br><span class="line">以下是将数组和减少至少一半的一种方法：</span><br><span class="line">选择数字 19 并减小为 9.5 。</span><br><span class="line">选择数字 9.5 并减小为 4.75 。</span><br><span class="line">选择数字 8 并减小为 4 。</span><br><span class="line">最终数组为 [5, 4.75, 4, 1] ，和为 5 + 4.75 + 4 + 1 = 14.75 。</span><br><span class="line">nums 的和减小了 33 - 14.75 = 18.25 ，减小的部分超过了初始数组和的一半，18.25 &gt;= 33/2 = 16.5 。</span><br><span class="line">我们需要 3 个操作实现题目要求，所以返回 3 。</span><br><span class="line">可以证明，无法通过少于 3 个操作使数组和减少至少一半。</span><br></pre></td></tr></tbody></table></figure>
 <hr>
 <h3 id="2.-%E5%88%86%E6%9E%90%E8%A7%A3%E7%AD%94" tabindex="-1">2. 分析解答</h3>
 <ul>
@@ -760,26 +723,7 @@ nums 的和减小了 33 - 14.75 = 18.25 ，减小的部分超过了初始数组�
 <ul>
 <li>Java代码（利用上述的<code>PriorityQueue</code>队列知识）</li>
 </ul>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java">class Solution {
-    public int halveArray(int[] nums) {
-        double s=0;
-        PriorityQueue&lt;Double&gt; q = new PriorityQueue&lt;&gt;(Collections.reverseOrder());
-        //上述的是最大堆，确保每次都是队列中最大的数出来,元素从大到小排列
-        for(int i:nums){
-            q.offer(i*1.0);	//注意除半时候出现的浮点数值，先进行转换，添加队列中去
-            s+=i;	//s为根堆（优先队列）元素之和
-        }
-        s/=2.0;	//取半
-        int ans=0;
-        while(s&gt;0){	//循环，直到s&lt;=0为止
-            double t =q.poll();	//队头元素出列（当前的最大值）
-            s-=t/2.0;  //元素值减半，从s值中减去
-            q.offer(t/2.0);  //更新队列中的元素，找到最大值
-            ++ans;
-        }
-        return ans;
-    }
-}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> {</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">halveArray</span><span class="params">(<span class="type">int</span>[] nums)</span> {</span><br><span class="line">        <span class="type">double</span> s=<span class="number">0</span>;</span><br><span class="line">        PriorityQueue&lt;Double&gt; q = <span class="keyword">new</span> <span class="title class_">PriorityQueue</span>&lt;&gt;(Collections.reverseOrder());</span><br><span class="line">        <span class="comment">//上述的是最大堆，确保每次都是队列中最大的数出来,元素从大到小排列</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i:nums){</span><br><span class="line">            q.offer(i*<span class="number">1.0</span>);	<span class="comment">//注意除半时候出现的浮点数值，先进行转换，添加队列中去</span></span><br><span class="line">            s+=i;	<span class="comment">//s为根堆（优先队列）元素之和</span></span><br><span class="line">        }</span><br><span class="line">        s/=<span class="number">2.0</span>;	<span class="comment">//取半</span></span><br><span class="line">        <span class="type">int</span> ans=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(s&gt;<span class="number">0</span>){	<span class="comment">//循环，直到s&lt;=0为止</span></span><br><span class="line">            <span class="type">double</span> <span class="variable">t</span> <span class="operator">=</span>q.poll();	<span class="comment">//队头元素出列（当前的最大值）</span></span><br><span class="line">            s-=t/<span class="number">2.0</span>;  <span class="comment">//元素值减半，从s值中减去</span></span><br><span class="line">            q.offer(t/<span class="number">2.0</span>);  <span class="comment">//更新队列中的元素，找到最大值</span></span><br><span class="line">            ++ans;</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 <ul>
 <li>
 <p><strong>时间复杂度：<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo>∗</mo><mi>l</mi><mi>o</mi><msub><mi>g</mi><mi>n</mi></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n * log_n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">o</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></eq>​</strong>。</p>
@@ -1325,7 +1269,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">47.8k</span>&nbsp;字
+                class="white-color">48k</span>&nbsp;字
             
             
             
@@ -1684,10 +1628,10 @@ $(function () {
     if (windowWidth > 768) {
         document.write('<script type="text/javascript" src="https://apip.weatherdt.com/float/static/js/r.js?v=1111"><\/script>');
     }
-    </script>
+    </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
     
   
-<script src="/live2dw/lib/L2Dwidget.min.js?243708c68e3ad401cd4432916889e600"></script><script>L2Dwidget.init({"dialog":{"enable":true,"hitokoto":true},"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"left","width":120,"height":160,"superSample":2,"voffset":0,"hoffset":20},"mobile":{"show":false},"react":{"opacity":0.7,"opacityOnHover":0.2}});</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+<script src="/live2dw/lib/L2Dwidget.min.js?243708c68e3ad401cd4432916889e600"></script><script>L2Dwidget.init({"dialog":{"enable":true,"hitokoto":true},"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"left","width":120,"height":160,"superSample":2,"voffset":0,"hoffset":20},"mobile":{"show":false},"react":{"opacity":0.7,"opacityOnHover":0.2}});</script>
         <style>
             [bg-lazy] {
                 background-image: none !important;

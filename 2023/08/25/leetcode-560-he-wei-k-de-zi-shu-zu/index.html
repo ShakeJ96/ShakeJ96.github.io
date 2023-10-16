@@ -164,7 +164,7 @@
  </script><meta name="generator" content="Hexo 6.3.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <link rel="alternate" href="/atom.xml" title="ShakeJ" type="application/atom+xml"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+</head>
 <!-- <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js"
 
 charset="utf-8"></script> -->
@@ -661,9 +661,6 @@ charset="utf-8"></script> -->
         <hr class="clearfix">
 
         
-        <!-- 是否加载使用自带的 prismjs. -->
-        <link rel="stylesheet" href="/libs/prism/prism.css">
-        
 
         
 
@@ -702,26 +699,7 @@ charset="utf-8"></script> -->
 <ul>
 <li>直接上代码：</li>
 </ul>
-  <pre class="line-numbers language-java" data-language="java"><code class="language-java">class Solution {
-    public int subarraySum(int[] nums, int k) {
-         int len = nums.length;
-         int sum = 0;
-         int count = 0;
-         //双重循环
-         for (int i = 0; i &lt; len; ++i) {
-             for (int j = i; j &lt; len; ++j) {
-                 sum += nums[j];
-                 //发现符合条件的区间
-                 if (sum == k) {
-                     count++;
-                 }
-             }
-             //记得归零，重新遍历
-             sum = 0;
-         }
-         return count;
-    }
-}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+  <figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> {</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">subarraySum</span><span class="params">(<span class="type">int</span>[] nums, <span class="type">int</span> k)</span> {</span><br><span class="line">         <span class="type">int</span> <span class="variable">len</span> <span class="operator">=</span> nums.length;</span><br><span class="line">         <span class="type">int</span> <span class="variable">sum</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">         <span class="type">int</span> <span class="variable">count</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">         <span class="comment">//双重循环</span></span><br><span class="line">         <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; len; ++i) {</span><br><span class="line">             <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> i; j &lt; len; ++j) {</span><br><span class="line">                 sum += nums[j];</span><br><span class="line">                 <span class="comment">//发现符合条件的区间</span></span><br><span class="line">                 <span class="keyword">if</span> (sum == k) {</span><br><span class="line">                     count++;</span><br><span class="line">                 }</span><br><span class="line">             }</span><br><span class="line">             <span class="comment">//记得归零，重新遍历</span></span><br><span class="line">             sum = <span class="number">0</span>;</span><br><span class="line">         }</span><br><span class="line">         <span class="keyword">return</span> count;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 <ul>
 <li><strong>复杂度分析</strong>：
 <ul>
@@ -742,26 +720,7 @@ charset="utf-8"></script> -->
 </li>
 <li>上代码：</li>
 </ul>
-  <pre class="line-numbers language-java" data-language="java"><code class="language-java">class Solution {
-    public int subarraySum(int[] nums, int k) {
-        //前缀和数组
-        int[] presum = new int[nums.length+1];
-        for (int i = 0; i &lt; nums.length; i++) {
-            pre[i+1] = nums[i] + pre[i];
-        }
-        //统计个数
-        int count = 0;
-        for (int i = 0; i &lt; nums.length; ++i) {
-            for (int j = i; j &lt; nums.length; ++j) {
-              
-                if (pre[j+1] - pre[i] == k) {
-                    count++;
-                }
-            }
-        }
-        return count;
-    }
-}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+  <figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> {</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">subarraySum</span><span class="params">(<span class="type">int</span>[] nums, <span class="type">int</span> k)</span> {</span><br><span class="line">        <span class="comment">//前缀和数组</span></span><br><span class="line">        <span class="type">int</span>[] presum = <span class="keyword">new</span> <span class="title class_">int</span>[nums.length+<span class="number">1</span>];</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; nums.length; i++) {</span><br><span class="line">            pre[i+<span class="number">1</span>] = nums[i] + pre[i];</span><br><span class="line">        }</span><br><span class="line">        <span class="comment">//统计个数</span></span><br><span class="line">        <span class="type">int</span> <span class="variable">count</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; nums.length; ++i) {</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> i; j &lt; nums.length; ++j) {</span><br><span class="line">              </span><br><span class="line">                <span class="keyword">if</span> (pre[j+<span class="number">1</span>] - pre[i] == k) {</span><br><span class="line">                    count++;</span><br><span class="line">                }</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">return</span> count;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 <ul>
 <li>
 <p><strong>复杂度分析</strong>：</p>
@@ -786,23 +745,7 @@ charset="utf-8"></script> -->
 </li>
 <li>
 <p>代码如下：</p>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java">class Solution {
-    public int[] twoSum(int[] nums, int target) {
-
-        HashMap&lt;Integer,Integer&gt; map  = new HashMap&lt;&gt;();
-        //一次遍历
-        for (int i = 0; i &lt; nums.length; ++i) {
-            //存在时，我们用数组得值为 key，索引为 value
-            if (map.containsKey(target - nums[i])){              
-               return new int[]{i,map.get(target-nums[i])};
-            }
-            //存入值
-            map.put(nums[i],i);
-        }
-        //返回
-        return new int[]{};
-    }
-}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> {</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span>[] twoSum(<span class="type">int</span>[] nums, <span class="type">int</span> target) {</span><br><span class="line"></span><br><span class="line">        HashMap&lt;Integer,Integer&gt; map  = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line">        <span class="comment">//一次遍历</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; nums.length; ++i) {</span><br><span class="line">            <span class="comment">//存在时，我们用数组得值为 key，索引为 value</span></span><br><span class="line">            <span class="keyword">if</span> (map.containsKey(target - nums[i])){              </span><br><span class="line">               <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">int</span>[]{i,map.get(target-nums[i])};</span><br><span class="line">            }</span><br><span class="line">            <span class="comment">//存入值</span></span><br><span class="line">            map.put(nums[i],i);</span><br><span class="line">        }</span><br><span class="line">        <span class="comment">//返回</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">int</span>[]{};</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 </li>
 <li>
 <blockquote>
@@ -812,58 +755,7 @@ charset="utf-8"></script> -->
 </li>
 <li>
 <p>本题的代码如下：</p>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java">class Solution {
-    public int subarraySum(int[] nums, int k) {
-        if (nums.length == 0) {
-            return 0;
-        }
-        HashMap&lt;Integer,Integer&gt; map = new HashMap&lt;&gt;();
-        //细节，这里需要预存前缀和为 0 的情况，会漏掉前几位就满足的情况
-        //例如输入[1,1,0]，k = 2 如果没有这行代码，则会返回0,漏掉了1+1=2，和1+1+0=2的情况
-        //输入：[3,1,1,0] k = 2时则不会漏掉
-        //因为presum[3] - presum[0]表示前面 3 位的和，所以需要map.put(0,1),垫下底
-        map.put(0, 1);
-        int count = 0;
-        int presum = 0;
-        for (int x : nums) {
-            presum += x;
-            //当前前缀和已知，判断是否含有 presum - k的前缀和，那么我们就知道某一区间的和为 k 了。
-            if (map.containsKey(presum - k)) {
-                count += map.get(presum - k);//获取次数
-            }
-            //更新
-            map.put(presum,map.getOrDefault(presum,0) + 1);
-        }
-        return count;
-    }
-}
-
-//或者是：
-class Solution {
-    public int subarraySum(int[] nums, int k) {
-        /*
-        前缀和+HashMap(两数之和进阶版)
-        若存在i与j满足sum[i,j]=sum[j+1]-sum[i]=k，对于j+1，满足条件的i的个数可以先统计出来
-        前面符合条件的数据为:sum[i]=sum[j+1]-k，这里注意是i&lt;=j，因此需要先统计了前面的再更新当前的
-        与两数之和是差不多的思路，不过这个多了个前缀和
-        时间复杂度:O(N) 空间复杂度:O(N)
-         */
-        int res = 0;
-        // 前缀和还可以进一步空间优化
-        int sum = 0;
-        // 哈希表存储前缀和数组中缺少了某个数的个数
-        HashMap&lt;Integer, Integer&gt; map = new HashMap&lt;&gt;();
-        map.put(0, 1);  // 初始前缀和
-        for (int num : nums) {
-            sum += num;
-            // 先统计
-            res += map.getOrDefault(sum - k, 0);
-            // 再更新当前的
-            map.put(sum, map.getOrDefault(sum, 0) + 1);
-        }
-        return res;
-    }
-}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> {</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">subarraySum</span><span class="params">(<span class="type">int</span>[] nums, <span class="type">int</span> k)</span> {</span><br><span class="line">        <span class="keyword">if</span> (nums.length == <span class="number">0</span>) {</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        }</span><br><span class="line">        HashMap&lt;Integer,Integer&gt; map = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line">        <span class="comment">//细节，这里需要预存前缀和为 0 的情况，会漏掉前几位就满足的情况</span></span><br><span class="line">        <span class="comment">//例如输入[1,1,0]，k = 2 如果没有这行代码，则会返回0,漏掉了1+1=2，和1+1+0=2的情况</span></span><br><span class="line">        <span class="comment">//输入：[3,1,1,0] k = 2时则不会漏掉</span></span><br><span class="line">        <span class="comment">//因为presum[3] - presum[0]表示前面 3 位的和，所以需要map.put(0,1),垫下底</span></span><br><span class="line">        map.put(<span class="number">0</span>, <span class="number">1</span>);</span><br><span class="line">        <span class="type">int</span> <span class="variable">count</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">presum</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> x : nums) {</span><br><span class="line">            presum += x;</span><br><span class="line">            <span class="comment">//当前前缀和已知，判断是否含有 presum - k的前缀和，那么我们就知道某一区间的和为 k 了。</span></span><br><span class="line">            <span class="keyword">if</span> (map.containsKey(presum - k)) {</span><br><span class="line">                count += map.get(presum - k);<span class="comment">//获取次数</span></span><br><span class="line">            }</span><br><span class="line">            <span class="comment">//更新</span></span><br><span class="line">            map.put(presum,map.getOrDefault(presum,<span class="number">0</span>) + <span class="number">1</span>);</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">return</span> count;</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="comment">//或者是：</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> {</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">subarraySum</span><span class="params">(<span class="type">int</span>[] nums, <span class="type">int</span> k)</span> {</span><br><span class="line">        <span class="comment">/*</span></span><br><span class="line"><span class="comment">        前缀和+HashMap(两数之和进阶版)</span></span><br><span class="line"><span class="comment">        若存在i与j满足sum[i,j]=sum[j+1]-sum[i]=k，对于j+1，满足条件的i的个数可以先统计出来</span></span><br><span class="line"><span class="comment">        前面符合条件的数据为:sum[i]=sum[j+1]-k，这里注意是i&lt;=j，因此需要先统计了前面的再更新当前的</span></span><br><span class="line"><span class="comment">        与两数之和是差不多的思路，不过这个多了个前缀和</span></span><br><span class="line"><span class="comment">        时间复杂度:O(N) 空间复杂度:O(N)</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        <span class="type">int</span> <span class="variable">res</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="comment">// 前缀和还可以进一步空间优化</span></span><br><span class="line">        <span class="type">int</span> <span class="variable">sum</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="comment">// 哈希表存储前缀和数组中缺少了某个数的个数</span></span><br><span class="line">        HashMap&lt;Integer, Integer&gt; map = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line">        map.put(<span class="number">0</span>, <span class="number">1</span>);  <span class="comment">// 初始前缀和</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> num : nums) {</span><br><span class="line">            sum += num;</span><br><span class="line">            <span class="comment">// 先统计</span></span><br><span class="line">            res += map.getOrDefault(sum - k, <span class="number">0</span>);</span><br><span class="line">            <span class="comment">// 再更新当前的</span></span><br><span class="line">            map.put(sum, map.getOrDefault(sum, <span class="number">0</span>) + <span class="number">1</span>);</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 </li>
 <li>
 <p><strong>复杂度分析</strong>：</p>
@@ -884,32 +776,12 @@ class Solution {
 <p>给你一个整数数组 <code>nums</code> 和一个整数 <code>k</code>。如果某个连续子数组中恰好有 <code>k</code> 个奇数数字，我们就认为这个子数组是「<strong>优美子数组</strong>」。</p>
 <p>请返回这个数组中 <strong>「优美子数组」</strong> 的数目。</p>
 <p><strong>示例 1：</strong></p>
-<pre class="line-numbers language-none"><code class="language-none">输入：nums = [1,1,2,1,1], k = 3
-输出：2
-解释：包含 3 个奇数的子数组是 [1,1,2,1] 和 [1,2,1,1] 。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：nums = [1,1,2,1,1], k = 3</span><br><span class="line">输出：2</span><br><span class="line">解释：包含 3 个奇数的子数组是 [1,1,2,1] 和 [1,2,1,1] 。</span><br></pre></td></tr></tbody></table></figure>
 </blockquote>
 <ul>
 <li>
 <p>分析解答：类似，只是在遇到奇数的时候将prenum更新而已。类似于<code>HashMap</code>,这里用数组的索引来表示哈希表中的<code>key</code>，对应的值模拟哈希表中的<code>value</code>.代码如下：</p>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java">class Solution {
-    public int numberOfSubarrays(int[] nums, int k) {
-        int len=nums.length;
-        int []map=new int[len+1];
-        map[0]=1;
-        int oddnum=0;
-        int count=0;
-        for(int i=0;i&lt;len;i++){
-            if(nums[i]%2!=0){//如果是奇数的话，存入oddnum
-                oddnum++;
-            }
-            if(oddnum&gt;=k){
-                count+=map[oddnum-k];
-            }
-            map[oddnum]++;
-        }
-        return count;
-    }
-}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> {</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">numberOfSubarrays</span><span class="params">(<span class="type">int</span>[] nums, <span class="type">int</span> k)</span> {</span><br><span class="line">        <span class="type">int</span> len=nums.length;</span><br><span class="line">        <span class="type">int</span> []map=<span class="keyword">new</span> <span class="title class_">int</span>[len+<span class="number">1</span>];</span><br><span class="line">        map[<span class="number">0</span>]=<span class="number">1</span>;</span><br><span class="line">        <span class="type">int</span> oddnum=<span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> count=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;len;i++){</span><br><span class="line">            <span class="keyword">if</span>(nums[i]%<span class="number">2</span>!=<span class="number">0</span>){<span class="comment">//如果是奇数的话，存入oddnum</span></span><br><span class="line">                oddnum++;</span><br><span class="line">            }</span><br><span class="line">            <span class="keyword">if</span>(oddnum&gt;=k){</span><br><span class="line">                count+=map[oddnum-k];</span><br><span class="line">            }</span><br><span class="line">            map[oddnum]++;</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">return</span> count;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 </li>
 </ul>
 <h3 id="4.-%E5%B1%95%E6%9C%9B%EF%BC%88%E4%B8%8E%E9%A2%98%E7%9B%AE%E6%97%A0%E5%85%B3%EF%BC%89" tabindex="-1">4. 展望（与题目无关）</h3>
@@ -1458,7 +1330,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">47.8k</span>&nbsp;字
+                class="white-color">48k</span>&nbsp;字
             
             
             
@@ -1817,10 +1689,10 @@ $(function () {
     if (windowWidth > 768) {
         document.write('<script type="text/javascript" src="https://apip.weatherdt.com/float/static/js/r.js?v=1111"><\/script>');
     }
-    </script>
+    </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
     
   
-<script src="/live2dw/lib/L2Dwidget.min.js?243708c68e3ad401cd4432916889e600"></script><script>L2Dwidget.init({"dialog":{"enable":true,"hitokoto":true},"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"left","width":120,"height":160,"superSample":2,"voffset":0,"hoffset":20},"mobile":{"show":false},"react":{"opacity":0.7,"opacityOnHover":0.2}});</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+<script src="/live2dw/lib/L2Dwidget.min.js?243708c68e3ad401cd4432916889e600"></script><script>L2Dwidget.init({"dialog":{"enable":true,"hitokoto":true},"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"left","width":120,"height":160,"superSample":2,"voffset":0,"hoffset":20},"mobile":{"show":false},"react":{"opacity":0.7,"opacityOnHover":0.2}});</script>
         <style>
             [bg-lazy] {
                 background-image: none !important;
