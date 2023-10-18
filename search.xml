@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>HashMap与TreeMap总结</title>
+      <link href="/2023/10/18/hashmap-yu-treemap-zong-jie/"/>
+      <url>/2023/10/18/hashmap-yu-treemap-zong-jie/</url>
+      
+        <content type="html"><![CDATA[<h3 id="hashmap%E4%B8%8Etreemap%E6%80%BB%E7%BB%93" tabindex="-1">HashMap与TreeMap总结</h3><h4 id="1.-hashmap%E5%92%8Ctreemap%E7%9A%84%E5%88%9D%E6%AD%A5%E5%AE%9A%E4%B9%89" tabindex="-1">1. HashMap和TreeMap的初步定义</h4><ol><li><h5 id="hashmap%EF%BC%88%E6%AF%94%E8%BE%83%E5%B8%B8%E7%94%A8%EF%BC%89" tabindex="-1">HashMap（比较常用）</h5></li></ol><ul><li>HashMap 是一个散列表，它存储的内容是键值对(key-value)映射。</li><li>HashMap 实现了 Map 接口，根据键的 HashCode 值存储数据，具有很快的访问速度，最多允许一条记录的键为 null，不支持线程同步。</li><li>HashMap 是无序的，即不会记录插入的顺序。</li><li>HashMap 继承于AbstractMap，实现了 Map、Cloneable、java.io.Serializable 接口。</li></ul><ol><li><h5 id="treemap" tabindex="-1">TreeMap</h5></li></ol><ul><li><p>TreeMap存储K-V键值对，通过红黑树（R-B tree）实现；</p></li><li><p>TreeMap继承了NavigableMap接口，NavigableMap接口继承了SortedMap接口，可支持一系列的导航定位以及导航操作的方法，当然只是提供了接口，需要TreeMap自己去实现；</p></li><li><p>TreeMap实现了Cloneable接口，可被克隆，实现了Serializable接口，可序列化；</p></li><li><p>TreeMap因为是通过红黑树实现，红黑树结构天然支持排序，默认情况下通过Key值的自然顺序进行排序；</p><p>​</p></li></ul><h4 id="2.-hashmap%E5%92%8Ctreemap%E7%9A%84%E6%96%B9%E6%B3%95" tabindex="-1">2. HashMap和TreeMap的方法</h4><table><thead><tr><th>方法</th><th>描述</th></tr></thead><tbody><tr><td>clear()</td><td>删除 hashMap 中的所有键/值对</td></tr><tr><td>clone()</td><td>复制一份 hashMap</td></tr><tr><td><strong>isEmpty()</strong></td><td>判断 hashMap 是否为空</td></tr><tr><td><strong>size()</strong></td><td>计算 hashMap 中键/值对的数量</td></tr><tr><td><strong>put()</strong></td><td>将键/值对添加到 hashMap 中</td></tr><tr><td>putAll()</td><td>将所有键/值对添加到 hashMap 中</td></tr><tr><td>putIfAbsent()</td><td>如果 hashMap 中不存在指定的键，则将指定的键/值对插入到 hashMap 中。</td></tr><tr><td>remove()</td><td>删除 hashMap 中指定键 key 的映射关系</td></tr><tr><td><strong>containsKey()</strong></td><td>检查 hashMap 中是否存在指定的 key 对应的映射关系。</td></tr><tr><td><strong>containsValue()</strong></td><td>检查 hashMap 中是否存在指定的 value 对应的映射关系。</td></tr><tr><td><strong>replace()</strong></td><td>替换 hashMap 中是指定的 key 对应的 value。</td></tr><tr><td>replaceAll()</td><td>将 hashMap 中的所有映射关系替换成给定的函数所执行的结果。</td></tr><tr><td><strong>get()</strong></td><td>获取指定 key 对应对 value</td></tr><tr><td><strong>getOrDefault()</strong></td><td>获取指定 key 对应对 value，如果找不到 key ，则返回设置的默认值</td></tr><tr><td>forEach()</td><td>对 hashMap 中的每个映射执行指定的操作。</td></tr><tr><td><strong>entrySet()</strong></td><td>返回 hashMap 中所有映射项的集合集合视图。</td></tr><tr><td><strong>keySet()</strong></td><td>返回 hashMap 中所有 key 组成的集合视图。</td></tr><tr><td><strong>values()</strong></td><td>返回 hashMap 中存在的所有 value 值。</td></tr><tr><td>merge()</td><td>添加键值对到 hashMap 中</td></tr><tr><td>compute()</td><td>对 hashMap 中指定 key 的值进行重新计算</td></tr><tr><td><strong>computeIfAbsent()</strong></td><td>对 hashMap 中指定 key 的值进行重新计算，如果不存在这个 key，则添加到 hasMap 中</td></tr><tr><td>computeIfPresent()</td><td>对 hashMap 中指定 key 的值进行重新计算，前提是该 key 存在于 hashMap 中。</td></tr></tbody></table><ul><li><p>注意其中加粗的方法是比较常见的方法，需要牢记。下面给出有关<strong>TreeMap</strong>的用法：</p><blockquote><ol><li><p><strong>clear();</strong>  //清除集合中的所有元素</p></li><li><p><strong>boolean containsKey(Object  key);</strong>  //如果此映射包含指定键的映射，则返回true</p></li><li><p><strong>boolean containsValue(Object value);</strong>  //如果此映射将一个或多个键映射到指定的值，则返回true</p></li><li><p><strong>int size();</strong>  //返回集合长度</p></li><li><p><strong>get(Object key);</strong>  //返回指定键的值(value),若不存在则返回null</p></li><li><p><strong>firstKey();</strong>  //返回当前映射中的第一个键</p></li><li><p><strong>lastKey();</strong>  //返回当前映射中的最后一个键</p></li></ol></blockquote><p>​</p></li></ul><h4 id="hashmap%E5%92%8Ctreemap%E7%9A%84%E9%9D%A2%E8%AF%95%E8%80%83%E9%A2%98" tabindex="-1">HashMap和TreeMap的面试考题</h4><blockquote><p><strong>HashMap和TreeMap的异同点？</strong></p></blockquote><ul><li>相同点：</li></ul><ol><li>都是以key和value的形式存储；</li><li>key不可以重复；</li><li>都是线程不安全的；</li></ol><ul><li>不同点：</li></ul><ol><li>HashMap的key可以为空</li><li>TreeMap的key值是有序的（使用了红黑树的二叉树结构存储的Entry）</li></ol><blockquote><p><strong>如何决定使用HashMap还是TreeMap？</strong></p></blockquote><ul><li><p>HashMap基于散列桶（数组和链表）实现；TreeMap基于红黑树实现。</p></li><li><p>HashMap不支持排序；TreeMap默认是按照Key值升序排序的，可指定排序的比较器，主要用于存入元素时对元素进行自动排序。</p></li><li><p>HashMap大多数情况下有更好的性能，尤其是读数据。在没有排序要求的情况下，使用HashMap。</p></li></ul><blockquote><center><span style="font-size:20px;color:red;">后续再更新几道例题试试手~</span></center></blockquote><link rel="stylesheet" href="//cdn.jsdelivr.net/npm/katex/dist/katex.min.css"><link rel="stylesheet" href="//cdn.jsdelivr.net/npm/markdown-it-texmath/css/texmath.min.css">]]></content>
+      
+      
+      <categories>
+          
+          <category> 八股 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Java </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>字节1015秋招笔试</title>
       <link href="/2023/10/15/zi-jie-1015-qiu-zhao-bi-shi/"/>
       <url>/2023/10/15/zi-jie-1015-qiu-zhao-bi-shi/</url>
