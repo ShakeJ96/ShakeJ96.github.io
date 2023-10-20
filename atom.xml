@@ -6,7 +6,7 @@
   <link href="https://shakej96.github.io/atom.xml" rel="self"/>
   
   <link href="https://shakej96.github.io/"/>
-  <updated>2023-10-18T09:41:05.864Z</updated>
+  <updated>2023-10-20T11:04:54.816Z</updated>
   <id>https://shakej96.github.io/</id>
   
   <author>
@@ -17,11 +17,36 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>动态规划思路和例题应用</title>
+    <link href="https://shakej96.github.io/2023/10/20/dong-tai-gui-hua-si-lu-he-li-ti-ying-yong/"/>
+    <id>https://shakej96.github.io/2023/10/20/dong-tai-gui-hua-si-lu-he-li-ti-ying-yong/</id>
+    <published>2023-10-20T08:22:27.000Z</published>
+    <updated>2023-10-20T11:04:54.816Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h3 id=&quot;%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E6%80%9D%E8%B7%AF%E5%92%8C%E4%BE%8B%E9%A2%98%E5%BA%94%E7%94%A8&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="Leetcode" scheme="https://shakej96.github.io/categories/Leetcode/"/>
+    
+    
+    <category term="动态规划" scheme="https://shakej96.github.io/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
+    
+  </entry>
+  
+  <entry>
     <title>HashMap与TreeMap总结</title>
     <link href="https://shakej96.github.io/2023/10/18/hashmap-yu-treemap-zong-jie/"/>
     <id>https://shakej96.github.io/2023/10/18/hashmap-yu-treemap-zong-jie/</id>
     <published>2023-10-18T09:11:20.000Z</published>
-    <updated>2023-10-18T09:41:05.864Z</updated>
+    <updated>2023-10-18T09:42:18.175Z</updated>
     
     
       
@@ -517,33 +542,6 @@
     <category term="Leetcode" scheme="https://shakej96.github.io/tags/Leetcode/"/>
     
     <category term="算法" scheme="https://shakej96.github.io/tags/%E7%AE%97%E6%B3%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>三步走套路递归问题</title>
-    <link href="https://shakej96.github.io/2023/09/04/san-bu-zou-tao-lu-di-gui-wen-ti/"/>
-    <id>https://shakej96.github.io/2023/09/04/san-bu-zou-tao-lu-di-gui-wen-ti/</id>
-    <published>2023-09-04T10:11:48.000Z</published>
-    <updated>2023-09-23T16:42:51.073Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h3 id=&quot;%E4%B8%89%E6%AD%A5%E8%B5%B0%E5%A5%97%E8%B7%AF%E9%80%92%E5%BD%92%E9%97%AE%E9%A2%98&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="算法" scheme="https://shakej96.github.io/categories/%E7%AE%97%E6%B3%95/"/>
-    
-    
-    <category term="Leetcode" scheme="https://shakej96.github.io/tags/Leetcode/"/>
-    
-    <category term="递归" scheme="https://shakej96.github.io/tags/%E9%80%92%E5%BD%92/"/>
     
   </entry>
   

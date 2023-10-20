@@ -6,7 +6,7 @@
 
 <head>
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
-    <meta name="keywords" content="Leetcode 560:和为k的子数组, xkj123456">
+    <meta name="keywords" content="动态规划思路和例题应用, xkj123456">
     <meta name="description" content="Mark the Splendid Life">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -18,7 +18,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Leetcode 560:和为k的子数组 | ShakeJ</title>
+    <title>动态规划思路和例题应用 | ShakeJ</title>
     <link rel="icon" type="image/png" href="/icon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -474,12 +474,12 @@ charset="utf-8"></script> -->
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/23.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/20.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Leetcode 560:和为k的子数组</h1>
+                    <h1 class="description center-align post-title">动态规划思路和例题应用</h1>
                 </div>
             </div>
         </div>
@@ -595,12 +595,8 @@ charset="utf-8"></script> -->
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/Leetcode/">
-                                <span class="chip bg-color">Leetcode</span>
-                            </a>
-                        
-                            <a href="/tags/%E7%AE%97%E6%B3%95/">
-                                <span class="chip bg-color">算法</span>
+                            <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">
+                                <span class="chip bg-color">动态规划</span>
                             </a>
                         
                     </div>
@@ -624,21 +620,21 @@ charset="utf-8"></script> -->
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2023-08-25
+                    2023-10-20
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-09-03
+                    2023-10-20
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.5k
+                    1.7k
                 </div>
                 
 
@@ -670,258 +666,218 @@ charset="utf-8"></script> -->
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="leetcode-560%EF%BC%9A%E5%92%8C%E4%B8%BAk%E7%9A%84%E5%AD%90%E6%95%B0%E7%BB%84" tabindex="-1">Leetcode-560：和为k的子数组</h3>
-<h3 id="1.-%E9%A2%98%E7%9B%AE%E8%AF%B4%E6%98%8E" tabindex="-1">1. 题目说明</h3>
-<ul>
-<li>
-<p>给定一个整数数组和一个整数 k，你需要找到该数组中和为 <strong>k</strong> 的<strong>连续的子数组</strong>的个数。</p>
+                <h3 id="%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E6%80%9D%E8%B7%AF%E5%92%8C%E4%BE%8B%E9%A2%98%E5%BA%94%E7%94%A8" tabindex="-1">动态规划思路和例题应用</h3>
 <blockquote>
-<p>示例 1 :</p>
-<p>输入:nums = [1,1,1], k = 2 输出: 2 , [1,1] 与 [1,1] 为两种不同的情况。</p>
+<p>dp实在是用得太多了，这里的例题都不知道怎么举例了。本文主要讲讲思路和步骤，典型的分类有01背包问题，也归纳出一个适合自己的模板。（包括之前的股票问题，也是dp的典中典系列）</p>
 </blockquote>
-</li>
-</ul>
-<h3 id="2.-%E8%A7%A3%E7%AD%94%E5%88%86%E6%9E%90%EF%BC%88%E5%90%AB%E5%A4%8D%E6%9D%82%E5%BA%A6%EF%BC%89" tabindex="-1">2. 解答分析（含复杂度）</h3>
+<h3 id="%E4%B8%80%E3%80%81%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E6%80%9D%E8%B7%AF%E6%AD%A5%E9%AA%A4" tabindex="-1">一、动态规划思路步骤</h3>
+<h4 id="1.-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E7%9A%84%E5%AE%9A%E4%B9%89%E5%92%8C%E5%8C%BA%E5%88%AB" tabindex="-1">1. 动态规划的定义和区别</h4>
 <ul>
 <li>
-<p>题目本质上是可以利用暴力解决的，也就是用双重循环进行和为<code>k</code>的子数组的个数统计即可，但是这里我们想利用更多的方法，主要分为3部分：</p>
+<p>动态规划，英文：Dynamic Programming，简称DP，如果某一问题有很多重叠子问题，使用动态规划是最有效的。</p>
+</li>
+<li>
+<p>所以动态规划中每一个状态一定是由上一个状态推导出来的，<strong>这一点就区分于贪心</strong>，贪心没有状态推导，而是从局部直接选最优的。</p>
+<blockquote>
+<p>例如：有N件物品和一个最多能背重量为W 的背包。第i件物品的重量是weight[i]，得到的价值是value[i] 。<strong>每件物品只能用一次</strong>，求解将哪些物品装入背包里物品价值总和最大。</p>
+<ul>
+<li>
+<p>动态规划中dp[j]是由dp[j-weight[i]]推导出来的，然后取max(dp[j], dp[j - weight[i]] + value[i])。</p>
+</li>
+<li>
+<p>但如果是贪心呢，每次拿物品选一个最大的或者最小的就完事了，和上一个状态没有关系。</p>
+</li>
+</ul>
+</blockquote>
+<p>​</p>
+</li>
+</ul>
+<h4 id="2.-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E7%9A%84%E8%A7%A3%E9%A2%98%E6%AD%A5%E9%AA%A4" tabindex="-1">2. 动态规划的解题步骤</h4>
+<blockquote>
+<p>在dp的典型题目中，状态的转移公式（递推公式）是最重要的，但是并不是唯一需要注意的。一个良好的解题，需要完整的方法。下面总结一种比较好的解题步骤。</p>
+</blockquote>
+<ul>
+<li>
+<p><strong>五步曲：</strong></p>
 <ol>
-<li>
-<p><strong>暴力</strong></p>
-</li>
-<li>
-<p><strong>前缀和</strong></p>
-</li>
-<li>
-<p><strong>前缀和+HashMap</strong></p>
-</li>
-</ol>
-<hr>
-</li>
-</ul>
-<h3 id="%E2%91%A0-%E6%9A%B4%E5%8A%9B%E8%A7%A3%E6%B3%95" tabindex="-1">① 暴力解法</h3>
-<ul>
-<li>直接上代码：</li>
-</ul>
-  <pre class="line-numbers language-java" data-language="java"><code class="language-java">class Solution {
-    public int subarraySum(int[] nums, int k) {
-         int len = nums.length;
-         int sum = 0;
-         int count = 0;
-         //双重循环
-         for (int i = 0; i &lt; len; ++i) {
-             for (int j = i; j &lt; len; ++j) {
-                 sum += nums[j];
-                 //发现符合条件的区间
-                 if (sum == k) {
-                     count++;
-                 }
-             }
-             //记得归零，重新遍历
-             sum = 0;
-         }
-         return count;
-    }
-}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<ul>
-<li><strong>复杂度分析</strong>：
-<ul>
-<li>时间复杂度：<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><msup><mi>N</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N^2)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></eq>，这里 $N $是数组的长度；</li>
-<li>空间复杂度：<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord">1</span><span class="mclose">)</span></span></span></span></eq>。</li>
-</ul>
-</li>
-</ul>
-<hr>
-<h3 id="%E2%91%A1-%E5%89%8D%E7%BC%80%E5%92%8C" tabindex="-1">② 前缀和</h3>
-<ul>
-<li>前缀和<code>pre[i]</code>的关键是找到前一个和后一个的关系，这里的连续子数组的元素之和恰好满足前缀求和的关系，所以可以采取。</li>
-<li>需要注意的是：
-<ol>
-<li>注意偏移，因为我们的<code>nums[2]</code>到<code>nums[4]</code>等于<code>pre[5]-pre[2]</code>，所以这样就可以得到<code>nums[i,j]</code>区间内的和</li>
-<li>前缀和是从<code>pre[1]</code>开始填充的</li>
+<li>确定dp数组以及下标的含义</li>
+<li><strong>确定递推公式</strong></li>
+<li>dp数组的初始化</li>
+<li>确定遍历的顺序</li>
+<li>举例推导出dp数组验证</li>
 </ol>
 </li>
-<li>上代码：</li>
-</ul>
-  <pre class="line-numbers language-java" data-language="java"><code class="language-java">class Solution {
-    public int subarraySum(int[] nums, int k) {
-        //前缀和数组
-        int[] presum = new int[nums.length+1];
-        for (int i = 0; i &lt; nums.length; i++) {
-            pre[i+1] = nums[i] + pre[i];
-        }
-        //统计个数
-        int count = 0;
-        for (int i = 0; i &lt; nums.length; ++i) {
-            for (int j = i; j &lt; nums.length; ++j) {
-              
-                if (pre[j+1] - pre[i] == k) {
-                    count++;
-                }
-            }
-        }
-        return count;
-    }
-}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<ul>
 <li>
-<p><strong>复杂度分析</strong>：</p>
-<ul>
+<p><strong>注意事项</strong></p>
+<ol>
 <li>
-<p>时间复杂度：<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><msup><mi>N</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N^2)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></eq>，这里 N 是数组的长度；</p>
+<p>写dp相关的问题，会在推导的时候出现模糊的情况，这里一定要将dp数组，不如说是<code>dp[i-1][j-1]</code>代表的含义自己思考一次。</p>
 </li>
 <li>
-<p>空间复杂度：<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span></eq>。</p>
-</li>
-</ul>
-</li>
-</ul>
-<hr>
-<h3 id="%E2%91%A2-%E5%89%8D%E7%BC%80%E5%92%8C-%2B-hashmap" tabindex="-1">③ 前缀和 + HashMap</h3>
-<ul>
-<li>
-<p>分析上述的前缀和方法不难看出：该代码虽然用到了前缀和数组，但是对比暴力法并没有提升性能，时间复杂度仍为<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><msup><mi>n</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n^2)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></eq>，空间复杂度成了 <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span></eq>。</p>
+<p>写代码之前，将状态转移在dp数组上的具体情况模拟一次，如果存在问题，说明是上述的5步中存在问题，常见的有遍历顺序、初始化、递归公式三部分。</p>
 </li>
 <li>
-<p>在两数之和的题目中，我们可以看出利用<code>HashMap</code>进行的遍历求解，只用遍历循环数组一次即可，这里我们同样采用的做法是，我们将数组的值和索引存入<code>map</code>中，当我们遍历到某一值 <code>x </code>时，判断 <code>map </code>中是否含有<code> target - x</code>即可。</p>
-</li>
-<li>
-<p>代码如下：</p>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java">class Solution {
-    public int[] twoSum(int[] nums, int target) {
-
-        HashMap&lt;Integer,Integer&gt; map  = new HashMap&lt;&gt;();
-        //一次遍历
-        for (int i = 0; i &lt; nums.length; ++i) {
-            //存在时，我们用数组得值为 key，索引为 value
-            if (map.containsKey(target - nums[i])){              
-               return new int[]{i,map.get(target-nums[i])};
-            }
-            //存入值
-            map.put(nums[i],i);
-        }
-        //返回
-        return new int[]{};
-    }
-}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-</li>
-<li>
+<p>遇到问题，其实可以自己先思考这三个方面：</p>
 <blockquote>
-<p>我们完全可以通过 presum - k的个数获得 k 的个数,如图所示:</p>
-<img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="/2023/08/25/leetcode-560-he-wei-k-de-zi-shu-zu/presum-k.png" alt="presum-k" style="zoom:67%;">
+<ul>
+<li>这道题目我举例推导状态转移公式了么？</li>
+<li>我打印dp数组的日志了么？</li>
+<li>打印出来了dp数组和我想的一样么？</li>
+</ul>
+</blockquote>
+<p>​</p>
+</li>
+</ol>
+</li>
+</ul>
+<h3 id="%E4%BA%8C%E3%80%81%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E5%85%B8%E5%9E%8B%E4%BE%8B%E9%A2%98" tabindex="-1">二、动态规划典型例题</h3>
+<h4 id="1.-343.-%E6%95%B4%E6%95%B0%E6%8B%86%E5%88%86" tabindex="-1">1. <a target="_blank" rel="noopener" href="https://leetcode.cn/problems/integer-break/description/">343. 整数拆分 </a></h4>
+<h5 id="%EF%BC%881%EF%BC%89%E9%A2%98%E7%9B%AE%E8%AF%B4%E6%98%8E" tabindex="-1">（1）题目说明</h5>
+<ul>
+<li>
+<p>给定一个正整数 <code>n</code> ，将其拆分为 <code>k</code> 个 <strong>正整数</strong> 的和（ <code>k &gt;= 2</code> ），并使这些整数的乘积最大化。</p>
+</li>
+<li>
+<p>返回 <em>你可以获得的最大乘积</em> 。</p>
+<p><strong>示例 1:</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">输入: n = 2
+输出: 1
+解释: 2 = 1 + 1, 1 × 1 = 1。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p><strong>示例 2:</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">输入: n = 10
+输出: 36
+解释: 10 = 3 + 3 + 4, 3 × 3 × 4 = 36。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>​</p>
+</li>
+</ul>
+<h5 id="%EF%BC%882%EF%BC%89%E8%A7%A3%E7%AD%94%E5%88%86%E6%9E%90" tabindex="-1">（2）解答分析</h5>
+<blockquote>
+<p>拆分为<code>k</code>个整数，那究竟是多少个呢？此时可以利用动态规划dp进行分析。下面根据五部曲来试试。</p>
+</blockquote>
+<ol>
+<li><strong>确定dp数组的含义和下标的定义</strong></li>
+</ol>
+<ul>
+<li>
+<p><code>dp[i]</code>: 题目最后要求什么？是拆分数字<code>i</code>后得到的<code>k个数</code>的乘积的最大值！</p>
+</li>
+<li>
+<p>所以此时的数组可以设为：拆分数字i，可以得到的最大乘积为<code>dp[i]</code>。</p>
+<p>​</p>
+</li>
+</ul>
+<ol start="2">
+<li><strong>确定递推公式</strong></li>
+</ol>
+<ul>
+<li>
+<p><code>dp[i]</code>最大乘积是怎么得到的呢？其实不难发现，将<code>i</code>进行拆分，实际是从<code>1</code>开始遍历到<code>j</code>,存在两种渠道得到<code>dp[i]</code></p>
+<ul>
+<li>一个是直接<code>j*(i-j)</code>得到乘积；</li>
+<li>一个是将<code>j*dp[i-j]</code>，相当于是拆分了<code>(i-j)</code>，可以不仅仅是两个数，还有可能是之前状态下的多种可能；</li>
+</ul>
+</li>
+<li>
+<p><code>j</code>是从<code>1</code>开始遍历，拆分j的情况，在遍历<code>j</code>的过程中其实都计算过了。那么从<code>1</code>遍历<code>j</code>，比较<code>(i - j) * j和dp[i - j] * j </code>取最大的。</p>
+</li>
+<li>
+<p><strong>递推公式为：<code>dp[i] = max(dp[i], max((i - j) * j, dp[i - j] * j));</code></strong></p>
+<p>​</p>
+</li>
+</ul>
+<ol start="3">
+<li><strong>dp的初始化</strong></li>
+</ol>
+<ul>
+<li>
+<p>对严格的dp初始化而言，需要根据刚才的递推公式进行讨论。这里只初始化<code>dp[2] = 1</code>，从<code>dp[i]</code>的定义来说，<code>拆分数字2，得到的最大乘积是1</code>，这就是简单的初始化。</p>
+<p>​</p>
+</li>
+</ul>
+<ol start="4">
+<li><strong>确定遍历顺序</strong></li>
+</ol>
+<ul>
+<li>
+<p>根据已经推导出来的公式：<code>dp[i] = max(dp[i], max((i - j) * j, dp[i - j] * j));</code></p>
+<ul>
+<li><code>dp[i]</code>是依靠<code>dp[i-1]</code>的状态，所以遍历<code>i</code>一定是从前向后遍历，先是存在<code>dp[i-j]</code>再有<code>dp[i]</code></li>
+</ul>
+</li>
+<li>
+<p>所以有这样的遍历顺序：</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">for (int i = 3; i &lt;= n ; i++) { //初始化从2开始
+    for (int j = 1; j &lt; i - 1; j++) {
+        dp[i] = max(dp[i], max((i - j) * j, dp[i - j] * j));
+    }
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li>
+<p>注意 枚举<code>j</code>的时候，是从1开始的。从0开始的话，那么让拆分一个数拆个0，求最大乘积就没有意义了。</p>
+<ul>
+<li>
+<p><code>j</code>的结束条件是<code> j &lt; i - 1</code> ，其实<code> j &lt; i</code> 也是可以的，不过可以节省一步，例如让<code>j = i - 1</code>，的话，其实在 <code>j = 1</code>的时候，这一步就已经拆出来了，重复计算，所以<code> j &lt; i - 1</code></p>
+</li>
+<li>
+<p>至于<code> i</code>是从3开始，这样<code>dp[i - j]</code>就是<code>dp[2]</code>，正好可以通过我们初始化的数值求出来。</p>
+<p>​</p>
+</li>
+</ul>
+</li>
+</ul>
+<ol start="5">
+<li><strong>举例推导出dp数组</strong></li>
+</ol>
+<ul>
+<li>
+<p>当n为10的时候，dp数组里的数值，如下：</p>
+<img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="/2023/10/20/dong-tai-gui-hua-si-lu-he-li-ti-ying-yong/%E4%B8%BE%E4%BE%8B.png" alt="举例" style="zoom:67%;">
+<p>​</p>
+</li>
+</ul>
+<h5 id="%EF%BC%883%EF%BC%89%E5%85%B7%E4%BD%93%E4%BB%A3%E7%A0%81" tabindex="-1">（3）具体代码</h5>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">class Solution {
+    public int integerBreak(int n) {
+        //dp[i] 为正整数 i 拆分后的结果的最大乘积
+        int[] dp = new int[n+1];
+        dp[2] = 1;
+        for(int i = 3; i &lt;= n; i++) {
+            for(int j = 1; j &lt;= i-j; j++) {
+                // 这里的 j 其实最大值为 i-j,再大只不过是重复而已，
+                //并且，在本题中，我们分析 dp[0], dp[1]都是无意义的，
+                //j 最大到 i-j,就不会用到 dp[0]与dp[1]
+                dp[i] = Math.max(dp[i], Math.max(j*(i-j), j*dp[i-j]));
+                // j * (i - j) 是单纯的把整数 i 拆分为两个数 也就是 i,i-j ，再相乘
+                //而j * dp[i - j]是将 i 拆分成两个以及两个以上的个数,再相乘。
+            }
+        }
+        return dp[n];
+    }
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li>
+<p><strong>复杂度分析：</strong></p>
+<ul>
+<li>
+<p><strong>时间复杂度: <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><msup><mi>n</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n^2)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></eq></strong></p>
+<blockquote>
+<p>在上述数组的遍历中，当对i进行取值的同时，也维护了j作为最大的乘积值得特征</p>
 </blockquote>
 </li>
 <li>
-<p>本题的代码如下：</p>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java">class Solution {
-    public int subarraySum(int[] nums, int k) {
-        if (nums.length == 0) {
-            return 0;
-        }
-        HashMap&lt;Integer,Integer&gt; map = new HashMap&lt;&gt;();
-        //细节，这里需要预存前缀和为 0 的情况，会漏掉前几位就满足的情况
-        //例如输入[1,1,0]，k = 2 如果没有这行代码，则会返回0,漏掉了1+1=2，和1+1+0=2的情况
-        //输入：[3,1,1,0] k = 2时则不会漏掉
-        //因为presum[3] - presum[0]表示前面 3 位的和，所以需要map.put(0,1),垫下底
-        map.put(0, 1);
-        int count = 0;
-        int presum = 0;
-        for (int x : nums) {
-            presum += x;
-            //当前前缀和已知，判断是否含有 presum - k的前缀和，那么我们就知道某一区间的和为 k 了。
-            if (map.containsKey(presum - k)) {
-                count += map.get(presum - k);//获取次数
-            }
-            //更新
-            map.put(presum,map.getOrDefault(presum,0) + 1);
-        }
-        return count;
-    }
-}
-
-//或者是：
-class Solution {
-    public int subarraySum(int[] nums, int k) {
-        /*
-        前缀和+HashMap(两数之和进阶版)
-        若存在i与j满足sum[i,j]=sum[j+1]-sum[i]=k，对于j+1，满足条件的i的个数可以先统计出来
-        前面符合条件的数据为:sum[i]=sum[j+1]-k，这里注意是i&lt;=j，因此需要先统计了前面的再更新当前的
-        与两数之和是差不多的思路，不过这个多了个前缀和
-        时间复杂度:O(N) 空间复杂度:O(N)
-         */
-        int res = 0;
-        // 前缀和还可以进一步空间优化
-        int sum = 0;
-        // 哈希表存储前缀和数组中缺少了某个数的个数
-        HashMap&lt;Integer, Integer&gt; map = new HashMap&lt;&gt;();
-        map.put(0, 1);  // 初始前缀和
-        for (int num : nums) {
-            sum += num;
-            // 先统计
-            res += map.getOrDefault(sum - k, 0);
-            // 再更新当前的
-            map.put(sum, map.getOrDefault(sum, 0) + 1);
-        }
-        return res;
-    }
-}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-</li>
-<li>
-<p><strong>复杂度分析</strong>：</p>
-<ul>
-<li>
-<p>时间复杂度：<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span></eq>，这里 <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi></mrow><annotation encoding="application/x-tex">N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span></span></span></span></eq>是数组的长度；</p>
-</li>
-<li>
-<p>空间复杂度：<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span></eq>。</p>
-</li>
-</ul>
-</li>
-</ul>
-<hr>
-<h3 id="3.-%E5%8F%98%E5%BC%8F%E9%A2%98%E7%9B%AE" tabindex="-1">3. 变式题目</h3>
+<p><strong>空间复杂度: <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span></eq></strong></p>
 <blockquote>
-<p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/count-number-of-nice-subarrays/">1248. 统计「优美子数组」</a></p>
-<p>给你一个整数数组 <code>nums</code> 和一个整数 <code>k</code>。如果某个连续子数组中恰好有 <code>k</code> 个奇数数字，我们就认为这个子数组是「<strong>优美子数组</strong>」。</p>
-<p>请返回这个数组中 <strong>「优美子数组」</strong> 的数目。</p>
-<p><strong>示例 1：</strong></p>
-<pre class="line-numbers language-none"><code class="language-none">输入：nums = [1,1,2,1,1], k = 3
-输出：2
-解释：包含 3 个奇数的子数组是 [1,1,2,1] 和 [1,2,1,1] 。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>通过引入了dp数组，对每个正整数i进行结果的拆分，最坏的情况下可以得到n组不同的取值结果，因此此时的空间复杂度为O(n)</p>
 </blockquote>
-<ul>
-<li>
-<p>分析解答：类似，只是在遇到奇数的时候将prenum更新而已。类似于<code>HashMap</code>,这里用数组的索引来表示哈希表中的<code>key</code>，对应的值模拟哈希表中的<code>value</code>.代码如下：</p>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java">class Solution {
-    public int numberOfSubarrays(int[] nums, int k) {
-        int len=nums.length;
-        int []map=new int[len+1];
-        map[0]=1;
-        int oddnum=0;
-        int count=0;
-        for(int i=0;i&lt;len;i++){
-            if(nums[i]%2!=0){//如果是奇数的话，存入oddnum
-                oddnum++;
-            }
-            if(oddnum&gt;=k){
-                count+=map[oddnum-k];
-            }
-            map[oddnum]++;
-        }
-        return count;
-    }
-}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>​</p>
 </li>
 </ul>
-<h3 id="4.-%E5%B1%95%E6%9C%9B%EF%BC%88%E4%B8%8E%E9%A2%98%E7%9B%AE%E6%97%A0%E5%85%B3%EF%BC%89" tabindex="-1">4. 展望（与题目无关）</h3>
-<blockquote>
-<p>开学了，还是会继续学习算法，刷力扣，博客也会经常更新自己的学习动态，加油哇！🤗👍大三希望有机会找到一份实习，前后端都行，美化简历😊</p>
-</blockquote>
-<img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="/2023/08/25/leetcode-560-he-wei-k-de-zi-shu-zu/Bupt.jpg" alt="Bupt" style="zoom:20%;">
-  <center><span style="font-size:30px;color:red;font-weight:bolder;">END~</span><center>
+</li>
+</ul>
+<h4 id="" tabindex="-1"></h4>
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/katex/dist/katex.min.css">
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/markdown-it-texmath/css/texmath.min.css">
-</center></center>
+
                 
             </div>
             <hr/>
@@ -947,7 +903,7 @@ class Solution {
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://shakeJ96.github.io/2023/08/25/leetcode-560-he-wei-k-de-zi-shu-zu/">https://shakeJ96.github.io/2023/08/25/leetcode-560-he-wei-k-de-zi-shu-zu/</a>
+                    <a href="https://shakeJ96.github.io/2023/10/20/dong-tai-gui-hua-si-lu-he-li-ti-ying-yong/">https://shakeJ96.github.io/2023/10/20/dong-tai-gui-hua-si-lu-he-li-ti-ying-yong/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -985,12 +941,8 @@ class Solution {
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/Leetcode/">
-                                    <span class="chip bg-color">Leetcode</span>
-                                </a>
-                            
-                                <a href="/tags/%E7%AE%97%E6%B3%95/">
-                                    <span class="chip bg-color">算法</span>
+                                <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">
+                                    <span class="chip bg-color">动态规划</span>
                                 </a>
                             
                         </div>
@@ -1160,17 +1112,18 @@ class Solution {
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2023/08/27/zhou-sai-360-t1-yu-t2/">
+                <a href="/2023/10/20/dong-tai-gui-hua-si-lu-he-li-ti-ying-yong/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="周赛360 T1与T2">
+                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="动态规划思路和例题应用">
                         
-                        <span class="card-title">周赛360 T1与T2</span>
+                        <span class="card-title">动态规划思路和例题应用</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1180,9 +1133,9 @@ class Solution {
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2023-08-27
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-10-20
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -1195,15 +1148,12 @@ class Solution {
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E7%AE%97%E6%B3%95/">
-                        <span class="chip bg-color">算法</span>
-                    </a>
-                    
-                    <a href="/tags/%E5%91%A8%E8%B5%9B/">
-                        <span class="chip bg-color">周赛</span>
+                    <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">
+                        <span class="chip bg-color">动态规划</span>
                     </a>
                     
                 </div>
@@ -1217,13 +1167,13 @@ class Solution {
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2023/07/27/priorityqueue-shi-xian-zui-xiao-dui-he-zui-da-dui-de-yong-fa-java/">
+                <a href="/2023/10/18/hashmap-yu-treemap-zong-jie/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="PriorityQueue实现最小堆和最大堆的用法[JAVA]">
+                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="HashMap与TreeMap总结">
                         
-                        <span class="card-title">PriorityQueue实现最小堆和最大堆的用法[JAVA]</span>
+                        <span class="card-title">HashMap与TreeMap总结</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1234,14 +1184,14 @@ class Solution {
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-07-27
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-10-18
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Java/" class="post-category">
-                                    Java
+                            <a href="/categories/%E5%85%AB%E8%82%A1/" class="post-category">
+                                    八股
                                 </a>
                             
                             
@@ -1251,8 +1201,8 @@ class Solution {
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E7%AE%97%E6%B3%95/">
-                        <span class="chip bg-color">算法</span>
+                    <a href="/tags/Java/">
+                        <span class="chip bg-color">Java</span>
                     </a>
                     
                 </div>
