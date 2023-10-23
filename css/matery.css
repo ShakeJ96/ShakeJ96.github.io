@@ -221,7 +221,7 @@ pre[class*="language-"] {
     opacity: 0;
 }
 .code_lang {
-    /* position: absolute; */
+    position: absolute;
     top: 1.2rem;
     right: 46px;
     line-height: 0;

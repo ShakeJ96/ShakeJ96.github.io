@@ -1,3 +1,4 @@
+https://shakej96.github.io/2023/10/05/leetcode-mai-mai-gu-piao-de-zui-jia-shi-ji-xi-lie/
 https://shakej96.github.io/2023/10/18/hashmap-yu-treemap-zong-jie/
 https://shakej96.github.io/2023/10/20/dong-tai-gui-hua-si-lu-he-li-ti-ying-yong/
 https://shakej96.github.io/2023/10/05/bfs-he-dfs-you-xian-sou-suo-suan-fa/
@@ -10,7 +11,6 @@ https://shakej96.github.io/2023/08/27/zhou-sai-360-t1-yu-t2/
 https://shakej96.github.io/2023/10/14/dan-diao-zhan-mo-ban-he-ying-yong-li-ti/
 https://shakej96.github.io/2023/10/11/mei-ri-yi-ti-lian-geng-3day/
 https://shakej96.github.io/2023/10/07/dfs-de-san-chong-bian-li-fang-shi/
-https://shakej96.github.io/2023/10/05/leetcode-mai-mai-gu-piao-de-zui-jia-shi-ji-xi-lie/
 https://shakej96.github.io/2023/10/04/shuang-zhou-sai-114/
 https://shakej96.github.io/2023/09/17/shuang-zhou-sai-113-qian-3-ti/
 https://shakej96.github.io/2023/09/24/leetcode-376-bai-dong-xu-lie/

@@ -635,21 +635,21 @@ charset="utf-8"></script> -->
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-10-05
+                    2023-10-23
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    3.1k
+                    4.9k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    12 分
+                    20 分
                 </div>
                 
 
@@ -733,6 +733,26 @@ charset="utf-8"></script> -->
         return profit;
     }
 }<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">class Solution{
+    	//也同样可以利用动态规划进行解答，我们需要判断的是当前是否持有股票即可
+    public int maxProfit(int[] prices){
+        if(prices==null || prices.length==0){
+            return 0;
+        }
+        int length=prices.length;
+        
+        //dp[i][0]代表的是第i天持有股票的最大收益
+        //dp[i][1]代表的是第i天不持有股票的最大收益
+        int[][] dp=new int[length+1][2];
+        dp[0][0]=-prices[0]; //第一天持有的话，说明直接买入
+        dp[0][1]=0; //不持有即为0
+        for(int i=1;i&lt;length;i++){
+            dp[i][0]=Math.max(dp[i-1][0],-prces[i]); //买入则说明就是当前的股票得到的现金
+            dp[i][1]=Math.max(dp[i-1][0]+priecs[i],dp[i-1][1]);
+        }
+        return dp[length-1][1]; //不持有股票的状态一定比持有的情况多
+    }
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
 <li>
 <p><strong>复杂度分析：</strong></p>
@@ -992,9 +1012,224 @@ class Solution {
 </li>
 </ul>
 <hr>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">//上述的做法也可以转化为二维数组进行解决：
+// 版本一
+class Solution {
+    public int maxProfit(int[] prices) {
+        int len = prices.length;
+        // 边界判断, 题目中 length &gt;= 1, 所以可省去
+        if (prices.length == 0) return 0;
+
+        /*
+         * 定义 5 种状态:
+         * 0: 没有操作, 1: 第一次买入, 2: 第一次卖出, 3: 第二次买入, 4: 第二次卖出
+         */
+        int[][] dp = new int[len][5];
+        dp[0][1] = -prices[0];
+        // 初始化第二次买入的状态是确保 最后结果是最多两次买卖的最大利润
+        dp[0][3] = -prices[0];
+
+        for (int i = 1; i &lt; len; i++) {
+            dp[i][1] = Math.max(dp[i - 1][1], -prices[i]);
+            dp[i][2] = Math.max(dp[i - 1][2], dp[i - 1][1] + prices[i]);
+            dp[i][3] = Math.max(dp[i - 1][3], dp[i - 1][2] - prices[i]);
+            dp[i][4] = Math.max(dp[i - 1][4], dp[i - 1][3] + prices[i]);
+        }
+
+        return dp[len - 1][4];
+    }
+}
+
+// 版本二: 空间优化
+class Solution {
+    public int maxProfit(int[] prices) {
+        int[] dp = new int[4]; 
+        // 存储两次交易的状态就行了
+        // dp[0]代表第一次交易的买入
+        dp[0] = -prices[0];
+        // dp[1]代表第一次交易的卖出
+        dp[1] = 0;
+        // dp[2]代表第二次交易的买入
+        dp[2] = -prices[0];
+        // dp[3]代表第二次交易的卖出
+        dp[3] = 0;
+        for(int i = 1; i &lt;= prices.length; i++){
+            // 要么保持不变，要么没有就买，有了就卖
+            dp[0] = Math.max(dp[0], -prices[i-1]);
+            dp[1] = Math.max(dp[1], dp[0]+prices[i-1]);
+            // 这已经是第二次交易了，所以得加上前一次交易卖出去的收获
+            dp[2] = Math.max(dp[2], dp[1]-prices[i-1]);
+            dp[3] = Math.max(dp[3], dp[2]+ prices[i-1]);
+        }
+        return dp[3];
+    }
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>​</p>
+<h3 id="level-4.-%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E7%9A%84%E6%9C%80%E4%BD%B3%E6%97%B6%E6%9C%BA-iv" tabindex="-1">Level 4. <a target="_blank" rel="noopener" href="https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-iv/description/"> 买卖股票的最佳时机 IV </a></h3>
+<h4 id="4.1-%E9%A2%98%E7%9B%AE%E8%AF%B4%E6%98%8E" tabindex="-1">4.1 题目说明</h4>
+<p>给你一个整数数组 <code>prices</code> 和一个整数 <code>k</code> ，其中 <code>prices[i]</code> 是某支给定的股票在第 <code>i</code> 天的价格。</p>
+<p>设计一个算法来计算你所能获取的最大利润。你最多可以完成 <code>k</code> 笔交易。也就是说，你最多可以买 <code>k</code> 次，卖 <code>k</code> 次。</p>
+<p>**注意：**你不能同时参与多笔交易（你必须在再次购买前出售掉之前的股票）。</p>
+<p><strong>示例 1：</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">输入：k = 2, prices = [2,4,1]
+输出：2
+解释：在第 1 天 (股票价格 = 2) 的时候买入，在第 2 天 (股票价格 = 4) 的时候卖出，这笔交易所能获得利润 = 4-2 = 2 。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p><strong>提示：</strong></p>
+<ul>
+<li>
+<p><code>1 &lt;= k &lt;= 100</code></p>
+</li>
+<li>
+<p><code>1 &lt;= prices.length &lt;= 1000</code></p>
+</li>
+<li>
+<p><code>0 &lt;= prices[i] &lt;= 1000</code></p>
+<p>​</p>
+</li>
+</ul>
+<hr>
+<h4 id="4.2-%E8%A7%A3%E7%AD%94%E5%88%86%E6%9E%90" tabindex="-1">4.2 解答分析</h4>
+<h5 id="1.-%E7%A1%AE%E5%AE%9Adp%E6%95%B0%E7%BB%84%E4%BB%A5%E5%8F%8A%E5%85%B6%E4%B8%8B%E6%A0%87%E7%9A%84%E5%90%AB%E4%B9%89" tabindex="-1">1. 确定dp数组以及其下标的含义</h5>
+<ul>
+<li>定义这样的二维数组<code>dp[i][j]：第i天的状态为j，此时所剩余的最大现金是dp[i][j]</code>;</li>
+<li>j的状态表示为：
+<ul>
+<li>0 表示不操作</li>
+<li>1 第一次买入</li>
+<li>2 第一次卖出</li>
+<li>3 第二次买入</li>
+<li>4 第二次卖出</li>
+<li>…</li>
+</ul>
+</li>
+<li>题目要求的最多K笔交易，那么此时的j的范围就是<code>2*k+1</code>即可。</li>
+</ul>
+<h5 id="2.%E7%A1%AE%E5%AE%9A%E9%80%92%E6%8E%A8%E5%85%AC%E5%BC%8F" tabindex="-1">2.确定递推公式</h5>
 <blockquote>
-<p>先更新这么多，后续再补上~</p>
+<p><code>dp[i][1]</code>，<strong>表示的是第i天，买入股票的状态，并不是说一定要第i天买入股票</strong></p>
 </blockquote>
+<ul>
+<li>
+<p>达到<code>dp[i][1]</code>状态，有两个具体操作：</p>
+<ul>
+<li>操作一：第i天买入股票了，那么<code>dp[i][1] = dp[i - 1][0] - prices[i]</code></li>
+<li>操作二：第i天没有操作，而是沿用前一天买入的状态，即：<code>dp[i][1] = dp[i - 1][1]</code></li>
+</ul>
+<p>选最大的，所以 <code>dp[i][1] = max(dp[i - 1][0] - prices[i], dp[i - 1][1]);</code></p>
+</li>
+<li>
+<p>同理此时可以达到后续的剩余状态。<strong>区别就是这里要类比j为奇数是买，偶数是卖的状态</strong>。</p>
+</li>
+</ul>
+<h5 id="3.-dp%E6%95%B0%E7%BB%84%E7%9A%84%E5%88%9D%E5%A7%8B%E5%8C%96" tabindex="-1">3. dp数组的初始化</h5>
+<ul>
+<li><code>dp[0][0]=0;</code></li>
+<li><code>dp[0][1]=-prices[0];</code></li>
+<li><code>dp[0][2]=0;</code></li>
+<li><code>dp[0][3]=-prices[0];</code></li>
+</ul>
+<blockquote>
+<p>可以看出规律，上述的操作的时候，<strong>在初始化的地方同样要类比j为偶数是卖、奇数是买的状态</strong>。</p>
+</blockquote>
+<h5 id="4.-%E7%A1%AE%E5%AE%9A%E9%81%8D%E5%8E%86%E7%9A%84%E9%A1%BA%E5%BA%8F" tabindex="-1">4. 确定遍历的顺序</h5>
+<ul>
+<li>从递归公式其实已经可以看出，一定是从前向后遍历，因为dp[i]，依靠dp[i - 1]的数值。</li>
+</ul>
+<h5 id="%E4%B8%BE%E4%BE%8B%E6%8E%A8%E5%AF%BCdp%E6%95%B0%E7%BB%84" tabindex="-1">举例推导dp数组</h5>
+<ul>
+<li>
+<p>以输入[1,2,3,4,5]，k=2为例。如下图所示：</p>
+<img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="/2023/10/05/leetcode-mai-mai-gu-piao-de-zui-jia-shi-ji-xi-lie/%E4%B8%BE%E4%BE%8B.png" alt="举例" style="zoom:67%;">
+</li>
+<li>
+<p><code>dp[prices.size() - 1][2 * k]</code>即红色部分就是最后求解。</p>
+<p>​</p>
+</li>
+</ul>
+<hr>
+<h4 id="4.3-%E5%85%B7%E4%BD%93%E4%BB%A3%E7%A0%81" tabindex="-1">4.3 具体代码</h4>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">// 版本一: 三维 dp数组
+class Solution {
+    public int maxProfit(int k, int[] prices) {
+        if (prices.length == 0) return 0;
+
+        // [天数][交易次数][是否持有股票]
+        int len = prices.length;
+        int[][][] dp = new int[len][k + 1][2];
+        
+        // dp数组初始化
+        // 初始化所有的交易次数是为确保 最后结果是最多 k 次买卖的最大利润
+        for (int i = 0; i &lt;= k; i++) {
+            dp[0][i][1] = -prices[0];
+        }
+
+        for (int i = 1; i &lt; len; i++) {
+            for (int j = 1; j &lt;= k; j++) {
+                // dp方程, 0表示不持有/卖出, 1表示持有/买入
+                dp[i][j][0] = Math.max(dp[i - 1][j][0], dp[i - 1][j][1] + prices[i]);
+                dp[i][j][1] = Math.max(dp[i - 1][j][1], dp[i - 1][j - 1][0] - prices[i]);
+            }
+        }
+        return dp[len - 1][k][0];
+    }
+}
+
+// 版本二: 二维 dp数组
+class Solution {
+    public int maxProfit(int k, int[] prices) {
+        if (prices.length == 0) return 0;
+
+        // [天数][股票状态]
+        // 股票状态: 奇数表示第 k 次交易持有/买入, 偶数表示第 k 次交易不持有/卖出, 0 表示没有操作
+        int len = prices.length;
+        int[][] dp = new int[len][k*2 + 1];
+        
+        // dp数组的初始化, 与版本一同理
+        for (int i = 1; i &lt; k*2; i += 2) {
+            dp[0][i] = -prices[0];
+        }
+
+        for (int i = 1; i &lt; len; i++) {
+            for (int j = 0; j &lt; k*2 - 1; j += 2) {
+                dp[i][j + 1] = Math.max(dp[i - 1][j + 1], dp[i - 1][j] - prices[i]);
+                dp[i][j + 2] = Math.max(dp[i - 1][j + 2], dp[i - 1][j + 1] + prices[i]);
+            }
+        }
+        return dp[len - 1][k*2];
+    }
+}
+
+//版本三：一维 dp数组
+class Solution {
+    public int maxProfit(int k, int[] prices) {
+        if(prices.length == 0){
+            return 0;
+        }
+        if(k == 0){
+            return 0;
+        }
+        // 其实就是123题的扩展，123题只用记录2次交易的状态
+        // 这里记录k次交易的状态就行了
+        // 每次交易都有买入，卖出两个状态，所以要乘 2
+        int[] dp = new int[2 * k];
+        // 按123题解题格式那样，做一个初始化
+        for(int i = 0; i &lt; dp.length / 2; i++){
+            dp[i * 2] = -prices[0];
+        }
+        for(int i = 1; i &lt;= prices.length; i++){
+            dp[0] = Math.max(dp[0], -prices[i - 1]);
+            dp[1] = Math.max(dp[1], dp[0] + prices[i - 1]);
+            // 还是与123题一样，与123题对照来看
+            // 就很容易啦
+            for(int j = 2; j &lt; dp.length; j += 2){
+                dp[j] = Math.max(dp[j], dp[j - 1] - prices[i-1]);
+                dp[j + 1] = Math.max(dp[j + 1], dp[j] + prices[i - 1]);
+            }
+        }
+        // 返回最后一次交易卖出状态的结果就行了
+        return dp[dp.length - 1];
+    }
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/katex/dist/katex.min.css">
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/markdown-it-texmath/css/texmath.min.css">
 
@@ -1543,7 +1778,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">51.7k</span>&nbsp;字
+                class="white-color">53.5k</span>&nbsp;字
             
             
             
@@ -1902,10 +2137,10 @@ $(function () {
     if (windowWidth > 768) {
         document.write('<script type="text/javascript" src="https://apip.weatherdt.com/float/static/js/r.js?v=1111"><\/script>');
     }
-    </script>
+    </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
     
   
-<script src="/live2dw/lib/L2Dwidget.min.js?243708c68e3ad401cd4432916889e600"></script><script>L2Dwidget.init({"dialog":{"enable":true,"hitokoto":true},"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"left","width":120,"height":160,"superSample":2,"voffset":0,"hoffset":20},"mobile":{"show":false},"react":{"opacity":0.7,"opacityOnHover":0.2}});</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+<script src="/live2dw/lib/L2Dwidget.min.js?243708c68e3ad401cd4432916889e600"></script><script>L2Dwidget.init({"dialog":{"enable":true,"hitokoto":true},"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"left","width":120,"height":160,"superSample":2,"voffset":0,"hoffset":20},"mobile":{"show":false},"react":{"opacity":0.7,"opacityOnHover":0.2}});</script>
         <style>
             [bg-lazy] {
                 background-image: none !important;
