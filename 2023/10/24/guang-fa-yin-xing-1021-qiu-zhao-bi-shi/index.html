@@ -6,7 +6,7 @@
 
 <head>
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
-    <meta name="keywords" content="字节1015秋招笔试, xkj123456">
+    <meta name="keywords" content="广发银行1021秋招笔试, xkj123456">
     <meta name="description" content="Mark the Splendid Life">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -18,7 +18,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>字节1015秋招笔试 | ShakeJ</title>
+    <title>广发银行1021秋招笔试 | ShakeJ</title>
     <link rel="icon" type="image/png" href="/icon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -474,12 +474,12 @@ charset="utf-8"></script> -->
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/17.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/9.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">字节1015秋招笔试</h1>
+                    <h1 class="description center-align post-title">广发银行1021秋招笔试</h1>
                 </div>
             </div>
         </div>
@@ -595,8 +595,8 @@ charset="utf-8"></script> -->
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/2023%E5%A4%A7%E5%8E%82%E7%A7%8B%E6%8B%9B/">
-                                <span class="chip bg-color">2023大厂秋招</span>
+                            <a href="/tags/2023%E7%A7%8B%E6%8B%9B/">
+                                <span class="chip bg-color">2023秋招</span>
                             </a>
                         
                     </div>
@@ -620,28 +620,28 @@ charset="utf-8"></script> -->
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2023-10-15
+                    2023-10-24
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-10-16
+                    2023-10-25
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    3.4k
+                    1.5k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    13 分
+                    6 分
                 </div>
                 
 
@@ -666,386 +666,218 @@ charset="utf-8"></script> -->
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="%E5%AD%97%E8%8A%821015%E7%AC%94%E8%AF%95%E7%9C%9F%E9%A2%98" tabindex="-1">字节1015笔试真题</h3>
+                <h3 id="%E5%B9%BF%E5%8F%91%E9%93%B6%E8%A1%8C1021%E7%A7%8B%E6%8B%9B%E7%AC%94%E8%AF%95" tabindex="-1">广发银行1021秋招笔试</h3>
 <blockquote>
-<p>好久都没更新秋招公司得笔试真题了，搞其他技术栈方面比较多。今天来看看字节大厂的题目，难度适中，没有特别绕的题目，但是发现很多题目，并没有现成的模板可以套，需要自己总结算法的思想加以应用。</p>
+<p>前面写了很多互联网企业的秋招笔试，还算是比较有难度。这次来试试银行的题目，做完后发现很多都是经典模拟题，有边界的判断、特例的考虑，还算是比较简单。</p>
 </blockquote>
 <p>​</p>
-<h3 id="1015.t1" tabindex="-1">1015.T1</h3>
+<h3 id="1021.t1" tabindex="-1">1021.T1</h3>
 <h4 id="1.-%E9%A2%98%E7%9B%AE%E8%AF%B4%E6%98%8E" tabindex="-1">1. 题目说明</h4>
-<p>小红有一个长度为n的01字符串，小红想知道最长的美丽连续子串是什么，输出它的长度。如果一个字符串的长度是偶数，且前一半全是0且后一半全是1或者前一半全是1且后一半全是0，那么这个字符串就是美丽串。</p>
-<p>如<code>0011</code>，<code>111000</code>都是美丽串。</p>
-<p><strong>输入描述：</strong></p>
-<p>一行一个长度为n的01字符串。</p>
-<p>​</p>
-<p><strong>输出描述：</strong></p>
-<p>输出一个整数表示答案。</p>
-<p><strong>示例1：</strong></p>
-<pre class="line-numbers language-none"><code class="language-none">// 输入：
-000001111011011
-
-// 输出：
-8<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>37进制的规则为:“0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ$”输入两个37进制数字请输出二者相乘的结果。输入的数字位数，不超过999位。</p>
+<pre class="line-numbers language-none"><code class="language-none">输入
+"Z","1"
+输出
+"Z"
+输入
+"A","B"
+输出
+"2$"<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>​</p>
 <h4 id="2.-%E8%A7%A3%E7%AD%94%E5%88%86%E6%9E%90" tabindex="-1">2. 解答分析</h4>
 <ul>
 <li>
-<p>题目中存在两个比较重要的条件，<strong>一个是长度为偶数</strong>，<strong>一个是五五开含01</strong>。</p>
+<p>主要考虑到此时的<code>37</code>进制下的<code>A</code>代表的是数字<code>10</code>,后续的字符也是以此类推。</p>
 </li>
 <li>
-<p>对于这类的题目，我们可以找到最大的连续的<code>0</code>或<code>1</code>的个数，取相邻的两个数目的最小值，再在全体字符串中找到<code>ans</code>取最大值即可。</p>
+<p>我们可以把两个字符串的每一位都拆开，模拟乘法的操作，只是此时需要注意好进位即可。</p>
 <p>​</p>
 </li>
 </ul>
 <h4 id="3.-%E5%85%B7%E4%BD%93%E4%BB%A3%E7%A0%81" tabindex="-1">3. 具体代码</h4>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java">import java.util.Scanner;
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">public class title1 {
 
-public class title1 {
-    public static void main(String[] args){
-        Scanner in=new Scanner(System.in);
-        String s= in.next();
-        int n=s.length();
-        int ans=0;
-        int prev=0;
+    public int get(char ch) {
+        return ch &gt;= 'A' ? ch - 'A' + 10 : (ch == '$' ? 36 : ch - '0');
+    }// 字符类型转化为整型
 
-        for(int i=0;i&lt;n;i++){
-            int j=i;
-            while(j&lt;n &amp;&amp; s.charAt(j)==s.charAt(i)){
-                ++j;
+    public String mul37(String x, String y) {
+        int n = x.length(), m = y.length();
+        int len = n + m;
+        int[] a = new int[len + 10];
+        for (int i = 0; i &lt; n; i++) {
+            for (int j = 0; j &lt; m; j++) {// 从后向前
+                int ai = get(x.charAt(n - 1 - i));
+                int aj = get(y.charAt(m - 1 - j));
+                a[i + j] += ai * aj;	//将乘积加到当前位上
+                a[i + j + 1] += a[i+j]/37; //进位
+                a[i + j] %= 37;	//取模操作
             }
-
-            int cur=Math.min(prev,j-i);//找到较小的连续字符串
-            ans=Math.max(ans,cur);
-            prev=j-i; // 更新前一次出现字符数量
-            i=j-1;  // 将 i 赋值为 j-1，跳过上一次出现的连续字符，开始统计下一段连续字符。
         }
-        System.out.println(ans*2);//返回最大的连续0或1的长度的两倍，由于cur取的是较小的值，所以较大的那个一定满足条件。
+        while (len&gt;1 &amp;&amp; a[len - 1] == 0)// 去除结果中的前导零，最多迭代 len 次，其中 len 是乘积结果的长度。
+            len--;
+        StringBuilder ans = new StringBuilder();
+        for (int i = len - 1; i &gt;= 0; i--) {
+            char c;
+            if (a[i] &gt;= 10 &amp;&amp; a[i] &lt;= 35)
+                c = (char) (a[i] - 10 + 'A');
+            else if (a[i] == 36)
+                c = '$'; //36位
+            else
+                c = (char) (a[i] + '0');
+            ans.append(c);
+        }
+        return ans.toString(); //返回字符串
     }
-}
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    public static void main(String[] args){
+        title1 title=new title1();
+        String a="A";
+        String b="B";
+        String result=title.mul37(a,b);
+        System.out.println(result);
+    }
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
 <li>
 <p><strong>复杂度分析：</strong></p>
 <ul>
 <li>
-<p><strong>时间复杂度：<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><msup><mi>n</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n^2)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></eq></strong>。(最坏的情况，所有的字符都是相等的)</p>
+<p><strong>时间复杂度：<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo>∗</mo><mi>m</mi><mo>+</mo><mi>l</mi><mi>e</mi><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n*m+len)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">m</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">e</span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span></eq></strong></p>
 <blockquote>
 <ul>
-<li>首先，读入输入数据的时间复杂度为 <em>O</em>(1)。</li>
-<li>接着，循环遍历输入字符串 <code>s</code>，时间复杂度为 <em>O</em>(<em>n</em>)。在每次循环中，内部使用一个 <code>while</code> 循环寻找当前字符连续出现的最长长度。由于 <code>s</code> 的长度为 <em>n</em>，因此 <code>while</code> 循环的时间复杂度为<em>O</em>(<em>n</em>)。在寻找当前字符连续出现的最长长度之后，还需要更新 <code>ans</code> 和 <code>prev</code> 的值，这两个操作可以在常数时间内完成。因此，单次循环的总时间复杂度为 <em>O</em>(<em>n</em>)。</li>
-<li>最后，输出结果的时间复杂度为 <em>O</em>(1)。</li>
+<li>其中 n 和 m 分别是字符串 <code>x</code> 和 <code>y</code> 的长度，len 是乘积结果的长度。</li>
+<li>需要注意的是，这里的 len 可能会比较大，因为乘积的结果可能很长。因此，最终的时间复杂度可以近似看作 O(n * m)。</li>
 </ul>
 </blockquote>
 </li>
 <li>
-<p><strong>空间复杂度：<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord">1</span><span class="mclose">)</span></span></span></span></eq></strong></p>
+<p><strong>空间复杂度：<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo>+</mo><mi>m</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n + m)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">m</span><span class="mclose">)</span></span></span></span></eq></strong></p>
+<blockquote>
+<ul>
+<li>
+<p>这段代码的空间复杂度是O(n + m)，其中n是字符串x的长度，m是字符串y的长度。</p>
+</li>
+<li>
+<p>除了数组<code>a</code>外，还创建了一个<code>StringBuilder</code>对象<code>ans</code>，用于构建最终的结果字符串。其空间复杂度可以忽略不计，因为它只是用于临时存储结果字符。</p>
+</li>
+</ul>
+</blockquote>
 <p>​</p>
 </li>
 </ul>
 </li>
 </ul>
-<h3 id="1015.t2" tabindex="-1">1015.T2</h3>
+<h3 id="1021.t2" tabindex="-1">1021.T2</h3>
 <h4 id="1.-%E9%A2%98%E7%9B%AE%E8%AF%B4%E6%98%8E-1" tabindex="-1">1. 题目说明</h4>
-<p>坐标轴上有<code>n</code>个人,位置分别是<code>a1,a2,... ,an</code>，有n个物资,位置分别是<code>b1,b2,...bn</code>,每个人可以拿走一个物资,每个物资只能被一个人拿走,然后走到终点<code>p</code>,每个人走一步需要花费<code>1</code>的时间,每个人拿走物资的时间为<code>0</code>，问最终每个物资都运送到终点时,每个人所花费时间总和的最小值。</p>
-<p><strong>输入描述：</strong></p>
-<p>一行两个整数<code>n</code>,<code>p</code>,表示人数和终点位置。一行<code>n</code>个整数<code>a1,a2,..,an,</code>表示每个人的位置。一行<code>n</code>个整数<code>b1,b2,...,bn</code>,表示每个物资的位置。</p>
-<p>​													<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>≤</mo><mi>n</mi><mo>≤</mo><mn>1</mn><msup><mn>0</mn><mn>5</mn></msup><mo separator="true">,</mo><mn>1</mn><mo>≤</mo><mi>p</mi><mo separator="true">,</mo><msub><mi>a</mi><mi>i</mi></msub><mo separator="true">,</mo><msub><mi>b</mi><mi>i</mi></msub><mo>≤</mo><mn>1</mn><msup><mn>0</mn><mn>9</mn></msup></mrow><annotation encoding="application/x-tex">1\le n \le10^5,1\le p,a_i,b_i \le10^9</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7804em;vertical-align:-0.136em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7719em;vertical-align:-0.136em;"></span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.0085em;vertical-align:-0.1944em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">5</span></span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">p</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">b</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">9</span></span></span></span></span></span></span></span></span></span></span></eq></p>
-<p>​</p>
-<p><strong>输出描述：</strong></p>
-<p>输出一个整数，表示最短时间。</p>
-<p><strong>示例1：</strong></p>
-<pre class="line-numbers language-none"><code class="language-none">// 输入：
-3 3
-1 4 3
-2 5 6
-
-// 输出：
-11
-
-// 说明
-第一个人拿第一个物品花费时间1,走到终点花费时间1。
-第二个人拿第三个物品花费时间2,走到终点花费时间3
-第三个人拿第二个物品花费时间2,走到终点花费时间2。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>填写个人简历信息时，常常需要输入电话号码。当前的任务，需要根据输入的号码，判断属于哪个运营商(电信、移动、联通、广电)</p>
+<p>为了简化问题，初定各运营商的号段如下：</p>
+<ul>
+<li>中国移动ChinaMobile拥有号码段为:139,138,137,136,135,134,147,159,158,157,151,152,150,182,188,187;16个号段</li>
+<li>中国联通ChinaUnicom拥有号码段为:130,131,132,145,155,156,186,185;8个号段</li>
+<li>中国电信ChinaTelecom拥有号码段为:133,1349,153,189,180:5个号码段</li>
+<li>中国广电ChinaBroadNet拥有号码段为190,197,196,192;4个号段</li>
+</ul>
+<p>任务: 输入一个电话号码的字符串，判断该号码是否合法且为哪个运营商,若属于中国移动，则输出ChinaMobile</p>
+<p>输入一个电话号码，可以以0开头或86开头，输出所属运营商或Invalid</p>
+<pre class="line-numbers language-none"><code class="language-none">输入
+"013912345678"
+输出
+"ChinaMobile"
+输入
+"0139123456789"
+输出
+"Invalid"<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>​</p>
 <h4 id="2.-%E8%A7%A3%E7%AD%94%E5%88%86%E6%9E%90-1" tabindex="-1">2. 解答分析</h4>
 <ul>
 <li>
-<p>对于个人而言，什么时候的移动次数最小？那当然是排序后，搬运最近的物品到最后的终点即可。</p>
+<p>其实这一类题目直接看题模拟就行。</p>
+<ul>
+<li>
+<p>首先是判断当前的号码是否合法。</p>
+<ol>
+<li>开头是否为<code>0</code>或者是<code>86</code>，这里直接利用<code>java</code>的<code>s.charAt(0)/s.charAt(1)</code>判断即可。再判断完之后，将剩余的字符串保存，这里可以利用<code>java</code>的<code>substring()</code>进行截取，注意这个用法是<strong>前闭后开</strong></li>
+<li>号码的长度问题，需要不小于2和长度为11位（除去开头的判断字符）</li>
+</ol>
 </li>
 <li>
-<p><strong>所以可以利用贪心算法</strong>，对人和物品的数组进行排序，从左到右依次增大，以此类推，一一对应地搬运肯定是最优的解。</p>
+<p>同时注意特例的判断，看到开头基本上都是三位数，只有一个<code>1349</code>是四位数，这个单独判断就行。</p>
+</li>
+<li>
+<p>最后就直接将后续的开头3位字符进行<code>if-else</code>的判断就行。</p>
 <p>​</p>
+</li>
+</ul>
 </li>
 </ul>
 <h4 id="3.-%E5%85%B7%E4%BD%93%E4%BB%A3%E7%A0%81-1" tabindex="-1">3. 具体代码</h4>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java">import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Scanner;
-
-public class title2 {
-    
-    public static void main(String[] args){
-        Scanner in=new Scanner(System.in);
-        int n=in.nextInt();
-        int p=in.nextInt();
-        int[] a=new int[n];
-        int[] b=new int[n];	//下面将人和物品的数组填满
-        for(int i=0;i&lt;n;i++){
-            a[i]=in.nextInt();
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">public class title2 {
+    //思路：模拟。先判断长度是否合法，再根据前三位字符串判断即可
+    public String getTypeOfMobilePhoneNumber(String mobilePhoneNumber){
+        String s="";
+        //先把特殊情况进行遍历吧，还有开头的字符
+        if(mobilePhoneNumber.length()&lt;=2){
+            return "Invalid";
         }
-        for(int i=0;i&lt;n;i++){
-            b[i]=in.nextInt();
+        if(mobilePhoneNumber.charAt(0)=='0'){
+            s=mobilePhoneNumber.substring(1);
+        }else if(mobilePhoneNumber.charAt(0)=='8' &amp;&amp; mobilePhoneNumber.charAt(1)=='6'){
+            s=mobilePhoneNumber.substring(2);
         }
-        //排序
-        Arrays.sort(a);
-        Arrays.sort(b);
-
-        //贪心计算答案
-        long ans=0;
-        for(int i=0;i&lt;n;i++){
-            ans+=Math.abs(a[i]-b[i])+Math.abs(b[i]-p);//人和货物的距离+货物到终点的距离
+        if(s.length()!=11){
+            return "Invalid";
+        }if(s.substring(0,4).equals("1349")){
+            return "ChinaTelecom";
         }
-        System.out.println(ans);
-        in.close();
+        String t=s.substring(0,3); //对后续的字符进行遍历判断
+        if (t.equals("190") || t.equals("197") || t.equals("196") || t.equals("192"))
+            return "ChinaBroadNet";
+        else if (t.equals("133") || t.equals("153") || t.equals("189") || t.equals("180"))
+            return "ChinaTelecom";
+        else if (t.equals("130") || t.equals("131") || t.equals("132") || t.equals("145") || t.equals("155")
+                || t.equals("156") || t.equals("186") || t.equals("185"))
+            return "ChinaUnicom";
+        else if (t.equals("139") || t.equals("138") || t.equals("137") || t.equals("136") || t.equals("135")
+                || t.equals("134") || t.equals("147") || t.equals("159") || t.equals("158") || t.equals("157")
+                || t.equals("151") || t.equals("152") || t.equals("150") || t.equals("182") || t.equals("188")
+                || t.equals("187"))
+            return "ChinaMobile";
+        else
+            return "Invalid";
     }
-}
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    public static void main(String[] args){
+        title2 t=new title2();
+        String mobilePhoneNumber="8613801234567";
+        String result=t.getTypeOfMobilePhoneNumber(mobilePhoneNumber);
+        System.out.println("Result: "+result);
+
+    }
+
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
 <li>
 <p><strong>复杂度分析：</strong></p>
 <ul>
 <li>
-<p><strong>时间复杂度：<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span></eq></strong></p>
+<p><strong>时间复杂度：<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span></eq></strong>，n就是手机号的长度。</p>
 </li>
 <li>
 <p><strong>空间复杂度：<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord">1</span><span class="mclose">)</span></span></span></span></eq></strong></p>
-<p>​</p>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="1015.t3" tabindex="-1">1015.T3</h3>
-<h4 id="1.-%E9%A2%98%E7%9B%AE%E8%AF%B4%E6%98%8E-2" tabindex="-1">1. 题目说明</h4>
-<p>小红是一名科学家,她正在研究一种植物的叶子。这种植物的叶子有两个特征:颜色和形状。小红一共有<strong>n片叶子</strong>需要研究,她按照顺序依次摘取。然而,小红的研究假设是,研究一片叶子时,如果发现曾经已经研究过<strong>相同颜色和形状的叶子</strong>,那么本次研究的知识减半**(向下取整)**。现在问题是,小红可以自由排序,选择研究的顺序,<strong>最多可以获得多少知识</strong>。</p>
-<p><strong>输入描述：</strong></p>
-<p>第一行一个正整数<code>n</code>,表示叶子的数量。</p>
-<p>第二行<code>n</code>个正整数<code>a1, a2,...,an,</code>表示每片叶子的颜色。</p>
-<p>第三行<code>n</code>个正整数<code>b1,b2,...,bn,</code>表示每片叶子的形状。</p>
-<p>第四行<code>n</code>个正整数<code>c1,c2…,cn</code>,表示第一次研究可以获得知识,如果<strong>之前见过相同颜色和形状的叶子</strong>,则获得的知识是<code>ci/2</code>(向下取整)。</p>
-<p>​		                      	<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>≤</mo><mi>n</mi><mo>≤</mo><mn>1</mn><msup><mn>0</mn><mn>5</mn></msup><mo separator="true">;</mo><mn>1</mn><mo>≤</mo><msub><mi>a</mi><mi>i</mi></msub><mo separator="true">,</mo><msub><mi>b</mi><mi>i</mi></msub><mo>≤</mo><mn>1</mn><msup><mn>0</mn><mn>9</mn></msup><mo separator="true">;</mo><mn>1</mn><mo>≤</mo><msub><mi>c</mi><mi>i</mi></msub><mo>≤</mo><mn>1</mn><msup><mn>0</mn><mn>4</mn></msup></mrow><annotation encoding="application/x-tex">1\le n \le10^5;1\le a_i,b_i \le10^9;1 \le c_i \le 10^4</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7804em;vertical-align:-0.136em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7719em;vertical-align:-0.136em;"></span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.0085em;vertical-align:-0.1944em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">5</span></span></span></span></span></span></span></span><span class="mpunct">;</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">b</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.0085em;vertical-align:-0.1944em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">9</span></span></span></span></span></span></span></span><span class="mpunct">;</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.786em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">c</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">4</span></span></span></span></span></span></span></span></span></span></span></eq></p>
-<p>​</p>
-<p><strong>输出描述：</strong></p>
-<p>一个整数,表示最多能获得的知识。</p>
-<p><strong>示例1：</strong></p>
-<pre class="line-numbers language-none"><code class="language-none">// 输入：
-4
-1 2 2 2
-1 2 3 2
-2 3 4 5
-
-// 输出：
-12
-
-// 说明：
-按照1，4，3，2的研究顺序，获得知识2 + 5 + 4 +（3/2）= 12<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>​</p>
-<h4 id="2.-%E8%A7%A3%E7%AD%94%E5%88%86%E6%9E%90-2" tabindex="-1">2. 解答分析</h4>
-<ul>
-<li>
-<p>读题，本题需要记录最基础的两组数据：颜色和形状，<strong>再根据颜色和形状是否相同进行知识研究判断。</strong></p>
-</li>
-<li>
-<p>所以我们应该采用一种可以唯一确定两者关系的映射，自然而然想到<code>HashMap</code>。直接根据<code>ai</code>和<code>bi</code>建立哈希，<code>对每一个key生成一个数组，存放ci</code>，然后直接按照题目要求<code>累加</code>即可。</p>
-<p>​</p>
-</li>
-</ul>
-<h4 id="3.-%E5%85%B7%E4%BD%93%E4%BB%A3%E7%A0%81-2" tabindex="-1">3. 具体代码</h4>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java">import java.util.*;
-
-public class title3 {
-    
-    public static void main(String[] args){
-        Scanner in=new Scanner(System.in);
-
-        //首先读入输入的数据
-        int n=in.nextInt();
-        int[] color=new int[n];
-        int[] shape=new int[n];
-        int[] a=new int[n];
-
-        for(int i=0;i&lt;n;i++){
-            color[i]=in.nextInt();
-        }
-        for(int i=0;i&lt;n;i++){
-            shape[i]=in.nextInt();
-        }
-        for (int i=0;i&lt;n;i++){
-            a[i]=in.nextInt();
-        }
-
-        //计算答案
-        long ans=0;
-        HashMap&lt;Long, List&lt;Integer&gt;&gt;mp=new HashMap&lt;&gt;();
-        for(int i=0;i&lt;n;i++){
-            long key=((long)color[i]*(long)(1e9+1))+shape[i];
-            mp.computeIfAbsent(key,k-&gt;new ArrayList&lt;&gt;()).add(a[i]);//使用将研究知识添加到对应的列表中。
-        }
-        for(Map.Entry&lt;Long,List&lt;Integer&gt;&gt; entry:mp.entrySet()){//转化为集合
-            List&lt;Integer&gt; v = entry.getValue();//获取列表的值
-            v.sort(Collections.reverseOrder());//列表中的降序排列
-            long cur = v.get(0);
-            for (int i = 1; i &lt; v.size(); i++) {
-                cur += v.get(i) / 2;//遍历列表的其他元素，将其除以2并累加到 cur 中
-            }
-            ans += cur;//变量 ans 存储了小红能获得的累计的最大知识
-        }
-
-        // 输出答案
-        System.out.println(ans);
-
-        in.close();
-    }
-}
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<ul>
-<li>
-<p><strong>复杂度分析：</strong></p>
-<ul>
-<li>
-<p><strong>时间复杂度：<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo>∗</mo><mo stretchy="false">(</mo><mi>m</mi><mo>∗</mo><mi>l</mi><mi>o</mi><mi>g</mi><mi>m</mi><mo>+</mo><mi>m</mi><mo stretchy="false">)</mo><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n*(m*logm+m))</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal">m</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">o</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mord mathnormal">m</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">m</span><span class="mclose">))</span></span></span></span></eq></strong></p>
-<blockquote>
-<ol>
-<li>读入输入数据：需要遍历<code>n</code>个叶子，时间复杂度为<code>O(n)</code>。</li>
-<li>构建哈希表：遍历<code>n</code>个叶子，在哈希表中插入或更新<code>n</code>个元素，每次插入/更新的时间复杂度为<code>O(1)</code>，因此总的时间复杂度为<code>O(n)</code>。</li>
-<li>遍历哈希表条目：最坏情况下，哈希表中有<code>n</code>个不同的键，对于每个键，需要对其对应的列表进行排序和累积计算，假设列表的平均长度为<code>m</code>，则对每个键的操作的时间复杂度为<code>O(m*logm+m)</code>，因此遍历所有的键的时间复杂度为<code>O(n*(m*logm+m))</code>。</li>
-<li>输出答案：时间复杂度为<code>O(1)</code>。</li>
-</ol>
-</blockquote>
-</li>
-<li>
-<p><strong>空间复杂度：<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><msup><mi>n</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n^2)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></eq></strong></p>
-<blockquote>
-<ol>
-<li>输入数据的存储：需要用到三个整型数组 <code>color[]</code>、<code>shape[]</code> 和 <code>a[]</code>，它们的长度均为<code>n</code>，因此空间复杂度为<code>O(n)</code>。</li>
-<li>哈希表和列表的存储：哈希表 <code>mp</code> 存储了每种颜色和形状组合对应的研究知识列表。最坏情况下，哈希表有<code>n</code>个不同的键，每个键对应的列表长度为<code>n</code>，因此哈希表和列表的总体空间复杂度为<code>O(n^2)</code>。</li>
-</ol>
-</blockquote>
-<p>​</p>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="1015.t4" tabindex="-1">1015.T4</h3>
-<h4 id="1.-%E9%A2%98%E7%9B%AE%E8%AF%B4%E6%98%8E-3" tabindex="-1">1. 题目说明</h4>
-<p>小红准备卖<code>n</code>个西瓜,已知每个西瓜的品质为<code>ai</code>。小红可以设置一个品质标准品质<code>x</code>，不小于<code>x</code>的西瓜为优质品。小红希望设置完品质标准<code>x</code>后,当顾客从左到右依次买瓜时，每个人买到优质品的概率都不小于<code>P</code>(顾客不知道哪个瓜是优质品,只知道剩下的瓜数量以及剩下的优质品数量)。小红想知道,<code>x</code>的最大值是多少?</p>
-<p>​</p>
-<p><strong>输入描述：</strong></p>
-<p>第一行输入一个正整数<code>n</code>和一个正实数<code>p</code>,含义如题意所述。</p>
-<p>第二行输入<code>n</code>个正整数<code>ai</code>,分别代表每个瓜的品质。</p>
-<p>​									<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>≤</mo><mi>n</mi><mo>≤</mo><mn>2000001</mn><mo>≤</mo><msub><mi>a</mi><mi>i</mi></msub><mo>≤</mo><mn>1</mn><msup><mn>0</mn><mn>9</mn></msup><mo separator="true">;</mo><mn>0</mn><mo>≤</mo><mi>q</mi><mo>≤</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">1\le n \le2000001\le a_i\le10^9; 0\le q\le 1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7804em;vertical-align:-0.136em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7719em;vertical-align:-0.136em;"></span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7804em;vertical-align:-0.136em;"></span><span class="mord">2000001</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.786em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.0085em;vertical-align:-0.1944em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">9</span></span></span></span></span></span></span></span><span class="mpunct">;</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">0</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8304em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">q</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span></eq></p>
-<p>​</p>
-<p><strong>输出描述：</strong></p>
-<p>一个正整数,代表x的最大值。</p>
-<p><strong>示例1：</strong></p>
-<pre class="line-numbers language-none"><code class="language-none">// 输入
-4 0.5
-5 3 9 6
-
-// 输出：
-6
-
-// 说明：
-当优质品标准设置为6时,第三个和第四个瓜是优质品：
-第一个顾客买瓜时,买到优质品的概率是0.5。
-第二个顾客买瓜时,买到优质品的概率是0.6666666。
-第三个顾客买瓜时,买到优质品的概率是1。
-第四个顾客买瓜时,买到优质品的概率是1。
-可以证明,6为品质标准设置的最大值。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>​</p>
-<h4 id="2.-%E8%A7%A3%E7%AD%94%E5%88%86%E6%9E%90-3" tabindex="-1">2. 解答分析</h4>
-<ul>
-<li>
-<p>其实只看题目并没有清楚具体含义，通过示例可以看出，顾客从左往右买瓜时，是按照次序买的，即第一个人只能买第一个瓜，那么就比较直观了；</p>
-</li>
-<li>
-<p><strong>可以使用二分</strong>，枚举品质标准的设置值<code>mid</code>，再计算当品质标准为<code>x</code>时，<strong>是否满足买到优质品的概率不低于</strong><code>p</code>。</p>
-</li>
-<li>
-<p>这时候需要设定哨兵<code>ok</code>用于不断计算剩余的，取到优质瓜的概率<code>cur</code>。</p>
-<ul>
-<li>
-<p>一旦此时的概率<code>cur</code>比设定的<code>p</code>小的时候，说明此时的<code>good</code>值小了，<strong>需要降低阈值，增加<code>good</code>的数量</strong>。更新此时的<code>mid</code>值，将右边界左移（<strong>mid=r-1;</strong>）</p>
-</li>
-<li>
-<p>一旦此时的概率<code>cur</code>比设定的<code>p</code>大的时候，说明此时的<code>good</code>值大了，<strong>需要增大阈值，减少<code>good</code>的数量</strong>。需要更新此时的<code>mid</code>值，将左边界右移（<strong>mid=l+1;</strong>）</p>
-<p>​</p>
-</li>
-</ul>
-</li>
-</ul>
-<h4 id="3.-%E5%85%B7%E4%BD%93%E4%BB%A3%E7%A0%81-3" tabindex="-1">3. 具体代码</h4>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java">import java.util.Scanner;
-
-public class title4 {
-    
-    public static void main(String[]args){
-        Scanner in=new Scanner(System.in);
-        int n=in.nextInt();
-        double p=in.nextDouble();
-        int[] a=new int[n];
-        for(int i=0;i&lt;n;i++){
-            a[i]=in.nextInt();
-        }
-        int l=1,r=1000000000;
-        while(l&lt;=r){	//显然不可能取到相等
-            int mid=l+(r-l)/2;	//下面开始二分查找
-            boolean ok=true;	//设置哨兵,判断顾客买到优质瓜的概率不小于给定的p。
-            int good=0;
-            for(int i=n-1;i&gt;=0&amp;&amp;ok;i--){
-                if(a[i]&gt;=mid){
-                    good++;
-                }
-                double cur=good*1.0/(n-i);
-                if(cur&lt;p){
-                    ok=false;	//此时的概率比最小设定的概率还小，说明不满足要求，此时的哨兵为错误，说明此时的good数量要增大，也就是mid的值需要向左小一些
-                }
-            }
-            if(ok){	//符合条件，直接指向mid的下一个
-                l=mid+1;
-            }else{	// 不符合要求，右边界左移
-                r=mid-1;
-            }
-        }
-        System.out.println(l);	//返回符合条件的时候的左边界，l和r相等
-        in.close();
-    }
-}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<ul>
-<li>
-<p><strong>复杂度分析：</strong></p>
-<ul>
-<li>
-<p><strong>时间复杂度：<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo>∗</mo><mi>l</mi><mi>o</mi><mi>g</mi><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n*logn)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">o</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span></eq></strong>，其中<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span></eq>为瓜的个数。</p>
-<blockquote>
-<ol>
-<li>输入部分：读取n和p的时间复杂度为O(1)，读取数组a的时间复杂度为O(n)，总计O(n)。</li>
-<li>二分查找部分：由于二分查找的次数最多为O(logN)，其中N为品质值的范围（这里为10^9），每次查找需要O(n)的遍历数组a的时间复杂度，所以总计时间复杂度为O(n*logN)。</li>
-<li>输出部分：打印结果的时间复杂度为O(1)。</li>
-</ol>
-</blockquote>
-</li>
-<li>
-<p><strong>空间复杂度：<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span></eq></strong></p>
-<blockquote>
-<p>​	整型数组a占用了O(n)的空间，用于存储每个瓜的品质。</p>
-</blockquote>
 <p>​</p>
 </li>
 </ul>
 </li>
 </ul>
 <hr>
-<center><span style="color:lightblue;font-size:30px;text-align:center;">END~</span></center>
+<blockquote>
+<ul>
+<li>
+<p>所以说银行的题目较大厂的难度还是低一些，当然并不说明更容易进，还需要其余的知识补充。最近在看八股和计算机基础的知识，今年剩余的目标就是多维复习，刷题、八股、基础，还有做点项目出来。</p>
+</li>
+<li>
+<p><span style="font-size:20px;color:orange;">慢慢来，🍞和🍬都会有的！加油💪！</span></p>
+</li>
+</ul>
+</blockquote>
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/katex/dist/katex.min.css">
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/markdown-it-texmath/css/texmath.min.css">
 
@@ -1074,7 +906,7 @@ public class title4 {
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://shakeJ96.github.io/2023/10/15/zi-jie-1015-qiu-zhao-bi-shi/">https://shakeJ96.github.io/2023/10/15/zi-jie-1015-qiu-zhao-bi-shi/</a>
+                    <a href="https://shakeJ96.github.io/2023/10/24/guang-fa-yin-xing-1021-qiu-zhao-bi-shi/">https://shakeJ96.github.io/2023/10/24/guang-fa-yin-xing-1021-qiu-zhao-bi-shi/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -1112,8 +944,8 @@ public class title4 {
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/2023%E5%A4%A7%E5%8E%82%E7%A7%8B%E6%8B%9B/">
-                                    <span class="chip bg-color">2023大厂秋招</span>
+                                <a href="/tags/2023%E7%A7%8B%E6%8B%9B/">
+                                    <span class="chip bg-color">2023秋招</span>
                                 </a>
                             
                         </div>
@@ -1283,17 +1115,18 @@ public class title4 {
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2023/10/18/hashmap-yu-treemap-zong-jie/">
+                <a href="/2023/10/24/guang-fa-yin-xing-1021-qiu-zhao-bi-shi/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="HashMap与TreeMap总结">
+                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="广发银行1021秋招笔试">
                         
-                        <span class="card-title">HashMap与TreeMap总结</span>
+                        <span class="card-title">广发银行1021秋招笔试</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1303,26 +1136,27 @@ public class title4 {
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2023-10-18
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-10-24
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E5%85%AB%E8%82%A1/" class="post-category">
-                                    八股
+                            <a href="/categories/%E7%AC%94%E8%AF%95%E7%9C%9F%E9%A2%98/" class="post-category">
+                                    笔试真题
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Java/">
-                        <span class="chip bg-color">Java</span>
+                    <a href="/tags/2023%E7%A7%8B%E6%8B%9B/">
+                        <span class="chip bg-color">2023秋招</span>
                     </a>
                     
                 </div>
@@ -1336,13 +1170,13 @@ public class title4 {
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2023/10/15/zhou-sai-367/">
+                <a href="/2023/10/20/dong-tai-gui-hua-si-lu-he-li-ti-ying-yong/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="周赛367">
+                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="动态规划思路和例题应用">
                         
-                        <span class="card-title">周赛367</span>
+                        <span class="card-title">动态规划思路和例题应用</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1353,7 +1187,7 @@ public class title4 {
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-10-15
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-10-20
                             </span>
                         <span class="publish-author">
                             
@@ -1370,12 +1204,8 @@ public class title4 {
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E7%AE%97%E6%B3%95/">
-                        <span class="chip bg-color">算法</span>
-                    </a>
-                    
-                    <a href="/tags/%E5%91%A8%E8%B5%9B/">
-                        <span class="chip bg-color">周赛</span>
+                    <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">
+                        <span class="chip bg-color">动态规划</span>
                     </a>
                     
                 </div>
