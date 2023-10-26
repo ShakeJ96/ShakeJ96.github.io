@@ -6,7 +6,7 @@
 
 <head>
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
-    <meta name="keywords" content="Leetcode 376.摆动序列, xkj123456">
+    <meta name="keywords" content="菜鸟1025秋招笔试, xkj123456">
     <meta name="description" content="Mark the Splendid Life">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -18,7 +18,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Leetcode 376.摆动序列 | ShakeJ</title>
+    <title>菜鸟1025秋招笔试 | ShakeJ</title>
     <link rel="icon" type="image/png" href="/icon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -474,12 +474,12 @@ charset="utf-8"></script> -->
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/23.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/22.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Leetcode 376.摆动序列</h1>
+                    <h1 class="description center-align post-title">菜鸟1025秋招笔试</h1>
                 </div>
             </div>
         </div>
@@ -595,12 +595,8 @@ charset="utf-8"></script> -->
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/">
-                                <span class="chip bg-color">贪心算法</span>
-                            </a>
-                        
-                            <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">
-                                <span class="chip bg-color">动态规划</span>
+                            <a href="/tags/2023%E7%A7%8B%E6%8B%9B/">
+                                <span class="chip bg-color">2023秋招</span>
                             </a>
                         
                     </div>
@@ -611,8 +607,8 @@ charset="utf-8"></script> -->
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/Leetcode/" class="post-category">
-                                Leetcode
+                            <a href="/categories/%E7%AC%94%E8%AF%95%E7%9C%9F%E9%A2%98/" class="post-category">
+                                笔试真题
                             </a>
                         
                     </div>
@@ -624,28 +620,28 @@ charset="utf-8"></script> -->
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2023-09-24
+                    2023-10-26
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-09-24
+                    2023-10-26
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.5k
+                    2k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    6 分
+                    8 分
                 </div>
                 
 
@@ -670,174 +666,297 @@ charset="utf-8"></script> -->
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="leetcode-376.-%E6%91%86%E5%8A%A8%E5%BA%8F%E5%88%97" tabindex="-1"><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/wiggle-subsequence/">Leetcode 376. 摆动序列</a></h3>
+                <h3 id="%E8%8F%9C%E9%B8%9F1025%E7%A7%8B%E6%8B%9B%E7%AC%94%E8%AF%95" tabindex="-1">菜鸟1025秋招笔试</h3>
 <blockquote>
-<p>以后就分类进行刷题，包含课程和代码随想录中的部分题目。形成一定的大纲和刷题的思路。</p>
+<p>还是挺思维的，套路不是很明显；主要考察的是灵活度，下面详细地来看看。</p>
 </blockquote>
 <p>​</p>
-<h3 id="1.-%E9%A2%98%E7%9B%AE%E8%AF%B4%E6%98%8E" tabindex="-1">1. 题目说明</h3>
-<p>如果连续数字之间的差严格地在正数和负数之间交替，则数字序列称为<strong>摆动序列</strong>。第一个差（如果存在的话）可能是正数或负数。仅有一个元素或者含两个不等元素的序列也视作摆动序列。</p>
-<ul>
-<li>例如， <code>[1, 7, 4, 9, 2, 5]</code> 是一个 <strong>摆动序列</strong> ，因为差值 <code>(6, -3, 5, -7, 3)</code> 是正负交替出现的。</li>
-<li>相反，<code>[1, 4, 7, 2, 5]</code> 和 <code>[1, 7, 4, 5, 5]</code> 不是摆动序列，第一个序列是因为它的前两个差值都是正数，第二个序列是因为它的最后一个差值为零。</li>
-</ul>
-<p><strong>子序列</strong> 可以通过从原始序列中删除一些（也可以不删除）元素来获得，剩下的元素保持其原始顺序。</p>
-<p>给你一个整数数组 <code>nums</code> ，返回 <code>nums</code> 中作为 <strong>摆动序列</strong> 的 <strong>最长子序列的长度</strong> 。</p>
-<p><strong>示例 1：</strong></p>
-<pre class="line-numbers language-none"><code class="language-none">输入：nums = [1,7,4,9,2,5]
-输出：6
-解释：整个序列均为摆动序列，各元素之间的差值为 (6, -3, 5, -7, 3) 。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<p><strong>示例 2：</strong></p>
-<pre class="line-numbers language-none"><code class="language-none">输入：nums = [1,17,5,10,13,15,10,5,16,8]
-输出：7
-解释：这个序列包含几个长度为 7 摆动序列。
-其中一个是 [1, 17, 10, 13, 10, 16, 8] ，各元素之间的差值为 (16, -7, 3, -3, 6, -8) 。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-<p><strong>示例 3：</strong></p>
-<pre class="line-numbers language-none"><code class="language-none">输入：nums = [1,2,3,4,5,6,7,8,9]
-输出：2<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h3 id="1025.t1" tabindex="-1">1025.T1</h3>
+<h4 id="1.-%E9%A2%98%E7%9B%AE%E8%AF%B4%E6%98%8E" tabindex="-1">1. 题目说明</h4>
+<p>小红喜欢偶数，即一个数从因数分解的角度来看，其中的偶数因子越多，她就越喜欢这个数。也就是x=PiXP2X…XPk，其中Pi 都是偶数，那么大的最大值就是小红对这个数的喜欢程度。小红想知道区间[l,r]的数中，小红对哪个数的喜欢程度最高，输出小红的喜欢程度。</p>
+<p><strong>输入描述</strong></p>
+<p>一行两个整数l,r，表示区间[l,r]。1≤l≤r≤10^9</p>
+<p><strong>输出描述</strong></p>
+<p>输出一个整数，表示小红对这个数的喜欢程度。</p>
+<p><strong>示例</strong></p>
+<p><strong>输入</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">3 10<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><strong>输出</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">3<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><strong>说明</strong></p>
+<p>小红最喜欢的数是8，喜欢程度是 3，因为8=2X2X2。</p>
 <p>​</p>
-<hr>
-<h3 id="2.-%E8%A7%A3%E7%AD%94%E5%88%86%E6%9E%90" tabindex="-1">2. 解答分析</h3>
-<h4 id="2.1-%E6%80%9D%E8%B7%AF1%EF%BC%88%E8%B4%AA%E5%BF%83%E8%A7%A3%E6%B3%95%EF%BC%89" tabindex="-1">2.1 思路1（贪心解法）</h4>
+<h4 id="2.-%E5%88%86%E6%9E%90%E8%A7%A3%E7%AD%94" tabindex="-1">2. 分析解答</h4>
 <ul>
 <li>
-<p>对题目要求的分析就是通过从原始序列中删除（也可以不删除）元素来获得子序列，剩下的元素保持其原始顺序，其实要求就是下图所示即可。</p>
+<p>实际上求的是偶数的因子，这里利用二进制的思想对数进行划分即可。</p>
 </li>
 <li>
-<p><img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="https://code-thinking-1253855093.file.myqcloud.com/pics/20201124174327597.png" alt="376.摆动序列"></p>
-<blockquote>
-<p><strong>局部最优：删除单调坡度上的节点（不包括单调坡度两端的节点），那么这个坡度就可以有两个局部峰值</strong>。</p>
-<p><strong>整体最优：整个序列有最多的局部峰值，从而达到最长摆动序列</strong>。</p>
-<p>局部最优可以推出全局最优，并无法举出反例，那么可以试试贪心。</p>
-</blockquote>
-</li>
-<li>
-<p>实际上的操作并不用删除元素，而是统计峰值的数量就行。定义两个指针<code>prediff(nums[i]-nums[i-1])</code>和<code>curdiff(nums[i+1]-nums[i])</code>.</p>
-<p>这里可能会出现3中情况，如下：</p>
-<ul>
-<li>
-<p>上下坡中有平坡</p>
-<blockquote>
-<p>前一个指针可能为0，比如[1,2,2,2,1]的情况，需要将中间的3个2进行判断比较。</p>
-</blockquote>
-</li>
-<li>
-<p>数组首尾两端</p>
-<blockquote>
-<p>统计峰值的时候，数组最左边和最右边可能是波峰或者波谷。</p>
-</blockquote>
-</li>
-<li>
-<p>单调坡度有平坡</p>
-<blockquote>
-<p>如果在一个单调坡度上有平坡，例如[1,2,2,2,3,4]。可以看出，如果是在前后变化的时候进行峰值的记录，那么会在第3个2的地方进行记录，但是此时并不是最长的峰值，所以我们需要另外更新<code>preDiff</code>的变化位置。需要在摆动进行变化的时候进行更新。</p>
-</blockquote>
+<p>利用的是二进制的位运算来寻找整数的特定位置的信息，找出给定范围内的整数的最大值。</p>
+<p>​</p>
 </li>
 </ul>
-</li>
-<li>
-<h4 id="2.2-%E5%85%B7%E4%BD%93%E4%BB%A3%E7%A0%81%EF%BC%88%E8%B4%AA%E5%BF%83%EF%BC%89" tabindex="-1">2.2 具体代码（贪心）</h4>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java">class Solution {
-    public int wiggleMaxLength(int[] nums) {
-        if (nums.length &lt;= 1) {
-            return nums.length;
+<h4 id="3.-%E5%85%B7%E4%BD%93%E4%BB%A3%E7%A0%81" tabindex="-1">3. 具体代码</h4>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">import java.util.Scanner;
+
+public class title1 {
+    
+    public static void main(String[] args){
+        Scanner in=new Scanner(System.in);
+        int l=in.nextInt(),r=in.nextInt();
+        int res=0;
+        for(int i=l;i&lt;=r;i++){
+            res=Math.max(res,getRes(i));
         }
-        //当前差值
-        int curDiff = 0;
-        //上一个差值
-        int preDiff = 0;
-        int count = 1; //峰值的个数，序列默认序列的最右边有一个峰值
-        for (int i = 1; i &lt; nums.length; i++) {
-            //得到当前差值
-            curDiff = nums[i] - nums[i - 1];
-            //如果当前差值和上一个差值为一正一负
-            //等于0的情况表示初始时的preDiff
-            if ((curDiff &gt; 0 &amp;&amp; preDiff &lt;= 0) || (curDiff &lt; 0 &amp;&amp; preDiff &gt;= 0)) {
-                count++;
-                preDiff = curDiff;// 注意这里，只在摆动变化的时候更新prediff
+        System.out.println(res);
+    }
+
+    private static int getRes(int n){
+        int res=0;
+        int i=Integer.lowestOneBit(n);//整数的最大位置
+        for(int j=0;j&lt;32;j++){
+            if(((i&gt;&gt;j)&amp;1)==1){ //判断这里的位置是否为1
+                res=j;
+                break;
             }
         }
-        return count;
+        return res;
     }
-}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-</li>
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
 <li>
 <p><strong>复杂度分析：</strong></p>
 <ul>
 <li>
-<p><strong>时间复杂度：<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span></eq></strong>,由于对数组进行遍历，数组的长度为<code>N</code>.</p>
-</li>
-<li>
-<p><strong>空间复杂度：<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord">1</span><span class="mclose">)</span></span></span></span></eq></strong>,并未引入额外的存储空间。</p>
-</li>
-</ul>
-</li>
-</ul>
-<hr>
-<h4 id="2.3-%E6%80%9D%E8%B7%AF2%EF%BC%88%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%EF%BC%89" tabindex="-1">2.3 思路2（动态规划）</h4>
+<p><strong>时间复杂度：<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mo stretchy="false">(</mo><mi>r</mi><mo>−</mo><mi>l</mi><mo>+</mo><mn>1</mn><mo stretchy="false">)</mo><mi>l</mi><mi>o</mi><msub><mi>g</mi><mn>2</mn></msub><mi>r</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O((r-l+1)log_2r)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">((</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.7778em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">)</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">o</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mclose">)</span></span></span></span></eq></strong></p>
+<blockquote>
 <ul>
 <li>
-<p>本题之所以可以想到动态规划，实际上是由于每一处的峰值都需要和前面的状态进行比较，如果是需要考虑个数。要么作为山峰(即<code>nums[i]&gt;nums[i-1]</code>)，要么作为山谷(即<code>nums[i]&lt;nums[i-1]</code>)</p>
-<ul>
-<li>设 dp 状态<code>dp[i][0]</code>，表示考虑前 i 个数，第 i 个数作为山峰的摆动子序列的最长长度</li>
-<li>设 dp 状态<code>dp[i][1]</code>，表示考虑前 i 个数，第 i 个数作为山谷的摆动子序列的最长长度</li>
-</ul>
-<p>则转移方程为：</p>
-<ul>
-<li><code>dp[i][0] = max(dp[i][0], dp[j][1] + 1)</code>，其中<code>0 &lt; j &lt; i</code>且<code>nums[j] &lt; nums[i]</code>，表示将 nums[i]接到前面某个山谷后面，作为山峰。</li>
-<li><code>dp[i][1] = max(dp[i][1], dp[j][0] + 1)</code>，其中<code>0 &lt; j &lt; i</code>且<code>nums[j] &gt; nums[i]</code>，表示将 nums[i]接到前面某个山峰后面，作为山谷。</li>
-</ul>
+<p>首先，主函数中的 for 循环会执行 (<em>r</em>−<em>l</em>+1) 次，每次调用 getRes 函数，因此 getRes 函数的时间复杂度需要分析。在 getRes 函数中，首先使用 Integer.lowestOneBit(n) 函数找到整数 n 的最大位置，该函数的时间复杂度为 <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>l</mi><mi>o</mi><msub><mi>g</mi><mn>2</mn></msub><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(log_2n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">o</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span></eq>。</p>
 </li>
 <li>
-<p><strong>初始状态</strong></p>
-<ul>
-<li>由于一个属可以接到前面的某个数后面，也可以自身为子序列的期典，所以初始的状态为：<code>dp[0][0]=dp[0][1]=1</code></li>
-</ul>
+<p>接着，使用一个循环遍历 32 个二进制位，判断最大位置所在的二进制位，循环次数为常数级别，即 <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord">1</span><span class="mclose">)</span></span></span></span></eq>。因此，getRes 函数的总时间复杂度为 <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>l</mi><mi>o</mi><msub><mi>g</mi><mn>2</mn></msub><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(log_2n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">o</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span></eq>。</p>
 </li>
 </ul>
+</blockquote>
+</li>
+<li>
+<p><strong>空间复杂度：<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord">1</span><span class="mclose">)</span></span></span></span></eq></strong></p>
+<blockquote>
+<p>空间复杂度上，只使用了常数个变量，因此为 <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord">1</span><span class="mclose">)</span></span></span></span></eq>。</p>
+</blockquote>
 <p>​</p>
-<h4 id="2.4-%E5%85%B7%E4%BD%93%E4%BB%A3%E7%A0%81%EF%BC%88dp%EF%BC%89" tabindex="-1">2.4 具体代码（dp）</h4>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java">// DP
-class Solution {
-    public int wiggleMaxLength(int[] nums) {
-        // 0 i 作为波峰的最大长度
-        // 1 i 作为波谷的最大长度
-        int dp[][] = new int[nums.length][2];
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="1025.t2" tabindex="-1">1025.T2</h3>
+<h4 id="1.-%E9%A2%98%E7%9B%AE%E8%AF%B4%E6%98%8E-1" tabindex="-1">1. 题目说明</h4>
+<p>小红有一个数组a，每次可以进行以下两种操作：</p>
+<ol>
+<li>
+<p>选择一个下标i，将ai加二，即ai =ai+2。</p>
+</li>
+<li>
+<p>选择一个下标i，如果ai=ai+1，将ai和ai+1加1，即ai=ai+1，ai +1 =ai+1  +1;否则不能进行 操作。</p>
+</li>
+</ol>
+<p>小红可以进行若千次操作，小红想知道能否通过若干次操作使得数组 a中所有元素相等。</p>
+<p><strong>输入描述</strong></p>
+<p>第一行一个整数t，表示数据组数。</p>
+<p>接下来t组数据，每组数据第一行一个整数 n，表示数组长度。 接下来一行n个整数 a1，a2，… ,an，表示数组 a 的初始值。</p>
+<p>1≤t≤10  1≤n≤10^5  1≤ai≤10^9</p>
+<p><strong>输出描述</strong></p>
+<p>输出t行，每行一个字符串，如果能使得数组 a 中所有元素相等，输出“YES"，否则输出“NO"。</p>
+<p><strong>示例</strong></p>
+<p><strong>输入</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">3 
+3
+1 2 3
+3
+1 1 3
+3
+2  2 3<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><strong>输出</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">NO
+YES
+YES<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p><strong>说明</strong></p>
+<ul>
+<li>
+<p>第一组，无法通过操作使得数组 a 中所有元素相等。</p>
+</li>
+<li>
+<p>第二组，对i= 1，2 各执行一次操作一，即可使得数组a中所有元素相等</p>
+</li>
+<li>
+<p>第三组，对i=1各执行一次操作二，即可使得数组a中所有元素相等。</p>
+<p>​</p>
+</li>
+</ul>
+<h4 id="2.-%E8%A7%A3%E7%AD%94%E5%88%86%E6%9E%90" tabindex="-1">2. 解答分析</h4>
+<ul>
+<li>
+<p>对于单独的一个数，可以实现<code>+2</code>的处理，换句话说，也就是不改变该数字的奇偶性，单纯地增加而已。</p>
+</li>
+<li>
+<p>对于连续相等的两个数，可以各自都<code>+1</code>，相当于改变这两个数的奇偶性。</p>
+</li>
+<li>
+<p>同时注意找到<strong>连续相等的区间序列</strong>的奇偶性：</p>
+<ul>
+<li>
+<p>如果区间的长度是偶数，那么他们是一定可以变成任意数的；</p>
+</li>
+<li>
+<p>如果区间的长度是奇数，那么所有为奇数的区间的数的奇偶性一定要相同，否则构造不出来。</p>
+<p>​</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="3.-%E5%85%B7%E4%BD%93%E4%BB%A3%E7%A0%81-1" tabindex="-1">3. 具体代码</h4>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">import java.util.Scanner;
 
-        dp[0][0] = dp[0][1] = 1;
-        for (int i = 1; i &lt; nums.length; i++){
-            //i 自己可以成为波峰或者波谷
-            dp[i][0] = dp[i][1] = 1;
-
-            for (int j = 0; j &lt; i; j++){
-                if (nums[j] &gt; nums[i]){
-                    // i 是波谷
-                    dp[i][1] = Math.max(dp[i][1], dp[j][0] + 1);
+public class title2 {
+    public static void main(String[] args){
+        Scanner in=new Scanner(System.in);
+        int t=in.nextInt(); //组数
+        while(t--&gt;0){
+            int n= in.nextInt(); //每组中的元素
+            int[] a=new int[n]; //给出每组的数组定义
+            for(int i=0;i&lt;n;i++){
+                a[i]=in.nextInt(); //数组
+            }
+            int odd=0,even=0; //确定输入的数组中的奇数和偶数
+            for(int i=0;i&lt;n;){
+                int j=i;
+                while(j&lt;n &amp;&amp; a[j]%2==a[i]%2){
+                    j++;//找到连续的相同奇偶性的序列
                 }
-                if (nums[j] &lt; nums[i]){
-                    // i 是波峰
-                    dp[i][0] = Math.max(dp[i][0], dp[j][1] + 1);
+                if((j-i)%2==1){// 序列的长度的是奇数的话，区间内的奇数偶数性一定要相同才可以。
+                    if(a[i]%2==0){
+                        even++; //偶数个数
+                    }else{
+                        odd++; //奇数个数
+                    }
                 }
+                i=j; //将i更新为j，以便跳过已经处理过的子数组
+            }
+            if(even!=0 &amp;&amp; odd!=0){
+                System.out.println("NO");
+            }else{
+                System.out.println("YES");
             }
         }
-
-        return Math.max(dp[nums.length - 1][0], dp[nums.length - 1][1]);
     }
-}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+}
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
 <li>
 <p><strong>复杂度分析：</strong></p>
+<ul>
+<li>
+<p><strong>时间复杂度：<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>t</mi><mo>∗</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(t*n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">t</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span></eq></strong>，(外层循环+内层循环)</p>
 </li>
 <li>
-<p><strong>时间复杂度：<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><msup><mi>n</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n^2)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></eq></strong> 两个<code>for</code>循环，总共进行力<code>n(n-1)/2</code>次比较操作。</p>
+<p><strong>空间复杂度：<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord">1</span><span class="mclose">)</span></span></span></span></eq></strong></p>
+<p>​</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="1026.-t3" tabindex="-1">1026. T3</h3>
+<h4 id="1.-%E9%A2%98%E7%9B%AE%E8%AF%B4%E6%98%8E-2" tabindex="-1">1. 题目说明</h4>
+<p>题目：小红有一个长度为n的数组a，记子区间[l,r]的权值为al|al+1|…|ar，即区间内所有数的按位或运算的结果.一共有 nx(n+ 1)/2 个子区间，小红想知道对应的n(n +1)/2 个权值中，有多少个不同的取值。</p>
+<p><strong>输入描述:</strong></p>
+<p>第一行一个整数 n，表示数组长度。 第二行n个整数 a1,a2，…  ,an，表示数组a的元素 1≤n≤10^5 1 ≤ ai≤10^9</p>
+<p>输出描述：输出一个整数，表示不同的取值个数。</p>
+<p><strong>示例：</strong></p>
+<p><strong>输入</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">3
+1 2 4<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p><strong>输出</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">6<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><strong>说明：</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">[1,1]的权值为 1
+[1,2] 的权值为 3
+[1,3]的权值为 7
+[2,2]的权值为 2
+[2,3]的权值为6
+[3,3]的权值为4
+权值两两不同，共有6种取值。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>​</p>
+<h4 id="2.-%E8%A7%A3%E7%AD%94%E5%88%86%E6%9E%90-1" tabindex="-1">2. 解答分析</h4>
+<ul>
+<li>
+<p>相当于是寻找不同的数字元素的集合，这里直接想到的方法是使用<code>HashSet</code>，确保存储的数字的唯一性。</p>
 </li>
 <li>
-<p><strong>空间复杂度：<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span></eq></strong> 二维数组保存每个位置。</p>
+<p>同时，每当进行或的时候，出现新的组合的时候，可以在Set中返回存储新的数字。</p>
+</li>
+<li>
+<p>我们可以发现或的过程中二进制表示中的1是不会减少的，因此我们就暴力就行了。</p>
+<p>​</p>
+</li>
+</ul>
+<h4 id="3.-%E5%85%B7%E4%BD%93%E4%BB%A3%E7%A0%81-2" tabindex="-1">3. 具体代码</h4>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">import java.util.HashSet;
+import java.util.Scanner;
+
+public class title3 {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        HashSet&lt;Integer&gt; st = new HashSet&lt;&gt;();
+        HashSet&lt;Integer&gt; tot = new HashSet&lt;&gt;();
+        for (int i = 0; i &lt; n; i++) {
+            int a = sc.nextInt();
+            HashSet&lt;Integer&gt; nst = new HashSet&lt;&gt;();
+            nst.add(a);
+            for (int b : st) {
+                nst.add(b | a);
+            }
+            st = nst;
+            for (int b : st) {
+                tot.add(b);
+            }
+        }
+        System.out.println(tot.size());
+    }
+}
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li>
+<p><strong>复杂度分析：</strong></p>
+<ul>
+<li>
+<p><strong>时间复杂度：<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><msup><mi>n</mi><mn>2</mn></msup><mi>l</mi><mi>o</mi><msub><mi>g</mi><mn>2</mn></msub><mi>a</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n^2log_2a)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">o</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord mathnormal">a</span><span class="mclose">)</span></span></span></span></eq></strong></p>
+<blockquote>
+<ul>
+<li>n是数组的长度，a代表的是当前循环中迭代中的整数值。</li>
+</ul>
+<p>具体来说，外层循环遍历了数组中的每个元素，内层循环遍历了之前所有元素的按位或结果，因此内外层循环的总次数是  <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><msup><mi>n</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n^2)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></eq>。</p>
+<ul>
+<li>对于每个元素，内层循环需要将当前元素与之前所有元素的按位或结果进行按位或操作，因此内层循环的时间复杂度为 <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mi>l</mi><mi>o</mi><msub><mi>g</mi><mn>2</mn></msub><mi>a</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(nlog_2a)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">o</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord mathnormal">a</span><span class="mclose">)</span></span></span></span></eq>，其中 <eq><span class="katex-error" title="ParseError: KaTeX parse error: Can't use function '$1#x27; in math mode at position 8: log_2a $̲是计算按位或的时间复杂度。因此…" style="color:#cc0000">log_2a $是计算按位或的时间复杂度。因此总时间复杂度为</span></eq>O(n^2log_2a)$。</li>
+</ul>
+</blockquote>
+</li>
+<li>
+<p><strong>空间复杂度：<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><msup><mi>n</mi><mn>2</mn></msup><mi>l</mi><mi>o</mi><msub><mi>g</mi><mn>2</mn></msub><mi>a</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n^2log_2a)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">o</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord mathnormal">a</span><span class="mclose">)</span></span></span></span></eq></strong></p>
+<blockquote>
+<p>y由于使用了HashSet的数据结构来实现去重的效果，空间复杂度如上。</p>
+</blockquote>
+<p>​</p>
+</li>
+</ul>
 </li>
 </ul>
 <blockquote>
-<center><span style="color:#e324;font-size:2em;">END~</span>
-</center></blockquote>
+<p style="text-align:center;">在上班期间摸鱼写的hhh，继续努力吧~</p>
+<center><span style="color:green;font-size:30px;">END~</span></center>
+</blockquote>
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/katex/dist/katex.min.css">
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/markdown-it-texmath/css/texmath.min.css">
 
@@ -866,7 +985,7 @@ class Solution {
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://shakeJ96.github.io/2023/09/24/leetcode-376-bai-dong-xu-lie/">https://shakeJ96.github.io/2023/09/24/leetcode-376-bai-dong-xu-lie/</a>
+                    <a href="https://shakeJ96.github.io/2023/10/26/cai-niao-1025-qiu-zhao-bi-shi/">https://shakeJ96.github.io/2023/10/26/cai-niao-1025-qiu-zhao-bi-shi/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -904,12 +1023,8 @@ class Solution {
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/">
-                                    <span class="chip bg-color">贪心算法</span>
-                                </a>
-                            
-                                <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">
-                                    <span class="chip bg-color">动态规划</span>
+                                <a href="/tags/2023%E7%A7%8B%E6%8B%9B/">
+                                    <span class="chip bg-color">2023秋招</span>
                                 </a>
                             
                         </div>
@@ -1079,17 +1194,18 @@ class Solution {
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2023/09/28/jing-dong-0923-qiu-zhao-bi-shi/">
+                <a href="/2023/10/26/cai-niao-1025-qiu-zhao-bi-shi/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="京东0923秋招笔试">
+                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="菜鸟1025秋招笔试">
                         
-                        <span class="card-title">京东0923秋招笔试</span>
+                        <span class="card-title">菜鸟1025秋招笔试</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1099,9 +1215,9 @@ class Solution {
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2023-09-28
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-10-26
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -1114,6 +1230,7 @@ class Solution {
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -1132,13 +1249,13 @@ class Solution {
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2023/09/23/hua-wei-0920-0923-qiu-zhao-bi-shi/">
+                <a href="/2023/10/24/guang-fa-yin-xing-1021-qiu-zhao-bi-shi/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="华为0920/0923秋招笔试">
+                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="广发银行1021秋招笔试">
                         
-                        <span class="card-title">华为0920/0923秋招笔试</span>
+                        <span class="card-title">广发银行1021秋招笔试</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1149,7 +1266,7 @@ class Solution {
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-09-23
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-10-24
                             </span>
                         <span class="publish-author">
                             
