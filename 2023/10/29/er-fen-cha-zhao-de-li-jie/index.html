@@ -6,7 +6,7 @@
 
 <head>
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
-    <meta name="keywords" content="标签: 前端准备, xkj123456">
+    <meta name="keywords" content="二分查找的理解, xkj123456">
     <meta name="description" content="Mark the Splendid Life">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -18,7 +18,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>标签: 前端准备 | ShakeJ</title>
+    <title>二分查找的理解 | ShakeJ</title>
     <link rel="icon" type="image/png" href="/icon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -470,285 +470,858 @@ charset="utf-8"></script> -->
 
 </header>
 
-    <div class="bg-cover pd-header about-cover">
-    <div class="container">
-    <div class="row">
-    <div class="col s10 offset-s1 m8 offset-m2 l8 offset-l2">
-        <div class="brand">
-            <div class="title center-align">
-                
-                ShakeJ&#39;s Codespace
-                
-            </div>
+    
 
-            <div class="description center-align">
-                
-                <span id="subtitle"></span>
-                <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11"></script>
-                <script>
-                    var typed = new Typed("#subtitle", {
-                        strings: ['山海相望，一苇远航；凡是过往，皆为序章','Just do it and make everthing sense！'],
-                        startDelay: 300,
-                        typeSpeed: 100,
-                        loop: true,
-                        backSpeed: 50,
-                        showCursor: true
-                    });
-                </script>
-                
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/18.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">二分查找的理解</h1>
+                </div>
             </div>
         </div>
     </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/">
+                                <span class="chip bg-color">二分查找</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/Leetcode/" class="post-category">
+                                Leetcode
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2023-10-29
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2023-10-29
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    1.5k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    5 分
+                </div>
+                
+
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'></span>
+                    <i class="fa fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                    <span id="busuanzi_value_page_pv" ></span>
+            
+            
+            
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+            <!-- 是否加载使用自带的 prismjs. -->
+            <link rel="stylesheet" href="/libs/prism/prism.css">
+            <script src="/"></script>
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h3 id="%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E7%9A%84%E7%90%86%E8%A7%A3" tabindex="-1">二分查找的理解</h3>
+<blockquote>
+<p>今天的每日一题遇到了有关二分查找类型的题目，感觉之前虽然看到过，但是还是得总结一下技巧，对相似的类型进行归纳总结。</p>
+</blockquote>
+<p>​</p>
+<h3 id="%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E7%9A%84%E6%A8%A1%E6%9D%BF" tabindex="-1">二分查找的模板</h3>
+<h4 id="1.-%E4%BE%8B%E5%AD%90%EF%BC%9A%E6%90%9C%E7%B4%A2%E6%8F%92%E5%85%A5%E4%BD%8D%E7%BD%AE" tabindex="-1">1. 例子：搜索插入位置</h4>
+<p>给定一个排序数组和一个目标值，在数组中找到目标值，并返回其索引。<strong>如果目标值不存在于数组中，返回它将会被按顺序插入的位置。</strong></p>
+<p>请必须使用时间复杂度为 <code>O(log n)</code> 的算法。</p>
+<p><strong>示例 1:</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">输入: nums = [1,3,5,6], target = 5
+输出: 2<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h4 id="2.-%E8%A7%A3%E7%AD%94%E5%88%86%E6%9E%90" tabindex="-1">2. 解答分析</h4>
+<ul>
+<li>
+<p>对于此类问题，暴力解答的时间复习度为<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span></eq>，但是如果需要降低复杂度的话，可以利用二分的思想进行解答。也就是设置左侧下标和右侧下标，接着再对中间的下标进行计算。</p>
+</li>
+<li>
+<p>每次根据此时的<code>nums[mid]</code>和<code>target</code>进行比较，相等直接返回下标；<code>num[mid]&lt;target</code>的话，说明此时的<code>left</code>需要左移；<code>nums[mid]&gt;target</code>的话，说明此时的<code>right</code>需要右移。</p>
+</li>
+<li>
+<p>要是查找结束之后都不存在呢？可以返回<code>left</code>,此时的是插入的位置；当然，在每次循环的过程中是对<code>left</code>还是<code>right</code>进行加减判断的，需要根据具体的边界条件有所调整。</p>
+<p>​</p>
+</li>
+</ul>
+<h4 id="3.-%E5%85%B7%E4%BD%93%E4%BB%A3%E7%A0%81" tabindex="-1">3. 具体代码</h4>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">//写法1：左闭右闭区间，此时遍历完成后不满足情况，会返回左边界值
+class Solution{
+    public int searchInsert(int[] nums,int target){
+        int left=0,right=nums.length-1;
+        while(left&lt;=right){	//注意此时的左右边界值是可以重合的
+            int mid=(left+right)/2;
+            if(nums[mid]==target){
+                return mid;	//相关的逻辑需求值
+            }else if(nums[mid]&lt;target){
+                left=mid-1;	
+            }else{
+                right=mid-1;
+            } 
+        }
+        // 都不满足的话，返回的值
+        return left;
+    }
+}
+
+//写法2：左闭右开的区间，此时遍历完成后不满足情况，若左右边界值重合的话，说明此时退出循环，可以返回left或者right值，因为不会再次遍历了
+class Solution {
+    public int searchInsert(int[] nums, int target) {
+        int left=0;
+        int right=nums.length;
+        while(left&lt;right){
+            int mid=left+(right-left)/2; //防止边界溢出的情况，比如left和right都很大（如：1e6），会产生溢出；
+            if(nums[mid]&gt;target){
+                right=mid;
+            }else if(nums[mid]&lt;target){
+                left=mid+1;
+            }else return mid;
+        }
+        return right;
+    }
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li>
+<p>上述的代码写起来，最后取得是right还是left不太清晰，这里具体说明一下：</p>
+<ul>
+<li>
+<p>其实可以这么理解，没有找到时，l与r肯定反了，不够成区间，且相差不会超过1。</p>
+</li>
+<li>
+<ol>
+<li>此时有可能是l右移超过了r，那l=mid + 1，mid肯定是小于target了，那现在mid+1就是第一个不小于target可以插入的位置，为啥不是r呢，发生交叉时l与r是相等的，那既然是l右移，说明r是最后一个小于target的数</li>
+<li>反过来，如果r=mid-1，导致lr反叉，则mid是大于了target的，则mid-1是最后一个小于target的数，那mid-1 的下一个位置就是插入位置，即l</li>
+</ol>
+</li>
+<li>
+<p>这些其实原理是在：所有的lr反转前lr肯定是相遇了的，然后另外一个核心是mid是向下取整重叠到l的，这才有上面的结果。</p>
+<p>​</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="4.-%E5%88%9D%E6%AD%A5%E6%A8%A1%E6%9D%BF" tabindex="-1">4. 初步模板</h4>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">class Solution {
+    public int searchInsert(int[] nums, int target) {
+        int left = 0, right = nums.length - 1; // 注意
+        while(left &lt;= right) { // 注意是否可以取等，以及区间是否是闭or开
+            int mid = (left + right) / 2; // 注意
+            if(nums[mid] == target) { // 注意
+                // 相关逻辑
+            } else if(nums[mid] &lt; target) {
+                left = mid + 1; // 注意
+            } else {
+                right = mid - 1; // 注意
+            }
+        }
+        // 相关返回值,参考前面题目的方法1
+        return 0;
+    }
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>​</p>
+<h3 id="leetcode.-h-%E6%8C%87%E6%95%B0" tabindex="-1"><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/h-index/description/?envType=daily-question&amp;envId=2023-10-29">Leetcode. H 指数 </a></h3>
+<h4 id="1.-%E9%A2%98%E7%9B%AE%E8%AF%B4%E6%98%8E" tabindex="-1">1. 题目说明</h4>
+<p>给你一个整数数组 <code>citations</code> ，其中 <code>citations[i]</code> 表示研究者的第 <code>i</code> 篇论文被引用的次数。计算并返回该研究者的 <strong><code>h</code> 指数</strong>。</p>
+<p>根据维基百科上 <a target="_blank" rel="noopener" href="https://baike.baidu.com/item/h-index/3991452?fr=aladdin">h 指数的定义</a>：<code>h</code> 代表“高引用次数” ，一名科研人员的 <code>h</code> <strong>指数</strong> 是指他（她）至少发表了 <code>h</code> 篇论文，并且每篇论文 <strong>至少</strong> 被引用 <code>h</code> 次。如果 <code>h</code> 有多种可能的值，<strong><code>h</code> 指数</strong> 是其中最大的那个。</p>
+<p><strong>示例 1：</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">输入：citations = [3,0,6,1,5]
+输出：3 
+解释：给定数组表示研究者总共有 5 篇论文，每篇论文相应的被引用了 3, 0, 6, 1, 5 次。
+     由于研究者有 3 篇论文每篇 至少 被引用了 3 次，其余两篇论文每篇被引用 不多于 3 次，所以她的 h 指数是 3。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="2.-%E8%A7%A3%E7%AD%94%E5%88%86%E6%9E%90-1" tabindex="-1">2. 解答分析</h4>
+<ul>
+<li>
+<p>这个题目也太绕了，理解一下题目中给出的定义：</p>
+<blockquote>
+<ol>
+<li><strong><code>N</code> 篇论文中总共有 <code>h</code> 篇论文分别被引用了至少 <code>h</code> 次</strong>；</li>
+<li><strong>其余的 <code>N - h</code> 篇论文每篇被引用次数不超过 <code>h</code> 次</strong>。</li>
+</ol>
+</blockquote>
+</li>
+<li>
+<p>h指数其实指的是论文的数量，而不是引用的次数。可以理解为先将<code>论文被引用的次数</code>进行升序排序，找到一条分割线|，使得<strong>分割线右侧的最少引用次数（数值）&gt;=分割线右边的论文数量（个数）</strong>，所以总的来说，返回的还是一个论文的数量的问题，也就是<code>分割线右侧论文数量的问题。</code></p>
+</li>
+<li>
+<p>所以我们可以确定使用的是<code>二分查找</code>的思想：</p>
+<ul>
+<li>
+<p>首先确定整数的范围：</p>
+<blockquote>
+<ol>
+<li>最好的情况下，所有论文的每个被引用次数&gt;=总共论文的篇数，此时的h指数为（长度）为n。</li>
+<li>最差的情况下，所有论文被引用的次数都为0，此时的h指数的（长度）为0。</li>
+</ol>
+</blockquote>
+<p>得到整数的区间为<code>[0...len]</code>，所以此时的<code>left=0</code>,<code>right=len</code>;（初始值）</p>
+</li>
+<li>
+<p>二分查找，先猜想一个中间的论文篇数<code>int mid = (left + right + 1) / 2</code></p>
+</li>
+</ul>
+</li>
+</ul>
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/katex/dist/katex.min.css">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/markdown-it-texmath/css/texmath.min.css">
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">XKJ</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://shakeJ96.github.io/2023/10/29/er-fen-cha-zhao-de-li-jie/">https://shakeJ96.github.io/2023/10/29/er-fen-cha-zhao-de-li-jie/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">XKJ</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/">
+                                    <span class="chip bg-color">二分查找</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="qq,wechat,weibo" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力！</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.jpg" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
+            <div class="card">
+                <a href="/2023/10/29/er-fen-cha-zhao-de-li-jie/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="二分查找的理解">
+                        
+                        <span class="card-title">二分查找的理解</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-10-29
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Leetcode/" class="post-category">
+                                    Leetcode
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/">
+                        <span class="chip bg-color">二分查找</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2023/10/26/cai-niao-1025-qiu-zhao-bi-shi/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="菜鸟1025秋招笔试">
+                        
+                        <span class="card-title">菜鸟1025秋招笔试</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-10-26
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E7%AC%94%E8%AF%95%E7%9C%9F%E9%A2%98/" class="post-category">
+                                    笔试真题
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/2023%E7%A7%8B%E6%8B%9B/">
+                        <span class="chip bg-color">2023秋招</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
 </div>
 
 
 <script>
-    // 随机切换 banner 图.  Switch banner image.
-    var bannerUrl = "/medias/banner/" + Math.floor(Math.random()*24) + '.jpg'; //new Date().getDay() Math.random()*24
-    $('.bg-cover').css('background-image', 'url(' + bannerUrl + ')');
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('100')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'CODE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: ShakeJ<br />'
+            + '文章作者: XKJ<br />'
+            + '文章链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者ShakeJ所有，任何形式的转载都请注明出处,谢谢！';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
 </script>
 
 
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFunction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+<!-- 代码块折行 -->
+
+<style type="text/css">
+code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }
+</style>
+
     </div>
-</div>
-
-<main class="content">
-
-    
-
-<div id="tags" class="container chip-container">
-    <div class="card">
-        <div class="card-content">
-            <div class="tag-title center-align">
-                <i class="fas fa-tags"></i>&nbsp;&nbsp;文章标签
-            </div>
-            <div class="tag-chips">
-                
-                
-                <a href="/tags/%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2/" title="优先搜索: 2">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="优先搜索" style="background-color: #F9EBEA;">优先搜索
-                        <span class="tag-length">2</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/" title="二叉树: 2">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="二叉树" style="background-color: #F5EEF8;">二叉树
-                        <span class="tag-length">2</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/%E5%89%8D%E7%AB%AF%E5%87%86%E5%A4%87/" title="前端准备: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-active "
-                            data-tagname="前端准备" style="background-color: #D5F5E3;">前端准备
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/Java/" title="Java: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="Java" style="background-color: #E8F8F5;">Java
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/Leetcode/" title="Leetcode: 7">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="Leetcode" style="background-color: #FEF9E7;">Leetcode
-                        <span class="tag-length">7</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/%E7%AE%97%E6%B3%95/" title="算法: 13">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="算法" style="background-color: #F8F9F9;">算法
-                        <span class="tag-length">13</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/%E6%9D%82%E8%B0%88/" title="杂谈: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="杂谈" style="background-color: #82E0AA;">杂谈
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/" title="贪心算法: 3">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="贪心算法" style="background-color: #D7BDE2;">贪心算法
-                        <span class="tag-length">3</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" title="动态规划: 3">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="动态规划" style="background-color: #A3E4D7;">动态规划
-                        <span class="tag-length">3</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/%E6%A0%88/" title="栈: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="栈" style="background-color: #85C1E9;">栈
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/%E5%89%91%E6%8C%87Offer%EF%BC%88%E4%B8%93%E9%A1%B9%EF%BC%89/" title="剑指Offer（专项）: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="剑指Offer（专项）" style="background-color: #F8C471;">剑指Offer（专项）
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/%E9%80%92%E5%BD%92/" title="递归: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="递归" style="background-color: #F9E79F;">递归
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/" title="二分查找: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="二分查找" style="background-color: #F5EEF8;">二分查找
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/2023%E7%A7%8B%E6%8B%9B/" title="2023秋招: 5">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="2023秋招" style="background-color: #F8F9F9;">2023秋招
-                        <span class="tag-length">5</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/%E5%8D%95%E8%B0%83%E6%A0%88/" title="单调栈: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="单调栈" style="background-color: #F8F9F9;">单调栈
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/%E5%91%A8%E8%B5%9B/" title="周赛: 5">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="周赛" style="background-color: #F8F9F9;">周赛
-                        <span class="tag-length">5</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/" title="每日一题: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="每日一题" style="background-color: #F8F9F9;">每日一题
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/%E5%BD%B1%E8%AF%84/" title="影评: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="影评" style="background-color: #A3E4D7;">影评
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/%E8%BF%9C%E7%A8%8B%E5%AE%9E%E4%B9%A0/" title="远程实习: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="远程实习" style="background-color: #E8F8F5;">远程实习
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/%E4%BC%81%E4%B8%9A%E9%9D%A2%E8%AF%95/" title="企业面试: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="企业面试" style="background-color: #D5F5E3;">企业面试
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-            </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
         </div>
     </div>
 </div>
 
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h1, h2, h3, h4, h5'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h1, h2, h3, h4, h5').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
     
 
-    <article id="articles" class="container articles">
-        <div class="row tags-posts">
-            
-            
-            <div class="article tag-post col s12 m6 l4" data-tags="前端准备" data-aos="fade-up">
-                <div class="card">
-                    <a href="/2023/09/11/html-css-zhi-shi-zhun-bei/">
-                        <div class="card-image tag-image">
-                            
-                            
-                            <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="HTML/CSS知识准备">
-                            
-                            <span class="card-title">HTML/CSS知识准备</span>
-                        </div>
-                    </a>
-                    <div class="card-content article-content">
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-09-11
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/%E5%AE%9E%E4%B9%A0/" class="post-category">
-                                实习
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-        </div>
-    </article>
 </main>
+
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
+
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+<!-- 代码语言 -->
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+<!-- 代码块复制 -->
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+<script type="text/javascript" src="/libs/codeBlock/clipboard.min.js"></script>
+<!-- 代码块收缩 -->
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script> 
+<!-- 代码块折行 -->
+<style type="text/css">code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }</style>
 
 
 
