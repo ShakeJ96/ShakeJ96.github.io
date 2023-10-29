@@ -701,7 +701,7 @@ class Solution{
             if(nums[mid]==target){
                 return mid;	//相关的逻辑需求值
             }else if(nums[mid]&lt;target){
-                left=mid-1;	
+                left=mid+1;	
             }else{
                 right=mid-1;
             } 
@@ -806,7 +806,7 @@ class Solution {
 <p>二分查找，先猜想一个中间的论文篇数<code>int mid = (left + right + 1) / 2</code>,需要向上取整；比如<code>[0,1]，mid=0</code>不是向上取整<code>（+1）</code>的话，会一直是<code>0</code>;</p>
 </li>
 <li>
-<p>论文篇数和被引用次数的关系是：<strong>「高引用的被引用次数 &gt;= 高引用的论文数」</strong>，这些论文才可以被称为**「高引用」**。因此在二分查找的循环体内部，可以遍历一次数组，数出大于等于 <code>mid</code> 的论文篇数。</p>
+<p>论文篇数和被引用次数的关系是：<strong>「高引用的被引用次数 &gt;= 高引用的论文数」</strong>，这些论文才可以被称为「高引用」。因此在二分查找的循环体内部，可以遍历一次数组，数出大于等于 <code>mid</code> 的论文篇数。</p>
 <blockquote>
 <ol>
 <li>如果大于等于 mid 的论文篇数大于等于 mid ，说明 h 指数至少是 mid。例如 [0,1,|3,5,6]，引用次数大于等于 2 的论文有 3 篇，说明答案至少是 2，最终答案落在区间 [mid…right] 里，此时设置 left = mid；</li>
