@@ -6,7 +6,7 @@
   <link href="https://shakej96.github.io/atom.xml" rel="self"/>
   
   <link href="https://shakej96.github.io/"/>
-  <updated>2023-11-01T09:45:22.834Z</updated>
+  <updated>2023-11-03T05:42:22.563Z</updated>
   <id>https://shakej96.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>用友1027秋招笔试</title>
+    <link href="https://shakej96.github.io/2023/11/02/yong-you-1027-qiu-zhao-bi-shi/"/>
+    <id>https://shakej96.github.io/2023/11/02/yong-you-1027-qiu-zhao-bi-shi/</id>
+    <published>2023-11-02T01:01:45.000Z</published>
+    <updated>2023-11-03T05:42:22.563Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;&#92;assets&#92;css&#92;APlayer.min.css&quot;&gt;&lt;script src=&quot;&#92;assets&#92;js&#92;APlayer.min.js&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="笔试真题" scheme="https://shakej96.github.io/categories/%E7%AC%94%E8%AF%95%E7%9C%9F%E9%A2%98/"/>
+    
+    
+    <category term="2023秋招" scheme="https://shakej96.github.io/tags/2023%E7%A7%8B%E6%8B%9B/"/>
+    
+  </entry>
   
   <entry>
     <title>西门子实地办公Day1</title>
@@ -502,33 +527,6 @@
     
     
     <category term="远程实习" scheme="https://shakej96.github.io/tags/%E8%BF%9C%E7%A8%8B%E5%AE%9E%E4%B9%A0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>双周赛113: 前3题</title>
-    <link href="https://shakej96.github.io/2023/09/17/shuang-zhou-sai-113-qian-3-ti/"/>
-    <id>https://shakej96.github.io/2023/09/17/shuang-zhou-sai-113-qian-3-ti/</id>
-    <published>2023-09-17T04:41:59.000Z</published>
-    <updated>2023-10-04T15:14:41.986Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;&#92;assets&#92;css&#92;APlayer.min.css&quot;&gt;&lt;script src=&quot;&#92;assets&#92;js&#92;APlayer.min.js&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="Leetcode" scheme="https://shakej96.github.io/categories/Leetcode/"/>
-    
-    
-    <category term="算法" scheme="https://shakej96.github.io/tags/%E7%AE%97%E6%B3%95/"/>
-    
-    <category term="周赛" scheme="https://shakej96.github.io/tags/%E5%91%A8%E8%B5%9B/"/>
     
   </entry>
   

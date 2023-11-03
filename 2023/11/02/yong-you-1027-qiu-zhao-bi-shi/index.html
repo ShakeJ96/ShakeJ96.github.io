@@ -6,7 +6,7 @@
 
 <head>
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
-    <meta name="keywords" content="contact, xkj123456">
+    <meta name="keywords" content="用友1027秋招笔试, xkj123456">
     <meta name="description" content="Mark the Splendid Life">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -18,7 +18,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>contact | ShakeJ</title>
+    <title>用友1027秋招笔试 | ShakeJ</title>
     <link rel="icon" type="image/png" href="/icon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -479,7 +479,7 @@ charset="utf-8"></script> -->
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">contact</h1>
+                    <h1 class="description center-align post-title">用友1027秋招笔试</h1>
                 </div>
             </div>
         </div>
@@ -593,12 +593,25 @@ charset="utf-8"></script> -->
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/2023%E7%A7%8B%E6%8B%9B/">
+                                <span class="chip bg-color">2023秋招</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E7%AC%94%E8%AF%95%E7%9C%9F%E9%A2%98/" class="post-category">
+                                笔试真题
+                            </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -607,28 +620,28 @@ charset="utf-8"></script> -->
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2023-07-06
+                    2023-11-02
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-07-06
+                    2023-11-03
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    0
+                    2.2k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    9 分
                 </div>
                 
 
@@ -653,7 +666,355 @@ charset="utf-8"></script> -->
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                
+                <h3 id="%E7%94%A8%E5%8F%8B1027%E7%A7%8B%E6%8B%9B%E7%AC%94%E8%AF%95" tabindex="-1">用友1027秋招笔试</h3>
+<blockquote>
+<p>也是第一次在牛客上看到这公司，听说给的薪资还算可以。刚好找来秋招题目练练手，感觉还算不错，第二题思考量有点大，其余的还好~</p>
+</blockquote>
+<p>​</p>
+<h3 id="1027.t1" tabindex="-1">1027.T1</h3>
+<h4 id="1.-%E9%A2%98%E7%9B%AE%E8%AF%B4%E6%98%8E" tabindex="-1">1. 题目说明</h4>
+<p>给定一个字符串数组names，和一个由互不相同的正整数组成的数组 scores。</p>
+<p>两个数组的长度均为n。</p>
+<p>对于每个下标i，names［i］和scores［i］表示第i个人的名字和成绩。</p>
+<p>请按成绩 降序 顺序返回对应的名字数组names。</p>
+<p><strong>示例1</strong></p>
+<p><strong>输入</strong></p>
+<p>[“Mary”,“John”,“Emma”],[180,165,170]</p>
+<p><strong>输出</strong></p>
+<p>[“Mary”,“Emma”,“John”]</p>
+<p><strong>示例2</strong></p>
+<p><strong>输入</strong></p>
+<p><code>["Alice","Bob","Bob"],[155,185,150]</code></p>
+<p><strong>输出</strong></p>
+<p><code>["Bob","Alice","Bob"]</code></p>
+<p><strong>备注</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">ames.length==scores.length==names.length
+1&lt;=n&lt;=500
+1&lt;=scores[i]&lt;=1000
+names［i］由大小写英文字母组成
+scores 中的所有值互不相同<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>​</p>
+<h4 id="2.-%E5%88%86%E6%9E%90%E8%A7%A3%E7%AD%94" tabindex="-1">2. 分析解答</h4>
+<ul>
+<li>
+<p>需要创建一个类，利用规则进行排序即可</p>
+</li>
+<li>
+<p>注意输入的格式：</p>
+<ul>
+<li>
+<p>输入字符串，将字符串的首尾<code>[]</code>进行去除，并且以<code>，</code>进行分割</p>
+</li>
+<li>
+<p>读入字符数组</p>
+</li>
+<li>
+<p>对数组进行排序、根据成绩降序排列</p>
+<p>​</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="%E5%85%B7%E4%BD%93%E4%BB%A3%E7%A0%81" tabindex="-1">具体代码</h4>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">import java.util.Arrays;
+import java.util.Comparator;
+import java.util.Scanner;
+
+public class title1 {
+    
+    //创建一个类，然后对类进行排序即可/
+    public static void main(String[] args){
+        Scanner in=new Scanner(System.in);
+
+        //两个字符串的读入：
+        String s=in.next().trim();
+        String[] names=s.substring(1,s.length()-1).split(",");
+        String sc=in.next().trim();
+        String[] sc1=sc.substring(1,sc.length()-1).split(",");
+
+        int n=names.length; //给出names的数组长度关系
+        int[] scores=new int[n];
+
+        for(int i=0;i&lt; names.length;i++){
+            if(!sc1[i].isEmpty())
+           scores[i] =Integer.parseInt(sc1[i]);//注意进行类型的转换
+        }
+
+        Person[] p=new Person[n];
+        for(int i=0;i&lt;n;i++){
+            p[i]=new Person(names[i],scores[i]);
+        }
+        //对persons数组进行排序，根据成绩降序排序，对象、类
+        Arrays.sort(p, Comparator.comparingInt(Person::getScore).reversed());
+        //提取排序后的名字
+        String[] sortedNmaes=new String[n];
+        for(int i=0;i&lt;n;i++){
+            sortedNmaes[i]=p[i].getName();
+//            System.out.print(Arrays.toString(sortedNmaes) +" "); //逐个进行分析，找到最逐步的分析策略
+        }
+        System.out.println(Arrays.toString(sortedNmaes));
+
+    }
+   static class Person{
+        private final String name;
+        private final int score;
+        public Person(String name,int score){
+            this.name=name;
+            this.score=score;
+        }
+        public String getName(){
+            return name;
+        }
+        public int getScore(){
+            return score;
+        }
+    }
+}
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>​</p>
+<ul>
+<li>
+<p><strong>复杂度分析：</strong></p>
+<ul>
+<li>
+<p><strong>时间复杂度：<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>m</mi><mo>+</mo><mi>n</mi><mi>l</mi><mi>o</mi><msub><mi>g</mi><mi>n</mi></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(m+nlog_n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">m</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">n</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">o</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></eq></strong></p>
+<blockquote>
+<ul>
+<li>对名字和分数的读取需要遍历整个输入字符串，时间复杂度为O(m)，其中m为输入字符串的长度。</li>
+<li>创建Person对象数组的时间复杂度是O(n)，其中n为名字的数量（也是分数的数量）。</li>
+<li>对Person对象数组进行排序的时间复杂度为O(nlogn)，其中n为Person对象数组的长度。</li>
+<li>提取排序后的名字数组的时间复杂度为O(n)，其中n为名字的数量（也是分数的数量）。</li>
+<li>总体来说，代码的时间复杂度为O(m + nlogn)，其中m表示输入字符串的长度，n表示名字的数量（也是分数的数量）。</li>
+</ul>
+</blockquote>
+</li>
+<li>
+<p><strong>空间复杂度：<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span></eq></strong></p>
+<blockquote>
+<p>代码的空间复杂度主要由输入的名字数组、分数数组和Person对象数组占用的空间决定，为O(n)，其中n为名字的数量（也是分数的数量）</p>
+</blockquote>
+<p>​</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="1027.t2" tabindex="-1">1027.T2</h3>
+<h4 id="1.-%E9%A2%98%E7%9B%AE%E8%AF%B4%E6%98%8E-1" tabindex="-1">1. 题目说明</h4>
+<p>使用广度优先搜索算法(BFS) ，遍历有向无环图 (DAG) ，并输出遍历的节点的顺序。</p>
+<p>输出的节点顺序要求稳定，需要避免使用随机顺序，导致验证失败。</p>
+<p>如上图所示，当输入:<code>“A-&gt;B”,"A-&gt;C,D”,"C-&gt;E”,"E-&gt;F”,"D-&gt;G”,"G-&gt;E"(注意:-&gt;和前后的空格的存在是不确定的,Key也可能出现多次)</code></p>
+<p>BFS输出为:<code>“A”,"B”,"C”,"D”,"E”,"G","F”(注意: 输出需要稳定，需要按照传入字 符串的顺序构建图)</code></p>
+<p>建议:</p>
+<p>1.优先解析原始数据为图的节点结构，如采用定义内部类的方式: 2.需要注意构建结构时，不要遗漏“B’"F这种只有入度，没有出度的节点</p>
+<p><strong>示例1</strong></p>
+<p><strong>输入</strong></p>
+<p><code>["A-&gt;B","A-&gt;C,D","C-&gt;E","E-&gt;F","D-&gt;G","G-&gt;E"],"A"</code></p>
+<p><strong>输出</strong></p>
+<p><code>"A B,C,D.E.G,F"</code></p>
+<p><strong>说明</strong></p>
+<p>输出结果格式化时，不要有多余的空格，否则结果对比可能失败</p>
+<p>​</p>
+<h4 id="2.-%E8%A7%A3%E7%AD%94%E5%88%86%E6%9E%90" tabindex="-1">2. 解答分析</h4>
+<ul>
+<li>
+<p>代码实现了对有向无环图的广度优先搜索（BFS）遍历</p>
+</li>
+<li>
+<p>并将遍历结果以字符串形式返回。该遍历从指定的起始节点开始，按照广度优先的顺序遍历图中的节点，并将遍历结果按照逗号分隔的形式返回。</p>
+</li>
+<li>
+<p>注意引入队列的数据结构方法</p>
+<p>​</p>
+</li>
+</ul>
+<h4 id="3.-%E5%85%B7%E4%BD%93%E4%BB%A3%E7%A0%81" tabindex="-1">3. 具体代码</h4>
+<ul>
+<li>
+<p>代码的功能作用如下：</p>
+<ol>
+<li>
+<p>根据输入的节点数组和起始节点构建一个有向图的邻接表表示，使用<code>Map&lt;String, List&lt;String&gt;&gt;</code>来表示每个节点与其邻居节点的关系。</p>
+</li>
+<li>
+<p>使用广度优先搜索算法进行遍历，将起始节点加入结果列表<code>res</code>，并标记为已访问。</p>
+</li>
+<li>
+<p>使用队列<code>Deque&lt;String&gt; q</code>来存储待访问的节点。</p>
+</li>
+<li>
+<p>循环直到队列为空：从队列中取出当前节点<code>cur</code>，获取其邻居节点集合<code>neighbors</code>，遍历邻居节点集合并判断是否已经访问过，若未访问过，则将该邻居节点加入结果列表<code>res</code>、标记为已访问，并加入<code>队列q</code>中。</p>
+</li>
+<li>
+<p>将结果列表<code>res</code>转换为字符串形式，并返回。</p>
+<p>​</p>
+</li>
+</ol>
+</li>
+</ul>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">public static String dagBfsTraversal(String[] nodes,String startNode){
+        int len = nodes.length;
+        Map&lt;String, List&lt;String&gt;&gt; map = new HashMap&lt;&gt;();
+        for (int i = 0; i &lt; len; i++) {
+            String node = nodes[i];
+            String[] s1 = node.split("-&gt;");
+            if(s1.length&lt;2){
+                continue;
+            }
+            String f = s1[0].trim();
+            String[] s2 = s1[1].split(",");
+            String[] ts = new String[s2.length];
+            for (int j = 0; j &lt; s2.length; j++) {
+                ts[j] = s2[j].trim();
+            }
+            List&lt;String&gt; ls = map.getOrDefault(f, new ArrayList&lt;&gt;());
+            for (String t : ts) {
+                ls.add(t);
+            }
+            map.put(f, ls);
+        }
+        List&lt;String&gt; res = new ArrayList&lt;&gt;();
+        Set&lt;String&gt; set = new HashSet&lt;&gt;();
+        Deque&lt;String&gt; q = new ArrayDeque&lt;&gt;();
+        res.add(startNode);
+        set.add(startNode);
+        q.add(startNode);
+        while (!q.isEmpty()) {
+            String cur = q.poll();
+            List&lt;String&gt; neighbors = map.getOrDefault(cur,new ArrayList&lt;&gt;());
+            for (String neighbor : neighbors) {
+                if (set.add(neighbor)){
+                    res.add(neighbor);
+                    q.add(neighbor);
+                }
+            }
+        }
+        StringBuilder sb = new StringBuilder();
+        for (String s : res) {
+            sb.append(s).append(",");
+        }
+        sb.deleteCharAt(sb.length() - 1);
+        return sb.toString();
+    }<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>​</p>
+<ul>
+<li>
+<p><strong>复杂度分析：</strong></p>
+<ul>
+<li>
+<p><strong>时间复杂度：<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo>+</mo><mi>m</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n+m)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">m</span><span class="mclose">)</span></span></span></span></eq></strong></p>
+<blockquote>
+<ul>
+<li>广度优先搜索的过程中，每个节点最多被访问一次，每个边最多被访问一次，因此时间复杂度为O(n+m)，其中n为节点数，m为边数。</li>
+</ul>
+</blockquote>
+</li>
+<li>
+<p><strong>空间复杂度：<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span></eq></strong></p>
+<blockquote>
+<ul>
+<li>引入了队列的数据结构，长度是n.</li>
+</ul>
+</blockquote>
+<p>​</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="1027.t3" tabindex="-1">1027.T3</h3>
+<h4 id="1.-%E9%A2%98%E7%9B%AE%E8%AF%B4%E6%98%8E-2" tabindex="-1">1. 题目说明</h4>
+<p>给定一个正整数 n，如果n 恰好有三个<code>(不同)</code>正除数，返回 true; 否则，返 false。</p>
+<p><strong>示例1</strong></p>
+<p><strong>输入</strong></p>
+<p>2</p>
+<p><strong>输出</strong></p>
+<p>false</p>
+<p><strong>说明</strong></p>
+<p>2 只有两个正除数:1和2</p>
+<p>​</p>
+<h4 id="2.-%E8%A7%A3%E7%AD%94%E5%88%86%E6%9E%90-1" tabindex="-1">2. 解答分析</h4>
+<ul>
+<li>
+<p>唯手熟尔，直接暴力分解因式，注意因子需要唯一确定。需要用到的是：<code>HashSet</code>的数据结构，举例说明：</p>
+<ul>
+<li>
+<ol>
+<li>
+<p>输入<code>9</code>；输出`true``</p>
+<ul>
+<li><code>9</code>只能分为<code>1,3,9</code>这三个因子</li>
+</ul>
+</li>
+<li>
+<p>输入<code>8</code>；输出<code>false</code></p>
+<ul>
+<li>
+<p><code>8</code>的分解因子有：<code>1,2,4,8</code>4个</p>
+<p>​</p>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="3.-%E5%85%B7%E4%BD%93%E4%BB%A3%E7%A0%81-1" tabindex="-1">3. 具体代码</h4>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">import java.util.HashSet;
+import java.util.Scanner;
+
+public class title3 {
+    // 给定一个正整数n，如果此时恰好存在三个正除数，返回true;
+    public static void main(String[] args){
+        Scanner in=new Scanner(System.in);
+        int n=in.nextInt();
+        boolean flag=isThree(n);
+        if(flag){
+            System.out.println("True");
+        }
+        else System.out.println("false");
+
+    }
+    public static boolean isThree(int n){
+        HashSet&lt;Integer&gt;set=new HashSet&lt;&gt;(); //去掉重复的字符
+        for(int i=1;i*i&lt;=n;i++){
+            if(n%i==0){
+                set.add(i);
+                set.add(n/i);
+            }
+        }
+        if(set.size()==3){
+            return true;
+        }
+        return false;
+    }
+}
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>​</p>
+<ul>
+<li>
+<p><strong>复杂度分析：</strong></p>
+<ul>
+<li>
+<p><strong>时间复杂度：<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord">1</span><span class="mclose">)</span></span></span></span></eq></strong></p>
+<blockquote>
+<ol>
+<li>输入：从标准输入中读取一个整数n，时间复杂度为O(1)。</li>
+<li>isThree函数：判断n是否存在恰好三个正约数的方法。其核心思路是通过枚举n的所有因子，将因子添加到HashSet中去重，然后判断HashSet的大小是否为3。时间复杂度主要取决于枚举n的因子，即在1到sqrt(n)之间的所有正整数，时间复杂度为O(sqrt(n))。而HashSet的add操作的平均时间复杂度为O(1)，因此最终isThree函数的时间复杂度为O(sqrt(n))。</li>
+<li>输出：最终输出结果到标准输出，时间复杂度为O(1)。</li>
+</ol>
+</blockquote>
+</li>
+<li>
+<p><strong>空间复杂度：<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span></eq></strong>，引入了<code>HashSet</code></p>
+<p>​</p>
+</li>
+</ul>
+</li>
+</ul>
+<center><span style="color:rgb(0,153,153);font-size:20px;">加油😘</span></center>
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/katex/dist/katex.min.css">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/markdown-it-texmath/css/texmath.min.css">
+
                 
             </div>
             <hr/>
@@ -679,7 +1040,7 @@ charset="utf-8"></script> -->
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://shakeJ96.github.io/contact/index.html">https://shakeJ96.github.io/contact/index.html</a>
+                    <a href="https://shakeJ96.github.io/2023/11/02/yong-you-1027-qiu-zhao-bi-shi/">https://shakeJ96.github.io/2023/11/02/yong-you-1027-qiu-zhao-bi-shi/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -716,7 +1077,11 @@ charset="utf-8"></script> -->
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
+                            
+                                <a href="/tags/2023%E7%A7%8B%E6%8B%9B/">
+                                    <span class="chip bg-color">2023秋招</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -889,13 +1254,13 @@ charset="utf-8"></script> -->
                 <i class="far fa-dot-circle"></i>&nbsp;本篇
             </div>
             <div class="card">
-                <a href="/contact/index.html">
+                <a href="/2023/11/02/yong-you-1027-qiu-zhao-bi-shi/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="contact">
+                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="用友1027秋招笔试">
                         
-                        <span class="card-title">contact</span>
+                        <span class="card-title">用友1027秋招笔试</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -906,17 +1271,29 @@ charset="utf-8"></script> -->
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-07-06
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-11-02
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            XKJ
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E7%AC%94%E8%AF%95%E7%9C%9F%E9%A2%98/" class="post-category">
+                                    笔试真题
+                                </a>
+                            
                             
                         </span>
                     </div>
                 </div>
 
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/2023%E7%A7%8B%E6%8B%9B/">
+                        <span class="chip bg-color">2023秋招</span>
+                    </a>
+                    
+                </div>
                 
             </div>
         </div>
@@ -924,16 +1301,16 @@ charset="utf-8"></script> -->
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="far fa-dot-circle"></i>
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/contact/index.html">
+                <a href="/2023/11/01/xi-men-zi-shi-di-ban-gong-day1/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="contact">
+                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="西门子实地办公Day1">
                         
-                        <span class="card-title">contact</span>
+                        <span class="card-title">西门子实地办公Day1</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -944,17 +1321,28 @@ charset="utf-8"></script> -->
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-07-06
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-11-01
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            XKJ
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%AE%9E%E4%B9%A0/" class="post-category">
+                                    实习
+                                </a>
+                            
                             
                         </span>
                     </div>
                 </div>
-
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E5%85%AC%E5%8F%B8/">
+                        <span class="chip bg-color">公司</span>
+                    </a>
+                    
+                </div>
                 
             </div>
         </div>
