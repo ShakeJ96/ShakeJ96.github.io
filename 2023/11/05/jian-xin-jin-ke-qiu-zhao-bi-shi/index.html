@@ -967,21 +967,13 @@ public class title1 {
 <p>O O  O O O</p>
 <p>|  []  []  []  |</p>
 <ol>
-<li>
-<p>对中间：中间的3<code>(5-2)</code>个球由于两边都有小球，所以存在3种选择打法；</p>
-<p>此时每打出的球，剩余<code>f[i-3]</code>个球选择（总共球个数减3了嘛）~</p>
-</li>
+<li>对中间：中间的3<code>(5-2)</code>个球由于两边都有小球，所以存在3种选择打法； 此时每打出的球，剩余<code>f[i-3]</code>个球选择（总共球个数减3了嘛）~</li>
+<li>对两侧：左右的每个球只能对各自一侧的1个球打，先是1； 此时每打出的球，剩余的有<code>f[i-2]</code>个球选择（同上理解）~</li>
 </ol>
-</blockquote>
-</li>
-</ul>
-<blockquote>
-<ol start="2">
-<li>对两侧：左右的每个球只能对各自一侧的1个球打，先是1；</li>
-</ol>
-<p>​	   此时每打出的球，剩余的有<code>f[i-2]</code>个球选择（同上理解）~</p>
 </blockquote>
 <p>​</p>
+</li>
+</ul>
 <h4 id="3.-%E5%85%B7%E4%BD%93%E4%BB%A3%E7%A0%81-3" tabindex="-1">3. 具体代码</h4>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java">import com.sun.source.doctree.SystemPropertyTree;
 
