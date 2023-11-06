@@ -444,13 +444,6 @@
   </url>
   
   <url>
-    <loc>https://shakej96.github.io/tags/Java/</loc>
-    <lastmod>2023-11-06</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://shakej96.github.io/tags/Leetcode/</loc>
     <lastmod>2023-11-06</lastmod>
     <changefreq>weekly</changefreq>
@@ -459,6 +452,13 @@
   
   <url>
     <loc>https://shakej96.github.io/tags/%E7%AE%97%E6%B3%95/</loc>
+    <lastmod>2023-11-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://shakej96.github.io/tags/Java/</loc>
     <lastmod>2023-11-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -549,14 +549,14 @@
   </url>
   
   <url>
-    <loc>https://shakej96.github.io/tags/%E8%BF%9C%E7%A8%8B%E5%AE%9E%E4%B9%A0/</loc>
+    <loc>https://shakej96.github.io/tags/%E5%85%AC%E5%8F%B8/</loc>
     <lastmod>2023-11-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://shakej96.github.io/tags/%E5%85%AC%E5%8F%B8/</loc>
+    <loc>https://shakej96.github.io/tags/%E8%BF%9C%E7%A8%8B%E5%AE%9E%E4%B9%A0/</loc>
     <lastmod>2023-11-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -579,14 +579,14 @@
   </url>
   
   <url>
-    <loc>https://shakej96.github.io/categories/%E5%85%AB%E8%82%A1/</loc>
+    <loc>https://shakej96.github.io/categories/Leetcode/</loc>
     <lastmod>2023-11-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://shakej96.github.io/categories/Leetcode/</loc>
+    <loc>https://shakej96.github.io/categories/%E5%85%AB%E8%82%A1/</loc>
     <lastmod>2023-11-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
