@@ -6,7 +6,7 @@
   <link href="https://shakej96.github.io/atom.xml" rel="self"/>
   
   <link href="https://shakej96.github.io/"/>
-  <updated>2023-11-06T15:07:10.144Z</updated>
+  <updated>2023-11-08T11:51:03.876Z</updated>
   <id>https://shakej96.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Redis的常见数据结构</title>
+    <link href="https://shakej96.github.io/2023/11/08/redis-de-chang-jian-shu-ju-jie-gou/"/>
+    <id>https://shakej96.github.io/2023/11/08/redis-de-chang-jian-shu-ju-jie-gou/</id>
+    <published>2023-11-08T08:48:31.000Z</published>
+    <updated>2023-11-08T11:51:03.876Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;&#92;assets&#92;css&#92;APlayer.min.css&quot;&gt;&lt;script src=&quot;&#92;assets&#92;js&#92;APlayer.min.js&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="Java开发" scheme="https://shakej96.github.io/categories/Java%E5%BC%80%E5%8F%91/"/>
+    
+    
+    <category term="Redis" scheme="https://shakej96.github.io/tags/Redis/"/>
+    
+  </entry>
   
   <entry>
     <title>建信金科秋招笔试</title>
@@ -502,31 +527,6 @@
     <category term="贪心算法" scheme="https://shakej96.github.io/tags/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/"/>
     
     <category term="动态规划" scheme="https://shakej96.github.io/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>华为0920/0923秋招笔试</title>
-    <link href="https://shakej96.github.io/2023/09/23/hua-wei-0920-0923-qiu-zhao-bi-shi/"/>
-    <id>https://shakej96.github.io/2023/09/23/hua-wei-0920-0923-qiu-zhao-bi-shi/</id>
-    <published>2023-09-23T15:34:59.000Z</published>
-    <updated>2023-10-24T16:19:47.911Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;&#92;assets&#92;css&#92;APlayer.min.css&quot;&gt;&lt;script src=&quot;&#92;assets&#92;js&#92;APlayer.min.js&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="笔试真题" scheme="https://shakej96.github.io/categories/%E7%AC%94%E8%AF%95%E7%9C%9F%E9%A2%98/"/>
-    
-    
-    <category term="2023秋招" scheme="https://shakej96.github.io/tags/2023%E7%A7%8B%E6%8B%9B/"/>
     
   </entry>
   
