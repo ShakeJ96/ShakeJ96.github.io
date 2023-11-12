@@ -72,11 +72,11 @@ https://shakej96.github.io/tags/%E5%85%AC%E5%8F%B8/
 https://shakej96.github.io/tags/%E8%BF%9C%E7%A8%8B%E5%AE%9E%E4%B9%A0/
 https://shakej96.github.io/categories/%E7%AE%97%E6%B3%95/
 https://shakej96.github.io/categories/%E5%AE%9E%E4%B9%A0/
-https://shakej96.github.io/categories/%E5%85%AB%E8%82%A1/
 https://shakej96.github.io/categories/%E9%9D%A2%E8%AF%95%E9%A2%98/
+https://shakej96.github.io/categories/%E5%85%AB%E8%82%A1/
 https://shakej96.github.io/categories/Leetcode/
 https://shakej96.github.io/categories/%E9%93%BE%E8%A1%A8/
-https://shakej96.github.io/categories/Java%E5%BC%80%E5%8F%91/
 https://shakej96.github.io/categories/Java/
+https://shakej96.github.io/categories/Java%E5%BC%80%E5%8F%91/
 https://shakej96.github.io/categories/%E7%AC%94%E8%AF%95%E7%9C%9F%E9%A2%98/
 https://shakej96.github.io/categories/%E6%9D%82%E8%B0%88/
