@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://shakej96.github.io/2023/11/08/redis-de-chang-jian-shu-ju-jie-gou/</loc>
+    <loc>https://shakej96.github.io/2023/11/10/java-mian-shi-ti-zheng-li/</loc>
     
     <lastmod>2023-11-12</lastmod>
     
@@ -11,7 +11,7 @@
   </url>
   
   <url>
-    <loc>https://shakej96.github.io/2023/11/10/java-mian-shi-ti-zheng-li/</loc>
+    <loc>https://shakej96.github.io/2023/11/08/redis-de-chang-jian-shu-ju-jie-gou/</loc>
     
     <lastmod>2023-11-12</lastmod>
     
@@ -448,14 +448,14 @@
   </url>
   
   <url>
-    <loc>https://shakej96.github.io/tags/%E6%9D%82%E8%B0%88/</loc>
+    <loc>https://shakej96.github.io/tags/%E5%89%8D%E7%AB%AF%E5%87%86%E5%A4%87/</loc>
     <lastmod>2023-11-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://shakej96.github.io/tags/%E5%89%8D%E7%AB%AF%E5%87%86%E5%A4%87/</loc>
+    <loc>https://shakej96.github.io/tags/%E6%9D%82%E8%B0%88/</loc>
     <lastmod>2023-11-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -525,14 +525,14 @@
   </url>
   
   <url>
-    <loc>https://shakej96.github.io/tags/%E9%80%92%E5%BD%92/</loc>
+    <loc>https://shakej96.github.io/tags/Redis/</loc>
     <lastmod>2023-11-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://shakej96.github.io/tags/Redis/</loc>
+    <loc>https://shakej96.github.io/tags/%E9%80%92%E5%BD%92/</loc>
     <lastmod>2023-11-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -553,14 +553,14 @@
   </url>
   
   <url>
-    <loc>https://shakej96.github.io/tags/%E5%8D%95%E8%B0%83%E6%A0%88/</loc>
+    <loc>https://shakej96.github.io/tags/%E5%91%A8%E8%B5%9B/</loc>
     <lastmod>2023-11-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://shakej96.github.io/tags/%E5%91%A8%E8%B5%9B/</loc>
+    <loc>https://shakej96.github.io/tags/%E5%8D%95%E8%B0%83%E6%A0%88/</loc>
     <lastmod>2023-11-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -646,14 +646,14 @@
   </url>
   
   <url>
-    <loc>https://shakej96.github.io/categories/Java/</loc>
+    <loc>https://shakej96.github.io/categories/Java%E5%BC%80%E5%8F%91/</loc>
     <lastmod>2023-11-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://shakej96.github.io/categories/Java%E5%BC%80%E5%8F%91/</loc>
+    <loc>https://shakej96.github.io/categories/Java/</loc>
     <lastmod>2023-11-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
