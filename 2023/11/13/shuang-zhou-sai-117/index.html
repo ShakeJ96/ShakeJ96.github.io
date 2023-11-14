@@ -6,7 +6,7 @@
 
 <head>
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
-    <meta name="keywords" content="Leetcode 918. 环形子数组的最大和, xkj123456">
+    <meta name="keywords" content="双周赛117, xkj123456">
     <meta name="description" content="Mark the Splendid Life">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -18,7 +18,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Leetcode 918. 环形子数组的最大和 | ShakeJ</title>
+    <title>双周赛117 | ShakeJ</title>
     <link rel="icon" type="image/png" href="/icon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -474,12 +474,12 @@ charset="utf-8"></script> -->
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/21.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/8.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Leetcode 918. 环形子数组的最大和</h1>
+                    <h1 class="description center-align post-title">双周赛117</h1>
                 </div>
             </div>
         </div>
@@ -599,8 +599,8 @@ charset="utf-8"></script> -->
                                 <span class="chip bg-color">算法</span>
                             </a>
                         
-                            <a href="/tags/Leetcode/">
-                                <span class="chip bg-color">Leetcode</span>
+                            <a href="/tags/%E5%91%A8%E8%B5%9B/">
+                                <span class="chip bg-color">周赛</span>
                             </a>
                         
                     </div>
@@ -624,21 +624,21 @@ charset="utf-8"></script> -->
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2023-09-03
+                    2023-11-13
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-09-03
+                    2023-11-14
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    857
+                    942
                 </div>
                 
 
@@ -670,92 +670,108 @@ charset="utf-8"></script> -->
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="leetcode-918.-%E7%8E%AF%E5%BD%A2%E5%AD%90%E6%95%B0%E7%BB%84%E7%9A%84%E6%9C%80%E5%A4%A7%E5%92%8C" tabindex="-1"><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/maximum-sum-circular-subarray/">Leetcode 918. 环形子数组的最大和</a></h3>
+                <h3 id="%E5%8F%8C%E5%91%A8%E8%B5%9B117" tabindex="-1">双周赛117</h3>
 <blockquote>
-<p>概要：子数组的最大和利用的是动态规划/滑动窗口的思想，对于环形子数组，需要考虑的是前后元素之间的大小关系，比如[1,2,3,-4]，在环形数组中即为：[1,2,3,-4,1,2,3,-4…],我们要利用动态规划，找到区间子数组最小值和最大值，分别进行判断操作。</p>
+<p>好久没打比赛了，感觉还是没有系统地刷题，导致很多题目有思路但是不知道怎么写。所以这场双周赛就详细说说~</p>
 </blockquote>
-<h3 id="1.-%E9%A2%98%E7%9B%AE%E8%AF%B4%E6%98%8E" tabindex="-1">1. 题目说明</h3>
-<ul>
-<li>
-<p>给定一个长度为 <code>n</code> 的<strong>环形整数数组</strong> <code>nums</code> ，返回 <em><code>nums</code> 的非空 <strong>子数组</strong> 的最大可能和</em> 。</p>
-</li>
-<li>
-<p><strong>环形数组</strong> 意味着数组的末端将会与开头相连呈环状。形式上， <code>nums[i]</code> 的下一个元素是 <code>nums[(i + 1) % n]</code> ， <code>nums[i]</code> 的前一个元素是 <code>nums[(i - 1 + n) % n]</code> 。</p>
-</li>
-<li>
-<p><strong>子数组</strong> 最多只能包含固定缓冲区 <code>nums</code> 中的每个元素一次。形式上，对于子数组 <code>nums[i], nums[i + 1], ..., nums[j]</code> ，不存在 <code>i &lt;= k1, k2 &lt;= j</code> 其中 <code>k1 % n == k2 % n</code> 。</p>
-</li>
-</ul>
+<p>###T1.  <a target="_blank" rel="noopener" href="https://leetcode.cn/problems/distribute-candies-among-children-i/description/">2928. 给小朋友们分糖果 I ）</a></p>
+<h4 id="1.-%E9%A2%98%E7%9B%AE%E8%AF%B4%E6%98%8E" tabindex="-1">1. 题目说明</h4>
+<p>给你两个正整数 <code>n</code> 和 <code>limit</code> 。</p>
+<p>请你将 <code>n</code> 颗糖果分给 <code>3</code> 位小朋友，确保没有任何小朋友得到超过 <code>limit</code> 颗糖果，请你返回满足此条件下的 <strong>总方案数</strong> 。</p>
 <p><strong>示例 1：</strong></p>
-<pre class="line-numbers language-none"><code class="language-none">输入：nums = [1,-2,3,-2]
+<pre class="line-numbers language-none"><code class="language-none">输入：n = 5, limit = 2
 输出：3
-解释：从子数组 [3] 得到最大和 3<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+解释：总共有 3 种方法分配 5 颗糖果，且每位小朋友的糖果数不超过 2 ：(1, 2, 2) ，(2, 1, 2) 和 (2, 2, 1) 。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p><strong>提示1：</strong></p>
+<ol>
+<li><strong>当n和limit的量较小时</strong>：</li>
+</ol>
+<ul>
+<li>
+<p><code>1 &lt;= n &lt;= 50</code></p>
+</li>
+<li>
+<p><code>1 &lt;= limit &lt;= 50</code></p>
+</li>
+</ul>
+<ol start="2">
+<li><strong>当n和limit的量较大时</strong>：</li>
+</ol>
+<ul>
+<li>
+<p><code>1 &lt;= n &lt;= 106</code></p>
+</li>
+<li>
+<p><code>1 &lt;= limit &lt;= 106</code></p>
+</li>
+</ul>
+<h4 id="2.-%E8%A7%A3%E7%AD%94%E5%88%86%E6%9E%90" tabindex="-1">2. 解答分析</h4>
+<ol>
+<li><strong>数学方法（通用）</strong>：</li>
+</ol>
+<ul>
+<li>给定总共的糖果数量<code>n</code>，每人分得的糖果数量存在限制<code>limit</code>。如果是要分给三个人，其实就是在两个人当中进行判断，剩余的糖果分给第三个人就行。比如说<code>A、B、C</code>三个人，我们从后向前按照人进行分析：
+<ul>
+<li>对于C而言，单独的一个人的分得糖果数为<code>[0,limit]</code>，不超过右边界的值</li>
+<li>对于B而言，此时假设选取的数量为<code>i</code>，i的取值范围的左边界应该是最小值，我们知道如果A、C两个人数量都选择<code>limit</code>，此时的左边界在<code>[0,n-2*limit]</code>中选取最大值；对于右边界而言，当A、C都取不到最大的Limit的时候，剩余的量应该是<code>[limit,n]</code>,这里我们选取的是较小值，如果选取的是最大值的话，会导致和左边界重合。</li>
+<li>对于A而言，由于已经对B和C进行了分类，类似与上述的B，左边界为<code>[0,n-i-limit]</code>中的较大值，右边界为<code>[limit,n-i]</code>的较小值。此时C的选择的方案数即为最后总方案数，需要注意的是，如果此时左边界和右边界重合的时候，也存在一种方案，此时的C为0而已。</li>
+</ul>
+</li>
+</ul>
+<ol start="2">
+<li><strong>记忆化搜索（递归量小）</strong>：</li>
+</ol>
+<ul>
+<li>
+<p>对于每次递归拆分而言，但是利用<code>HashMap</code>记录当前的键值对。</p>
+</li>
+<li>
+<p>利用dfs对糖果数进行操作，记录剩余的数量<code>rest</code>和当前的轮数<code>rank</code>,但是每出现新的轮数+”，“+糖果数的时候，此时通过记忆化搜索进行减少递归的操作，直接从HashMap的数组堆的结构中寻找存储的值即可。</p>
 <p>​</p>
-<hr>
-<h3 id="2.-%E8%A7%A3%E7%AD%94%E5%88%86%E6%9E%90" tabindex="-1">2. 解答分析</h3>
-<ul>
-<li>
-<p>首先需要明确的是：<code>环形子数组的最大和</code>包含两种可能性，一是直接动态规划得到子数组的最大和<code>MaxF</code>，二是环形子数组的出现循环，此时需要将元素之和<code>sum</code>减去子数组中的区间最小值<code>minS</code>后的值同<code>MaxS</code>进行比较.</p>
-<ul>
-<li>
-<p>具体而言：由于是循环数组，我们可以选择将某一个区间剔除，计算剩余部分的最大子数组和。剔除的区间就是使得 <code>minS</code>取最小值的那个区间。</p>
-</li>
-<li>
-<p>如果我们将剔除的区间放在数组的开头或结尾，那么剩余的部分即包含了原始数组的循环部分。</p>
-<p>因此，<code>sum - minS</code> 就代表了考虑循环的情况下，剔除特定区间后剩余部分的最大子数组和。</p>
 </li>
 </ul>
-</li>
-<li>
-<p>动态规划包含了对于数组元素的选或不选的问题，这里直接遍历即可.</p>
-</li>
-</ul>
-<hr>
-<h3 id="3.-%E5%85%B7%E4%BD%93%E4%BB%A3%E7%A0%81" tabindex="-1">3. 具体代码</h3>
-<ul>
-<li>
-<p>该算法使用了动态规划的思想。通过遍历数组<code>nums</code>，维护以下变量：</p>
-<ul>
-<li><code>maxS</code>：最大子数组和，初值设为<code>负无穷大</code>。</li>
-<li><code>minS</code>：最小子数组和，初值设为<code>0</code>（因为可以为空数组）。</li>
-<li><code>maxF</code>：以当前元素为结尾的最大子数组和。</li>
-<li><code>minF</code>：以当前元素为结尾的最小子数组和。</li>
-<li><code>sum</code>：数组<code>nums</code>的总和。</li>
-</ul>
-</li>
-<li>
-<p><strong>代码如下：</strong></p>
-</li>
-</ul>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span><span class="token punctuation">{</span>
-    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">maxSubarraySumCircular</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> nums<span class="token punctuation">)</span><span class="token punctuation">{</span>
-        <span class="token keyword">int</span> maxS <span class="token operator">=</span> <span class="token class-name">Integer</span><span class="token punctuation">.</span><span class="token constant">MIN_VALUE</span><span class="token punctuation">;</span> <span class="token comment">// 最大子数组和，不能为空</span>
-        <span class="token keyword">int</span> minS <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token comment">// 最小子数组和，可以为空</span>
-        <span class="token keyword">int</span> maxF <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> minF <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> sum <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
-        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> x <span class="token operator">:</span> nums<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            <span class="token comment">// 以 nums[i-1] 结尾的子数组选或不选（取 max）+ x = 以 x 结尾的最大子数组和</span>
-            maxF <span class="token operator">=</span> <span class="token class-name">Math</span><span class="token punctuation">.</span><span class="token function">max</span><span class="token punctuation">(</span>maxF<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token operator">+</span> x<span class="token punctuation">;</span>
-            maxS <span class="token operator">=</span> <span class="token class-name">Math</span><span class="token punctuation">.</span><span class="token function">max</span><span class="token punctuation">(</span>maxS<span class="token punctuation">,</span> maxF<span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token comment">// 以 nums[i-1] 结尾的子数组选或不选（取 min）+ x = 以 x 结尾的最小子数组和</span>
-            minF <span class="token operator">=</span> <span class="token class-name">Math</span><span class="token punctuation">.</span><span class="token function">min</span><span class="token punctuation">(</span>minF<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token operator">+</span> x<span class="token punctuation">;</span>
-            minS <span class="token operator">=</span> <span class="token class-name">Math</span><span class="token punctuation">.</span><span class="token function">min</span><span class="token punctuation">(</span>minS<span class="token punctuation">,</span> minF<span class="token punctuation">)</span><span class="token punctuation">;</span>
-            sum <span class="token operator">+=</span> x<span class="token punctuation">;</span>
+<h4 id="3.-%E5%85%B7%E4%BD%93%E4%BB%A3%E7%A0%81" tabindex="-1">3. 具体代码</h4>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">
+<span class="token comment">//1. 数学方式：</span>
+<span class="token keyword">class</span> <span class="token class-name">Solution</span><span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">long</span> <span class="token function">distributeCandies</span><span class="token punctuation">(</span><span class="token keyword">int</span> n<span class="token punctuation">,</span><span class="token keyword">int</span> limit<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token comment">// 特例判断，当此时的超过全体取limit的时候，也就是糖果数量存在冗余的情况</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>limit<span class="token operator">*</span><span class="token number">3</span><span class="token operator">&lt;</span>n<span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
         <span class="token punctuation">}</span>
-        <span class="token keyword">return</span> sum <span class="token operator">==</span> minS <span class="token operator">?</span> maxS <span class="token operator">:</span> <span class="token class-name">Math</span><span class="token punctuation">.</span><span class="token function">max</span><span class="token punctuation">(</span>maxS<span class="token punctuation">,</span> sum <span class="token operator">-</span> minS<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">long</span> sum<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token comment">// 对B进行判断</span>
+        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token class-name">Math</span><span class="token punctuation">.</span><span class="token function">max</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span>n<span class="token operator">-</span><span class="token number">2</span><span class="token operator">*</span>limit<span class="token punctuation">)</span><span class="token punctuation">;</span>i<span class="token operator">&lt;=</span><span class="token class-name">Math</span><span class="token punctuation">.</span><span class="token function">min</span><span class="token punctuation">(</span>limit<span class="token punctuation">,</span>n<span class="token punctuation">)</span><span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            sum<span class="token operator">+=</span><span class="token punctuation">(</span><span class="token class-name">Math</span><span class="token punctuation">.</span><span class="token function">min</span><span class="token punctuation">(</span>limit<span class="token punctuation">,</span>n<span class="token operator">-</span>i<span class="token punctuation">)</span><span class="token operator">-</span><span class="token class-name">Math</span><span class="token punctuation">.</span><span class="token function">max</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span>n<span class="token operator">-</span>i<span class="token operator">-</span>limit<span class="token punctuation">)</span><span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> sum<span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<ul>
-<li>
-<p><strong>复杂度分析</strong></p>
-<ul>
-<li><strong>时间复杂度</strong>：<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span></eq>,其中的n代表数组<code>nums</code>的长度，代码使用了<strong>1次遍历进行计算最大子数组和最小子数组</strong></li>
-<li><strong>空间复杂度</strong>：<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord">1</span><span class="mclose">)</span></span></span></span></eq>,代码中仅使用了若干常数，为开辟新的存储空间</li>
-</ul>
-<p>​</p>
-<hr>
-<center><span style="font-size:30px;color:orange;font-weight:bolder">继续努力✊</span></center>
-</li>
-</ul>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">distributeCandies</span><span class="token punctuation">(</span><span class="token keyword">int</span> n<span class="token punctuation">,</span> <span class="token keyword">int</span> limit<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">//记忆化搜索的思想</span>
+        <span class="token class-name">Map</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span><span class="token class-name">Integer</span><span class="token punctuation">&gt;</span></span>memo<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">HashMap</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token function">dfs</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span>n<span class="token punctuation">,</span>limit<span class="token punctuation">,</span>memo<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">private</span> <span class="token keyword">int</span> <span class="token function">dfs</span><span class="token punctuation">(</span><span class="token keyword">int</span> rank<span class="token punctuation">,</span><span class="token keyword">int</span> rest<span class="token punctuation">,</span><span class="token keyword">int</span> limit<span class="token punctuation">,</span><span class="token class-name">Map</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span><span class="token class-name">Integer</span><span class="token punctuation">&gt;</span></span>memo<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>rk<span class="token operator">==</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">{</span> <span class="token comment">//最后一轮的时候，此时仍然有剩余的话，返回1次，否则为0，注意递归需要关注的是cnt的值</span>
+            <span class="token keyword">return</span> rest<span class="token operator">==</span><span class="token number">0</span><span class="token operator">?</span><span class="token number">1</span><span class="token operator">:</span><span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token class-name">String</span> key<span class="token operator">=</span>rank<span class="token operator">+</span><span class="token string">","</span><span class="token operator">+</span>rest<span class="token punctuation">;</span> <span class="token comment">//按照轮数和剩余数进行匹配</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>memo<span class="token punctuation">.</span><span class="token function">containsKey</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token keyword">return</span> memo<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//记忆化拿取</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">int</span> cnt<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">&lt;=</span>limit<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span>rest<span class="token operator">&lt;</span>i<span class="token punctuation">)</span><span class="token punctuation">{</span> <span class="token comment">//递归错误，跳出结构</span>
+                <span class="token keyword">break</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            cnt<span class="token operator">+=</span><span class="token function">dfs</span><span class="token punctuation">(</span>rk<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">,</span>rest<span class="token operator">-</span>i<span class="token punctuation">,</span>limit<span class="token punctuation">,</span>memo<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//递归，改变的是剩余量</span>
+        <span class="token punctuation">}</span>
+        memo<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span>key<span class="token punctuation">,</span>cnt<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//记忆化记录</span>
+        <span class="token keyword">return</span> cnt<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/katex/dist/katex.min.css">
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/markdown-it-texmath/css/texmath.min.css">
 
@@ -784,7 +800,7 @@ charset="utf-8"></script> -->
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://shakeJ96.github.io/2023/09/03/leetcode-918-huan-xing-zi-shu-zu-de-zui-da-he/">https://shakeJ96.github.io/2023/09/03/leetcode-918-huan-xing-zi-shu-zu-de-zui-da-he/</a>
+                    <a href="https://shakeJ96.github.io/2023/11/13/shuang-zhou-sai-117/">https://shakeJ96.github.io/2023/11/13/shuang-zhou-sai-117/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -826,8 +842,8 @@ charset="utf-8"></script> -->
                                     <span class="chip bg-color">算法</span>
                                 </a>
                             
-                                <a href="/tags/Leetcode/">
-                                    <span class="chip bg-color">Leetcode</span>
+                                <a href="/tags/%E5%91%A8%E8%B5%9B/">
+                                    <span class="chip bg-color">周赛</span>
                                 </a>
                             
                         </div>
@@ -997,70 +1013,18 @@ charset="utf-8"></script> -->
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2023/09/04/san-bu-zou-tao-lu-di-gui-wen-ti/">
+                <a href="/2023/11/13/shuang-zhou-sai-117/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="三步走套路递归问题">
+                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="双周赛117">
                         
-                        <span class="card-title">三步走套路递归问题</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2023-09-04
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/%E7%AE%97%E6%B3%95/" class="post-category">
-                                    算法
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/Leetcode/">
-                        <span class="chip bg-color">Leetcode</span>
-                    </a>
-                    
-                    <a href="/tags/%E9%80%92%E5%BD%92/">
-                        <span class="chip bg-color">递归</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2023/08/27/zhou-sai-360-t1-yu-t2/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="周赛360 T1与T2">
-                        
-                        <span class="card-title">周赛360 T1与T2</span>
+                        <span class="card-title">双周赛117</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1071,7 +1035,7 @@ charset="utf-8"></script> -->
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-08-27
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-11-13
                             </span>
                         <span class="publish-author">
                             
@@ -1085,6 +1049,7 @@ charset="utf-8"></script> -->
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -1094,6 +1059,67 @@ charset="utf-8"></script> -->
                     
                     <a href="/tags/%E5%91%A8%E8%B5%9B/">
                         <span class="chip bg-color">周赛</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2023/11/10/java-mian-shi-ti-zheng-li/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="Java面试题整理">
+                        
+                        <span class="card-title">Java面试题整理</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-11-10
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E9%9D%A2%E8%AF%95%E9%A2%98/" class="post-category">
+                                    面试题
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Java/">
+                        <span class="chip bg-color">Java</span>
+                    </a>
+                    
+                    <a href="/tags/%E7%AE%97%E6%B3%95/">
+                        <span class="chip bg-color">算法</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%9F%BA%E7%A1%80/">
+                        <span class="chip bg-color">基础</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%80%9D%E8%80%83/">
+                        <span class="chip bg-color">思考</span>
                     </a>
                     
                 </div>
