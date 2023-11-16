@@ -595,12 +595,12 @@ charset="utf-8"></script> -->
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/Java/">
-                                <span class="chip bg-color">Java</span>
-                            </a>
-                        
                             <a href="/tags/%E7%AE%97%E6%B3%95/">
                                 <span class="chip bg-color">算法</span>
+                            </a>
+                        
+                            <a href="/tags/Java/">
+                                <span class="chip bg-color">Java</span>
                             </a>
                         
                             <a href="/tags/%E5%9F%BA%E7%A1%80/">
@@ -639,21 +639,21 @@ charset="utf-8"></script> -->
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-11-13
+                    2023-11-16
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.9k
+                    3.2k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    7 分
+                    12 分
                 </div>
                 
 
@@ -895,6 +895,115 @@ charset="utf-8"></script> -->
 <p>​</p>
 </li>
 </ul>
+<h4 id="5.-%E8%B0%88%E8%B0%88%E4%BD%A0%E5%AF%B9%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%AD%E7%9A%84%E7%B4%A2%E5%BC%95%E7%9A%84%E7%90%86%E8%A7%A3" tabindex="-1">5. 谈谈你对数据库中的索引的理解</h4>
+<blockquote>
+<ul>
+<li>
+<p>定义：索引就是加快检索表中数据的方法。数据库的索引类似于书籍的索引。在书籍中，索引允许用户不必翻阅完整个书就能迅速地找到所需要的信息。在数据库中，索引也允许数据库程序迅速地找到表中的数据，而不必扫描整个数据库。</p>
+</li>
+<li>
+<p>作用是加速查询 底层是通过B+树实现的 索引又分为聚簇索引和非聚簇索引，区别是索引和数据是否储存在一起。</p>
+</li>
+<li>
+<p>拿InnoDB主键索引举个例子，这是一个聚簇索引，在非叶子节点中存放数据为主键数据，以及其指向的页的页号(数据库底层是以页为基本储存单位)，在叶子节点存放完整的数据 而如果我们拿一张表的另一个或多个字段创建索引，那个就会形成一个非聚簇索引，其非叶子节点和聚簇索引的结构类似，但是其叶子节点并不会存放完整的数据，而是存放对应数据的主键。</p>
+</li>
+<li>
+<p>在具体的查询过程中，如果采用聚簇索引，则会直接通过B+树找到完整的数据并返回，但是如果使用非聚簇索引，则会先找到具体数据的主键的值，再用该主键的值去到主键索引中找到完整的数据。</p>
+</li>
+<li>
+<p>当然，如果是索引覆盖的情况(即查找的字段被创建索引的字段所包含)那么将不会进行回表操作，直接返回值。</p>
+</li>
+<li>
+<p>我们在使用索引时应该要避免索引失效，遵循最左匹配原则，即我们使用的where关键字时，后面的条件的顺序要和当初创建索引时的顺序相匹配，并且只能是前几个连续的。</p>
+</li>
+<li>
+<p>索引失效将会导致全表扫描，大大降低数据查询效率。 索引的使用并不是由我们决定的，而是由查询优化器通过预估计算后选出最合适的索引进行查询。</p>
+</li>
+</ul>
+</blockquote>
+<p>​</p>
+<h4 id="6.-%E7%8E%B0%E5%9C%A8%E6%99%AE%E9%80%9A%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E5%BA%93%E7%94%A8%E5%BE%97%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E6%98%AF%E4%BB%80%E4%B9%88%E7%B1%BB%E5%9E%8B%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84" tabindex="-1">6. 现在普通关系数据库用得数据结构是什么类型的数据结构</h4>
+<blockquote>
+<p>1.普通关系数据库的数据结构是关系型数据结构、也就是由一行一列组成的二维表。</p>
+<p>2.行代表对象、列代表属性。</p>
+<p>3.使用sql语句，具有ACID特性（原子性、一致性、隔离性和持久性）</p>
+</blockquote>
+<p>​</p>
+<h4 id="7.-%E7%B4%A2%E5%BC%95%E7%9A%84%E4%BC%98%E7%82%B9%E5%92%8C%E7%BC%BA%E7%82%B9" tabindex="-1">7.  索引的优点和缺点</h4>
+<blockquote>
+<ul>
+<li>
+<p>索引的优点:</p>
+<ol>
+<li>.创建唯一性索引，保证数据库表中每一行数据的唯一性</li>
+<li>大大加快数据的检索速度，这也是创建索引的最主要的原因</li>
+<li>加速表和表之间的连接，特别是在实现数据的参考完整性方面特别有意义。</li>
+<li>在使用分组和排序子句进行数据检索时，同样可以显著减少查询中分组和排序的时间。</li>
+<li>通过使用索引，可以在查询的过程中使用优化隐藏器，提高系统的性能。</li>
+</ol>
+</li>
+<li>
+<p>索引的缺点：</p>
+<ol>
+<li>创建索引和维护索引要耗费时间，这种时间随着数据量的增加而增加。</li>
+<li>索引需要占物理空间，除了数据表占数据空间之外，每一个索引还要占一定的物理空间，如果要建立聚簇索引，那么需要的空间就会更大。</li>
+<li>当对表中的数据进行增加、删除和修改的时候，索引也要动态的维护，降低了数据的维护速度。</li>
+</ol>
+</li>
+<li>
+<p>省流版：</p>
+<ul>
+<li>优点：
+<ol>
+<li>加快查询、分组、排序的速度，提高效率</li>
+<li>如果使用唯一性索引，保证数据库表中每一行数据的唯一性</li>
+</ol>
+</li>
+<li>缺点：
+<ol>
+<li>维护索引和创建索引需要格外的空间和时间，使同一行数据的数据量变的庞大</li>
+<li>当对表中的数据进行增删改查的时候，要保证索引的正确，这个时候就要动态维护。大大降低对数据量的维护速率~</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<p>​</p>
+<h4 id="8.-session%E3%80%81cookie%E5%92%8Ccache%E7%9A%84%E5%8C%BA%E5%88%AB%E6%98%AF%E4%BB%80%E4%B9%88" tabindex="-1">8. session、cookie和cache的区别是什么</h4>
+<blockquote>
+<ul>
+<li>
+<p>session是一种服务器存储数据的方式，通过在服务器上建立一个唯一sessionID来跟踪会话，可以存储任何类型的数据</p>
+<ul>
+<li>
+<p>优点：数据不容易被篡改和伪造</p>
+</li>
+<li>
+<p>缺点：需要管理和维护</p>
+</li>
+</ul>
+</li>
+<li>
+<p>cookie是一种客户端存储数据的方式，通过小型的文本文件来保存数据。</p>
+</li>
+<li>
+<p>优点：不用管理维护</p>
+</li>
+<li>
+<p>缺点：数据不安全</p>
+</li>
+<li>
+<p>cacha是一种缓存的方式，将经常使用数据存储到内存中提高速度。</p>
+</li>
+<li>
+<p>优点就是快。</p>
+</li>
+<li>
+<p>缺点也是需要维护，避免数据过期。缓存数据大小不能太大 。</p>
+</li>
+</ul>
+</blockquote>
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/katex/dist/katex.min.css">
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/markdown-it-texmath/css/texmath.min.css">
 
@@ -961,12 +1070,12 @@ charset="utf-8"></script> -->
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/Java/">
-                                    <span class="chip bg-color">Java</span>
-                                </a>
-                            
                                 <a href="/tags/%E7%AE%97%E6%B3%95/">
                                     <span class="chip bg-color">算法</span>
+                                </a>
+                            
+                                <a href="/tags/Java/">
+                                    <span class="chip bg-color">Java</span>
                                 </a>
                             
                                 <a href="/tags/%E5%9F%BA%E7%A1%80/">
@@ -1443,7 +1552,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">75.5k</span>&nbsp;字
+                class="white-color">76.8k</span>&nbsp;字
             
             
             
