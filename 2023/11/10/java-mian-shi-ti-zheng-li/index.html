@@ -646,7 +646,7 @@ charset="utf-8"></script> -->
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    3.2k
+                    3.4k
                 </div>
                 
 
@@ -951,7 +951,7 @@ charset="utf-8"></script> -->
 </ol>
 </li>
 <li>
-<p>省流版：</p>
+<p><strong>省流版：</strong></p>
 <ul>
 <li>优点：
 <ol>
@@ -974,7 +974,7 @@ charset="utf-8"></script> -->
 <blockquote>
 <ul>
 <li>
-<p>session是一种服务器存储数据的方式，通过在服务器上建立一个唯一sessionID来跟踪会话，可以存储任何类型的数据</p>
+<p>session是一种服务器存储数据的方式，通过在服务器上<strong>建立一个唯一sessionID来跟踪会话，可以存储任何类型的数据</strong></p>
 <ul>
 <li>
 <p>优点：数据不容易被篡改和伪造</p>
@@ -1004,6 +1004,24 @@ charset="utf-8"></script> -->
 </li>
 </ul>
 </blockquote>
+<p>​</p>
+<h4 id="9.-session%E6%98%AF%E5%AD%98%E5%82%A8%E5%9C%A8%E4%BB%80%E4%B9%88%E5%9C%B0%E6%96%B9%EF%BC%8C%E4%BB%A5%E4%BB%80%E4%B9%88%E5%BD%A2%E5%BC%8F%E5%AD%98%E5%82%A8%E7%9A%84%EF%BC%9F" tabindex="-1">9. session是存储在什么地方，以什么形式存储的？</h4>
+<blockquote>
+<ul>
+<li>Session是存储在服务器端的一种会话机制，用于跟踪用户的会话状态。Session的具体存储方式中常见的有两种：
+<ul>
+<li>基于内存的Session存储：Session对象存储在服务器的内存，可以快速读写，但是当服务器重启或者负载均衡到其他服务器的时候，Session会丢失。</li>
+<li>基于持久化的Session存储：Session对象存储在外部持久化存储中，比如数据库、文件系统等等，保证Session下不会丢失，但会增加系统的读写负担。</li>
+</ul>
+</li>
+<li>Session存储的形式也可以是键值对的形式。即以键值对的方式存储Session对象的属性和值。具体来说，可以使用Java Servlet API提供的HttpSession接口来操作Session对象。
+<ul>
+<li>例如，可以通过HttpSession的setAttribute()方法设置Session的属性值，通过getAttribute()方法获取Session的属性值。</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<p>​</p>
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/katex/dist/katex.min.css">
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/markdown-it-texmath/css/texmath.min.css">
 
@@ -1552,7 +1570,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">76.8k</span>&nbsp;字
+                class="white-color">77.1k</span>&nbsp;字
             
             
             
@@ -1911,10 +1929,10 @@ $(function () {
     if (windowWidth > 768) {
         document.write('<script type="text/javascript" src="https://apip.weatherdt.com/float/static/js/r.js?v=1111"><\/script>');
     }
-    </script>
+    </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
     
   
-<script src="/live2dw/lib/L2Dwidget.min.js?243708c68e3ad401cd4432916889e600"></script><script>L2Dwidget.init({"dialog":{"enable":true,"hitokoto":true},"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"left","width":120,"height":160,"superSample":2,"voffset":0,"hoffset":20},"mobile":{"show":false},"react":{"opacity":0.7,"opacityOnHover":0.2}});</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
         <style>
             [bg-lazy] {
                 background-image: none !important;
@@ -1927,6 +1945,6 @@ $(function () {
                 preloadRatio: 3,
                 processImages: null,
             };
-        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(r){r.imageLazyLoadSetting.processImages=t;var e=r.imageLazyLoadSetting.isSPA,n=r.imageLazyLoadSetting.preloadRatio||1,c=a();function a(){var t=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")),e=Array.prototype.slice.call(document.querySelectorAll("[bg-lazy]"));return t.concat(e)}function t(){e&&(c=a());for(var t,o=0;o<c.length;o++)0<=(t=(t=c[o]).getBoundingClientRect()).bottom&&0<=t.left&&t.top<=(r.innerHeight*n||document.documentElement.clientHeight*n)&&function(){var t,e,n,a,i=c[o];e=function(){c=c.filter(function(t){return i!==t}),r.imageLazyLoadSetting.onImageLoaded&&r.imageLazyLoadSetting.onImageLoaded(i)},(t=i).hasAttribute("bg-lazy")?(t.removeAttribute("bg-lazy"),e&&e()):(n=new Image,a=t.getAttribute("data-original"),n.onload=function(){t.src=a,t.removeAttribute("data-original"),e&&e()},t.src!==a&&(n.src=a))}()}function i(){clearTimeout(t.tId),t.tId=setTimeout(t,500)}t(),document.addEventListener("scroll",i),r.addEventListener("resize",i),r.addEventListener("orientationchange",i)}(this);</script></body>
+        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(r){r.imageLazyLoadSetting.processImages=t;var e=r.imageLazyLoadSetting.isSPA,n=r.imageLazyLoadSetting.preloadRatio||1,c=a();function a(){var t=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")),e=Array.prototype.slice.call(document.querySelectorAll("[bg-lazy]"));return t.concat(e)}function t(){e&&(c=a());for(var t,o=0;o<c.length;o++)0<=(t=(t=c[o]).getBoundingClientRect()).bottom&&0<=t.left&&t.top<=(r.innerHeight*n||document.documentElement.clientHeight*n)&&function(){var t,e,n,a,i=c[o];e=function(){c=c.filter(function(t){return i!==t}),r.imageLazyLoadSetting.onImageLoaded&&r.imageLazyLoadSetting.onImageLoaded(i)},(t=i).hasAttribute("bg-lazy")?(t.removeAttribute("bg-lazy"),e&&e()):(n=new Image,a=t.getAttribute("data-original"),n.onload=function(){t.src=a,t.removeAttribute("data-original"),e&&e()},t.src!==a&&(n.src=a))}()}function i(){clearTimeout(t.tId),t.tId=setTimeout(t,500)}t(),document.addEventListener("scroll",i),r.addEventListener("resize",i),r.addEventListener("orientationchange",i)}(this);</script><script src="/live2dw/lib/L2Dwidget.min.js?243708c68e3ad401cd4432916889e600"></script><script>L2Dwidget.init({"dialog":{"enable":true,"hitokoto":true},"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"left","width":120,"height":160,"superSample":2,"voffset":0,"hoffset":20},"mobile":{"show":false},"react":{"opacity":0.7,"opacityOnHover":0.2}});</script></body>
 
 </html>
