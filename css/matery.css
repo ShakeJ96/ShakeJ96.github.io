@@ -561,6 +561,7 @@ header .go-back i {
     font-weight: 300;
     line-height: 1.4em;
     color: #eee;
+    font-weight: bold;
 }
 
 .bg-cover .post-title {
@@ -2191,6 +2192,6 @@ footer .copy-right {
 } */
 ::-webkit-scrollbar {
     width: 8px;
-    height: 5px;
+    height: 8px;
 }
 
