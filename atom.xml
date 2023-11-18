@@ -6,7 +6,7 @@
   <link href="https://shakej96.github.io/atom.xml" rel="self"/>
   
   <link href="https://shakej96.github.io/"/>
-  <updated>2023-11-14T06:36:19.520Z</updated>
+  <updated>2023-11-18T15:03:15.604Z</updated>
   <id>https://shakej96.github.io/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Maven&amp;MyBatis初体验</title>
+    <link href="https://shakej96.github.io/2023/11/18/maven-mybatis-chu-ti-yan/"/>
+    <id>https://shakej96.github.io/2023/11/18/maven-mybatis-chu-ti-yan/</id>
+    <published>2023-11-18T14:54:17.000Z</published>
+    <updated>2023-11-18T15:03:15.604Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;&#92;assets&#92;css&#92;APlayer.min.css&quot;&gt;&lt;script src=&quot;&#92;assets&#92;js&#92;APlayer.min.js&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="Java开发" scheme="https://shakej96.github.io/categories/Java%E5%BC%80%E5%8F%91/"/>
+    
+    
+    <category term="Maven" scheme="https://shakej96.github.io/tags/Maven/"/>
+    
+    <category term="MyBatis" scheme="https://shakej96.github.io/tags/MyBatis/"/>
+    
+  </entry>
   
   <entry>
     <title>双周赛117</title>
@@ -506,33 +533,6 @@
     <category term="优先搜索" scheme="https://shakej96.github.io/tags/%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2/"/>
     
     <category term="二叉树" scheme="https://shakej96.github.io/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>双周赛114</title>
-    <link href="https://shakej96.github.io/2023/10/04/shuang-zhou-sai-114/"/>
-    <id>https://shakej96.github.io/2023/10/04/shuang-zhou-sai-114/</id>
-    <published>2023-10-04T13:35:24.000Z</published>
-    <updated>2023-10-04T15:18:50.909Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;&#92;assets&#92;css&#92;APlayer.min.css&quot;&gt;&lt;script src=&quot;&#92;assets&#92;js&#92;APlayer.min.js&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="Leetcode" scheme="https://shakej96.github.io/categories/Leetcode/"/>
-    
-    
-    <category term="算法" scheme="https://shakej96.github.io/tags/%E7%AE%97%E6%B3%95/"/>
-    
-    <category term="周赛" scheme="https://shakej96.github.io/tags/%E5%91%A8%E8%B5%9B/"/>
     
   </entry>
   
