@@ -6,7 +6,7 @@
 
 <head>
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
-    <meta name="keywords" content="广发银行1021秋招笔试, xkj123456">
+    <meta name="keywords" content="三步走解决回溯问题, xkj123456">
     <meta name="description" content="Mark the Splendid Life">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -18,7 +18,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>广发银行1021秋招笔试 | ShakeJ</title>
+    <title>三步走解决回溯问题 | ShakeJ</title>
     <link rel="icon" type="image/png" href="/icon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -474,12 +474,12 @@ charset="utf-8"></script> -->
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/9.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/7.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">广发银行1021秋招笔试</h1>
+                    <h1 class="description center-align post-title">三步走解决回溯问题</h1>
                 </div>
             </div>
         </div>
@@ -595,8 +595,12 @@ charset="utf-8"></script> -->
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/2023%E7%A7%8B%E6%8B%9B/">
-                                <span class="chip bg-color">2023秋招</span>
+                            <a href="/tags/Leetcode/">
+                                <span class="chip bg-color">Leetcode</span>
+                            </a>
+                        
+                            <a href="/tags/%E5%9B%9E%E6%BA%AF/">
+                                <span class="chip bg-color">回溯</span>
                             </a>
                         
                     </div>
@@ -607,8 +611,8 @@ charset="utf-8"></script> -->
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E7%AC%94%E8%AF%95%E7%9C%9F%E9%A2%98/" class="post-category">
-                                笔试真题
+                            <a href="/categories/%E7%AE%97%E6%B3%95/" class="post-category">
+                                算法
                             </a>
                         
                     </div>
@@ -620,28 +624,28 @@ charset="utf-8"></script> -->
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2023-10-24
+                    2023-11-19
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-10-25
+                    2023-11-20
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.5k
+                    2.2k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    6 分
+                    8 分
                 </div>
                 
 
@@ -666,218 +670,288 @@ charset="utf-8"></script> -->
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="%E5%B9%BF%E5%8F%91%E9%93%B6%E8%A1%8C1021%E7%A7%8B%E6%8B%9B%E7%AC%94%E8%AF%95" tabindex="-1">广发银行1021秋招笔试</h3>
+                <h3 id="%E4%B8%89%E6%AD%A5%E8%B5%B0%E8%A7%A3%E5%86%B3%E5%9B%9E%E6%BA%AF%E9%97%AE%E9%A2%98" tabindex="-1">三步走解决回溯问题</h3>
 <blockquote>
-<p>前面写了很多互联网企业的秋招笔试，还算是比较有难度。这次来试试银行的题目，做完后发现很多都是经典模拟题，有边界的判断、特例的考虑，还算是比较简单。</p>
+<p>开启新的刷题章节，之前学习了三步走套路递归问题，在二叉树的章节得到了广泛的应用。这里继续学习一种新的搜索方法，回溯搜索。</p>
 </blockquote>
-<p>​</p>
-<h3 id="1021.t1" tabindex="-1">1021.T1</h3>
-<h4 id="1.-%E9%A2%98%E7%9B%AE%E8%AF%B4%E6%98%8E" tabindex="-1">1. 题目说明</h4>
-<p>37进制的规则为:“0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ$”输入两个37进制数字请输出二者相乘的结果。输入的数字位数，不超过999位。</p>
-<pre class="line-numbers language-none"><code class="language-none">输入
-"Z","1"
-输出
-"Z"
-输入
-"A","B"
-输出
-"2$"<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>​</p>
-<h4 id="2.-%E8%A7%A3%E7%AD%94%E5%88%86%E6%9E%90" tabindex="-1">2. 解答分析</h4>
+<h3 id="%E5%9B%9E%E6%BA%AF%E7%9A%84%E5%AE%9A%E4%B9%89%E5%92%8C%E9%80%82%E7%94%A8%E5%9C%BA%E6%99%AF" tabindex="-1">回溯的定义和适用场景</h3>
+<h4 id="1.-%E5%9B%9E%E6%BA%AF%E7%9A%84%E5%AE%9A%E4%B9%89" tabindex="-1">1. 回溯的定义</h4>
 <ul>
 <li>
-<p>主要考虑到此时的<code>37</code>进制下的<code>A</code>代表的是数字<code>10</code>,后续的字符也是以此类推。</p>
+<p>回溯指的是对当前的节点对象处理后，返回连接的上一个父节点的对象，继续进行处理。本质上，回溯是递归的副产品，只要存在有递归就一定有回溯。所以总得来说，回溯函数就是递归函数，指的都是一个函数，只是回溯用的方法更为复杂。</p>
 </li>
 <li>
-<p>我们可以把两个字符串的每一位都拆开，模拟乘法的操作，只是此时需要注意好进位即可。</p>
+<p><code>回溯</code>的使用效率并不是很高，本质上还是利用的是嵌套的穷举方法，如果此时嵌套的层数较少的时候，用<code>for</code>循环可能会更为直接。但是，和<code>直接穷举的for循环</code>不同的是。回溯可以实现<code>剪枝</code>，对不需要搜索的分支进行剔除。<strong>但总得来说，依然是暴力搜索的方法，穷举的话效率较低，优点是比较通用省事~</strong></p>
 <p>​</p>
 </li>
 </ul>
-<h4 id="3.-%E5%85%B7%E4%BD%93%E4%BB%A3%E7%A0%81" tabindex="-1">3. 具体代码</h4>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> title1 <span class="token punctuation">{</span>
-
-    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">get</span><span class="token punctuation">(</span><span class="token keyword">char</span> ch<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">return</span> ch <span class="token operator">&gt;=</span> <span class="token char">'A'</span> <span class="token operator">?</span> ch <span class="token operator">-</span> <span class="token char">'A'</span> <span class="token operator">+</span> <span class="token number">10</span> <span class="token operator">:</span> <span class="token punctuation">(</span>ch <span class="token operator">==</span> <span class="token char">'$'</span> <span class="token operator">?</span> <span class="token number">36</span> <span class="token operator">:</span> ch <span class="token operator">-</span> <span class="token char">'0'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span><span class="token comment">// 字符类型转化为整型</span>
-
-    <span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">mul37</span><span class="token punctuation">(</span><span class="token class-name">String</span> x<span class="token punctuation">,</span> <span class="token class-name">String</span> y<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">int</span> n <span class="token operator">=</span> x<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> m <span class="token operator">=</span> y<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">int</span> len <span class="token operator">=</span> n <span class="token operator">+</span> m<span class="token punctuation">;</span>
-        <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> a <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token keyword">int</span><span class="token punctuation">[</span>len <span class="token operator">+</span> <span class="token number">10</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> j <span class="token operator">&lt;</span> m<span class="token punctuation">;</span> j<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token comment">// 从后向前</span>
-                <span class="token keyword">int</span> ai <span class="token operator">=</span> <span class="token function">get</span><span class="token punctuation">(</span>x<span class="token punctuation">.</span><span class="token function">charAt</span><span class="token punctuation">(</span>n <span class="token operator">-</span> <span class="token number">1</span> <span class="token operator">-</span> i<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-                <span class="token keyword">int</span> aj <span class="token operator">=</span> <span class="token function">get</span><span class="token punctuation">(</span>y<span class="token punctuation">.</span><span class="token function">charAt</span><span class="token punctuation">(</span>m <span class="token operator">-</span> <span class="token number">1</span> <span class="token operator">-</span> j<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-                a<span class="token punctuation">[</span>i <span class="token operator">+</span> j<span class="token punctuation">]</span> <span class="token operator">+=</span> ai <span class="token operator">*</span> aj<span class="token punctuation">;</span>	<span class="token comment">//将乘积加到当前位上</span>
-                a<span class="token punctuation">[</span>i <span class="token operator">+</span> j <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">+=</span> a<span class="token punctuation">[</span>i<span class="token operator">+</span>j<span class="token punctuation">]</span><span class="token operator">/</span><span class="token number">37</span><span class="token punctuation">;</span> <span class="token comment">//进位</span>
-                a<span class="token punctuation">[</span>i <span class="token operator">+</span> j<span class="token punctuation">]</span> <span class="token operator">%=</span> <span class="token number">37</span><span class="token punctuation">;</span>	<span class="token comment">//取模操作</span>
-            <span class="token punctuation">}</span>
-        <span class="token punctuation">}</span>
-        <span class="token keyword">while</span> <span class="token punctuation">(</span>len<span class="token operator">&gt;</span><span class="token number">1</span> <span class="token operator">&amp;&amp;</span> a<span class="token punctuation">[</span>len <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token comment">// 去除结果中的前导零，最多迭代 len 次，其中 len 是乘积结果的长度。</span>
-            len<span class="token operator">--</span><span class="token punctuation">;</span>
-        <span class="token class-name">StringBuilder</span> ans <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">StringBuilder</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> len <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&gt;=</span> <span class="token number">0</span><span class="token punctuation">;</span> i<span class="token operator">--</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            <span class="token keyword">char</span> c<span class="token punctuation">;</span>
-            <span class="token keyword">if</span> <span class="token punctuation">(</span>a<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">&gt;=</span> <span class="token number">10</span> <span class="token operator">&amp;&amp;</span> a<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">&lt;=</span> <span class="token number">35</span><span class="token punctuation">)</span>
-                c <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">char</span><span class="token punctuation">)</span> <span class="token punctuation">(</span>a<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">-</span> <span class="token number">10</span> <span class="token operator">+</span> <span class="token char">'A'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>a<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token number">36</span><span class="token punctuation">)</span>
-                c <span class="token operator">=</span> <span class="token char">'$'</span><span class="token punctuation">;</span> <span class="token comment">//36位</span>
-            <span class="token keyword">else</span>
-                c <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">char</span><span class="token punctuation">)</span> <span class="token punctuation">(</span>a<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token char">'0'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            ans<span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span>c<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-        <span class="token keyword">return</span> ans<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//返回字符串</span>
-    <span class="token punctuation">}</span>
-    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span><span class="token punctuation">{</span>
-        title1 title<span class="token operator">=</span><span class="token keyword">new</span> <span class="token function">title1</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token class-name">String</span> a<span class="token operator">=</span><span class="token string">"A"</span><span class="token punctuation">;</span>
-        <span class="token class-name">String</span> b<span class="token operator">=</span><span class="token string">"B"</span><span class="token punctuation">;</span>
-        <span class="token class-name">String</span> result<span class="token operator">=</span>title<span class="token punctuation">.</span><span class="token function">mul37</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span>b<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>result<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="2.-%E5%9B%9E%E6%BA%AF%E7%9A%84%E9%80%82%E7%94%A8%E5%9C%BA%E6%99%AF" tabindex="-1">2. 回溯的适用场景</h4>
 <ul>
 <li>
-<p><strong>复杂度分析：</strong></p>
-<ul>
-<li>
-<p><strong>时间复杂度：<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo>∗</mo><mi>m</mi><mo>+</mo><mi>l</mi><mi>e</mi><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n*m+len)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">m</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">e</span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span></eq></strong></p>
-<blockquote>
-<ul>
-<li>其中 n 和 m 分别是字符串 <code>x</code> 和 <code>y</code> 的长度，len 是乘积结果的长度。</li>
-<li>需要注意的是，这里的 len 可能会比较大，因为乘积的结果可能很长。因此，最终的时间复杂度可以近似看作 O(n * m)。</li>
-</ul>
-</blockquote>
-</li>
-<li>
-<p><strong>空间复杂度：<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo>+</mo><mi>m</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n + m)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">m</span><span class="mclose">)</span></span></span></span></eq></strong></p>
-<blockquote>
-<ul>
-<li>
-<p>这段代码的空间复杂度是O(n + m)，其中n是字符串x的长度，m是字符串y的长度。</p>
-</li>
-<li>
-<p>除了数组<code>a</code>外，还创建了一个<code>StringBuilder</code>对象<code>ans</code>，用于构建最终的结果字符串。其空间复杂度可以忽略不计，因为它只是用于临时存储结果字符。</p>
-</li>
-</ul>
-</blockquote>
-<p>​</p>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="1021.t2" tabindex="-1">1021.T2</h3>
-<h4 id="1.-%E9%A2%98%E7%9B%AE%E8%AF%B4%E6%98%8E-1" tabindex="-1">1. 题目说明</h4>
-<p>填写个人简历信息时，常常需要输入电话号码。当前的任务，需要根据输入的号码，判断属于哪个运营商(电信、移动、联通、广电)</p>
-<p>为了简化问题，初定各运营商的号段如下：</p>
-<ul>
-<li>中国移动ChinaMobile拥有号码段为:139,138,137,136,135,134,147,159,158,157,151,152,150,182,188,187;16个号段</li>
-<li>中国联通ChinaUnicom拥有号码段为:130,131,132,145,155,156,186,185;8个号段</li>
-<li>中国电信ChinaTelecom拥有号码段为:133,1349,153,189,180:5个号码段</li>
-<li>中国广电ChinaBroadNet拥有号码段为190,197,196,192;4个号段</li>
-</ul>
-<p>任务: 输入一个电话号码的字符串，判断该号码是否合法且为哪个运营商,若属于中国移动，则输出ChinaMobile</p>
-<p>输入一个电话号码，可以以0开头或86开头，输出所属运营商或Invalid</p>
-<pre class="line-numbers language-none"><code class="language-none">输入
-"013912345678"
-输出
-"ChinaMobile"
-输入
-"0139123456789"
-输出
-"Invalid"<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>​</p>
-<h4 id="2.-%E8%A7%A3%E7%AD%94%E5%88%86%E6%9E%90-1" tabindex="-1">2. 解答分析</h4>
-<ul>
-<li>
-<p>其实这一类题目直接看题模拟就行。</p>
-<ul>
-<li>
-<p>首先是判断当前的号码是否合法。</p>
+<p>回溯法一般解决以下的几种问题：</p>
 <ol>
-<li>开头是否为<code>0</code>或者是<code>86</code>，这里直接利用<code>java</code>的<code>s.charAt(0)/s.charAt(1)</code>判断即可。再判断完之后，将剩余的字符串保存，这里可以利用<code>java</code>的<code>substring()</code>进行截取，注意这个用法是<strong>前闭后开</strong></li>
-<li>号码的长度问题，需要不小于2和长度为11位（除去开头的判断字符）</li>
+<li><strong>组合问题</strong>：N个数里面按一定规则找出k个数的集合</li>
+<li><strong>切割问题</strong>：一个字符串按一定规则有几种切割方式</li>
+<li><strong>子集问题</strong>：一个N个数的集合里有多少符合条件的子集</li>
+<li><strong>排列问题</strong>：N个数按一定规则全排列，有几种排列方式</li>
+<li><strong>棋盘问题</strong>：N皇后，解数独等等</li>
 </ol>
 </li>
 <li>
-<p>同时注意特例的判断，看到开头基本上都是三位数，只有一个<code>1349</code>是四位数，这个单独判断就行。</p>
+<p>组合是不强调元素顺序的，排列是强调元素顺序。</p>
+<ul>
+<li>例如：{1, 2} 和 {2, 1} 在组合上，就是一个集合，因为不强调顺序，而要是排列的话，{1, 2} 和 {2, 1} 就是两个集合了。</li>
+<li>记住组合无序，排列有序，就可以了。</li>
+</ul>
 </li>
 <li>
-<p>最后就直接将后续的开头3位字符进行<code>if-else</code>的判断就行。</p>
+<p>除此之外，刚才说明了回溯法本质的回溯函数其实就是递归函数，所以<strong>所有可解决的类型都可以抽象到树形结构</strong>当中去。回溯法解决的都是在集合中递归查找子集，<strong>集合的大小就构成了树的宽度，递归的深度，都构成的树的深度</strong>。</p>
+</li>
+<li>
+<p>递归就要有终止条件，所以必然是一棵高度有限的树（N叉树）。</p>
+<p>​</p>
+</li>
+</ul>
+<h3 id="%E4%B8%89%E6%AD%A5%E8%B5%B0%E6%A8%A1%E6%9D%BF%E8%A7%A3%E5%86%B3" tabindex="-1">三步走模板解决</h3>
+<ul>
+<li>类似于递归函数的模板，回溯的模板也分为三步：</li>
+</ul>
+<blockquote>
+<ol>
+<li>
+<p>回溯模板的返回值以及参数</p>
+<ul>
+<li>函数的名称随意，返回值一般是void</li>
+<li>参数：因为回溯算法需要的参数可不像二叉树递归的时候那么容易一次性确定下来，所以一般是先写逻辑，然后需要什么参数，就填什么参数。</li>
+</ul>
+<pre class="line-numbers language-none"><code class="language-none">void backtracking(参数)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>​</p>
+</li>
+<li>
+<p>回溯函数终止条件</p>
+<ul>
+<li>树中就可以看出，一般来说搜到叶子节点了，也就找到了满足条件的一条答案，把这个答案存放起来，并结束本层递归。</li>
+</ul>
+<pre class="line-numbers language-none"><code class="language-none">if (终止条件) {
+    存放结果;
+    return;
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>​</p>
+</li>
+<li>
+<p>回溯搜索的遍历过程</p>
+<ul>
+<li>
+<p>这里给出代码随想录的一张图片：</p>
+<img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="/2023/11/19/san-bu-zou-jie-jue-hui-su-wen-ti/%E5%9B%9E%E6%BA%AF%E6%B3%95%E9%81%8D%E5%8E%86%E8%BF%87%E7%A8%8B.png" alt="回溯法遍历过程" style="zoom:67%;">
+</li>
+<li>
+<p>回溯的伪代码：</p>
+</li>
+</ul>
+<pre class="line-numbers language-none"><code class="language-none">for (选择：本层集合中元素（树中节点孩子的数量就是集合的大小）) {
+    处理节点;
+    backtracking(路径，选择列表); // 递归
+    回溯，撤销处理结果
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li><strong>for循环可以理解是横向遍历，backtracking（递归）就是纵向遍历</strong></li>
+</ul>
+</li>
+</ol>
+</blockquote>
+<ul>
+<li>
+<p>由上述得到一个框架：</p>
+<pre class="line-numbers language-none"><code class="language-none">void backtracking(参数) {
+    if (终止条件) {
+        存放结果;
+        return;
+    }
+
+    for (选择：本层集合中元素（树中节点孩子的数量就是集合的大小）) {
+        处理节点;
+        backtracking(路径，选择列表); // 递归
+        回溯，撤销处理结果
+    }
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+</ul>
+<h3 id="2.-%E4%B8%BE%E4%BE%8B%E5%AE%9E%E6%88%98" tabindex="-1">2. 举例实战</h3>
+<ul>
+<li>
+<p>这里我相对上述适用的问题一一解答，但是考虑到篇幅的原因，就分析了组合问题吧，后续有兴趣回来再补充几道其他类型的题目：</p>
+</li>
+<li>
+<p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/combinations/description/">77. 组合 - 力扣（LeetCode）</a></p>
+<p>​</p>
+</li>
+</ul>
+<h4 id="2.1-%E9%A2%98%E7%9B%AE%E8%AF%B4%E6%98%8E" tabindex="-1">2.1 题目说明</h4>
+<p>给定两个整数 <code>n</code> 和 <code>k</code>，返回范围 <code>[1, n]</code> 中所有可能的 <code>k</code> 个数的组合。</p>
+<p>你可以按 <strong>任何顺序</strong> 返回答案。</p>
+<p><strong>示例 1：</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">输入：n = 4, k = 2
+输出：
+[
+  [2,4],
+  [3,4],
+  [2,3],
+  [1,2],
+  [1,3],
+  [1,4],
+]<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><strong>提示：</strong></p>
+<ul>
+<li>
+<p><code>1 &lt;= n &lt;= 20</code></p>
+</li>
+<li>
+<p><code>1 &lt;= k &lt;= n</code></p>
+<p>​</p>
+</li>
+</ul>
+<h4 id="2.2-%E6%A8%A1%E6%9D%BF%E5%88%86%E6%9E%90" tabindex="-1">2.2 模板分析</h4>
+<ol>
+<li>
+<p><strong>递归函数的返回值和参数</strong></p>
+<ul>
+<li>
+<p>在这里要定义两个全局变量，一个用来存放符合条件单一结果，一个用来存放符合条件结果的集合。</p>
+</li>
+<li>
+<p>函数里一定有两个参数，既然是集合n里面取k个数，那么n和k是两个int型的参数。</p>
+</li>
+<li>
+<p>然后还需要一个参数，为int型变量startIndex，这个参数用来记录本层递归的中，集合从哪里开始遍历（集合就是[1,…,n] ）。</p>
+</li>
+</ul>
+</li>
+</ol>
+<ul>
+<li>
+<p><strong>简单地说，为了避免重复遍历的情况，我们只对未遍历的节点进行判断，比如输入了{1，2}判断后，到2节点的时候就不再对{2，1}判断了，而是对后续的节点{3，4，…}进行条件判断了~，如下图所示：</strong></p>
+<img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="/2023/11/19/san-bu-zou-jie-jue-hui-su-wen-ti/startindex.png" alt="startindex" style="zoom:67%;">
+</li>
+</ul>
+<ol start="2">
+<li>
+<p><strong>回溯函数终止条件</strong></p>
+<ul>
+<li>到达叶子节点后，path这个数组的大小如果达到k，说明我们找到了一个子集大小为k的组合了，在图中path存的就是根节点到叶子节点的路径。</li>
+<li>此时利用result二维数组/列表进行记录保存，结束本层的递归</li>
+</ul>
+</li>
+<li>
+<p><strong>回溯搜索的遍历过程</strong></p>
+<ul>
+<li>
+<p>for循环横向遍历，递归纵向遍历</p>
+</li>
+<li>
+<p>for循环每次从startIndex开始遍历，然后用path保存取到的节点i。</p>
 <p>​</p>
 </li>
 </ul>
 </li>
-</ul>
-<h4 id="3.-%E5%85%B7%E4%BD%93%E4%BB%A3%E7%A0%81-1" tabindex="-1">3. 具体代码</h4>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> title2 <span class="token punctuation">{</span>
-    <span class="token comment">//思路：模拟。先判断长度是否合法，再根据前三位字符串判断即可</span>
-    <span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">getTypeOfMobilePhoneNumber</span><span class="token punctuation">(</span><span class="token class-name">String</span> mobilePhoneNumber<span class="token punctuation">)</span><span class="token punctuation">{</span>
-        <span class="token class-name">String</span> s<span class="token operator">=</span><span class="token string">""</span><span class="token punctuation">;</span>
-        <span class="token comment">//先把特殊情况进行遍历吧，还有开头的字符</span>
-        <span class="token keyword">if</span><span class="token punctuation">(</span>mobilePhoneNumber<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">&lt;=</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-            <span class="token keyword">return</span> <span class="token string">"Invalid"</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-        <span class="token keyword">if</span><span class="token punctuation">(</span>mobilePhoneNumber<span class="token punctuation">.</span><span class="token function">charAt</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token operator">==</span><span class="token char">'0'</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-            s<span class="token operator">=</span>mobilePhoneNumber<span class="token punctuation">.</span><span class="token function">substring</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span><span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span>mobilePhoneNumber<span class="token punctuation">.</span><span class="token function">charAt</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token operator">==</span><span class="token char">'8'</span> <span class="token operator">&amp;&amp;</span> mobilePhoneNumber<span class="token punctuation">.</span><span class="token function">charAt</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">==</span><span class="token char">'6'</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-            s<span class="token operator">=</span>mobilePhoneNumber<span class="token punctuation">.</span><span class="token function">substring</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-        <span class="token keyword">if</span><span class="token punctuation">(</span>s<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">!=</span><span class="token number">11</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-            <span class="token keyword">return</span> <span class="token string">"Invalid"</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span><span class="token keyword">if</span><span class="token punctuation">(</span>s<span class="token punctuation">.</span><span class="token function">substring</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span><span class="token string">"1349"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-            <span class="token keyword">return</span> <span class="token string">"ChinaTelecom"</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-        <span class="token class-name">String</span> t<span class="token operator">=</span>s<span class="token punctuation">.</span><span class="token function">substring</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//对后续的字符进行遍历判断</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>t<span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span><span class="token string">"190"</span><span class="token punctuation">)</span> <span class="token operator">||</span> t<span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span><span class="token string">"197"</span><span class="token punctuation">)</span> <span class="token operator">||</span> t<span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span><span class="token string">"196"</span><span class="token punctuation">)</span> <span class="token operator">||</span> t<span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span><span class="token string">"192"</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-            <span class="token keyword">return</span> <span class="token string">"ChinaBroadNet"</span><span class="token punctuation">;</span>
-        <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>t<span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span><span class="token string">"133"</span><span class="token punctuation">)</span> <span class="token operator">||</span> t<span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span><span class="token string">"153"</span><span class="token punctuation">)</span> <span class="token operator">||</span> t<span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span><span class="token string">"189"</span><span class="token punctuation">)</span> <span class="token operator">||</span> t<span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span><span class="token string">"180"</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-            <span class="token keyword">return</span> <span class="token string">"ChinaTelecom"</span><span class="token punctuation">;</span>
-        <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>t<span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span><span class="token string">"130"</span><span class="token punctuation">)</span> <span class="token operator">||</span> t<span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span><span class="token string">"131"</span><span class="token punctuation">)</span> <span class="token operator">||</span> t<span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span><span class="token string">"132"</span><span class="token punctuation">)</span> <span class="token operator">||</span> t<span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span><span class="token string">"145"</span><span class="token punctuation">)</span> <span class="token operator">||</span> t<span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span><span class="token string">"155"</span><span class="token punctuation">)</span>
-                <span class="token operator">||</span> t<span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span><span class="token string">"156"</span><span class="token punctuation">)</span> <span class="token operator">||</span> t<span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span><span class="token string">"186"</span><span class="token punctuation">)</span> <span class="token operator">||</span> t<span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span><span class="token string">"185"</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-            <span class="token keyword">return</span> <span class="token string">"ChinaUnicom"</span><span class="token punctuation">;</span>
-        <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>t<span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span><span class="token string">"139"</span><span class="token punctuation">)</span> <span class="token operator">||</span> t<span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span><span class="token string">"138"</span><span class="token punctuation">)</span> <span class="token operator">||</span> t<span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span><span class="token string">"137"</span><span class="token punctuation">)</span> <span class="token operator">||</span> t<span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span><span class="token string">"136"</span><span class="token punctuation">)</span> <span class="token operator">||</span> t<span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span><span class="token string">"135"</span><span class="token punctuation">)</span>
-                <span class="token operator">||</span> t<span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span><span class="token string">"134"</span><span class="token punctuation">)</span> <span class="token operator">||</span> t<span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span><span class="token string">"147"</span><span class="token punctuation">)</span> <span class="token operator">||</span> t<span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span><span class="token string">"159"</span><span class="token punctuation">)</span> <span class="token operator">||</span> t<span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span><span class="token string">"158"</span><span class="token punctuation">)</span> <span class="token operator">||</span> t<span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span><span class="token string">"157"</span><span class="token punctuation">)</span>
-                <span class="token operator">||</span> t<span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span><span class="token string">"151"</span><span class="token punctuation">)</span> <span class="token operator">||</span> t<span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span><span class="token string">"152"</span><span class="token punctuation">)</span> <span class="token operator">||</span> t<span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span><span class="token string">"150"</span><span class="token punctuation">)</span> <span class="token operator">||</span> t<span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span><span class="token string">"182"</span><span class="token punctuation">)</span> <span class="token operator">||</span> t<span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span><span class="token string">"188"</span><span class="token punctuation">)</span>
-                <span class="token operator">||</span> t<span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span><span class="token string">"187"</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-            <span class="token keyword">return</span> <span class="token string">"ChinaMobile"</span><span class="token punctuation">;</span>
-        <span class="token keyword">else</span>
-            <span class="token keyword">return</span> <span class="token string">"Invalid"</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span><span class="token punctuation">{</span>
-        title2 t<span class="token operator">=</span><span class="token keyword">new</span> <span class="token function">title2</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token class-name">String</span> mobilePhoneNumber<span class="token operator">=</span><span class="token string">"8613801234567"</span><span class="token punctuation">;</span>
-        <span class="token class-name">String</span> result<span class="token operator">=</span>t<span class="token punctuation">.</span><span class="token function">getTypeOfMobilePhoneNumber</span><span class="token punctuation">(</span>mobilePhoneNumber<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"Result: "</span><span class="token operator">+</span>result<span class="token punctuation">)</span><span class="token punctuation">;</span>
-
+</ol>
+<h4 id="%E5%85%B7%E4%BD%93%E4%BB%A3%E7%A0%81" tabindex="-1">具体代码</h4>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">{</span>
+    <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">List</span><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">&gt;</span><span class="token punctuation">&gt;</span></span> result<span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 存放符合条件结果的集合</span>
+    <span class="token class-name">LinkedList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">&gt;</span></span> path <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">LinkedList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 用来存放符合条件单一结果</span>
+    <span class="token keyword">public</span> <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">List</span><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">&gt;</span><span class="token punctuation">&gt;</span></span> <span class="token function">combine</span><span class="token punctuation">(</span><span class="token keyword">int</span> n<span class="token punctuation">,</span> <span class="token keyword">int</span> k<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token function">backtracking</span><span class="token punctuation">(</span>n<span class="token punctuation">,</span>k<span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//注意题义指的是[1,n]的组合，当然从1开始递归遍历</span>
+        <span class="token keyword">return</span> result<span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">backtracking</span><span class="token punctuation">(</span><span class="token keyword">int</span> n<span class="token punctuation">,</span><span class="token keyword">int</span> k<span class="token punctuation">,</span><span class="token keyword">int</span> startIndex<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>path<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> k<span class="token punctuation">)</span><span class="token punctuation">{</span>
+            result<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">(</span>path<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">return</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span>startIndex<span class="token punctuation">;</span>i<span class="token operator">&lt;=</span>n<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span> <span class="token comment">// 控制树的横向遍历</span>
+            path<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 处理节点</span>
+            <span class="token function">backtracking</span><span class="token punctuation">(</span>n<span class="token punctuation">,</span>k<span class="token punctuation">,</span>i<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 递归：控制树的纵向遍历，注意下一层搜索要从i+1开始</span>
+            path<span class="token punctuation">.</span><span class="token function">removeLast</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// 回溯，撤销处理的节点</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
 <li>
 <p><strong>复杂度分析：</strong></p>
 <ul>
 <li>
-<p><strong>时间复杂度：<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span></eq></strong>，n就是手机号的长度。</p>
-</li>
-<li>
-<p><strong>空间复杂度：<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord">1</span><span class="mclose">)</span></span></span></span></eq></strong></p>
-<p>​</p>
-</li>
-</ul>
-</li>
-</ul>
-<hr>
+<p><strong>时间复杂度：<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>C</mi><mo stretchy="false">(</mo><mi>n</mi><mo separator="true">,</mo><mi>k</mi><mo stretchy="false">)</mo><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(C(n,k))</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mclose">))</span></span></span></span></eq></strong></p>
 <blockquote>
 <ul>
 <li>
-<p>所以说银行的题目较大厂的难度还是低一些，当然并不说明更容易进，还需要其余的知识补充。最近在看八股和计算机基础的知识，今年剩余的目标就是多维复习，刷题、八股、基础，还有做点项目出来。</p>
+<p>其中n表示数字范围的大小，k表示组合的长度。</p>
 </li>
 <li>
-<p><span style="font-size:20px;color:orange;">慢慢来，🍞和🍬都会有的！加油💪！</span></p>
+<p>在backtracking方法中，我们使用递归来生成所有可能的组合，每次选择一个数字加入当前组合，然后递归生成下一个位置的数字，最后再将该数字从当前组合中移除。</p>
+</li>
+<li>
+<p>因此，每个数字都有两种可能：被选择或不被选择。总共有C(n, k)个不同的组合，其中C(n, k)表示从n个数字中选择k个数字的组合数。所以时间复杂度是O(C(n, k))。</p>
 </li>
 </ul>
 </blockquote>
+</li>
+<li>
+<p><strong>空间复杂度：<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>k</mi><mo>∗</mo><mi>C</mi><mo stretchy="false">(</mo><mi>n</mi><mo separator="true">,</mo><mi>k</mi><mo stretchy="false">)</mo><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(k*C(n,k))</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mclose">))</span></span></span></span></eq></strong></p>
+<blockquote>
+<ul>
+<li>其中n表示数字范围的大小，k表示组合的长度。</li>
+<li>在backtracking方法中，我们使用了一个LinkedList来存储当前的组合path，而result则用来存储最终的结果。在递归的过程中，path的大小最大为k，因此占用的空间为O(k)。</li>
+<li>而result中最多会存储C(n, k)个组合，所以占用的空间为O(C(n, k))。因此，总的空间复杂度为O(k * C(n, k))。</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="%E5%89%AA%E6%9E%9D%E4%BC%98%E5%8C%96" tabindex="-1">剪枝优化</h4>
+<ul>
+<li>
+<p>由于设置了startindex，每次对当前层级的<strong>for循环</strong>遍历的话，只有可能在满足长度为k的基础上进行深度下查。比如：</p>
+<blockquote>
+<p>n=4,k=4;</p>
+<p>对于第一层的2节点而言，其startindex后的数组只含有[3,4]，不满足长度为k=4的子数组了，所以可以直接剪枝~</p>
+</blockquote>
+</li>
+<li>
+<p><strong>所以就是对for循环每层的遍历顺序进行操作：</strong></p>
+<ol>
+<li>
+<p><strong>已经选择的元素个数：path.size();</strong></p>
+</li>
+<li>
+<p><strong>还需要的元素个数为: k - path.size();</strong></p>
+</li>
+<li>
+<p><strong>在集合n中至多要从该起始位置 : n - (k - path.size()) + 1，开始遍历</strong></p>
+</li>
+</ol>
+<p>​</p>
+<ul>
+<li>
+<p>为什么有个+1呢，因为包括起始位置，我们要是一个左闭的集合。</p>
+</li>
+<li>
+<p>举个例子，n = 4，k = 3， 目前已经选取的元素为0（path.size为0），n - (k - 0) + 1 即 4 - ( 3 - 0) + 1 = 2。从2开始搜索都是合理的，可以是组合[2, 3, 4]。</p>
+</li>
+</ul>
+</li>
+<li>
+<p>优化后的<strong>for循环</strong>代码处：</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> startIndex<span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> n <span class="token operator">-</span> <span class="token punctuation">(</span>k <span class="token operator">-</span> path<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token comment">// i为本次搜索的起始位置</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>​</p>
+</li>
+</ul>
+<blockquote>
+<p>周末过得蛮充实的，下周要继续努力啦✊</p>
+<center><span style="color:#fe3399;font-size:30px">加油😀</span></center>
+</blockquote>
+<p>​</p>
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/katex/dist/katex.min.css">
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/markdown-it-texmath/css/texmath.min.css">
 
@@ -906,7 +980,7 @@ charset="utf-8"></script> -->
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://shakeJ96.github.io/2023/10/24/guang-fa-yin-xing-1021-qiu-zhao-bi-shi/">https://shakeJ96.github.io/2023/10/24/guang-fa-yin-xing-1021-qiu-zhao-bi-shi/</a>
+                    <a href="https://shakeJ96.github.io/2023/11/19/san-bu-zou-jie-jue-hui-su-wen-ti/">https://shakeJ96.github.io/2023/11/19/san-bu-zou-jie-jue-hui-su-wen-ti/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -944,8 +1018,12 @@ charset="utf-8"></script> -->
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/2023%E7%A7%8B%E6%8B%9B/">
-                                    <span class="chip bg-color">2023秋招</span>
+                                <a href="/tags/Leetcode/">
+                                    <span class="chip bg-color">Leetcode</span>
+                                </a>
+                            
+                                <a href="/tags/%E5%9B%9E%E6%BA%AF/">
+                                    <span class="chip bg-color">回溯</span>
                                 </a>
                             
                         </div>
@@ -1115,17 +1193,18 @@ charset="utf-8"></script> -->
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2023/10/26/cai-niao-1025-qiu-zhao-bi-shi/">
+                <a href="/2023/11/19/san-bu-zou-jie-jue-hui-su-wen-ti/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="菜鸟1025秋招笔试">
+                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="三步走解决回溯问题">
                         
-                        <span class="card-title">菜鸟1025秋招笔试</span>
+                        <span class="card-title">三步走解决回溯问题</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1135,26 +1214,31 @@ charset="utf-8"></script> -->
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2023-10-26
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-11-19
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E7%AC%94%E8%AF%95%E7%9C%9F%E9%A2%98/" class="post-category">
-                                    笔试真题
+                            <a href="/categories/%E7%AE%97%E6%B3%95/" class="post-category">
+                                    算法
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/2023%E7%A7%8B%E6%8B%9B/">
-                        <span class="chip bg-color">2023秋招</span>
+                    <a href="/tags/Leetcode/">
+                        <span class="chip bg-color">Leetcode</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%9B%9E%E6%BA%AF/">
+                        <span class="chip bg-color">回溯</span>
                     </a>
                     
                 </div>
@@ -1168,13 +1252,13 @@ charset="utf-8"></script> -->
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2023/10/20/dong-tai-gui-hua-si-lu-he-li-ti-ying-yong/">
+                <a href="/2023/11/18/maven-mybatis-chu-ti-yan/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="动态规划思路和例题应用">
+                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="Maven&amp;MyBatis初体验">
                         
-                        <span class="card-title">动态规划思路和例题应用</span>
+                        <span class="card-title">Maven&amp;MyBatis初体验</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1185,14 +1269,14 @@ charset="utf-8"></script> -->
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-10-20
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-11-18
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Leetcode/" class="post-category">
-                                    Leetcode
+                            <a href="/categories/Java%E5%BC%80%E5%8F%91/" class="post-category">
+                                    Java开发
                                 </a>
                             
                             
@@ -1202,8 +1286,12 @@ charset="utf-8"></script> -->
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">
-                        <span class="chip bg-color">动态规划</span>
+                    <a href="/tags/Maven/">
+                        <span class="chip bg-color">Maven</span>
+                    </a>
+                    
+                    <a href="/tags/MyBatis/">
+                        <span class="chip bg-color">MyBatis</span>
                     </a>
                     
                 </div>

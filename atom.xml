@@ -6,7 +6,7 @@
   <link href="https://shakej96.github.io/atom.xml" rel="self"/>
   
   <link href="https://shakej96.github.io/"/>
-  <updated>2023-11-18T15:11:49.190Z</updated>
+  <updated>2023-11-19T16:10:30.469Z</updated>
   <id>https://shakej96.github.io/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>三步走解决回溯问题</title>
+    <link href="https://shakej96.github.io/2023/11/19/san-bu-zou-jie-jue-hui-su-wen-ti/"/>
+    <id>https://shakej96.github.io/2023/11/19/san-bu-zou-jie-jue-hui-su-wen-ti/</id>
+    <published>2023-11-19T15:22:23.000Z</published>
+    <updated>2023-11-19T16:10:30.469Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;&#92;assets&#92;css&#92;APlayer.min.css&quot;&gt;&lt;script src=&quot;&#92;assets&#92;js&#92;APlayer.min.js&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="算法" scheme="https://shakej96.github.io/categories/%E7%AE%97%E6%B3%95/"/>
+    
+    
+    <category term="Leetcode" scheme="https://shakej96.github.io/tags/Leetcode/"/>
+    
+    <category term="回溯" scheme="https://shakej96.github.io/tags/%E5%9B%9E%E6%BA%AF/"/>
+    
+  </entry>
   
   <entry>
     <title>Maven&amp;MyBatis初体验</title>
@@ -506,33 +533,6 @@
     <category term="贪心算法" scheme="https://shakej96.github.io/tags/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/"/>
     
     <category term="动态规划" scheme="https://shakej96.github.io/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>BFS和DFS优先搜索算法</title>
-    <link href="https://shakej96.github.io/2023/10/05/bfs-he-dfs-you-xian-sou-suo-suan-fa/"/>
-    <id>https://shakej96.github.io/2023/10/05/bfs-he-dfs-you-xian-sou-suo-suan-fa/</id>
-    <published>2023-10-05T06:57:40.000Z</published>
-    <updated>2023-11-10T13:14:12.227Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;&#92;assets&#92;css&#92;APlayer.min.css&quot;&gt;&lt;script src=&quot;&#92;assets&#92;js&#92;APlayer.min.js&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="算法" scheme="https://shakej96.github.io/categories/%E7%AE%97%E6%B3%95/"/>
-    
-    
-    <category term="优先搜索" scheme="https://shakej96.github.io/tags/%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2/"/>
-    
-    <category term="二叉树" scheme="https://shakej96.github.io/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/"/>
     
   </entry>
   
