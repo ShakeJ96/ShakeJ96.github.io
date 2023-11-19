@@ -545,6 +545,13 @@
   </url>
   
   <url>
+    <loc>https://shakej96.github.io/tags/%E5%89%91%E6%8C%87Offer%EF%BC%88%E4%B8%93%E9%A1%B9%EF%BC%89/</loc>
+    <lastmod>2023-11-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://shakej96.github.io/tags/Maven/</loc>
     <lastmod>2023-11-19</lastmod>
     <changefreq>weekly</changefreq>
@@ -553,13 +560,6 @@
   
   <url>
     <loc>https://shakej96.github.io/tags/MyBatis/</loc>
-    <lastmod>2023-11-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://shakej96.github.io/tags/%E5%89%91%E6%8C%87Offer%EF%BC%88%E4%B8%93%E9%A1%B9%EF%BC%89/</loc>
     <lastmod>2023-11-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
