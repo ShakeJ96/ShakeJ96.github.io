@@ -682,7 +682,7 @@ charset="utf-8"></script> -->
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">equals</span><span class="token punctuation">(</span><span class="token class-name">Object</span> obj<span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token keyword">return</span> <span class="token punctuation">(</span><span class="token keyword">this</span> <span class="token operator">==</span> obj<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-</li>
+<ul>
 <li>
 <p>上述代码中可见：<strong>所有的类都可以通过equals()去比较两个对象是否相等</strong>；使用默认的“<strong>equals()</strong>”方法，等价于“<strong>==</strong>”方法。</p>
 </li>
@@ -692,14 +692,12 @@ charset="utf-8"></script> -->
 <li>
 <p>为判断<code>类是否覆盖equals()方法</code>：</p>
 <ol>
-<li>
-<p>若某个类没有覆盖equals()方法，当它的通过equals()比较两个对象时，实际上是比较两个对象是不是同一个对象。这时，等价于通过“==”去比较这两个对象。</p>
-</li>
-<li>
-<p>覆盖类的equals()方法，来让equals()通过其它方式比较两个对象是否相等。通常的做法是：若两个对象的内容相等，则equals()方法返回true；否则，返回fasle。</p>
-<p>​</p>
-</li>
+<li>若某个类没有覆盖equals()方法，当它的通过equals()比较两个对象时，实际上是比较两个对象是不是同一个对象。这时，等价于通过“==”去比较这两个对象。</li>
+<li>覆盖类的equals()方法，来让equals()通过其它方式比较两个对象是否相等。通常的做法是：若两个对象的内容相等，则equals()方法返回true；否则，返回fasle。</li>
 </ol>
+</li>
+</ul>
+<p>​</p>
 </li>
 </ul>
 <h4 id="1.-1-%E6%B2%A1%E6%9C%89%E8%A6%86%E7%9B%96equals()%E6%96%B9%E6%B3%95" tabindex="-1">1. 1 没有覆盖equals()方法</h4>
@@ -836,15 +834,11 @@ charset="utf-8"></script> -->
 </ul>
 <h3 id="%E4%BA%8C%E3%80%81equals()%E4%B8%8E%3D%3D%E7%9A%84%E5%8C%BA%E5%88%AB%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F" tabindex="-1">二、equals()与==的区别是什么？</h3>
 <h4 id="2.1-%E4%BA%8C%E8%80%85%E7%9A%84%E6%A6%82%E5%BF%B5" tabindex="-1">2.1 二者的概念</h4>
-<ul>
-<li>
-<p><code>==</code>：<strong>判断两个对象的地址是否相等</strong>，换句话说，就是判断两个对象是否是同一个对象。</p>
-</li>
-<li>
-<p><code>equals()</code>：<strong>判断两个对象是否相等</strong>，如上一个章节的两个区别，一个是没有重写覆盖，相当于是<code>==</code>；另外一个是通过重写覆盖需要判断的具体内容。</p>
+<ol>
+<li><code>==</code>：<strong>判断两个对象的地址是否相等</strong>，换句话说，就是判断两个对象是否是同一个对象。</li>
+<li><code>equals()</code>：<strong>判断两个对象是否相等</strong>，如上一个章节的两个区别，一个是没有重写覆盖，相当于是<code>==</code>；另外一个是通过重写覆盖需要判断的具体内容。</li>
+</ol>
 <p>​</p>
-</li>
-</ul>
 <h4 id="2.2-%E5%85%B7%E4%BD%93%E4%BB%A3%E7%A0%81%E5%AF%B9%E6%AF%94" tabindex="-1">2.2 具体代码对比</h4>
 <ul>
 <li>通过代码进行对比：</li>
@@ -970,8 +964,6 @@ charset="utf-8"></script> -->
 <ul>
 <li>
 <p>在这样的情况下，不会创建该类的hashCode()方法，或者说此方法没有实现效果，不用理会。</p>
-</li>
-<li>
 <p>通过示例查看类的<strong>两个对象相等</strong> 以及 <strong>不等</strong>时hashCode()的取值：</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">import</span> <span class="token import"><span class="token namespace">java<span class="token punctuation">.</span>util<span class="token punctuation">.</span></span><span class="token operator">*</span></span><span class="token punctuation">;</span>
 <span class="token keyword">import</span> <span class="token import"><span class="token namespace">java<span class="token punctuation">.</span>lang<span class="token punctuation">.</span></span><span class="token class-name">Comparable</span></span><span class="token punctuation">;</span>
@@ -1056,12 +1048,12 @@ charset="utf-8"></script> -->
 </li>
 <li>
 <p>如果两个对象hashCode()相等，它们并不一定相等。 因为在散列表中，hashCode()相等，即两个键值对的哈希值相等。然而哈希值相等，并不一定能得出键值对相等。</p>
+</li>
+</ol>
 <blockquote>
 <p>补充说一句：“两个不同的键值对，哈希值相等”，这就是哈希冲突。</p>
 </blockquote>
 <p>​</p>
-</li>
-</ol>
 </li>
 <li>
 <p>此外，在这种情况下。若要判断两个对象是否相等，除了要覆盖equals()之外，也要覆盖hashCode()函数。否则，equals()无效。</p>
@@ -2163,7 +2155,7 @@ $(function () {
     </script>
     
   
-
+<script src="/live2dw/lib/L2Dwidget.min.js?243708c68e3ad401cd4432916889e600"></script><script>L2Dwidget.init({"dialog":{"enable":true,"hitokoto":true},"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"left","width":120,"height":160,"superSample":2,"voffset":0,"hoffset":20},"mobile":{"show":false},"react":{"opacity":0.7,"opacityOnHover":0.2}});</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
         <style>
             [bg-lazy] {
                 background-image: none !important;
@@ -2176,6 +2168,6 @@ $(function () {
                 preloadRatio: 3,
                 processImages: null,
             };
-        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(r){r.imageLazyLoadSetting.processImages=t;var e=r.imageLazyLoadSetting.isSPA,n=r.imageLazyLoadSetting.preloadRatio||1,c=a();function a(){var t=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")),e=Array.prototype.slice.call(document.querySelectorAll("[bg-lazy]"));return t.concat(e)}function t(){e&&(c=a());for(var t,o=0;o<c.length;o++)0<=(t=(t=c[o]).getBoundingClientRect()).bottom&&0<=t.left&&t.top<=(r.innerHeight*n||document.documentElement.clientHeight*n)&&function(){var t,e,n,a,i=c[o];e=function(){c=c.filter(function(t){return i!==t}),r.imageLazyLoadSetting.onImageLoaded&&r.imageLazyLoadSetting.onImageLoaded(i)},(t=i).hasAttribute("bg-lazy")?(t.removeAttribute("bg-lazy"),e&&e()):(n=new Image,a=t.getAttribute("data-original"),n.onload=function(){t.src=a,t.removeAttribute("data-original"),e&&e()},t.src!==a&&(n.src=a))}()}function i(){clearTimeout(t.tId),t.tId=setTimeout(t,500)}t(),document.addEventListener("scroll",i),r.addEventListener("resize",i),r.addEventListener("orientationchange",i)}(this);</script><!-- hexo-inject:begin --><!-- hexo-inject:end --><script src="/live2dw/lib/L2Dwidget.min.js?243708c68e3ad401cd4432916889e600"></script><script>L2Dwidget.init({"dialog":{"enable":true,"hitokoto":true},"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"left","width":120,"height":160,"superSample":2,"voffset":0,"hoffset":20},"mobile":{"show":false},"react":{"opacity":0.7,"opacityOnHover":0.2}});</script></body>
+        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(r){r.imageLazyLoadSetting.processImages=t;var e=r.imageLazyLoadSetting.isSPA,n=r.imageLazyLoadSetting.preloadRatio||1,c=a();function a(){var t=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")),e=Array.prototype.slice.call(document.querySelectorAll("[bg-lazy]"));return t.concat(e)}function t(){e&&(c=a());for(var t,o=0;o<c.length;o++)0<=(t=(t=c[o]).getBoundingClientRect()).bottom&&0<=t.left&&t.top<=(r.innerHeight*n||document.documentElement.clientHeight*n)&&function(){var t,e,n,a,i=c[o];e=function(){c=c.filter(function(t){return i!==t}),r.imageLazyLoadSetting.onImageLoaded&&r.imageLazyLoadSetting.onImageLoaded(i)},(t=i).hasAttribute("bg-lazy")?(t.removeAttribute("bg-lazy"),e&&e()):(n=new Image,a=t.getAttribute("data-original"),n.onload=function(){t.src=a,t.removeAttribute("data-original"),e&&e()},t.src!==a&&(n.src=a))}()}function i(){clearTimeout(t.tId),t.tId=setTimeout(t,500)}t(),document.addEventListener("scroll",i),r.addEventListener("resize",i),r.addEventListener("orientationchange",i)}(this);</script></body>
 
 </html>
