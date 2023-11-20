@@ -634,7 +634,7 @@ charset="utf-8"></script> -->
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    3.2k
+                    3.1k
                 </div>
                 
 
@@ -940,14 +940,16 @@ charset="utf-8"></script> -->
 <p>A： 因为HashSet是Set集合，它允许有重复元素。 “将第1001个元素逐个的和前面1000个元素进行比较”？显然，这个效率是相等低下的。散列表很好的解决了这个问题，它根据元素的散列码计算出元素在散列表中的位置，然后将元素插入该位置即可。对于相同的元素，自然是只保存了一个。</p>
 <p>T： 由此可知，<strong>若两个元素相等，它们的散列码一定相等</strong>；但反过来确不一定。</p>
 <ul>
-<li>在散列表中：</li>
-</ul>
+<li>
+<p>在散列表中：</p>
 <ol>
 <li>如果两个对象相等，那么它们的hashCode()值一定要相同；</li>
 <li>如果两个对象hashCode()相等，它们并不一定相等。</li>
 </ol>
-<ul>
-<li>注意：这是在散列表中的情况。在非散列表中一定如此！</li>
+</li>
+<li>
+<p>注意：这是在散列表中的情况。在非散列表中一定如此！</p>
+</li>
 </ul>
 </blockquote>
 <p>​</p>
@@ -1043,12 +1045,8 @@ charset="utf-8"></script> -->
 <li>
 <p>在这种情况下，该类的“hashCode() 和 equals() ”是有关系的：</p>
 <ol>
-<li>
-<p>如果两个对象相等，那么它们的hashCode()值一定相同。 这里的相等是指，通过equals()比较两个对象时返回true。</p>
-</li>
-<li>
-<p>如果两个对象hashCode()相等，它们并不一定相等。 因为在散列表中，hashCode()相等，即两个键值对的哈希值相等。然而哈希值相等，并不一定能得出键值对相等。</p>
-</li>
+<li>如果两个对象相等，那么它们的hashCode()值一定相同。 这里的相等是指，通过equals()比较两个对象时返回true。</li>
+<li>如果两个对象hashCode()相等，它们并不一定相等。 因为在散列表中，hashCode()相等，即两个键值对的哈希值相等。然而哈希值相等，并不一定能得出键值对相等。</li>
 </ol>
 <blockquote>
 <p>补充说一句：“两个不同的键值对，哈希值相等”，这就是哈希冲突。</p>
@@ -1063,179 +1061,181 @@ charset="utf-8"></script> -->
 <p>例如，创建Person类的HashSet集合，必须同时覆盖Person类的equals() 和 hashCode()方法。</p>
 <p>如果单单只是覆盖equals()方法。我们会发现，equals()方法没有达到我们想要的效果。</p>
 </blockquote>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">import</span> <span class="token import"><span class="token namespace">java<span class="token punctuation">.</span>util<span class="token punctuation">.</span></span><span class="token operator">*</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">java<span class="token punctuation">.</span>lang<span class="token punctuation">.</span></span><span class="token class-name">Comparable</span></span><span class="token punctuation">;</span>
+
+<span class="token comment">/**
+ * @desc 比较equals() 返回true 以及 返回false时， hashCode()的值。
+ */</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">ConflictHashCodeTest1</span><span class="token punctuation">{</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// 新建Person对象，</span>
+        <span class="token class-name">Person</span> p1 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Person</span><span class="token punctuation">(</span><span class="token string">"eee"</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">Person</span> p2 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Person</span><span class="token punctuation">(</span><span class="token string">"eee"</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">Person</span> p3 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Person</span><span class="token punctuation">(</span><span class="token string">"aaa"</span><span class="token punctuation">,</span> <span class="token number">200</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment">// 新建HashSet对象</span>
+        <span class="token class-name">HashSet</span> set <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">HashSet</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        set<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>p1<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        set<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>p2<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        set<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>p3<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment">// 比较p1 和 p2， 并打印它们的hashCode()</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"p1.equals(p2) : %s; p1(%d) p2(%d)\n"</span><span class="token punctuation">,</span> p1<span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span>p2<span class="token punctuation">)</span><span class="token punctuation">,</span> p1<span class="token punctuation">.</span><span class="token function">hashCode</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> p2<span class="token punctuation">.</span><span class="token function">hashCode</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">// 打印set</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"set:%s\n"</span><span class="token punctuation">,</span> set<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">/**
+     * @desc Person类。
+     */</span>
+    <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">class</span> <span class="token class-name">Person</span> <span class="token punctuation">{</span>
+        <span class="token keyword">int</span> age<span class="token punctuation">;</span>
+        <span class="token class-name">String</span> name<span class="token punctuation">;</span>
+
+        <span class="token keyword">public</span> <span class="token class-name">Person</span><span class="token punctuation">(</span><span class="token class-name">String</span> name<span class="token punctuation">,</span> <span class="token keyword">int</span> age<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>name <span class="token operator">=</span> name<span class="token punctuation">;</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>age <span class="token operator">=</span> age<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token string">"("</span><span class="token operator">+</span>name <span class="token operator">+</span> <span class="token string">", "</span> <span class="token operator">+</span>age<span class="token operator">+</span><span class="token string">")"</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token comment">/**
+         * @desc 覆盖equals方法
+         */</span>
+        <span class="token annotation punctuation">@Override</span>
+        <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">equals</span><span class="token punctuation">(</span><span class="token class-name">Object</span> obj<span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span>obj <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+                <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+
+            <span class="token comment">//如果是同一个对象返回true，反之返回false</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token keyword">this</span> <span class="token operator">==</span> obj<span class="token punctuation">)</span><span class="token punctuation">{</span>
+                <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+
+            <span class="token comment">//判断是否类型相同</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">getClass</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">!=</span> obj<span class="token punctuation">.</span><span class="token function">getClass</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+                <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+
+            <span class="token class-name">Person</span> person <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token class-name">Person</span><span class="token punctuation">)</span>obj<span class="token punctuation">;</span>
+            <span class="token keyword">return</span> name<span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span>person<span class="token punctuation">.</span>name<span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> age<span class="token operator">==</span>person<span class="token punctuation">.</span>age<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>​</p>
 <ul>
 <li>
-<pre><code class="language-java">import java.util.*;
-import java.lang.Comparable;
-
-/**
- * @desc 比较equals() 返回true 以及 返回false时， hashCode()的值。
- */
-public class ConflictHashCodeTest1{
-
-    public static void main(String[] args) {
-        // 新建Person对象，
-        Person p1 = new Person("eee", 100);
-        Person p2 = new Person("eee", 100);
-        Person p3 = new Person("aaa", 200);
-
-        // 新建HashSet对象
-        HashSet set = new HashSet();
-        set.add(p1);
-        set.add(p2);
-        set.add(p3);
-
-        // 比较p1 和 p2， 并打印它们的hashCode()
-        System.out.printf("p1.equals(p2) : %s; p1(%d) p2(%d)\n", p1.equals(p2), p1.hashCode(), p2.hashCode());
-        // 打印set
-        System.out.printf("set:%s\n", set);
-    }
-
-    /**
-     * @desc Person类。
-     */
-    private static class Person {
-        int age;
-        String name;
-
-        public Person(String name, int age) {
-            this.name = name;
-            this.age = age;
-        }
-
-        public String toString() {
-            return "("+name + ", " +age+")";
-        }
-
-        /**
-         * @desc 覆盖equals方法
-         */
-        @Override
-        public boolean equals(Object obj){
-            if(obj == null){
-                return false;
-            }
-
-            //如果是同一个对象返回true，反之返回false
-            if(this == obj){
-                return true;
-            }
-
-            //判断是否类型相同
-            if(this.getClass() != obj.getClass()){
-                return false;
-            }
-
-            Person person = (Person)obj;
-            return name.equals(person.name) &amp;&amp; age==person.age;
-        }
-    }
-}
-
-<pre class="line-numbers language-none"><code class="language-none">
-+ **运行结果：**
-
-  &lt;img src="HashCode%E5%92%8Cequals%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93/2.jpg" alt="2" style="zoom:67%;" /&gt;
-
-+ **结果分析：**
-
-  + 我们重写了Person的equals()。但是，很奇怪的发现：HashSet中仍然有重复元素：p1 和 p2。为什么会出现这种情况呢？
-  
-  + 这是因为虽然p1 和 p2的内容相等，但是它们的hashCode()不等；所以，HashSet在添加p1和p2的时候，认为它们不相等。
-  
-    ​					
-  
-+ 下面，我们同时覆盖equals() 和 hashCode()方法：
-
-  ```java
-  import java.util.*;
-  import java.lang.Comparable;
-  
-  /**
-   * @desc 比较equals() 返回true 以及 返回false时， hashCode()的值。
-   */
-  public class ConflictHashCodeTest2{
-  
-      public static void main(String[] args) {
-          // 新建Person对象，
-          Person p1 = new Person("eee", 100);
-          Person p2 = new Person("eee", 100);
-          Person p3 = new Person("aaa", 200);
-          Person p4 = new Person("EEE", 100);
-  
-          // 新建HashSet对象
-          HashSet set = new HashSet();
-          set.add(p1);
-          set.add(p2);
-          set.add(p3);
-  
-          // 比较p1 和 p2， 并打印它们的hashCode()
-          System.out.printf("p1.equals(p2) : %s; p1(%d) p2(%d)\n", p1.equals(p2), p1.hashCode(), p2.hashCode());
-          
-          // 比较p1 和 p4， 并打印它们的hashCode()
-          System.out.printf("p1.equals(p4) : %s; p1(%d) p4(%d)\n", p1.equals(p4), p1.hashCode(), p4.hashCode());
-          
-          // 打印set
-          System.out.printf("set:%s\n", set);
-      }
-  
-      /**
-       * @desc Person类。
-       */
-      private static class Person {
-          int age;
-          String name;
-  
-          public Person(String name, int age) {
-              this.name = name;
-              this.age = age;
-          }
-  
-          public String toString() {
-              return name + " - " +age;
-          }
-  
-          /**
-           * @desc重写hashCode
-           */
-          @Override
-          public int hashCode(){
-              int nameHash =  name.toUpperCase().hashCode();
-              return nameHash ^ age;
-          }
-  
-          /**
-           * @desc 覆盖equals方法
-           */
-          @Override
-          public boolean equals(Object obj){
-              if(obj == null){
-                  return false;
-              }
-  
-              //如果是同一个对象返回true，反之返回false
-              if(this == obj){
-                  return true;
-              }
-  
-              //判断是否类型相同
-              if(this.getClass() != obj.getClass()){
-                  return false;
-              }
-  
-              Person person = (Person)obj;
-              return name.equals(person.name) &amp;&amp; age==person.age;
-          }
-      }
-  }
-  <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-</code></pre>
+<p><strong>运行结果：</strong></p>
+<img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="/2023/11/20/hashcode-he-equals-fang-fa-zong-jie/2.jpg" alt="2" style="zoom:67%;">
 </li>
+<li>
+<p><strong>结果分析：</strong></p>
+<ul>
+<li>
+<p>我们重写了Person的equals()。但是，很奇怪的发现：HashSet中仍然有重复元素：p1 和 p2。为什么会出现这种情况呢？</p>
+</li>
+<li>
+<p>这是因为虽然p1 和 p2的内容相等，但是它们的hashCode()不等；所以，HashSet在添加p1和p2的时候，认为它们不相等。</p>
+<p>​</p>
+</li>
+</ul>
+</li>
+<li>
+<p>下面，我们同时覆盖equals() 和 hashCode()方法：</p>
+</li>
+</ul>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">import</span> <span class="token import"><span class="token namespace">java<span class="token punctuation">.</span>util<span class="token punctuation">.</span></span><span class="token operator">*</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">java<span class="token punctuation">.</span>lang<span class="token punctuation">.</span></span><span class="token class-name">Comparable</span></span><span class="token punctuation">;</span>
+
+<span class="token comment">/**
+ * @desc 比较equals() 返回true 以及 返回false时， hashCode()的值。
+ */</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">ConflictHashCodeTest2</span><span class="token punctuation">{</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// 新建Person对象，</span>
+        <span class="token class-name">Person</span> p1 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Person</span><span class="token punctuation">(</span><span class="token string">"eee"</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">Person</span> p2 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Person</span><span class="token punctuation">(</span><span class="token string">"eee"</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">Person</span> p3 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Person</span><span class="token punctuation">(</span><span class="token string">"aaa"</span><span class="token punctuation">,</span> <span class="token number">200</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">Person</span> p4 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Person</span><span class="token punctuation">(</span><span class="token string">"EEE"</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment">// 新建HashSet对象</span>
+        <span class="token class-name">HashSet</span> set <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">HashSet</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        set<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>p1<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        set<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>p2<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        set<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>p3<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment">// 比较p1 和 p2， 并打印它们的hashCode()</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"p1.equals(p2) : %s; p1(%d) p2(%d)\n"</span><span class="token punctuation">,</span> p1<span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span>p2<span class="token punctuation">)</span><span class="token punctuation">,</span> p1<span class="token punctuation">.</span><span class="token function">hashCode</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> p2<span class="token punctuation">.</span><span class="token function">hashCode</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        
+        <span class="token comment">// 比较p1 和 p4， 并打印它们的hashCode()</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"p1.equals(p4) : %s; p1(%d) p4(%d)\n"</span><span class="token punctuation">,</span> p1<span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span>p4<span class="token punctuation">)</span><span class="token punctuation">,</span> p1<span class="token punctuation">.</span><span class="token function">hashCode</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> p4<span class="token punctuation">.</span><span class="token function">hashCode</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        
+        <span class="token comment">// 打印set</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"set:%s\n"</span><span class="token punctuation">,</span> set<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">/**
+     * @desc Person类。
+     */</span>
+    <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">class</span> <span class="token class-name">Person</span> <span class="token punctuation">{</span>
+        <span class="token keyword">int</span> age<span class="token punctuation">;</span>
+        <span class="token class-name">String</span> name<span class="token punctuation">;</span>
+
+        <span class="token keyword">public</span> <span class="token class-name">Person</span><span class="token punctuation">(</span><span class="token class-name">String</span> name<span class="token punctuation">,</span> <span class="token keyword">int</span> age<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>name <span class="token operator">=</span> name<span class="token punctuation">;</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>age <span class="token operator">=</span> age<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> name <span class="token operator">+</span> <span class="token string">" - "</span> <span class="token operator">+</span>age<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token comment">/**
+         * @desc重写hashCode
+         */</span>
+        <span class="token annotation punctuation">@Override</span>
+        <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">hashCode</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token keyword">int</span> nameHash <span class="token operator">=</span>  name<span class="token punctuation">.</span><span class="token function">toUpperCase</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">hashCode</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">return</span> nameHash <span class="token operator">^</span> age<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token comment">/**
+         * @desc 覆盖equals方法
+         */</span>
+        <span class="token annotation punctuation">@Override</span>
+        <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">equals</span><span class="token punctuation">(</span><span class="token class-name">Object</span> obj<span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span>obj <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+                <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+
+            <span class="token comment">//如果是同一个对象返回true，反之返回false</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token keyword">this</span> <span class="token operator">==</span> obj<span class="token punctuation">)</span><span class="token punctuation">{</span>
+                <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+
+            <span class="token comment">//判断是否类型相同</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">getClass</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">!=</span> obj<span class="token punctuation">.</span><span class="token function">getClass</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+                <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+
+            <span class="token class-name">Person</span> person <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token class-name">Person</span><span class="token punctuation">)</span>obj<span class="token punctuation">;</span>
+            <span class="token keyword">return</span> name<span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span>person<span class="token punctuation">.</span>name<span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> age<span class="token operator">==</span>person<span class="token punctuation">.</span>age<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
 <li>
 <p><strong>运行结果：</strong></p>
 <img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="/2023/11/20/hashcode-he-equals-fang-fa-zong-jie/3.jpg" alt="3" style="zoom:67%;">
+<p>​</p>
 </li>
 <li>
 <p><strong>结果分析：</strong></p>
