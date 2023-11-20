@@ -6,7 +6,7 @@
   <link href="https://shakej96.github.io/atom.xml" rel="self"/>
   
   <link href="https://shakej96.github.io/"/>
-  <updated>2023-11-19T16:14:08.839Z</updated>
+  <updated>2023-11-20T06:40:54.150Z</updated>
   <id>https://shakej96.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>HashCode和equals方法总结</title>
+    <link href="https://shakej96.github.io/2023/11/20/hashcode-he-equals-fang-fa-zong-jie/"/>
+    <id>https://shakej96.github.io/2023/11/20/hashcode-he-equals-fang-fa-zong-jie/</id>
+    <published>2023-11-20T04:20:49.000Z</published>
+    <updated>2023-11-20T06:40:54.150Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;&#92;assets&#92;css&#92;APlayer.min.css&quot;&gt;&lt;script src=&quot;&#92;assets&#92;js&#92;APlayer.min.js&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="八股面试" scheme="https://shakej96.github.io/categories/%E5%85%AB%E8%82%A1%E9%9D%A2%E8%AF%95/"/>
+    
+    
+    <category term="-Java" scheme="https://shakej96.github.io/tags/Java/"/>
+    
+  </entry>
   
   <entry>
     <title>三步走解决回溯问题</title>
@@ -358,7 +383,7 @@
     <link href="https://shakej96.github.io/2023/10/18/hashmap-yu-treemap-zong-jie/"/>
     <id>https://shakej96.github.io/2023/10/18/hashmap-yu-treemap-zong-jie/</id>
     <published>2023-10-18T09:11:20.000Z</published>
-    <updated>2023-10-20T13:50:54.608Z</updated>
+    <updated>2023-11-20T04:22:16.948Z</updated>
     
     
       
@@ -371,7 +396,7 @@
     
     
     
-    <category term="八股" scheme="https://shakej96.github.io/categories/%E5%85%AB%E8%82%A1/"/>
+    <category term="八股面试" scheme="https://shakej96.github.io/categories/%E5%85%AB%E8%82%A1%E9%9D%A2%E8%AF%95/"/>
     
     
     <category term="Java" scheme="https://shakej96.github.io/tags/Java/"/>
@@ -504,35 +529,6 @@
     <category term="优先搜索" scheme="https://shakej96.github.io/tags/%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2/"/>
     
     <category term="二叉树" scheme="https://shakej96.github.io/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Leetcode.买卖股票的最佳时机(系列)</title>
-    <link href="https://shakej96.github.io/2023/10/05/leetcode-mai-mai-gu-piao-de-zui-jia-shi-ji-xi-lie/"/>
-    <id>https://shakej96.github.io/2023/10/05/leetcode-mai-mai-gu-piao-de-zui-jia-shi-ji-xi-lie/</id>
-    <published>2023-10-05T08:31:55.000Z</published>
-    <updated>2023-10-23T14:56:01.420Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;&#92;assets&#92;css&#92;APlayer.min.css&quot;&gt;&lt;script src=&quot;&#92;assets&#92;js&#92;APlayer.min.js&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="Leetcode" scheme="https://shakej96.github.io/categories/Leetcode/"/>
-    
-    
-    <category term="算法" scheme="https://shakej96.github.io/tags/%E7%AE%97%E6%B3%95/"/>
-    
-    <category term="贪心算法" scheme="https://shakej96.github.io/tags/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/"/>
-    
-    <category term="动态规划" scheme="https://shakej96.github.io/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
     
   </entry>
   
