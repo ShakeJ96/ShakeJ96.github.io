@@ -639,21 +639,21 @@ charset="utf-8"></script> -->
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-11-16
+                    2023-11-22
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    3.6k
+                    4.4k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    13 分
+                    16 分
                 </div>
                 
 
@@ -1030,6 +1030,71 @@ charset="utf-8"></script> -->
 <li>重写发生在子类与父类之间，重写要求子类被重写方法与父类被重写方法有相同的参数列表，有兼容的返回类型，比父类被重写方法更好访问，不能比父类被重写方法声明更多的异常（里氏代换原则）。</li>
 <li>重载对返回类型没有特殊的要求，不能根据返回类型进行区分。</li>
 </ol>
+</blockquote>
+<p>​</p>
+<h3 id="2.-java%E5%9F%BA%E7%A1%80%E9%9D%A2%E8%AF%95" tabindex="-1">2. Java基础面试</h3>
+<h4 id="1.-%E6%8A%BD%E8%B1%A1%E7%B1%BB%E5%92%8C%E6%8E%A5%E5%8F%A3%E7%9A%84%E5%8C%BA%E5%88%AB%E4%B8%8E%E8%81%94%E7%B3%BB%EF%BC%9F" tabindex="-1">1. 抽象类和接口的区别与联系？</h4>
+<blockquote>
+<ul>
+<li>相同点：
+<ol>
+<li>二者都不能实现实例话</li>
+<li>均可以拥有抽象方法</li>
+</ol>
+</li>
+<li>不同点：
+<ol>
+<li>抽象类定义的关键字是abstract class，接口方法的关键字是interface</li>
+<li>属性上：抽象类可以有静态变量、常量和成员变量；接口只能拥有常量</li>
+<li>抽象方法可以拥有普通的方法，但是接口类的jdk在1.8之前只能拥有抽象方法（1.8之后增添了静态方法和默认方法）</li>
+<li>抽象方法可以存在构造方法，接口不能拥有构造方法</li>
+<li>一个类只能单继承以各父类，而一个接口可以继承多个父接口。同时，一个类可以实现多个接口，但是并没有实现多个父类的说法</li>
+<li>抽象方法在业务上更多地是模板操作，存在和自己相同的功能，可以有优化补充的多种形式，而接口更像是一种规范和要求，实现需要按照要求要求来进行。</li>
+</ol>
+</li>
+</ul>
+</blockquote>
+<p>​</p>
+<h4 id="2.-string%E3%80%81stringbuffer%E3%80%81stringbuilder%E4%B9%8B%E9%97%B4%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB%EF%BC%9F%EF%BC%88%E7%AE%80%E7%9F%AD-%EF%BC%89" tabindex="-1">2. String、StringBuffer、StringBuilder之间有什么区别？（简短 ）</h4>
+<blockquote>
+<ul>
+<li>String：不可变字符序列，效率低，复用率高；
+<ul>
+<li>任何对 String 的操作实际上都会生成一个新的 String 对象，原始的 String 对象并不会改变。这种特性使得 String 在多线程环境下是安全的。</li>
+<li>当需要修改一个字符串时，每次操作都会生成一个新的字符串对象，这可能导致大量的内存开销。</li>
+</ul>
+</li>
+<li>StringBuffer：可变字符序列、效率较高（增删）、线程安全、方法同步、多线程可直接使用；
+<ul>
+<li>可变，它的所有公共方法都是同步的，所以它是线程安全的。</li>
+<li>在单线程情况下，使用 StringBuffer 会带来额外的同步开销，性能相对较低。</li>
+</ul>
+</li>
+<li>StringBuilder：可变字符序列、效率最高、线程不安全、方法不同步、适用于单线程、多线程需要加锁；
+<ul>
+<li>StringBuilder 的方法不是同步的，因此它不是线程安全的。</li>
+<li>由于不需要处理同步的开销，StringBuilder 的性能通常比 StringBuffer 更好，因此在单线程环境下，推荐使用 StringBuilder。</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<p>​</p>
+<h4 id="3.-hashcode()%E5%92%8Cequals()%E7%9A%84%E5%8C%BA%E5%88%AB%2C%E4%B8%BA%E4%BB%80%E4%B9%88%E9%87%8D%E5%86%99equals()%E5%B0%B1%E8%A6%81%E9%87%8D%E5%86%99hashcode()" tabindex="-1">3. hashCode()和equals()的区别,为什么重写equals()就要重写hashCode()</h4>
+<blockquote>
+<ul>
+<li>得分点 hashCode()用途、equals()用途、hashCode()、equals()约定 ；</li>
+<li>标准回答 ：
+<ol>
+<li>hashCode()：获取哈希码；equals()：比较两个对象是否相等。</li>
+<li>二者两个约定：如果两个对象相等，它们必须有相同的哈希码；若两个对象的哈希码相同，他们却不一定相等。
+<ul>
+<li>也就是说,equals()比较两个对象相等时hashCode()一定相等，hashCode()相等的两个对象equqls()不一定相等。</li>
+</ul>
+</li>
+<li>加分回答：由于hashCode()与equals()具有联动关系，equals()重写时，hashCode()进行重写，使得这两个方法始终满足相关的约定。</li>
+</ol>
+</li>
+</ul>
 </blockquote>
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/katex/dist/katex.min.css">
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/markdown-it-texmath/css/texmath.min.css">
@@ -1579,7 +1644,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">88.8k</span>&nbsp;字
+                class="white-color">89.5k</span>&nbsp;字
             
             
             
@@ -1941,7 +2006,7 @@ $(function () {
     </script>
     
   
-<script src="/live2dw/lib/L2Dwidget.min.js?243708c68e3ad401cd4432916889e600"></script><script>L2Dwidget.init({"dialog":{"enable":true,"hitokoto":true},"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"left","width":120,"height":160,"superSample":2,"voffset":0,"hoffset":20},"mobile":{"show":false},"react":{"opacity":0.7,"opacityOnHover":0.2}});</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+<script src="/live2dw/lib/L2Dwidget.min.js?243708c68e3ad401cd4432916889e600"></script><script>L2Dwidget.init({"dialog":{"enable":true,"hitokoto":true},"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"left","width":120,"height":160,"superSample":2,"voffset":0,"hoffset":20},"mobile":{"show":false},"react":{"opacity":0.7,"opacityOnHover":0.2}});</script>
         <style>
             [bg-lazy] {
                 background-image: none !important;
@@ -1954,6 +2019,6 @@ $(function () {
                 preloadRatio: 3,
                 processImages: null,
             };
-        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(r){r.imageLazyLoadSetting.processImages=t;var e=r.imageLazyLoadSetting.isSPA,n=r.imageLazyLoadSetting.preloadRatio||1,c=a();function a(){var t=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")),e=Array.prototype.slice.call(document.querySelectorAll("[bg-lazy]"));return t.concat(e)}function t(){e&&(c=a());for(var t,o=0;o<c.length;o++)0<=(t=(t=c[o]).getBoundingClientRect()).bottom&&0<=t.left&&t.top<=(r.innerHeight*n||document.documentElement.clientHeight*n)&&function(){var t,e,n,a,i=c[o];e=function(){c=c.filter(function(t){return i!==t}),r.imageLazyLoadSetting.onImageLoaded&&r.imageLazyLoadSetting.onImageLoaded(i)},(t=i).hasAttribute("bg-lazy")?(t.removeAttribute("bg-lazy"),e&&e()):(n=new Image,a=t.getAttribute("data-original"),n.onload=function(){t.src=a,t.removeAttribute("data-original"),e&&e()},t.src!==a&&(n.src=a))}()}function i(){clearTimeout(t.tId),t.tId=setTimeout(t,500)}t(),document.addEventListener("scroll",i),r.addEventListener("resize",i),r.addEventListener("orientationchange",i)}(this);</script></body>
+        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(r){r.imageLazyLoadSetting.processImages=t;var e=r.imageLazyLoadSetting.isSPA,n=r.imageLazyLoadSetting.preloadRatio||1,c=a();function a(){var t=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")),e=Array.prototype.slice.call(document.querySelectorAll("[bg-lazy]"));return t.concat(e)}function t(){e&&(c=a());for(var t,o=0;o<c.length;o++)0<=(t=(t=c[o]).getBoundingClientRect()).bottom&&0<=t.left&&t.top<=(r.innerHeight*n||document.documentElement.clientHeight*n)&&function(){var t,e,n,a,i=c[o];e=function(){c=c.filter(function(t){return i!==t}),r.imageLazyLoadSetting.onImageLoaded&&r.imageLazyLoadSetting.onImageLoaded(i)},(t=i).hasAttribute("bg-lazy")?(t.removeAttribute("bg-lazy"),e&&e()):(n=new Image,a=t.getAttribute("data-original"),n.onload=function(){t.src=a,t.removeAttribute("data-original"),e&&e()},t.src!==a&&(n.src=a))}()}function i(){clearTimeout(t.tId),t.tId=setTimeout(t,500)}t(),document.addEventListener("scroll",i),r.addEventListener("resize",i),r.addEventListener("orientationchange",i)}(this);</script><!-- hexo-inject:begin --><!-- hexo-inject:end --></body>
 
 </html>
