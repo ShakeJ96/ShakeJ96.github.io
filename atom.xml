@@ -6,7 +6,7 @@
   <link href="https://shakej96.github.io/atom.xml" rel="self"/>
   
   <link href="https://shakej96.github.io/"/>
-  <updated>2023-11-23T16:56:08.261Z</updated>
+  <updated>2023-12-01T03:40:37.159Z</updated>
   <id>https://shakej96.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Spring中的IOC和AOP</title>
+    <link href="https://shakej96.github.io/2023/12/01/spring-zhong-de-ioc-he-aop/"/>
+    <id>https://shakej96.github.io/2023/12/01/spring-zhong-de-ioc-he-aop/</id>
+    <published>2023-12-01T03:23:17.000Z</published>
+    <updated>2023-12-01T03:40:37.159Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;&#92;assets&#92;css&#92;APlayer.min.css&quot;&gt;&lt;script src=&quot;&#92;assets&#92;js&#92;APlayer.min.js&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="Java开发" scheme="https://shakej96.github.io/categories/Java%E5%BC%80%E5%8F%91/"/>
+    
+    
+    <category term="Spring" scheme="https://shakej96.github.io/tags/Spring/"/>
+    
+  </entry>
   
   <entry>
     <title>git工具使用</title>
@@ -504,31 +529,6 @@
     
     
     <category term="单调栈" scheme="https://shakej96.github.io/tags/%E5%8D%95%E8%B0%83%E6%A0%88/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>每日一题连更3Day</title>
-    <link href="https://shakej96.github.io/2023/10/11/mei-ri-yi-ti-lian-geng-3day/"/>
-    <id>https://shakej96.github.io/2023/10/11/mei-ri-yi-ti-lian-geng-3day/</id>
-    <published>2023-10-11T06:47:18.000Z</published>
-    <updated>2023-10-11T09:26:09.228Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;&#92;assets&#92;css&#92;APlayer.min.css&quot;&gt;&lt;script src=&quot;&#92;assets&#92;js&#92;APlayer.min.js&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="Leetcode" scheme="https://shakej96.github.io/categories/Leetcode/"/>
-    
-    
-    <category term="每日一题" scheme="https://shakej96.github.io/tags/%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/"/>
     
   </entry>
   
