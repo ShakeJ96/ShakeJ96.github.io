@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>Codetop几道高频面试题</title>
+      <link href="/2023/12/03/codetop-ji-dao-gao-pin-mian-shi-ti/"/>
+      <url>/2023/12/03/codetop-ji-dao-gao-pin-mian-shi-ti/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h3 id="codetop%E5%87%A0%E9%81%93%E9%AB%98%E9%A2%91%E9%9D%A2%E8%AF%95%E9%A2%98" tabindex="-1">CodeTop几道高频面试题</h3><blockquote><p>最近完成代码随想录的一刷，想看看具体在企业面试的过程中会有什么高频的手撕题，于是去了Codetop进行查找，还有不少。这里简单地准备了几道题目进行归纳总结，后续理解了再过来补充~</p></blockquote><p>​</p><h3 id="%E4%B8%80%E3%80%8103.-%E6%97%A0%E9%87%8D%E5%A4%8D%E5%AD%97%E7%AC%A6%E7%9A%84%E6%9C%80%E9%95%BF%E5%AD%90%E4%B8%B2" tabindex="-1">一、<a href="https://leetcode.cn/problems/longest-substring-without-repeating-characters/description/">03. 无重复字符的最长子串 </a></h3><h4 id="1.1-%E9%A2%98%E7%9B%AE%E8%AF%B4%E6%98%8E" tabindex="-1">1.1 题目说明</h4><p>给定一个字符串 <code>s</code> ，请你找出其中不含有重复字符的 <strong>最长子串</strong> 的长度。</p><p><strong>示例 1:</strong></p><pre class="line-numbers language-none"><code class="language-none">输入: s = "abcabcbb"输出: 3 解释: 因为无重复字符的最长子串是 "abc"，所以其长度为 3。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><p><strong>示例 2:</strong></p><pre class="line-numbers language-none"><code class="language-none">输入: s = "pwwkew"输出: 3解释: 因为无重复字符的最长子串是 "wke"，所以其长度为 3。     请注意，你的答案必须是 子串 的长度，"pwke" 是一个子序列，不是子串。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre><p><strong>提示：</strong></p><ul><li><p><code>0 &lt;= s.length &lt;= 5 * 104</code></p></li><li><p><code>s</code> 由英文字母、数字、符号和空格组成</p><p>​</p></li></ul><h4 id="1.2-%E8%A7%A3%E7%AD%94%E5%88%86%E6%9E%90" tabindex="-1">1.2 解答分析</h4><ul><li><p>找到不含有重复字符的最长子串的长度，其实本质上就是记录两端点的位置值，判断形成的<strong>窗口</strong>内部<strong>不存在重复的字符</strong>即可。</p></li><li><p>**方法1：**最直接的想法是：<mark>滑动窗口+哈希表去重</mark></p><ul><li><p>滑动窗口给出两个指针的边界值，固定好左指针，右指针移动的时候对<code>hashmap</code>记录过的进行判断，遇到重复的直接左指针进行覆盖下一位。例如：<code>"aab"</code>,在第一个a后再遇到a，左指针指向第二个。</p></li><li><p>如果没有，就读入<code>hashmap</code></p></li><li><p>最后返回的是窗口的长度最大值，注意最后得+1，算上边界值。</p><p>​</p></li></ul></li><li><p>**方法2：**数组记录，替换掉<code>hashmap</code>,双指针滑动窗口</p><ul><li><p>创建长度为全部的128位字符的数组，用来统计ASCII码范围内的字符出现次数。</p></li><li><p>注意：<code>char c = arr[right];</code> 将字符串中的字符取出并赋值给 <code>c</code>，而 <code>c</code> 的值实际上是字符的 Unicode 编码。然后，可以使用 <code>c</code> 作为数组 <code>pos</code> 的下标进行访问和操作。当程序执行到 <code>pos[c]++;</code> 时，实际上是将字符 <code>c</code> 的ASCII码值作为数组下标，然后将对应位置的计数加一。</p><p>​</p></li></ul></li></ul><h4 id="1.3-%E5%85%B7%E4%BD%93%E4%BB%A3%E7%A0%81" tabindex="-1">1.3 具体代码</h4><ul><li><p><strong>方法1：</strong></p><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span><span class="token punctuation">{</span>    <span class="token keyword">public</span> <span class="token function">intlngthOfLongestSubstring</span><span class="token punctuation">(</span><span class="token class-name">String</span> s<span class="token punctuation">)</span><span class="token punctuation">{</span>        <span class="token comment">//利用滑动窗口</span>        <span class="token keyword">int</span> left<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>        <span class="token keyword">int</span> res<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>        <span class="token class-name">HashMap</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Character</span><span class="token punctuation">,</span><span class="token class-name">Integer</span><span class="token punctuation">&gt;</span></span> map<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">HashMap</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token comment">//特例的判断</span>        <span class="token keyword">if</span><span class="token punctuation">(</span>s<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">==</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">{</span>            <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>        <span class="token punctuation">}</span>        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> right<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>right<span class="token operator">&lt;</span>s<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>right<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>            <span class="token keyword">if</span><span class="token punctuation">(</span>map<span class="token punctuation">.</span><span class="token function">containsKey</span><span class="token punctuation">(</span>s<span class="token punctuation">.</span><span class="token function">charAt</span><span class="token punctuation">(</span>right<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>                left<span class="token operator">=</span><span class="token class-name">Math</span><span class="token punctuation">.</span><span class="token function">max</span><span class="token punctuation">(</span>left<span class="token punctuation">,</span>map<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>s<span class="token punctuation">.</span><span class="token function">charAt</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>            <span class="token punctuation">}</span>            map<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span>s<span class="token punctuation">.</span><span class="token function">charAt</span><span class="token punctuation">(</span>right<span class="token punctuation">)</span><span class="token punctuation">,</span>right<span class="token punctuation">)</span><span class="token punctuation">;</span>            res<span class="token operator">=</span><span class="token class-name">Mth</span><span class="token punctuation">.</span><span class="token function">max</span><span class="token punctuation">(</span>res<span class="token punctuation">,</span>right<span class="token operator">-</span>left<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token punctuation">}</span>        <span class="token keyword">return</span> res<span class="token punctuation">;</span>    <span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token comment">/**或者是直接将S 字符串转化为字符串数组,char []s1=s.toCharArray();*/</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><ul><li><p><strong>复杂度分析：</strong></p></li><li><p><strong>时间复杂度：</strong><eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span></eq></p><blockquote><p>遍历字符串：时间复杂度为<em>O</em>(<em>n</em>)。</p><ol><li>在哈希表中查找键值对或插入键值对：平均时间复杂度为 <em>O</em>(1)，最坏情况下（哈希冲突）为 <em>O</em>(n)。</li><li>取两个数的最大值：时间复杂度为 <em>O</em>(1)。</li></ol><p>因此，总的时间复杂度为 <em>O</em>(<em>n</em>)。</p></blockquote></li><li><p><strong>空间复杂度：</strong><eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span></eq> ,利用了<code>HashMap</code></p><p>​</p></li></ul></li><li><p><strong>方法2：</strong></p><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">{</span>    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">lengthOfLongestSubstring</span><span class="token punctuation">(</span><span class="token class-name">String</span> s<span class="token punctuation">)</span> <span class="token punctuation">{</span>        <span class="token keyword">char</span> arr<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token operator">=</span>s<span class="token punctuation">.</span><span class="token function">toCharArray</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token keyword">int</span> pos<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token keyword">new</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token number">128</span><span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token comment">//将全部的字符进行排列组合</span>       <span class="token keyword">int</span> ans<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">,</span>left<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span><span class="token comment">//规定最后的答案以及对应的指针变量</span>       <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> right<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>right<span class="token operator">&lt;</span>arr<span class="token punctuation">.</span>length<span class="token punctuation">;</span>right<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token comment">//右指针</span>           <span class="token keyword">char</span> c<span class="token operator">=</span>arr<span class="token punctuation">[</span>right<span class="token punctuation">]</span><span class="token punctuation">;</span>           pos<span class="token punctuation">[</span>c<span class="token punctuation">]</span><span class="token operator">++</span><span class="token punctuation">;</span>           <span class="token keyword">while</span><span class="token punctuation">(</span>pos<span class="token punctuation">[</span>c<span class="token punctuation">]</span><span class="token operator">&gt;</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">{</span>               pos<span class="token punctuation">[</span>arr<span class="token punctuation">[</span>left<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token operator">--</span><span class="token punctuation">;</span><span class="token comment">//含有重复的字符</span>               left<span class="token operator">++</span><span class="token punctuation">;</span><span class="token comment">//左指针右移</span>           <span class="token punctuation">}</span>           ans<span class="token operator">=</span><span class="token class-name">Math</span><span class="token punctuation">.</span><span class="token function">max</span><span class="token punctuation">(</span>ans<span class="token punctuation">,</span>right<span class="token operator">-</span>left<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//返回字符串的长度</span>       <span class="token punctuation">}</span>       <span class="token keyword">return</span> ans<span class="token punctuation">;</span>    <span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token comment">//注意这里：将字符串中的字符取出并赋值给 c，而 c 的值实际上是字符的 Unicode 编码，这也是我们将数组的大小定义为128的原因。</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><ul><li><p><strong>复杂度分析：</strong></p><ul><li><p><strong>时间复杂度：</strong><eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span></eq>，同上方法分析</p></li><li><p><strong>空间复杂度：</strong> <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord">1</span><span class="mclose">)</span></span></span></span></eq>，常规数组。</p><p>​</p></li></ul></li></ul></li></ul><h3 id="%E4%BA%8C%E3%80%81" tabindex="-1">二、</h3><link rel="stylesheet" href="//cdn.jsdelivr.net/npm/katex/dist/katex.min.css"><link rel="stylesheet" href="//cdn.jsdelivr.net/npm/markdown-it-texmath/css/texmath.min.css">]]></content>
+      
+      
+      <categories>
+          
+          <category> Java面试 </category>
+          
+          <category> 算法 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> CodeTop </tag>
+            
+            <tag> Leetcode </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Spring中的IOC和AOP</title>
       <link href="/2023/12/01/spring-zhong-de-ioc-he-aop/"/>
       <url>/2023/12/01/spring-zhong-de-ioc-he-aop/</url>
@@ -875,9 +904,9 @@
       
         <tags>
             
-            <tag> 算法 </tag>
-            
             <tag> Leetcode </tag>
+            
+            <tag> 算法 </tag>
             
             <tag> 栈 </tag>
             
@@ -904,9 +933,9 @@
       
         <tags>
             
-            <tag> 算法 </tag>
-            
             <tag> Leetcode </tag>
+            
+            <tag> 算法 </tag>
             
         </tags>
       
@@ -958,9 +987,9 @@
       
         <tags>
             
-            <tag> 算法 </tag>
-            
             <tag> Leetcode </tag>
+            
+            <tag> 算法 </tag>
             
         </tags>
       
@@ -1012,9 +1041,9 @@
       
         <tags>
             
-            <tag> 算法 </tag>
-            
             <tag> Leetcode </tag>
+            
+            <tag> 算法 </tag>
             
         </tags>
       
@@ -1168,9 +1197,9 @@
       
         <tags>
             
-            <tag> 算法 </tag>
-            
             <tag> Leetcode </tag>
+            
+            <tag> 算法 </tag>
             
         </tags>
       
