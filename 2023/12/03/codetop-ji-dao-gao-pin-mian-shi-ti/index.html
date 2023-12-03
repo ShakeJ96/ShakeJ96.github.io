@@ -707,7 +707,7 @@ charset="utf-8"></script> -->
 <p>找到不含有重复字符的最长子串的长度，其实本质上就是记录两端点的位置值，判断形成的<strong>窗口</strong>内部<strong>不存在重复的字符</strong>即可。</p>
 </li>
 <li>
-<p>**方法1：**最直接的想法是：<mark>滑动窗口+哈希表去重</mark></p>
+<p><strong>方法1</strong>：最直接的想法是：<mark>滑动窗口+哈希表去重</mark></p>
 <ul>
 <li>
 <p>滑动窗口给出两个指针的边界值，固定好左指针，右指针移动的时候对<code>hashmap</code>记录过的进行判断，遇到重复的直接左指针进行覆盖下一位。例如：<code>"aab"</code>,在第一个a后再遇到a，左指针指向第二个。</p>
@@ -722,7 +722,7 @@ charset="utf-8"></script> -->
 </ul>
 </li>
 <li>
-<p>**方法2：**数组记录，替换掉<code>hashmap</code>,双指针滑动窗口</p>
+<p><strong>方法2</strong>数组记录，替换掉<code>hashmap</code>,双指针滑动窗口</p>
 <ul>
 <li>
 <p>创建长度为全部的128位字符的数组，用来统计ASCII码范围内的字符出现次数。</p>
