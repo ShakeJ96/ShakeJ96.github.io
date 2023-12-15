@@ -6,7 +6,7 @@
   <link href="https://shakej96.github.io/atom.xml" rel="self"/>
   
   <link href="https://shakej96.github.io/"/>
-  <updated>2023-12-11T04:11:19.181Z</updated>
+  <updated>2023-12-15T06:08:25.153Z</updated>
   <id>https://shakej96.github.io/</id>
   
   <author>
@@ -17,11 +17,36 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Spring常见注解</title>
+    <link href="https://shakej96.github.io/2023/12/15/spring-chang-jian-zhu-jie/"/>
+    <id>https://shakej96.github.io/2023/12/15/spring-chang-jian-zhu-jie/</id>
+    <published>2023-12-15T05:10:57.000Z</published>
+    <updated>2023-12-15T06:08:25.153Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;&#92;assets&#92;css&#92;APlayer.min.css&quot;&gt;&lt;script src=&quot;&#92;assets&#92;js&#92;APlayer.min.js&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="Java开发" scheme="https://shakej96.github.io/categories/Java%E5%BC%80%E5%8F%91/"/>
+    
+    
+    <category term="Spring" scheme="https://shakej96.github.io/tags/Spring/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Codetop几道高频面试题</title>
     <link href="https://shakej96.github.io/2023/12/03/codetop-ji-dao-gao-pin-mian-shi-ti/"/>
     <id>https://shakej96.github.io/2023/12/03/codetop-ji-dao-gao-pin-mian-shi-ti/</id>
     <published>2023-12-03T15:36:39.000Z</published>
-    <updated>2023-12-11T04:11:19.181Z</updated>
+    <updated>2023-12-11T15:00:19.570Z</updated>
     
     
       
@@ -506,33 +531,6 @@
     
     
     <category term="2023秋招" scheme="https://shakej96.github.io/tags/2023%E7%A7%8B%E6%8B%9B/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>周赛367</title>
-    <link href="https://shakej96.github.io/2023/10/15/zhou-sai-367/"/>
-    <id>https://shakej96.github.io/2023/10/15/zhou-sai-367/</id>
-    <published>2023-10-15T08:50:33.000Z</published>
-    <updated>2023-10-15T12:32:08.403Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;&#92;assets&#92;css&#92;APlayer.min.css&quot;&gt;&lt;script src=&quot;&#92;assets&#92;js&#92;APlayer.min.js&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="Leetcode" scheme="https://shakej96.github.io/categories/Leetcode/"/>
-    
-    
-    <category term="算法" scheme="https://shakej96.github.io/tags/%E7%AE%97%E6%B3%95/"/>
-    
-    <category term="周赛" scheme="https://shakej96.github.io/tags/%E5%91%A8%E8%B5%9B/"/>
     
   </entry>
   
