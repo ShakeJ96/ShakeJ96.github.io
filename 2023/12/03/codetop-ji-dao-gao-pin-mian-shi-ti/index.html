@@ -1672,165 +1672,143 @@ nums[0] + nums[3] + nums[4] = (-1) + 2 + (-1) = 0 。
 </li>
 </ul>
 <h5 id="1.-%E5%88%A4%E6%96%AD%E6%98%AF%E5%90%A6%E6%9C%89%E7%8E%AF" tabindex="-1">1. 判断是否有环</h5>
-<ul>
-<li>
-<pre><code class="language-java">// 判断链表中是否存在环
-    public static boolean hasCycle(ListNode head){
-        if(head==null || head.next==null){
-            return false;
-        }
-        ListNode slow=head;
-        ListNode fast=head.next;
-        while(slow!=fast){
-            if(fast==null || fast.next==null){
-                return false;
-            }
-            slow=slow.next;
-            fast=fast.next.next;
-        }
-        return true;
-    }
-<pre class="line-numbers language-none"><code class="language-none">  
-  ​								
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">// 判断链表中是否存在环</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">boolean</span> <span class="token function">hasCycle</span><span class="token punctuation">(</span><span class="token class-name">ListNode</span> head<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>head<span class="token operator">==</span><span class="token keyword">null</span> <span class="token operator">||</span> head<span class="token punctuation">.</span>next<span class="token operator">==</span><span class="token keyword">null</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token class-name">ListNode</span> slow<span class="token operator">=</span>head<span class="token punctuation">;</span>
+        <span class="token class-name">ListNode</span> fast<span class="token operator">=</span>head<span class="token punctuation">.</span>next<span class="token punctuation">;</span>
+        <span class="token keyword">while</span><span class="token punctuation">(</span>slow<span class="token operator">!=</span>fast<span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span>fast<span class="token operator">==</span><span class="token keyword">null</span> <span class="token operator">||</span> fast<span class="token punctuation">.</span>next<span class="token operator">==</span><span class="token keyword">null</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+                <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            slow<span class="token operator">=</span>slow<span class="token punctuation">.</span>next<span class="token punctuation">;</span>
+            fast<span class="token operator">=</span>fast<span class="token punctuation">.</span>next<span class="token punctuation">.</span>next<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>​</p>
+<h5 id="2.-%E8%BE%93%E5%87%BA%E7%8E%AF%E7%9A%84%E5%85%A5%E5%8F%A3" tabindex="-1">2. 输出环的入口</h5>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">// 直接输出环的入口</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token class-name">ListNode</span> <span class="token class-name">CycleOut</span><span class="token punctuation">(</span><span class="token class-name">ListNode</span> head<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>head <span class="token operator">==</span> <span class="token keyword">null</span> <span class="token operator">||</span> head<span class="token punctuation">.</span>next <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token keyword">null</span><span class="token punctuation">;</span> <span class="token comment">// 无环或者链表为空，返回null表示没有环</span>
+        <span class="token punctuation">}</span>
+        <span class="token class-name">ListNode</span> slow <span class="token operator">=</span> head<span class="token punctuation">;</span>
+        <span class="token class-name">ListNode</span> fast <span class="token operator">=</span> head<span class="token punctuation">;</span>
+        <span class="token keyword">boolean</span> hasCycle <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
 
-##### 2. 输出环的入口
+        <span class="token keyword">while</span> <span class="token punctuation">(</span>fast <span class="token operator">!=</span> <span class="token keyword">null</span> <span class="token operator">&amp;&amp;</span> fast<span class="token punctuation">.</span>next <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            slow <span class="token operator">=</span> slow<span class="token punctuation">.</span>next<span class="token punctuation">;</span>
+            fast <span class="token operator">=</span> fast<span class="token punctuation">.</span>next<span class="token punctuation">.</span>next<span class="token punctuation">;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>slow <span class="token operator">==</span> fast<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                hasCycle <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span> <span class="token comment">//存在环</span>
+                <span class="token keyword">break</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>hasCycle<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token keyword">null</span><span class="token punctuation">;</span> <span class="token comment">// 无环，返回null表示没有环</span>
+        <span class="token punctuation">}</span>
+        slow <span class="token operator">=</span> head<span class="token punctuation">;</span>
+        <span class="token keyword">while</span> <span class="token punctuation">(</span>slow <span class="token operator">!=</span> fast<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            slow <span class="token operator">=</span> slow<span class="token punctuation">.</span>next<span class="token punctuation">;</span>
+            fast <span class="token operator">=</span> fast<span class="token punctuation">.</span>next<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> slow<span class="token punctuation">;</span>
 
-+ ```java
-  // 直接输出环的入口
-      public static ListNode CycleOut(ListNode head){
-          if (head == null || head.next == null) {
-              return null; // 无环或者链表为空，返回null表示没有环
-          }
-          ListNode slow = head;
-          ListNode fast = head;
-          boolean hasCycle = false;
-  
-          while (fast != null &amp;&amp; fast.next != null) {
-              slow = slow.next;
-              fast = fast.next.next;
-              if (slow == fast) {
-                  hasCycle = true; //存在环
-                  break;
-              }
-          }
-          if (!hasCycle) {
-              return null; // 无环，返回null表示没有环
-          }
-          slow = head;
-          while (slow != fast) {
-              slow = slow.next;
-              fast = fast.next;
-          }
-          return slow;
-  
-      }<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-​						
-
-</code></pre>
-</li>
-</ul>
+    <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>​</p>
 <h5 id="3.-%E7%BB%99%E5%87%BA%E7%8E%AF%E4%B8%AD%E7%9A%84%E5%85%83%E7%B4%A0%E4%B8%AA%E6%95%B0(%E7%AE%97%E4%B8%8A%E5%85%A5%E5%8F%A3%E7%9A%84%E8%8A%82%E7%82%B9)" tabindex="-1">3. 给出环中的元素个数(算上入口的节点)</h5>
-<ul>
-<li>
-<pre><code class="language-java">public static int CycleNumber(ListNode head){
-         if(head==null || head.next==null){
-             return 0;
-         }
-         ListNode slow=head;
-         ListNode fast=head.next;
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">int</span> <span class="token class-name">CycleNumber</span><span class="token punctuation">(</span><span class="token class-name">ListNode</span> head<span class="token punctuation">)</span><span class="token punctuation">{</span>
+         <span class="token keyword">if</span><span class="token punctuation">(</span>head<span class="token operator">==</span><span class="token keyword">null</span> <span class="token operator">||</span> head<span class="token punctuation">.</span>next<span class="token operator">==</span><span class="token keyword">null</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+             <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+         <span class="token punctuation">}</span>
+         <span class="token class-name">ListNode</span> slow<span class="token operator">=</span>head<span class="token punctuation">;</span>
+         <span class="token class-name">ListNode</span> fast<span class="token operator">=</span>head<span class="token punctuation">.</span>next<span class="token punctuation">;</span>
 
-         int count = 1; // 计数器初始值为1，因为fast已经指向了slow的下一个节点
+         <span class="token keyword">int</span> count <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> <span class="token comment">// 计数器初始值为1，因为fast已经指向了slow的下一个节点</span>
 
-         while(slow!=fast) {
-             if (fast == null || fast.next == null) {
-                 return 0;
-             }
-             slow = slow.next;
-             fast = fast.next.next;
-         }
+         <span class="token keyword">while</span><span class="token punctuation">(</span>slow<span class="token operator">!=</span>fast<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+             <span class="token keyword">if</span> <span class="token punctuation">(</span>fast <span class="token operator">==</span> <span class="token keyword">null</span> <span class="token operator">||</span> fast<span class="token punctuation">.</span>next <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                 <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+             <span class="token punctuation">}</span>
+             slow <span class="token operator">=</span> slow<span class="token punctuation">.</span>next<span class="token punctuation">;</span>
+             fast <span class="token operator">=</span> fast<span class="token punctuation">.</span>next<span class="token punctuation">.</span>next<span class="token punctuation">;</span>
+         <span class="token punctuation">}</span>
 
-         // 统计环中的节点个数
-         fast=fast.next;  // fast向后移动一步，指向slow的下一个节点
-         while(slow!=fast){
-             fast=fast.next;
-             count++;
-         }
-         return count;
-    }
-<pre class="line-numbers language-none"><code class="language-none">  
-  ​				
-
-##### 4. 辅助计算位置函数
-
-+ ```java
-  // 辅助计算位置
-      private static int getPosition(ListNode head, ListNode target) {
-          int pos = 0;
-          ListNode current = head;
-          while (current != target) {
-              current = current.next;
-              pos++;
-          }
-          return pos;
-      }<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-</code></pre>
-</li>
-</ul>
+         <span class="token comment">// 统计环中的节点个数</span>
+         fast<span class="token operator">=</span>fast<span class="token punctuation">.</span>next<span class="token punctuation">;</span>  <span class="token comment">// fast向后移动一步，指向slow的下一个节点</span>
+         <span class="token keyword">while</span><span class="token punctuation">(</span>slow<span class="token operator">!=</span>fast<span class="token punctuation">)</span><span class="token punctuation">{</span>
+             fast<span class="token operator">=</span>fast<span class="token punctuation">.</span>next<span class="token punctuation">;</span>
+             count<span class="token operator">++</span><span class="token punctuation">;</span>
+         <span class="token punctuation">}</span>
+         <span class="token keyword">return</span> count<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>​</p>
+<h5 id="4.-%E8%BE%85%E5%8A%A9%E8%AE%A1%E7%AE%97%E4%BD%8D%E7%BD%AE%E5%87%BD%E6%95%B0" tabindex="-1">4. 辅助计算位置函数</h5>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">// 辅助计算位置</span>
+    <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">int</span> <span class="token function">getPosition</span><span class="token punctuation">(</span><span class="token class-name">ListNode</span> head<span class="token punctuation">,</span> <span class="token class-name">ListNode</span> target<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">int</span> pos <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token class-name">ListNode</span> current <span class="token operator">=</span> head<span class="token punctuation">;</span>
+        <span class="token keyword">while</span> <span class="token punctuation">(</span>current <span class="token operator">!=</span> target<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            current <span class="token operator">=</span> current<span class="token punctuation">.</span>next<span class="token punctuation">;</span>
+            pos<span class="token operator">++</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> pos<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>​</p>
 <h5 id="5.-%E8%87%AA%E5%AE%9A%E4%B9%89%E6%B5%8B%E8%AF%95%E7%94%A8%E4%BE%8B%E6%A8%A1%E5%9D%97" tabindex="-1">5. 自定义测试用例模块</h5>
-<ul>
-<li>
-<pre><code class="language-java">public static void main(String[] args) {
-        // 直接快慢指针进行查找
-        Scanner in=new Scanner(System.in);
-        System.out.print("请输入链表的长度: ");
-        int n=in.nextInt();
-        int []a=new int[n];
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// 直接快慢指针进行查找</span>
+        <span class="token class-name">Scanner</span> in<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">Scanner</span><span class="token punctuation">(</span><span class="token class-name">System</span><span class="token punctuation">.</span>in<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">print</span><span class="token punctuation">(</span><span class="token string">"请输入链表的长度: "</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> n<span class="token operator">=</span>in<span class="token punctuation">.</span><span class="token function">nextInt</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>a<span class="token operator">=</span><span class="token keyword">new</span> <span class="token keyword">int</span><span class="token punctuation">[</span>n<span class="token punctuation">]</span><span class="token punctuation">;</span>
 
-        // 输入到链表中的数据
-        System.out.print("给出具体的数据: ");
-        for(int i=0;i&lt;n;i++){
-            a[i]=in.nextInt();
-        }
-        // 创建并打印生成的含有环的链表
-        // create()方法已经实现了
+        <span class="token comment">// 输入到链表中的数据</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">print</span><span class="token punctuation">(</span><span class="token string">"给出具体的数据: "</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span>n<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            a<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">=</span>in<span class="token punctuation">.</span><span class="token function">nextInt</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token comment">// 创建并打印生成的含有环的链表</span>
+        <span class="token comment">// create()方法已经实现了</span>
 
-        //创建含有环的位置p
-        System.out.print("请输入环pos的位置: ");
-        int p=in.nextInt();
-        ListNode v1=createNodeList.create(a,p);
-        Print.print(v1,n);
-        System.out.println();
+        <span class="token comment">//创建含有环的位置p</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">print</span><span class="token punctuation">(</span><span class="token string">"请输入环pos的位置: "</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> p<span class="token operator">=</span>in<span class="token punctuation">.</span><span class="token function">nextInt</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">ListNode</span> v1<span class="token operator">=</span>createNodeList<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span>p<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">Print</span><span class="token punctuation">.</span><span class="token function">print</span><span class="token punctuation">(</span>v1<span class="token punctuation">,</span>n<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
     	
-        // 可以朴素测试输入的链表关系：
-        // 1 2 3 4 5 2
-        // 创建新的链表关系
-//        ListNode v2=new ListNode(1);
-//        v2.next=new ListNode(2);
-//        v2.next.next=new ListNode(3);
-//        v2.next.next.next=new ListNode(4);
-//        v2.next.next.next.next=new ListNode(5);
-//        v2.next.next.next.next.next = v2.next;
+        <span class="token comment">// 可以朴素测试输入的链表关系：</span>
+        <span class="token comment">// 1 2 3 4 5 2</span>
+        <span class="token comment">// 创建新的链表关系</span>
+<span class="token comment">//        ListNode v2=new ListNode(1);</span>
+<span class="token comment">//        v2.next=new ListNode(2);</span>
+<span class="token comment">//        v2.next.next=new ListNode(3);</span>
+<span class="token comment">//        v2.next.next.next=new ListNode(4);</span>
+<span class="token comment">//        v2.next.next.next.next=new ListNode(5);</span>
+<span class="token comment">//        v2.next.next.next.next.next = v2.next;</span>
 
-        // 1. 测试是否含有环结构
-        boolean test = hasCycle(v1);
-        //打印
-        System.out.println("是否含有环结构: "+test);
+        <span class="token comment">// 1. 测试是否含有环结构</span>
+        <span class="token keyword">boolean</span> test <span class="token operator">=</span> <span class="token function">hasCycle</span><span class="token punctuation">(</span>v1<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">//打印</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"是否含有环结构: "</span><span class="token operator">+</span>test<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-        // 2. 测试找到环的入口
-        ListNode inn=CycleOut(v1);
-//        System.out.println(inn.val);
-        System.out.println("环中的入口元素位置为："+getPosition(v1,inn));
-        System.out.println("环入口处的元素值为："+inn.val);
+        <span class="token comment">// 2. 测试找到环的入口</span>
+        <span class="token class-name">ListNode</span> inn<span class="token operator">=</span><span class="token class-name">CycleOut</span><span class="token punctuation">(</span>v1<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">//        System.out.println(inn.val);</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"环中的入口元素位置为："</span><span class="token operator">+</span><span class="token function">getPosition</span><span class="token punctuation">(</span>v1<span class="token punctuation">,</span>inn<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"环入口处的元素值为："</span><span class="token operator">+</span>inn<span class="token punctuation">.</span>val<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-        // 3. 找到环中的元素个数
-        int cnt=CycleNumber(v1);
-        System.out.println("环中的元素个数有（算上入口的节点）："+cnt);
-    }
-</code></pre>
-</li>
+        <span class="token comment">// 3. 找到环中的元素个数</span>
+        <span class="token keyword">int</span> cnt<span class="token operator">=</span><span class="token class-name">CycleNumber</span><span class="token punctuation">(</span>v1<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"环中的元素个数有（算上入口的节点）："</span><span class="token operator">+</span>cnt<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>​</p>
+<ul>
 <li>
 <p><strong>输出测试样例截图</strong>：</p>
 <img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="/2023/12/03/codetop-ji-dao-gao-pin-mian-shi-ti/MyBlog\MyBlog\source\_posts\Codetop几道高频面试题\test.png" alt="test" style="zoom:80%;">
@@ -2734,7 +2712,7 @@ $(function () {
     </script>
     
   
-
+<script src="/live2dw/lib/L2Dwidget.min.js?243708c68e3ad401cd4432916889e600"></script><script>L2Dwidget.init({"dialog":{"enable":true,"hitokoto":true},"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"left","width":120,"height":160,"superSample":2,"voffset":0,"hoffset":20},"mobile":{"show":false},"react":{"opacity":0.7,"opacityOnHover":0.2}});</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
         <style>
             [bg-lazy] {
                 background-image: none !important;
@@ -2747,6 +2725,6 @@ $(function () {
                 preloadRatio: 3,
                 processImages: null,
             };
-        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(r){r.imageLazyLoadSetting.processImages=t;var e=r.imageLazyLoadSetting.isSPA,n=r.imageLazyLoadSetting.preloadRatio||1,c=a();function a(){var t=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")),e=Array.prototype.slice.call(document.querySelectorAll("[bg-lazy]"));return t.concat(e)}function t(){e&&(c=a());for(var t,o=0;o<c.length;o++)0<=(t=(t=c[o]).getBoundingClientRect()).bottom&&0<=t.left&&t.top<=(r.innerHeight*n||document.documentElement.clientHeight*n)&&function(){var t,e,n,a,i=c[o];e=function(){c=c.filter(function(t){return i!==t}),r.imageLazyLoadSetting.onImageLoaded&&r.imageLazyLoadSetting.onImageLoaded(i)},(t=i).hasAttribute("bg-lazy")?(t.removeAttribute("bg-lazy"),e&&e()):(n=new Image,a=t.getAttribute("data-original"),n.onload=function(){t.src=a,t.removeAttribute("data-original"),e&&e()},t.src!==a&&(n.src=a))}()}function i(){clearTimeout(t.tId),t.tId=setTimeout(t,500)}t(),document.addEventListener("scroll",i),r.addEventListener("resize",i),r.addEventListener("orientationchange",i)}(this);</script><!-- hexo-inject:begin --><!-- hexo-inject:end --><script src="/live2dw/lib/L2Dwidget.min.js?243708c68e3ad401cd4432916889e600"></script><script>L2Dwidget.init({"dialog":{"enable":true,"hitokoto":true},"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"left","width":120,"height":160,"superSample":2,"voffset":0,"hoffset":20},"mobile":{"show":false},"react":{"opacity":0.7,"opacityOnHover":0.2}});</script></body>
+        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(r){r.imageLazyLoadSetting.processImages=t;var e=r.imageLazyLoadSetting.isSPA,n=r.imageLazyLoadSetting.preloadRatio||1,c=a();function a(){var t=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")),e=Array.prototype.slice.call(document.querySelectorAll("[bg-lazy]"));return t.concat(e)}function t(){e&&(c=a());for(var t,o=0;o<c.length;o++)0<=(t=(t=c[o]).getBoundingClientRect()).bottom&&0<=t.left&&t.top<=(r.innerHeight*n||document.documentElement.clientHeight*n)&&function(){var t,e,n,a,i=c[o];e=function(){c=c.filter(function(t){return i!==t}),r.imageLazyLoadSetting.onImageLoaded&&r.imageLazyLoadSetting.onImageLoaded(i)},(t=i).hasAttribute("bg-lazy")?(t.removeAttribute("bg-lazy"),e&&e()):(n=new Image,a=t.getAttribute("data-original"),n.onload=function(){t.src=a,t.removeAttribute("data-original"),e&&e()},t.src!==a&&(n.src=a))}()}function i(){clearTimeout(t.tId),t.tId=setTimeout(t,500)}t(),document.addEventListener("scroll",i),r.addEventListener("resize",i),r.addEventListener("orientationchange",i)}(this);</script></body>
 
 </html>
