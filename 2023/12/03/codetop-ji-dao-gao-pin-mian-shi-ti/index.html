@@ -642,14 +642,14 @@ charset="utf-8"></script> -->
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    7.6k
+                    9.1k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    32 分
+                    38 分
                 </div>
                 
 
@@ -1923,6 +1923,206 @@ nums[0] + nums[3] + nums[4] = (-1) + 2 + (-1) = 0 。
 <li>
 <p><strong>输出测试样例截图</strong>：</p>
 <img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="/2023/12/03/codetop-ji-dao-gao-pin-mian-shi-ti/test.jpg" alt="test" style="zoom:80%;">
+<p>​</p>
+</li>
+</ul>
+<h3 id="%E4%B8%83%E3%80%815.-%E6%9C%80%E9%95%BF%E5%9B%9E%E6%96%87%E5%AD%90%E4%B8%B2" tabindex="-1">七、<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/longest-palindromic-substring/description/">5. 最长回文子串 </a></h3>
+<h4 id="7.1-%E9%A2%98%E7%9B%AE%E8%AF%B4%E6%98%8E" tabindex="-1">7.1 题目说明</h4>
+<p>给你一个字符串 <code>s</code>，找到 <code>s</code> 中最长的回文子串。</p>
+<p>如果字符串的反序与原始字符串相同，则该字符串称为回文字符串。</p>
+<p><strong>示例 1：</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">输入：s = "babad"
+输出："bab"
+解释："aba" 同样是符合题意的答案。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p><strong>示例 2：</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">输入：s = "cbbd"
+输出："bb"<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p><strong>提示：</strong></p>
+<ul>
+<li>
+<p><code>1 &lt;= s.length &lt;= 1000</code></p>
+</li>
+<li>
+<p><code>s</code> 仅由数字和英文字母组成</p>
+<p>​</p>
+</li>
+</ul>
+<h4 id="7.2-%E8%A7%A3%E7%AD%94%E5%88%86%E6%9E%90" tabindex="-1">7.2 解答分析</h4>
+<ul>
+<li>
+<p>本题常见的就是两种方法：1. 中心扩展法；2. 动态规划</p>
+</li>
+<li>
+<p><strong>中心扩展法</strong>：</p>
+<ul>
+<li>
+<p>从每一个位置出发，向两边扩散即可。遇到不是回文的时候结束。</p>
+<p>举个例子，str=acdbbdaastr = acdbbdaastr=acdbbdaa 我们需要寻找从第一个 b（位置为 333）出发最长回文串为多少。怎么寻找？</p>
+<p>首先往左寻找与当期位置相同的字符，直到遇到不相等为止。</p>
+<p>然后往右寻找与当期位置相同的字符，直到遇到不相等为止。</p>
+<p>最后左右双向扩散，直到左和右不相等。如下图所示：</p>
+<img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="/2023/12/03/codetop-ji-dao-gao-pin-mian-shi-ti/center_roll.png" alt="center_roll" style="zoom:80%;">
+<p>此时需要注意：每个位置向两边的扩展都会出现一个窗口的大小，我们需要不断更新<code>maxLen</code>的大小长度；</p>
+<p>因为最后返回的是具体的子串，所以最后调用方法<code>sunstring()</code>,需要记录<code>maxLen</code>的起始位置和最长的长度<code>maxLen</code>即可。</p>
+<p>​</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>动态规划：</strong></p>
+<ul>
+<li>
+<p>我们其实也不用全部字符串都记录，比如用<code>l</code>和<code>r</code>形成窗口子串，用一个 <code>boolean dp[l][r]</code> 表示字符串从 i 到 j 这段是否为回文。试想如果 <code>dp[l][r]=true</code>，我们要判断 <code>dp[l-1][r+1]</code> 是否为回文。只需要判断字符串在<code>(l-1)</code>和<code>（r+1)</code>两个位置是否为相同的字符。</p>
+</li>
+<li>
+<p><strong>动态规划相当于是利用空间换时间，也就是将遍历过的元素储存起来，为后续的窗口内移动进行补充条件。</strong></p>
+<p>​</p>
+</li>
+</ul>
+</li>
+</ul>
+<ol>
+<li>
+<p><strong>确定dp数组以及下标的含义</strong></p>
+<ul>
+<li>上述已经给出：<code>boolean dp[l][r]</code> 表示字符串从 i 到 j 这段是否为回文，l和r分别是左右移动的指针；</li>
+</ul>
+</li>
+<li>
+<p><strong>确定初始方程</strong></p>
+<ul>
+<li>若此时的l=r，说明此时即为字符本身，所以一定是回文串（字符）：<code>dp[l][r]=true;</code></li>
+</ul>
+</li>
+<li>
+<p><strong>状态转移方程</strong></p>
+<ul>
+<li><code>dp[l][r]=true</code> 并且(<code>l-1</code>)和（<code>r+1</code>)两个位置为相同的字符，此时 <code>dp[l-1][r+1]=true</code>;</li>
+</ul>
+</li>
+<li>
+<p><strong>确定遍历的顺序</strong></p>
+<ul>
+<li>对于本题而言，我们需要知道的是最长回文子串，也就是按照。因此遍历的顺序是从左往右，从上到下，确定i的情况下，移动j，j在[0,i]中移动;</li>
+</ul>
+</li>
+<li>
+<p><strong>举例推导验证</strong></p>
+<ul>
+<li>
+<p>其实不用验证了。字符串在<code>(l-1)</code>和<code>（r+1)</code>两个位置是否为相同的字符，当前子串的长度小于等于 2，则直接为回文子串；只有当子串的长度超过2，才是可以利用dp数组进行判断内部是否为回文子串;</p>
+<p>​</p>
+</li>
+</ul>
+</li>
+</ol>
+<h4 id="7.3-%E5%85%B7%E4%BD%93%E4%BB%A3%E7%A0%81" tabindex="-1">7.3 具体代码</h4>
+<h5 id="1.-%E4%B8%AD%E5%BF%83%E6%89%A9%E6%95%A3%E6%B3%95" tabindex="-1">1. 中心扩散法</h5>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">longestPalindrome1</span><span class="token punctuation">(</span><span class="token class-name">String</span> s<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>s <span class="token operator">==</span> <span class="token keyword">null</span> <span class="token operator">||</span> s<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token string">""</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">int</span> strLen <span class="token operator">=</span> s<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> left <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> right <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> len <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> maxStart <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> maxLen <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> strLen<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            left <span class="token operator">=</span> i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span>
+            right <span class="token operator">=</span> i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span>
+            <span class="token keyword">while</span> <span class="token punctuation">(</span>left <span class="token operator">&gt;=</span> <span class="token number">0</span> <span class="token operator">&amp;&amp;</span> s<span class="token punctuation">.</span><span class="token function">charAt</span><span class="token punctuation">(</span>left<span class="token punctuation">)</span> <span class="token operator">==</span> s<span class="token punctuation">.</span><span class="token function">charAt</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                len<span class="token operator">++</span><span class="token punctuation">;</span>
+                left<span class="token operator">--</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            <span class="token keyword">while</span> <span class="token punctuation">(</span>right <span class="token operator">&lt;</span> strLen <span class="token operator">&amp;&amp;</span> s<span class="token punctuation">.</span><span class="token function">charAt</span><span class="token punctuation">(</span>right<span class="token punctuation">)</span> <span class="token operator">==</span> s<span class="token punctuation">.</span><span class="token function">charAt</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                len<span class="token operator">++</span><span class="token punctuation">;</span>
+                right<span class="token operator">++</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            <span class="token keyword">while</span> <span class="token punctuation">(</span>left <span class="token operator">&gt;=</span> <span class="token number">0</span> <span class="token operator">&amp;&amp;</span> right <span class="token operator">&lt;</span> strLen <span class="token operator">&amp;&amp;</span> s<span class="token punctuation">.</span><span class="token function">charAt</span><span class="token punctuation">(</span>right<span class="token punctuation">)</span> <span class="token operator">==</span> s<span class="token punctuation">.</span><span class="token function">charAt</span><span class="token punctuation">(</span>left<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                len <span class="token operator">=</span> len <span class="token operator">+</span> <span class="token number">2</span><span class="token punctuation">;</span>
+                left<span class="token operator">--</span><span class="token punctuation">;</span>
+                right<span class="token operator">++</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>len <span class="token operator">&gt;</span> maxLen<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                maxLen <span class="token operator">=</span> len<span class="token punctuation">;</span>
+                maxStart <span class="token operator">=</span> left<span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            len <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> s<span class="token punctuation">.</span><span class="token function">substring</span><span class="token punctuation">(</span>maxStart <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> maxStart <span class="token operator">+</span> maxLen <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li>
+<p><strong>复杂度分析：</strong></p>
+<ul>
+<li>
+<p><strong>时间复杂度</strong>：<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><msup><mi>n</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n^2)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></eq></p>
+</li>
+<li>
+<p><strong>空间复杂度</strong>：<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord">1</span><span class="mclose">)</span></span></span></span></eq></p>
+<p>​</p>
+</li>
+</ul>
+</li>
+</ul>
+<h5 id="2.-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E6%B3%95" tabindex="-1">2. 动态规划法</h5>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">longestPalindrome</span><span class="token punctuation">(</span><span class="token class-name">String</span> s<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>s <span class="token operator">==</span> <span class="token keyword">null</span> <span class="token operator">||</span> s<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&lt;</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> s<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">int</span> strLen <span class="token operator">=</span> s<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> maxStart <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>  <span class="token comment">//最长回文串的起点</span>
+        <span class="token keyword">int</span> maxEnd <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>    <span class="token comment">//最长回文串的终点</span>
+        <span class="token keyword">int</span> maxLen <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>  <span class="token comment">//最长回文串的长度</span>
+
+        <span class="token keyword">boolean</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">]</span> dp <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token keyword">boolean</span><span class="token punctuation">[</span>strLen<span class="token punctuation">]</span><span class="token punctuation">[</span>strLen<span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> r <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> r <span class="token operator">&lt;</span> strLen<span class="token punctuation">;</span> r<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> l <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> l <span class="token operator">&lt;</span> r<span class="token punctuation">;</span> l<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span>s<span class="token punctuation">.</span><span class="token function">charAt</span><span class="token punctuation">(</span>l<span class="token punctuation">)</span> <span class="token operator">==</span> s<span class="token punctuation">.</span><span class="token function">charAt</span><span class="token punctuation">(</span>r<span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> <span class="token punctuation">(</span>r <span class="token operator">-</span> l <span class="token operator">&lt;=</span> <span class="token number">2</span> <span class="token operator">||</span> dp<span class="token punctuation">[</span>l <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span>r <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    dp<span class="token punctuation">[</span>l<span class="token punctuation">]</span><span class="token punctuation">[</span>r<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+                    <span class="token keyword">if</span> <span class="token punctuation">(</span>r <span class="token operator">-</span> l <span class="token operator">+</span> <span class="token number">1</span> <span class="token operator">&gt;</span> maxLen<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                        maxLen <span class="token operator">=</span> r <span class="token operator">-</span> l <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span>
+                        maxStart <span class="token operator">=</span> l<span class="token punctuation">;</span>
+                        maxEnd <span class="token operator">=</span> r<span class="token punctuation">;</span>
+
+                    <span class="token punctuation">}</span>
+                <span class="token punctuation">}</span>
+
+            <span class="token punctuation">}</span>
+
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> s<span class="token punctuation">.</span><span class="token function">substring</span><span class="token punctuation">(</span>maxStart<span class="token punctuation">,</span> maxEnd <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li>
+<p><strong>其中</strong>：对于代码<code>if (s.charAt(l) == s.charAt(r) &amp;&amp; (r - l &lt;= 2 || dp[l + 1][r - 1])) {...}</code></p>
+<p>在代码中，<code>s.charAt(l)</code> 表示字符串 s 的第 l 个字符，<code>s.charAt(r)</code> 表示字符串 s 的第 r 个字符。</p>
+<p>代码中的条件 <code>(r - l &lt;= 2 || dp[l + 1][r - 1])</code> 是用来判断当前的子串是否为回文子串的关键条件。</p>
+<p>具体来说，如果 <code>s.charAt(l) == s.charAt(r)</code>，即当前子串的首尾字符相等，那么我们需要进一步判断子串 <code>s[l + 1:r - 1]</code> 是否为回文子串。</p>
+<p>我们有两种情况来判断：</p>
+<ol>
+<li>
+<p>当 <code>r - l &lt;= 2</code> 时，意味着当前子串的长度小于等于 2。在这种情况下，无论该子串是否相等，它都是一个回文子串。因为长度为 0、1 或 2 的子串，只要字符相同，就一定是回文子串。</p>
+</li>
+<li>
+<p>当 <code>r - l &gt; 2</code> 时，即当前子串的长度大于 2。在这种情况下，我们需要根据之前计算得到的结果来判断子串是否为回文子串。如果 <code>dp[l + 1][r - 1]</code> 为 true，即子串 <code>s[l + 1:r - 1]</code> 是一个回文子串，那么当前子串 <code>s[l:r]</code> 也是回文子串。</p>
+</li>
+</ol>
+<p>综上所述，如果满足条件 <code>(s.charAt(l) == s.charAt(r) &amp;&amp; (r - l &lt;= 2 || dp[l + 1][r - 1]))</code>，那么当前的子串 <code>s[l:r]</code> 就是一个回文子串。</p>
+<p>​</p>
+</li>
+<li>
+<p><strong>复杂度分析</strong>：</p>
+<ul>
+<li><strong>时间复杂度：<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><msup><mi>n</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n^2)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></eq></strong></li>
+<li><strong>空间复杂度：<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><msup><mi>n</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n^2)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></eq></strong></li>
+</ul>
 </li>
 </ul>
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/katex/dist/katex.min.css">
@@ -2461,7 +2661,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">101.5k</span>&nbsp;字
+                class="white-color">102.9k</span>&nbsp;字
             
             
             
@@ -2820,10 +3020,10 @@ $(function () {
     if (windowWidth > 768) {
         document.write('<script type="text/javascript" src="https://apip.weatherdt.com/float/static/js/r.js?v=1111"><\/script>');
     }
-    </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    </script>
     
   
-<script src="/live2dw/lib/L2Dwidget.min.js?243708c68e3ad401cd4432916889e600"></script><script>L2Dwidget.init({"dialog":{"enable":true,"hitokoto":true},"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"left","width":120,"height":160,"superSample":2,"voffset":0,"hoffset":20},"mobile":{"show":false},"react":{"opacity":0.7,"opacityOnHover":0.2}});</script>
+<script src="/live2dw/lib/L2Dwidget.min.js?243708c68e3ad401cd4432916889e600"></script><script>L2Dwidget.init({"dialog":{"enable":true,"hitokoto":true},"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"left","width":120,"height":160,"superSample":2,"voffset":0,"hoffset":20},"mobile":{"show":false},"react":{"opacity":0.7,"opacityOnHover":0.2}});</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
         <style>
             [bg-lazy] {
                 background-image: none !important;
