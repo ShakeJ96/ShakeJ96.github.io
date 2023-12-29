@@ -635,21 +635,21 @@ charset="utf-8"></script> -->
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-12-11
+                    2023-12-29
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    5.5k
+                    6.7k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    23 分
+                    28 分
                 </div>
                 
 
@@ -1552,6 +1552,284 @@ nums[0] + nums[3] + nums[4] = (-1) + 2 + (-1) = 0 。
 </li>
 </ul>
 <h4 id="5.2-%E8%A7%A3%E7%AD%94%E5%88%86%E6%9E%90" tabindex="-1">5.2 解答分析</h4>
+<h3 id="%E5%85%AD%E3%80%81141.-%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8" tabindex="-1">六、<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/linked-list-cycle/description/">141. 环形链表 </a></h3>
+<h4 id="6.1-%E9%A2%98%E7%9B%AE%E8%AF%B4%E6%98%8E" tabindex="-1">6.1 题目说明</h4>
+<ul>
+<li>
+<p>给你一个链表的头节点 <code>head</code> ，判断链表中是否有环。</p>
+<p>如果链表中有某个节点，可以通过连续跟踪 <code>next</code> 指针再次到达，则链表中存在环。 为了表示给定链表中的环，评测系统内部使用整数 <code>pos</code> 来表示链表尾连接到链表中的位置（索引从 0 开始）。<strong>注意：<code>pos</code> 不作为参数进行传递</strong> 。仅仅是为了标识链表的实际情况。</p>
+<p><em>如果链表中存在环</em> ，则返回 <code>true</code> 。 否则，返回 <code>false</code></p>
+</li>
+<li>
+<p>示例1：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="/2023/12/03/codetop-ji-dao-gao-pin-mian-shi-ti/E:%5CMyBlog%5CMyBlog%5Csource_posts%5CCodetop%E5%87%A0%E9%81%93%E9%AB%98%E9%A2%91%E9%9D%A2%E8%AF%95%E9%A2%98%5Ccircularlinkedlist.png" alt="circularlinkedlist"></p>
+<pre class="line-numbers language-none"><code class="language-none">输入：head = [3,2,0,-4], pos = 1
+输出：true
+解释：链表中有一个环，其尾部连接到第二个节点。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>​</p>
+</li>
+</ul>
+<h4 id="6.2-%E8%A7%A3%E7%AD%94%E6%96%B9%E6%B3%95" tabindex="-1">6.2 解答方法</h4>
+<ul>
+<li>
+<p>双指针，快慢指针问题；当slow和fast相遇的时候即可判断出该链表为环形链表。</p>
+</li>
+<li>
+<p><strong>扩展：</strong></p>
+<ol>
+<li>环形链表三连问：
+<ol>
+<li>是否有环 （上述快慢指针）</li>
+<li>找出环的入口 （快慢指针重合的位置，此时再次重新遍历即可）</li>
+<li>环中节点个数（快慢指针，从重合的节点开始计算）</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>
+<p>为此，给出具体的代码分析：</p>
+<p>​</p>
+</li>
+</ul>
+<h4 id="6.3-%E5%85%B7%E4%BD%93%E4%BB%A3%E7%A0%81" tabindex="-1">6.3 具体代码</h4>
+<ul>
+<li>
+<p>准备的环境函数：</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">/**
+ * 链表初始定义
+ */</span>
+<span class="token keyword">class</span> <span class="token class-name">ListNode</span> <span class="token punctuation">{</span>
+    <span class="token keyword">int</span> val<span class="token punctuation">;</span>
+    <span class="token class-name">ListNode</span> next<span class="token punctuation">;</span>
+
+    <span class="token class-name">ListNode</span><span class="token punctuation">(</span><span class="token keyword">int</span> x<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        val <span class="token operator">=</span> x<span class="token punctuation">;</span>
+        next <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+ <span class="token comment">/**
+     * 常规创建链表
+     * @param nums
+     * @return
+     */</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token class-name">ListNode</span> <span class="token function">createLinkedList</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> nums<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token class-name">ListNode</span> dummy <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ListNode</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">ListNode</span> curr <span class="token operator">=</span> dummy<span class="token punctuation">;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> num <span class="token operator">:</span> nums<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            curr<span class="token punctuation">.</span>next <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ListNode</span><span class="token punctuation">(</span>num<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            curr <span class="token operator">=</span> curr<span class="token punctuation">.</span>next<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> dummy<span class="token punctuation">.</span>next<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">/**
+     * 创建带有环的链表
+     * @param values
+     * @param pos
+     * @return
+     */</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token class-name">ListNode</span> <span class="token function">create</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> values<span class="token punctuation">,</span><span class="token keyword">int</span> pos<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token class-name">ListNode</span> head<span class="token operator">=</span><span class="token function">createLinkedList</span><span class="token punctuation">(</span>values<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//创建头节点</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>pos<span class="token operator">==</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token keyword">return</span> head<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token class-name">ListNode</span> curr<span class="token operator">=</span>head<span class="token punctuation">;</span> <span class="token comment">//当前的指针</span>
+        <span class="token comment">// 定位到第pos个节点</span>
+        <span class="token keyword">int</span> count<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">while</span> <span class="token punctuation">(</span>count <span class="token operator">&lt;</span> pos <span class="token operator">&amp;&amp;</span> curr<span class="token punctuation">.</span>next <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            curr <span class="token operator">=</span> curr<span class="token punctuation">.</span>next<span class="token punctuation">;</span>
+            count<span class="token operator">++</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token comment">// 记录第pos个节点的引用</span>
+        <span class="token class-name">ListNode</span> posNode <span class="token operator">=</span> curr<span class="token punctuation">;</span>
+        <span class="token comment">// 遍历到链表尾部</span>
+        <span class="token keyword">while</span> <span class="token punctuation">(</span>curr<span class="token punctuation">.</span>next <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            curr <span class="token operator">=</span> curr<span class="token punctuation">.</span>next<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token comment">// 将尾部节点的next指向第pos个节点</span>
+        curr<span class="token punctuation">.</span>next <span class="token operator">=</span> posNode<span class="token punctuation">;</span>
+
+        <span class="token keyword">return</span> head<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">/**
+     * 打印链表的输出
+     */</span>
+	<span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">print</span><span class="token punctuation">(</span><span class="token class-name">ListNode</span> head<span class="token punctuation">,</span><span class="token keyword">int</span> n<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// 遍历输出环链表</span>
+        <span class="token class-name">ListNode</span> curr <span class="token operator">=</span> head<span class="token punctuation">;</span>
+        <span class="token keyword">int</span> count <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"经过环循环得到的链表为（2倍长度）："</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">while</span> <span class="token punctuation">(</span>count <span class="token operator">&lt;</span> n<span class="token operator">*</span><span class="token number">2</span> <span class="token operator">&amp;&amp;</span> curr<span class="token punctuation">.</span>next <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>  <span class="token comment">// 控制输出次数，避免死循环</span>
+            <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">print</span><span class="token punctuation">(</span>curr<span class="token punctuation">.</span>val<span class="token operator">+</span><span class="token string">"-&gt;"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            curr <span class="token operator">=</span> curr<span class="token punctuation">.</span>next<span class="token punctuation">;</span>
+            count<span class="token operator">++</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">print</span><span class="token punctuation">(</span>curr<span class="token punctuation">.</span>val<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+</ul>
+<h5 id="1.-%E5%88%A4%E6%96%AD%E6%98%AF%E5%90%A6%E6%9C%89%E7%8E%AF" tabindex="-1">1. 判断是否有环</h5>
+<ul>
+<li>
+<pre><code class="language-java">// 判断链表中是否存在环
+    public static boolean hasCycle(ListNode head){
+        if(head==null || head.next==null){
+            return false;
+        }
+        ListNode slow=head;
+        ListNode fast=head.next;
+        while(slow!=fast){
+            if(fast==null || fast.next==null){
+                return false;
+            }
+            slow=slow.next;
+            fast=fast.next.next;
+        }
+        return true;
+    }
+<pre class="line-numbers language-none"><code class="language-none">
+##### 2. 输出环的入口
+
++ ```java
+  // 直接输出环的入口
+      public static ListNode CycleOut(ListNode head){
+          if (head == null || head.next == null) {
+              return null; // 无环或者链表为空，返回null表示没有环
+          }
+          ListNode slow = head;
+          ListNode fast = head;
+          boolean hasCycle = false;
+  
+          while (fast != null &amp;&amp; fast.next != null) {
+              slow = slow.next;
+              fast = fast.next.next;
+              if (slow == fast) {
+                  hasCycle = true; //存在环
+                  break;
+              }
+          }
+          if (!hasCycle) {
+              return null; // 无环，返回null表示没有环
+          }
+          slow = head;
+          while (slow != fast) {
+              slow = slow.next;
+              fast = fast.next;
+          }
+          return slow;
+  
+      }<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+</code></pre>
+</li>
+</ul>
+<h5 id="3.-%E7%BB%99%E5%87%BA%E7%8E%AF%E4%B8%AD%E7%9A%84%E5%85%83%E7%B4%A0%E4%B8%AA%E6%95%B0(%E7%AE%97%E4%B8%8A%E5%85%A5%E5%8F%A3%E7%9A%84%E8%8A%82%E7%82%B9)" tabindex="-1">3. 给出环中的元素个数(算上入口的节点)</h5>
+<ul>
+<li>
+<pre><code class="language-java">public static int CycleNumber(ListNode head){
+         if(head==null || head.next==null){
+             return 0;
+         }
+         ListNode slow=head;
+         ListNode fast=head.next;
+
+         int count = 1; // 计数器初始值为1，因为fast已经指向了slow的下一个节点
+
+         while(slow!=fast) {
+             if (fast == null || fast.next == null) {
+                 return 0;
+             }
+             slow = slow.next;
+             fast = fast.next.next;
+         }
+
+         // 统计环中的节点个数
+         fast=fast.next;  // fast向后移动一步，指向slow的下一个节点
+         while(slow!=fast){
+             fast=fast.next;
+             count++;
+         }
+         return count;
+    }
+<pre class="line-numbers language-none"><code class="language-none">
+##### 4. 辅助计算位置函数
+
++ ```java
+  // 辅助计算位置
+      private static int getPosition(ListNode head, ListNode target) {
+          int pos = 0;
+          ListNode current = head;
+          while (current != target) {
+              current = current.next;
+              pos++;
+          }
+          return pos;
+      }<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+</code></pre>
+</li>
+</ul>
+<h5 id="5.-%E8%87%AA%E5%AE%9A%E4%B9%89%E6%B5%8B%E8%AF%95%E7%94%A8%E4%BE%8B%E6%A8%A1%E5%9D%97" tabindex="-1">5. 自定义测试用例模块</h5>
+<ul>
+<li>
+<pre><code class="language-java">public static void main(String[] args) {
+        // 直接快慢指针进行查找
+        Scanner in=new Scanner(System.in);
+        System.out.print("请输入链表的长度: ");
+        int n=in.nextInt();
+        int []a=new int[n];
+
+        // 输入到链表中的数据
+        System.out.print("给出具体的数据: ");
+        for(int i=0;i&lt;n;i++){
+            a[i]=in.nextInt();
+        }
+        // 创建并打印生成的含有环的链表
+        // create()方法已经实现了
+
+        //创建含有环的位置p
+        System.out.print("请输入环pos的位置: ");
+        int p=in.nextInt();
+        ListNode v1=createNodeList.create(a,p);
+        Print.print(v1,n);
+        System.out.println();
+
+    	
+        // 可以朴素测试输入的链表关系：
+        // 1 2 3 4 5 2
+        // 创建新的链表关系
+//        ListNode v2=new ListNode(1);
+//        v2.next=new ListNode(2);
+//        v2.next.next=new ListNode(3);
+//        v2.next.next.next=new ListNode(4);
+//        v2.next.next.next.next=new ListNode(5);
+//        v2.next.next.next.next.next = v2.next;
+
+        // 1. 测试是否含有环结构
+        boolean test = hasCycle(v1);
+        //打印
+        System.out.println("是否含有环结构: "+test);
+
+        // 2. 测试找到环的入口
+        ListNode inn=CycleOut(v1);
+//        System.out.println(inn.val);
+        System.out.println("环中的入口元素位置为："+getPosition(v1,inn));
+        System.out.println("环入口处的元素值为："+inn.val);
+
+        // 3. 找到环中的元素个数
+        int cnt=CycleNumber(v1);
+        System.out.println("环中的元素个数有（算上入口的节点）："+cnt);
+    }
+</code></pre>
+</li>
+<li>
+<p><strong>输出测试样例截图</strong>：</p>
+<img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="/2023/12/03/codetop-ji-dao-gao-pin-mian-shi-ti/MyBlog\MyBlog\source\_posts\Codetop几道高频面试题\test.png" alt="test" style="zoom:80%;">
+</li>
+</ul>
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/katex/dist/katex.min.css">
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/markdown-it-texmath/css/texmath.min.css">
 
@@ -2088,7 +2366,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">99.3k</span>&nbsp;字
+                class="white-color">100.5k</span>&nbsp;字
             
             
             
@@ -2450,7 +2728,7 @@ $(function () {
     </script>
     
   
-
+<script src="/live2dw/lib/L2Dwidget.min.js?243708c68e3ad401cd4432916889e600"></script><script>L2Dwidget.init({"dialog":{"enable":true,"hitokoto":true},"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"left","width":120,"height":160,"superSample":2,"voffset":0,"hoffset":20},"mobile":{"show":false},"react":{"opacity":0.7,"opacityOnHover":0.2}});</script>
         <style>
             [bg-lazy] {
                 background-image: none !important;
@@ -2463,6 +2741,6 @@ $(function () {
                 preloadRatio: 3,
                 processImages: null,
             };
-        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(r){r.imageLazyLoadSetting.processImages=t;var e=r.imageLazyLoadSetting.isSPA,n=r.imageLazyLoadSetting.preloadRatio||1,c=a();function a(){var t=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")),e=Array.prototype.slice.call(document.querySelectorAll("[bg-lazy]"));return t.concat(e)}function t(){e&&(c=a());for(var t,o=0;o<c.length;o++)0<=(t=(t=c[o]).getBoundingClientRect()).bottom&&0<=t.left&&t.top<=(r.innerHeight*n||document.documentElement.clientHeight*n)&&function(){var t,e,n,a,i=c[o];e=function(){c=c.filter(function(t){return i!==t}),r.imageLazyLoadSetting.onImageLoaded&&r.imageLazyLoadSetting.onImageLoaded(i)},(t=i).hasAttribute("bg-lazy")?(t.removeAttribute("bg-lazy"),e&&e()):(n=new Image,a=t.getAttribute("data-original"),n.onload=function(){t.src=a,t.removeAttribute("data-original"),e&&e()},t.src!==a&&(n.src=a))}()}function i(){clearTimeout(t.tId),t.tId=setTimeout(t,500)}t(),document.addEventListener("scroll",i),r.addEventListener("resize",i),r.addEventListener("orientationchange",i)}(this);</script><script src="/live2dw/lib/L2Dwidget.min.js?243708c68e3ad401cd4432916889e600"></script><script>L2Dwidget.init({"dialog":{"enable":true,"hitokoto":true},"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"left","width":120,"height":160,"superSample":2,"voffset":0,"hoffset":20},"mobile":{"show":false},"react":{"opacity":0.7,"opacityOnHover":0.2}});</script><!-- hexo-inject:begin --><!-- hexo-inject:end --></body>
+        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(r){r.imageLazyLoadSetting.processImages=t;var e=r.imageLazyLoadSetting.isSPA,n=r.imageLazyLoadSetting.preloadRatio||1,c=a();function a(){var t=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")),e=Array.prototype.slice.call(document.querySelectorAll("[bg-lazy]"));return t.concat(e)}function t(){e&&(c=a());for(var t,o=0;o<c.length;o++)0<=(t=(t=c[o]).getBoundingClientRect()).bottom&&0<=t.left&&t.top<=(r.innerHeight*n||document.documentElement.clientHeight*n)&&function(){var t,e,n,a,i=c[o];e=function(){c=c.filter(function(t){return i!==t}),r.imageLazyLoadSetting.onImageLoaded&&r.imageLazyLoadSetting.onImageLoaded(i)},(t=i).hasAttribute("bg-lazy")?(t.removeAttribute("bg-lazy"),e&&e()):(n=new Image,a=t.getAttribute("data-original"),n.onload=function(){t.src=a,t.removeAttribute("data-original"),e&&e()},t.src!==a&&(n.src=a))}()}function i(){clearTimeout(t.tId),t.tId=setTimeout(t,500)}t(),document.addEventListener("scroll",i),r.addEventListener("resize",i),r.addEventListener("orientationchange",i)}(this);</script><!-- hexo-inject:begin --><!-- hexo-inject:end --></body>
 
 </html>
