@@ -6,7 +6,7 @@
   <link href="https://shakej96.github.io/atom.xml" rel="self"/>
   
   <link href="https://shakej96.github.io/"/>
-  <updated>2023-12-15T06:08:45.265Z</updated>
+  <updated>2023-12-31T15:59:23.760Z</updated>
   <id>https://shakej96.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>2023年终总结</title>
+    <link href="https://shakej96.github.io/2023/12/31/2023-nian-zhong-zong-jie/"/>
+    <id>https://shakej96.github.io/2023/12/31/2023-nian-zhong-zong-jie/</id>
+    <published>2023-12-31T08:22:13.000Z</published>
+    <updated>2023-12-31T15:59:23.760Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;&#92;assets&#92;css&#92;APlayer.min.css&quot;&gt;&lt;script src=&quot;&#92;assets&#92;js&#92;APlayer.min.js&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="杂谈" scheme="https://shakej96.github.io/categories/%E6%9D%82%E8%B0%88/"/>
+    
+    
+    <category term="2023" scheme="https://shakej96.github.io/tags/2023/"/>
+    
+  </entry>
   
   <entry>
     <title>Spring常见注解</title>
@@ -506,31 +531,6 @@
     
     
     <category term="Java" scheme="https://shakej96.github.io/tags/Java/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>字节1015秋招笔试</title>
-    <link href="https://shakej96.github.io/2023/10/15/zi-jie-1015-qiu-zhao-bi-shi/"/>
-    <id>https://shakej96.github.io/2023/10/15/zi-jie-1015-qiu-zhao-bi-shi/</id>
-    <published>2023-10-15T15:58:27.000Z</published>
-    <updated>2023-10-24T16:20:10.913Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;&#92;assets&#92;css&#92;APlayer.min.css&quot;&gt;&lt;script src=&quot;&#92;assets&#92;js&#92;APlayer.min.js&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="笔试真题" scheme="https://shakej96.github.io/categories/%E7%AC%94%E8%AF%95%E7%9C%9F%E9%A2%98/"/>
-    
-    
-    <category term="2023秋招" scheme="https://shakej96.github.io/tags/2023%E7%A7%8B%E6%8B%9B/"/>
     
   </entry>
   
