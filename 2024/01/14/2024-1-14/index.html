@@ -638,14 +638,14 @@ charset="utf-8"></script> -->
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.9k
+                    3.8k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    10 分
+                    13 分
                 </div>
                 
 
@@ -924,6 +924,117 @@ mysql<span class="token operator">&gt;</span> <span class="token keyword">select
 <li>串行</li>
 </ol>
 </li>
+<li>上面4中隔离级别越来越强，会导致数据库的并发性也越来越低。</li>
+</ul>
+<h6 id="%E5%90%84%E8%87%AA%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB%E4%B8%AD%E5%8F%AF%E8%83%BD%E4%BC%9A%E5%87%BA%E7%8E%B0%E7%9A%84%E9%97%AE%E9%A2%98" tabindex="-1">各自隔离级别中可能会出现的问题</h6>
+<table>
+<thead>
+<tr>
+<th>隔离级别</th>
+<th>脏读可能性</th>
+<th>不可重复读可能性</th>
+<th>幻读可能性</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>READ-UNCOMMITTED</td>
+<td>有</td>
+<td>有</td>
+<td>有</td>
+</tr>
+<tr>
+<td>READ-COMMITTED</td>
+<td>无</td>
+<td>有</td>
+<td>有</td>
+</tr>
+<tr>
+<td>REPEATABLE-READ</td>
+<td>无</td>
+<td>无</td>
+<td>有</td>
+</tr>
+<tr>
+<td>SERIALIZABLE</td>
+<td>无</td>
+<td>无</td>
+<td>无</td>
+</tr>
+</tbody>
+</table>
+<h6 id="%E5%B0%8F%E7%BB%93" tabindex="-1">小结</h6>
+<ol>
+<li>读未提交( Read Uncommitted )</li>
+</ol>
+<ul>
+<li>读未提交是隔离级别最低的一种事务级别。在这种隔离级别下，一个事务会读到另一个事务更新后但未提交的数据，如果另一个事务回滚，那么当前事务读到的数据就是脏数据，这就是脏读（Dirty Read）。</li>
+</ul>
+<ol start="2">
+<li>读已提交( Read Committed )</li>
+</ol>
+<ul>
+<li>在 Read Committed 隔离级别下，一个事务可能会遇到不可重复读（Non Repeatable Read）的问题。不可重复读是指，在一个事务内，多次读同一数据，在这个事务还没有结束时，如果另一个事务恰好修改了这个数据，那么，在第一个事务中，两次读取的数据就可能不一致。</li>
+</ul>
+<ol start="3">
+<li>可重复读( Repeatable Read )</li>
+</ol>
+<ul>
+<li>在Repeatable Read隔离级别下，一个事务可能会遇到幻读（Phantom Read）的问题。幻读是指，在一个事务中，第一次查询某条记录，发现没有，但是，当试图更新这条不存在的记录时，竟然能成功，并且，再次读取同一条记录，它就神奇地出现了。幻读就是没有读到的记录，以为不存在，但其实是可以更新成功的，并且，更新成功后，再次读取，就出现了。</li>
+</ul>
+<ol start="4">
+<li>可串行化( Serializable )</li>
+</ol>
+<ul>
+<li>
+<p>Serializable 是最严格的隔离级别。在Serializable隔离级别下，所有事务按照次序依次执行，因此，脏读、不可重复读、幻读都不会出现。</p>
+</li>
+<li>
+<p>虽然 Serializable 隔离级别下的事务具有最高的安全性，但是，由于事务是串行执行，所以效率会大大下降，应用程序的性能会急剧降低。如果没有特别重要的情景，一般都不会使用Serializable隔离级别。</p>
+</li>
+<li>
+<p>默认隔离级别：如果没有指定隔离级别，数据库就会使用默认的隔离级别。在MySQL中，如果使用 InnoDB，默认的隔离级别是Repeatable Read。</p>
+</li>
+</ul>
+<h4 id="2.-redis" tabindex="-1">2. Redis</h4>
+<h5 id="2.1-redis%E4%B8%BA%E4%BB%80%E4%B9%88%E8%BF%99%E4%B9%88%E5%BF%AB%EF%BC%9F" tabindex="-1">2.1 Redis为什么这么快？</h5>
+<ul>
+<li>Redis基于内存存储，内存的访问速度比磁盘快了千倍；</li>
+<li>Redis主要是单线程事件循环和IO多路复用</li>
+<li>Redis内置了多种优化过后的数据类型和结构，性能很高</li>
+</ul>
+<h5 id="2.2-redis%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B" tabindex="-1">2.2 Redis数据类型</h5>
+<h6 id="1.-%E8%B4%AD%E7%89%A9%E8%BD%A6%E4%BF%A1%E6%81%AF%E7%94%A8-string-%E8%BF%98%E6%98%AF-hash-%E5%AD%98%E5%82%A8%E6%9B%B4%E5%A5%BD%E5%91%A2%3F" tabindex="-1">1. 购物车信息用 String 还是 Hash 存储更好呢?</h6>
+<ul>
+<li>由于购物车中的商品频繁修改和变动，购物车信息建议使用 Hash 存储：
+<ul>
+<li>用户 id 为 key</li>
+<li>商品 id 为 field，商品数量为 value</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="/2024/01/14/2024-1-14/hash-shopping-cart.png" alt="hash-shopping-cart"></p>
+<blockquote>
+<ol>
+<li>用户添加商品就是往Hash里面新增field和value</li>
+<li>查询购物车信息就是遍历对应的Hash</li>
+<li>更改商品数量就是直接修改对应的value值（直接用set或者是运算皆可）</li>
+<li>删除商品就是删除Hash中对应的field</li>
+<li>清空购物车直接删除对应的key（用户ID）即可</li>
+</ol>
+</blockquote>
+<h6 id="2.-%E4%BD%BF%E7%94%A8redis%E5%88%B6%E4%BD%9C%E4%B8%80%E4%B8%AA%E6%8E%92%E8%A1%8C%E6%A6%9C%EF%BC%9F" tabindex="-1">2. 使用Redis制作一个排行榜？</h6>
+<ul>
+<li>Redis中存在一个数据类型叫做<code>Sorted Set</code>。</li>
+<li>有相关的命令：<code>ZRANGE</code>（从小到大排序）,<code>ZREVRANGE</code>（从大到小排序），<code>ZREVRANK</code>（指定元素排名）</li>
+</ul>
+<h5 id="2.3-redis%E7%94%9F%E4%BA%A7%E9%97%AE%E9%A2%98" tabindex="-1">2.3 Redis生产问题</h5>
+<h6 id="1.-%E7%BC%93%E5%AD%98%E7%A9%BF%E9%80%8F" tabindex="-1">1. 缓存穿透</h6>
+<ul>
+<li>简单地说就是大量的请求key不合理，根本就不存在缓存中和数据库当中。容易导致请求直接到数据库层面，对数据库造成巨大的压力，直接被请求弄宕机了。</li>
+</ul>
+<img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="/2024/01/14/2024-1-14/redis-cache-penetration.png" alt="缓存穿透" style="zoom:50%;">
+<ul>
 <li></li>
 </ul>
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/katex/dist/katex.min.css">
@@ -1468,7 +1579,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">108k</span>&nbsp;字
+                class="white-color">108.9k</span>&nbsp;字
             
             
             
@@ -1830,7 +1941,7 @@ $(function () {
     </script>
     
   
-<script src="/live2dw/lib/L2Dwidget.min.js?243708c68e3ad401cd4432916889e600"></script><script>L2Dwidget.init({"dialog":{"enable":true,"hitokoto":true},"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"left","width":120,"height":160,"superSample":2,"voffset":0,"hoffset":20},"mobile":{"show":false},"react":{"opacity":0.7,"opacityOnHover":0.2}});</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
         <style>
             [bg-lazy] {
                 background-image: none !important;
@@ -1843,6 +1954,6 @@ $(function () {
                 preloadRatio: 3,
                 processImages: null,
             };
-        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(r){r.imageLazyLoadSetting.processImages=t;var e=r.imageLazyLoadSetting.isSPA,n=r.imageLazyLoadSetting.preloadRatio||1,c=a();function a(){var t=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")),e=Array.prototype.slice.call(document.querySelectorAll("[bg-lazy]"));return t.concat(e)}function t(){e&&(c=a());for(var t,o=0;o<c.length;o++)0<=(t=(t=c[o]).getBoundingClientRect()).bottom&&0<=t.left&&t.top<=(r.innerHeight*n||document.documentElement.clientHeight*n)&&function(){var t,e,n,a,i=c[o];e=function(){c=c.filter(function(t){return i!==t}),r.imageLazyLoadSetting.onImageLoaded&&r.imageLazyLoadSetting.onImageLoaded(i)},(t=i).hasAttribute("bg-lazy")?(t.removeAttribute("bg-lazy"),e&&e()):(n=new Image,a=t.getAttribute("data-original"),n.onload=function(){t.src=a,t.removeAttribute("data-original"),e&&e()},t.src!==a&&(n.src=a))}()}function i(){clearTimeout(t.tId),t.tId=setTimeout(t,500)}t(),document.addEventListener("scroll",i),r.addEventListener("resize",i),r.addEventListener("orientationchange",i)}(this);</script></body>
+        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(r){r.imageLazyLoadSetting.processImages=t;var e=r.imageLazyLoadSetting.isSPA,n=r.imageLazyLoadSetting.preloadRatio||1,c=a();function a(){var t=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")),e=Array.prototype.slice.call(document.querySelectorAll("[bg-lazy]"));return t.concat(e)}function t(){e&&(c=a());for(var t,o=0;o<c.length;o++)0<=(t=(t=c[o]).getBoundingClientRect()).bottom&&0<=t.left&&t.top<=(r.innerHeight*n||document.documentElement.clientHeight*n)&&function(){var t,e,n,a,i=c[o];e=function(){c=c.filter(function(t){return i!==t}),r.imageLazyLoadSetting.onImageLoaded&&r.imageLazyLoadSetting.onImageLoaded(i)},(t=i).hasAttribute("bg-lazy")?(t.removeAttribute("bg-lazy"),e&&e()):(n=new Image,a=t.getAttribute("data-original"),n.onload=function(){t.src=a,t.removeAttribute("data-original"),e&&e()},t.src!==a&&(n.src=a))}()}function i(){clearTimeout(t.tId),t.tId=setTimeout(t,500)}t(),document.addEventListener("scroll",i),r.addEventListener("resize",i),r.addEventListener("orientationchange",i)}(this);</script><script src="/live2dw/lib/L2Dwidget.min.js?243708c68e3ad401cd4432916889e600"></script><script>L2Dwidget.init({"dialog":{"enable":true,"hitokoto":true},"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"left","width":120,"height":160,"superSample":2,"voffset":0,"hoffset":20},"mobile":{"show":false},"react":{"opacity":0.7,"opacityOnHover":0.2}});</script><!-- hexo-inject:begin --><!-- hexo-inject:end --></body>
 
 </html>
