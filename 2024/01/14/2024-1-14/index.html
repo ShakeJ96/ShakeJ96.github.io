@@ -631,21 +631,21 @@ charset="utf-8"></script> -->
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2024-01-17
+                    2024-01-18
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    9.6k
+                    11k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    34 分
+                    39 分
                 </div>
                 
 
@@ -1268,11 +1268,22 @@ mysql<span class="token operator">&gt;</span> <span class="token keyword">select
 <img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="/2024/01/14/2024-1-14/aof-work-process.png" alt="AOF 工作基本流程" style="zoom:67%;">
 <p>​</p>
 <ul>
-<li>AOF以日志追加的方式记录所有的写操作指令，将这些指令写入AOF文件。</li>
-<li>AOF文件记录了构建当前数据集状态所需的所有写操作。</li>
-<li>AOF持久化适合用于保证数据的安全性和完整性。</li>
-<li>AOF文件的写入可以使用不同的策略：每个写命令、每秒钟同步一次或者按条件触发。</li>
-<li>AOF重写可以通过后台进程将AOF文件压缩为更小的文件，同时保留相同的数据集。</li>
+<li>
+<p>AOF以日志追加的方式记录所有的写操作指令，将这些指令写入AOF文件。</p>
+</li>
+<li>
+<p>AOF文件记录了构建当前数据集状态所需的所有写操作。</p>
+</li>
+<li>
+<p>AOF持久化适合用于保证数据的安全性和完整性。</p>
+</li>
+<li>
+<p>AOF文件的写入可以使用不同的策略：每个写命令、每秒钟同步一次或者按条件触发。</p>
+</li>
+<li>
+<p>AOF重写可以通过后台进程将AOF文件压缩为更小的文件，同时保留相同的数据集。</p>
+<p>​</p>
+</li>
 </ul>
 <h6 id="3.-%E5%A6%82%E4%BD%95%E9%80%89%E6%8B%A9rdb%E5%92%8Caof%EF%BC%9F" tabindex="-1">3. 如何选择RDB和AOF？</h6>
 <ul>
@@ -1312,17 +1323,165 @@ mysql<span class="token operator">&gt;</span> <span class="token keyword">select
 <p>多线程和单线程总结：</p>
 <blockquote>
 <ul>
-<li>
-<p>Redis 选择使用单线程模型处理客户端的请求主要还是因为 CPU 不是 Redis 服务器的瓶颈，所以使用多线程模型带来的性能提升并不能抵消它带来的开发成本和维护成本，系统的性能瓶颈也主要在网络 I/O 操作上；</p>
-</li>
-<li>
-<p>Redis 引入多线程操作也是出于性能上的考虑，对于一些大键值对的删除操作，通过多线程非阻塞地释放内存空间也能减少对 Redis 主线程阻塞的时间，提高执行的效率。</p>
-</li>
+<li>Redis 选择使用单线程模型处理客户端的请求主要还是因为 CPU 不是 Redis 服务器的瓶颈，所以使用多线程模型带来的性能提升并不能抵消它带来的开发成本和维护成本，系统的性能瓶颈也主要在网络 I/O 操作上；</li>
+<li>Redis 引入多线程操作也是出于性能上的考虑，对于一些大键值对的删除操作，通过多线程非阻塞地释放内存空间也能减少对 Redis 主线程阻塞的时间，提高执行的效率。</li>
 </ul>
 </blockquote>
+</li>
+</ul>
+<p>​</p>
+<h5 id="2.7-redis%E9%9B%86%E7%BE%A4%E6%A8%A1%E5%BC%8F" tabindex="-1">2.7 Redis集群模式</h5>
+<img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="/2024/01/14/2024-1-14/v2-5dfa3ff3667282699e4509243fa63ebf_1440w.webp" alt="img" style="zoom:80%;">
+<ul>
+<li>Redis集群主要是通过将多个Redis节点连接到一起以实现高可用性、数据分片和负载均衡的技术。允许的是Redis在不同的节点中提供服务、提高整体性能和可靠性。根据搭建的方式和集群的特性，Redis集群主要包含三大模式：<strong>主从复制模式、哨兵模式、Cluster模式</strong></li>
+</ul>
+<h6 id="redis%E9%9B%86%E7%BE%A4%E7%9A%84%E4%BD%9C%E7%94%A8%E5%92%8C%E4%BC%98%E5%8A%BF" tabindex="-1">Redis集群的作用和优势</h6>
+<ol>
+<li>
+<p><strong>高可用性</strong>：Redis集群可以在某个节点发生故障时，自动进行故障转移，保证服务的持续可用。</p>
+</li>
+<li>
+<p><strong>负载均衡</strong>：Redis集群可以将客户端请求分发到不同的节点上，有效地分摊节点的压力，提高系统的整体性能。</p>
+</li>
+<li>
+<p><strong>容灾恢复</strong>：通过主从复制或哨兵模式，Redis集群可以在主节点出现故障时，快速切换到从节点，实现业务的无缝切换。</p>
+</li>
+<li>
+<p><strong>数据分片</strong>：在Cluster模式下，Redis集群可以将数据分散在不同的节点上，从而突破单节点内存限制，实现更大规模的数据存储。</p>
+</li>
+<li>
+<p><strong>易于扩展</strong>：Redis集群可以根据业务需求和系统负载，动态地添加或移除节点，实现水平扩展。</p>
+<p>​</p>
+</li>
+</ol>
+<h6 id="1.-%E4%B8%BB%E4%BB%8E%E5%A4%8D%E5%88%B6%E6%A8%A1%E5%BC%8F" tabindex="-1">1. 主从复制模式</h6>
+<ul>
+<li>
+<p>主从复制是Redis的一种基本集群模式，它通过将一个Redis节点（主节点）的数据复制到一个或多个其他Redis节点（从节点）来实现数据的冗余和备份。</p>
+<p>主节点负责处理客户端的写操作，同时从节点会实时同步主节点的数据。客户端可以从从节点读取数据，实现读写分离，提高系统性能。</p>
+</li>
+<li>
+<img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="/2024/01/14/2024-1-14/v2-60debba118dfc6fbf6199871acffce12_1440w.webp" alt="img" style="zoom:67%;">
+</li>
+<li>
+<p><strong>优点</strong>：</p>
+<ol>
+<li>配置简单，易于实现。</li>
+<li>实现数据冗余，提高数据可靠性。</li>
+<li>读写分离，提高系统性能。</li>
+</ol>
+</li>
+<li>
+<p><strong>缺点</strong>：</p>
+<ol>
+<li>主节点故障时，需要手动切换到从节点，故障恢复时间较长。</li>
+<li>主节点承担所有写操作，可能成为性能瓶颈。</li>
+<li>无法实现数据分片，受单节点内存限制。</li>
+</ol>
+</li>
+<li>
+<p><strong>主从复制模式适用于以下场景</strong>：</p>
+<ol>
+<li>
+<p>数据备份和容灾恢复：通过从节点备份主节点的数据，实现数据冗余。</p>
+</li>
+<li>
+<p>读写分离：将读操作分发到从节点，减轻主节点压力，提高系统性能。</p>
+</li>
+<li>
+<p>在线升级和扩展：在不影响主节点的情况下，通过增加从节点来扩展系统的读取能力。</p>
+<p>​</p>
+</li>
+</ol>
+</li>
+</ul>
+<h6 id="2.-%E5%93%A8%E5%85%B5%E6%A8%A1%E5%BC%8F" tabindex="-1">2. 哨兵模式</h6>
+<ul>
+<li>
+<p>哨兵模式是在主从复制基础上加入了哨兵节点，实现了自动故障转移。哨兵节点是一种特殊的Redis节点，它会监控主节点和从节点的运行状态。当主节点发生故障时，哨兵节点会自动从从节点中选举出一个新的主节点，并通知其他从节点和客户端，实现故障转移。</p>
+</li>
+<li>
+<img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="/2024/01/14/2024-1-14/v2-1d0e2d927c9749f4e0e463d26518702e_1440w.webp" alt="img" style="zoom:67%;">
+</li>
+<li>
+<p><strong>优点</strong>：</p>
+<ol>
+<li>自动故障转移，提高系统的高可用性。</li>
+<li>具有主从复制模式的所有优点，如数据冗余和读写分离。</li>
+</ol>
+</li>
+<li>
+<p><strong>缺点</strong>：</p>
+<ol>
+<li>配置和管理相对复杂。</li>
+<li>依然无法实现数据分片，受单节点内存限制。</li>
+</ol>
+</li>
+<li>
+<p><strong>哨兵模式适用于以下场景</strong>：</p>
+<ol>
+<li>高可用性要求较高的场景：通过自动故障转移，确保服务的持续可用。</li>
+<li>数据备份和容灾恢复：在主从复制的基础上，提供自动故障转移功能。</li>
+</ol>
+<ul>
+<li>
+<p>总结：哨兵模式在主从复制模式的基础上实现了自动故障转移，提高了系统的高可用性。</p>
 <p>​</p>
 </li>
 </ul>
+</li>
+</ul>
+<h6 id="3.-cluster%E6%A8%A1%E5%BC%8F" tabindex="-1">3. Cluster模式</h6>
+<ul>
+<li>
+<p>Cluster模式是Redis的一种高级集群模式，它通过数据分片和分布式存储实现了负载均衡和高可用性。在Cluster模式下，Redis将所有的键值对数据分散在多个节点上。每个节点负责一部分数据，称为槽位。通过对数据的分片，Cluster模式可以突破单节点的内存限制，实现更大规模的数据存储。</p>
+</li>
+<li>
+<img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="/2024/01/14/2024-1-14/v2-9794c9906173b4213e1398da2f0c8019_1440w.webp" alt="img" style="zoom:67%;">
+</li>
+<li>
+<p><strong>优点</strong>：</p>
+<ol>
+<li>数据分片，实现大规模数据存储。</li>
+<li>负载均衡，提高系统性能。</li>
+<li>自动故障转移，提高高可用性。</li>
+</ol>
+</li>
+<li>
+<p><strong>缺点</strong>：</p>
+<ol>
+<li>配置和管理较复杂。</li>
+<li>一些复杂的多键操作可能受到限制。</li>
+</ol>
+</li>
+<li>
+<p><strong>Cluster模式适用于以下场景</strong>：</p>
+<ol>
+<li>大规模数据存储：通过数据分片，突破单节点内存限制。</li>
+<li>高性能要求场景：通过负载均衡，提高系统性能。</li>
+<li>高可用性要求场景：通过自动故障转移，确保服务的持续可用。</li>
+</ol>
+<ul>
+<li>
+<p>总结：Cluster模式在提供高可用性的同时，实现了数据分片和负载均衡，适用于大规模数据存储和高性能要求的场景。然而，它的配置和管理相对复杂，且某些复杂的多键操作可能受到限制。</p>
+<p>​</p>
+</li>
+</ul>
+</li>
+</ul>
+<h6 id="%E6%80%BB%E7%BB%93" tabindex="-1">总结</h6>
+<ol>
+<li>
+<p><strong>主从复制模式</strong>：适用于数据备份和读写分离场景，配置简单，但在主节点故障时需要手动切换。</p>
+</li>
+<li>
+<p><strong>哨兵模式</strong>：在主从复制的基础上实现自动故障转移，提高高可用性，适用于高可用性要求较高的场景。</p>
+</li>
+<li>
+<p><strong>Cluster模式</strong>：通过数据分片和负载均衡实现大规模数据存储和高性能，适用于大规模数据存储和高性能要求场景。</p>
+<p>​</p>
+</li>
+</ol>
 <h3 id="spring" tabindex="-1">Spring</h3>
 <h4 id="1.-ioc%E5%92%8Caop%E8%AF%A6%E8%A7%A3" tabindex="-1">1. IoC和Aop详解</h4>
 <h5 id="1.1-ioc%E7%9A%84%E5%AE%9A%E4%B9%89" tabindex="-1">1.1 IoC的定义</h5>
@@ -2137,7 +2296,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">114.7k</span>&nbsp;字
+                class="white-color">116.1k</span>&nbsp;字
             
             
             
@@ -2499,7 +2658,7 @@ $(function () {
     </script>
     
   
-
+<script src="/live2dw/lib/L2Dwidget.min.js?243708c68e3ad401cd4432916889e600"></script><script>L2Dwidget.init({"dialog":{"enable":true,"hitokoto":true},"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"left","width":120,"height":160,"superSample":2,"voffset":0,"hoffset":20},"mobile":{"show":false},"react":{"opacity":0.7,"opacityOnHover":0.2}});</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
         <style>
             [bg-lazy] {
                 background-image: none !important;
@@ -2512,6 +2671,6 @@ $(function () {
                 preloadRatio: 3,
                 processImages: null,
             };
-        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(r){r.imageLazyLoadSetting.processImages=t;var e=r.imageLazyLoadSetting.isSPA,n=r.imageLazyLoadSetting.preloadRatio||1,c=a();function a(){var t=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")),e=Array.prototype.slice.call(document.querySelectorAll("[bg-lazy]"));return t.concat(e)}function t(){e&&(c=a());for(var t,o=0;o<c.length;o++)0<=(t=(t=c[o]).getBoundingClientRect()).bottom&&0<=t.left&&t.top<=(r.innerHeight*n||document.documentElement.clientHeight*n)&&function(){var t,e,n,a,i=c[o];e=function(){c=c.filter(function(t){return i!==t}),r.imageLazyLoadSetting.onImageLoaded&&r.imageLazyLoadSetting.onImageLoaded(i)},(t=i).hasAttribute("bg-lazy")?(t.removeAttribute("bg-lazy"),e&&e()):(n=new Image,a=t.getAttribute("data-original"),n.onload=function(){t.src=a,t.removeAttribute("data-original"),e&&e()},t.src!==a&&(n.src=a))}()}function i(){clearTimeout(t.tId),t.tId=setTimeout(t,500)}t(),document.addEventListener("scroll",i),r.addEventListener("resize",i),r.addEventListener("orientationchange",i)}(this);</script><script src="/live2dw/lib/L2Dwidget.min.js?243708c68e3ad401cd4432916889e600"></script><script>L2Dwidget.init({"dialog":{"enable":true,"hitokoto":true},"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"left","width":120,"height":160,"superSample":2,"voffset":0,"hoffset":20},"mobile":{"show":false},"react":{"opacity":0.7,"opacityOnHover":0.2}});</script><!-- hexo-inject:begin --><!-- hexo-inject:end --></body>
+        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(r){r.imageLazyLoadSetting.processImages=t;var e=r.imageLazyLoadSetting.isSPA,n=r.imageLazyLoadSetting.preloadRatio||1,c=a();function a(){var t=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")),e=Array.prototype.slice.call(document.querySelectorAll("[bg-lazy]"));return t.concat(e)}function t(){e&&(c=a());for(var t,o=0;o<c.length;o++)0<=(t=(t=c[o]).getBoundingClientRect()).bottom&&0<=t.left&&t.top<=(r.innerHeight*n||document.documentElement.clientHeight*n)&&function(){var t,e,n,a,i=c[o];e=function(){c=c.filter(function(t){return i!==t}),r.imageLazyLoadSetting.onImageLoaded&&r.imageLazyLoadSetting.onImageLoaded(i)},(t=i).hasAttribute("bg-lazy")?(t.removeAttribute("bg-lazy"),e&&e()):(n=new Image,a=t.getAttribute("data-original"),n.onload=function(){t.src=a,t.removeAttribute("data-original"),e&&e()},t.src!==a&&(n.src=a))}()}function i(){clearTimeout(t.tId),t.tId=setTimeout(t,500)}t(),document.addEventListener("scroll",i),r.addEventListener("resize",i),r.addEventListener("orientationchange",i)}(this);</script></body>
 
 </html>
