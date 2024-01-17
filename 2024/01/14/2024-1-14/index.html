@@ -631,21 +631,21 @@ charset="utf-8"></script> -->
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2024-01-16
+                    2024-01-17
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    7.4k
+                    9.9k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    26 分
+                    35 分
                 </div>
                 
 
@@ -1066,291 +1066,466 @@ mysql<span class="token operator">&gt;</span> <span class="token keyword">select
     }
     return cacheValue;
 }
+<pre class="line-numbers language-none"><code class="language-none">
+  + **布隆过滤器**
+
+    + 布隆过滤器是流程如下：
+
+      &lt;img src="2024-1-14/redis-cache-penetration-bloom-filter.png" alt="加入布隆过滤器之后的缓存处理流程图" style="zoom:50%;" /&gt;
+
+    + 需要注意的是：**布隆过滤器说某个元素存在，小概率会误判。布隆过滤器说某个元素不在，那么这个元素一定不在。**
+
+    + **当一个元素加入布隆过滤器中的时候，会进行哪些操作：**
+
+      1. 使用布隆过滤器中的哈希函数对元素值进行计算，得到哈希值（有几个哈希函数得到几个哈希值）。
+      2. 根据得到的哈希值，在位数组中把对应下标的值置为 1。
+
+    + **当我们需要判断一个元素是否存在于布隆过滤器的时候，会进行哪些操作：**
+
+      1. 对给定元素再次进行相同的哈希计算；
+      2. 得到值之后判断位数组中的每个元素是否都为 1，如果值都为 1，那么说明这个值在布隆过滤器中，如果存在一个值不为 1，说明该元素不在布隆过滤器中。
+
+    + 然后，一定会出现这样一种情况：**不同的字符串可能哈希出来的位置相同。** （可以适当增加位数组大小或者调整我们的哈希函数来降低概率）
+
+
+###### 2. 缓存击穿
+
++ **问题描述**：请求的key是热点数据（也就是系统中频繁访问的数据），**某个数据**是**存在于数据库当中，但是并不存在于缓存当中**。（通常是由于缓存中的那份数据已经过期了）
+
++ 举个例子：秒杀进行过程中，缓存中的某个秒杀商品的数据突然过期，这就导致瞬时大量对该商品的请求直接落到数据库上，对数据库造成了巨大的压力。
+
+  &lt;img src="2024-1-14/redis-cache-breakdown.png" alt="缓存击穿" style="zoom:50%;" /&gt;
+
++ **解决方法**：
+
+  + 设置热点数据永不过期或者过期的时间较长
+  + 针对热点数据提前预热装入缓存中并设置合理的过期时间
+  + 请求数据库写数据到缓存之前，先设置互斥锁，保证只有一个请求会落到数据库中，减少数据库的压力
+
++ **总结缓存穿透和缓存击穿的区别？**
+
+  + 缓存穿透当中，请求的key既不存在于缓存中，也不存在于数据库当中
+  + 缓存击穿当中，key对应的是热点数据，该数据存在于数据库当中，但是并不存在于缓存当中（通常是因为缓存中的那份数据已经过期了~）
+
+###### 3. 缓存雪崩
+
++ **问题描述：** **缓存在同一时间大面积的失效，导致大量的请求都直接落到了数据库上，对数据库造成了巨大的压力。** 这就好比雪崩一样，摧枯拉朽之势，数据库的压力可想而知，可能直接就被这么多请求弄宕机了。
+
+  &lt;img src="2024-1-14/redis-cache-avalanche.png" alt="缓存雪崩" style="zoom:50%;" /&gt;
+
++ **解决方法**：
+
+  **针对 Redis 服务不可用的情况：**
+
+  1. 采用 Redis 集群，避免单机出现问题整个缓存服务都没办法使用。
+  2. 限流，避免同时处理大量的请求。
+  3. 多级缓存，例如本地缓存+Redis 缓存的组合，当 Redis 缓存出现问题时，还可以从本地缓存中获取到部分数据。
+
+  **针对热点缓存失效的情况：**
+
+  1. 设置不同的失效时间比如随机设置缓存的失效时间。
+  2. 缓存永不失效（不太推荐，实用性太差）。
+  3. 缓存预热，也就是在程序启动后或运行过程中，主动将热点数据加载到缓存中。
+     + 常见的缓存预热有：1. 定时服务，定时触发缓存预热的逻辑，将数据库中的热点数据查询出来并存入缓存中去。2. 使用消息队列，比如kafka，异地进行缓存预热，将数据库中的热点数据的主键或者ID发送到消息队列中去，由缓存服务消费消息队列的数据，根据主键或者ID查询数据库中的数据，并更新回缓存。
+
+##### 2.4 Redis中常用的缓存读写策略
+
+###### 1. 旁路缓存模式
+
++ 比较适合用于缓存读写模式，适合请求读取较多的场景；
+
++ 写：
+
+  + **先更新db**
+  + **后直接删除缓存cache**
+
+  &gt; 如果顺序相反，先删除cache，再进行db的更新的话？
+  &gt;
+  &gt; + 可能会造成 **数据库（db）和缓存（Cache）数据不一致**的问题。比如先是删除了缓存中的数据，再更新db。此时更新操作失败或被中断，则Redis中的缓存已经被删除，但数据库中的数据却没有更新，导致缓存与数据库不一致。这时候如果有其他应用程序直接从缓存中读取数据，就会读到错误的数据。
+  &gt; + 缓存击穿：如果在缓存被删除后，有大量的并发请求直接查询数据库，而此时缓存还没有重新生成，那么这些请求就会全部打到数据库上
+  &gt; + 采取的应对措施：
+  &gt;   1. 按照先更新数据库，再删除cache数据顺序
+  &gt;   2. 使用互斥锁避免缓存击穿
+  &gt;   3. 使用热点数据预加载，在系统启动或低峰期，预先将热点数据加载到缓存中，保证缓存中的数据始终是最新的
+
+  ​							
+
++ 读：
+
+  + 从cache中读取数据，读取到数据就直接返回
+  + cache中读取不到数据的话，就从db中读取数据返回
+  + 再把数据放入cache中。
+
++ 下面图示分别是写和读操作：
+
+&lt;img src="2024-1-14/cache-aside-write.png" alt="img" style="zoom:50%;" /&gt;&lt;img src="2024-1-14/cache-aside-read.png" alt="img" style="zoom:50%;" /&gt;    
+
++  **缺陷**：
+  1. 首次的请求数据一定不在cache当中（可以将热点数据提前放入cache中解决）
+  2. 写操作比较频繁会导致cache中的数据被频繁删除，影响缓存的命中率
+
+###### 2. 读写穿透
+
++ 写操作：
+
+  &lt;img src="2024-1-14/write-through.png" alt="img" style="zoom:67%;" /&gt;
+
++ 读操作：
+
+  &lt;img src="2024-1-14/read-through.png" alt="img" style="zoom:80%;" /&gt;
+
++ 缺陷：和 Cache Aside Pattern 一样， Read-Through Pattern 也有首次请求数据一定不再 cache 的问题，对于热点数据可以提前放入缓存中。
+
+###### 3. 异步缓存写入
+
++ 与前两个又有很大的不同：**Read/Write Through 是同步更新 cache 和 db，而 Write Behind 则是只更新缓存，不直接更新 db，而是改为异步批量的方式来更新 db。**
++ 不足：比如 cache 数据可能还没异步更新 db 的话，cache 服务可能就就挂掉了。
++ 适合场景：db的读写性能很高，适合一些数据经常变化又对数据一致性要求没那么高的场景，比如浏览量、点赞量。
+
+
+
+##### 2.5 Redis中的持久化机制
+
++ 持久化就是把内存中的数据写入到硬盘中去，大部分原因是为了重用数据，或者是需要做数据的同步。
+
+###### 1. RDB持久化
+
+Redis 可以通过创建快照来获得存储在内存里面的数据在 **某个时间点** 上的副本。
+
+- RDB是将Redis在内存中的数据以二进制格式快照的方式写入磁盘，生成一个RDB文件。
+- RDB持久化适合用于备份，将快照复制到其他服务器中从而创建具有相同数据的服务器符本（Redis主从结构，主要用于提高redis性能）、灾难恢复和离线数据分析等场景。
+- RDB持久化可以手动触发，也可以基于配置项设置定期自动触发。
+- RDB文件通过压缩和序列化来减小文件大小。
+- RDB加载时，Redis会读取RDB文件并将其中的数据恢复到内存中。
+
+
+
+###### 2. AOF持久化
+
+流程分为下面的几步：
+
+1. **命令追加（append）**：所有的写命令会追加到 AOF 缓冲区中。
+
+2. **文件写入（write）**：将 AOF 缓冲区的数据写入到 AOF 文件中。这一步需要调用`write`函数（系统调用），`write`将数据写入到了系统内核缓冲区之后直接返回了（延迟写）。注意！！！此时并没有同步到磁盘。
+3. **文件同步（fsync）**：AOF 缓冲区根据对应的持久化方式（ `fsync` 策略）向硬盘做同步操作。这一步需要调用 `fsync` 函数（系统调用）， `fsync` 针对单个文件操作，对其进行强制硬盘同步，`fsync` 将阻塞直到写入磁盘完成后返回，保证了数据持久化。
+4. **文件重写（rewrite）**：随着 AOF 文件越来越大，需要定期对 AOF 文件进行重写，达到压缩的目的。
+5. **重启加载（load）**：当 Redis 重启时，可以加载 AOF 文件进行数据恢复。
+
+&lt;img src="2024-1-14/aof-work-process.png" alt="AOF 工作基本流程" style="zoom:67%;" /&gt;
+
+​					
+
+- AOF以日志追加的方式记录所有的写操作指令，将这些指令写入AOF文件。
+- AOF文件记录了构建当前数据集状态所需的所有写操作。
+- AOF持久化适合用于保证数据的安全性和完整性。
+- AOF文件的写入可以使用不同的策略：每个写命令、每秒钟同步一次或者按条件触发。
+- AOF重写可以通过后台进程将AOF文件压缩为更小的文件，同时保留相同的数据集。
+
+###### 3. 如何选择RDB和AOF？
+
++ 选择使用RDB还是AOF持久化取决于对数据恢复能力、性能和存储空间的需求。下面是对RDB和AOF持久化的优劣势进行分析：
+
+**RDB持久化的优势：**
+
+1. 性能：RDB持久化生成的快照文件是以二进制格式保存在磁盘上的，加载时比AOF持久化更快速。
+2. 存储空间：RDB文件通常比AOF文件更小，因为它们经过了压缩和序列化处理，适用于需要节省磁盘空间的场景。
+3. 恢复速度：由于RDB文件保存了完整的数据快照，可以快速恢复数据，适合用于备份和灾难恢复。
+
+**RDB持久化的劣势：**
+
+1. 数据丢失：由于RDB是定期生成的快照，如果Redis意外关闭或崩溃，最后一次生成的RDB文件中的数据可能会有丢失。
+2. 数据恢复不精确：RDB只能提供最近一次生成快照时的数据状态，无法提供更细粒度的操作历史。
+
+**AOF持久化的优势：**
+
+1. 数据安全性：AOF持久化记录了所有写操作指令，通过重放这些指令可以还原完整的数据状态，可以提供更高的数据安全性。
+2. 数据恢复精确：AOF持久化记录了每个写操作，可以精确到指令级别地进行数据恢复。
+3. 可读性：AOF文件是一个文本文件，可以查看和分析其中的写操作历史。
+
+**AOF持久化的劣势：**
+
+1. 性能：相对于RDB持久化，AOF持久化会增加写操作的负担，可能对性能造成一定影响。
+2. 存储空间：由于AOF文件保存了完整的写操作历史，相比RDB文件，AOF文件通常更大。
+
+**综上所述，根据实际需求可以选择以下策略：**
+
+- 如果对数据恢复速度、存储空间和加载性能要求较高，且可以接受一定程度的数据丢失，可以选择使用RDB持久化。
+- 如果对数据安全性和精确恢复要求较高，可以选择使用AOF持久化。
+- 对于更高的数据安全性和灾难恢复能力，可以同时使用RDB和AOF持久化，以提供多重保障。
+
+##### 2.6 Redis的线程模式
+
++ 多线程和单线程总结：
+
+  &gt; + Redis 选择使用单线程模型处理客户端的请求主要还是因为 CPU 不是 Redis 服务器的瓶颈，所以使用多线程模型带来的性能提升并不能抵消它带来的开发成本和维护成本，系统的性能瓶颈也主要在网络 I/O 操作上；
+  &gt;
+  &gt; + Redis 引入多线程操作也是出于性能上的考虑，对于一些大键值对的删除操作，通过多线程非阻塞地释放内存空间也能减少对 Redis 主线程阻塞的时间，提高执行的效率。
+
+  ​				
+
+### Spring
+
+#### 1. IoC和Aop详解
+
+##### 1.1 IoC的定义
+
++ 控制反转/反转控制，本质上是Java开发领域对象的创建和管理的问题。
++ **传统的开发**：使用的是在类A中通过new 关键字将B的对象 new出来；**使用IoC的思想进行开发：**通过IoC的容器（Spring框架）帮助我们进行实例化对象，我们需要的对象直接从IoC容器中查找即可。
++ 控制和反转
+  + **控制**：指的是对象的创建（实例化、管理）的权力
+  + **反转**：控制权交给外部的环境（IoC容器）
+
+&lt;img src="2024-1-14/frc-365faceb5697f04f31399937c059c162.png" alt="IoC 图解" style="zoom:67%;" /&gt;
+
+​						
+
+##### 1.2 IoC解决的问题？
+
+IoC 的思想就是两方之间不互相依赖，由第三方容器来管理相关资源。这样有什么好处呢？
+
+1. 对象之间的耦合度或者说依赖程度降低；
+
+2. 资源变的容易管理；比如你用 Spring 容器提供的话很容易就可以实现一个单例
+
+   ​			
+
++ 使用IoC的思想，使得我们将对象的控制权（创建、管理）交给IoC容器进行管理，我们在使用的时候直接向IoC容器去要就行：
+
+  &lt;img src="2024-1-14/why-ioc-2.png" alt="img" style="zoom:67%;" /&gt;
+
+  + 上图中的IUserDao的接口开发，不需要重新在Service层new 新的对象实现类，而是直接交给Spring容器进行管理。（加入注解@Autowired）
+
++ IoC 最常见以及最合理的实现方式叫做依赖注入（Dependency Injection，简称 DI）。
+    ​			
+
+##### 1.3 AOP定义
+
++ AOP就是面向切面的编程，**目的是将横切关注点**（如日志记录、事务管理、权限控制、接口限流、接口幂等）**从核心业务逻辑中分离出来**，实现代码的复用和解耦，**提高代码的可维护性和可扩展性。**
+
+##### 1.4 AOP为什么叫面向切面编程
+
++ AOP的核心就是将横切关注点从核心业务逻辑中分离出来，形成一个个的切面（ASPECT） 
+
++ **AOP中的关键术语**：
+
+  - **横切关注点（cross-cutting concerns）** ：多个类或对象中的公共行为（如日志记录、事务管理、权限控制、接口限流、接口幂等等）。
+  - **切面（Aspect）**：对横切关注点进行封装的类，一个切面是一个类。切面可以定义多个通知，用来实现具体的功能。
+  - **连接点（JoinPoint）**：连接点是方法调用或者方法执行时的某个特定时刻（如方法调用、异常抛出等）。
+  - **通知（Advice）**：通知就是切面在某个连接点要执行的操作。通知有五种类型，分别是前置通知（Before）、后置通知（After）、返回通知（AfterReturning）、异常通知（AfterThrowing）和环绕通知（Around）。前四种通知都是在目标方法的前后执行，而环绕通知可以控制目标方法的执行过程。
+  - **切点（Pointcut）**：一个切点是一个表达式，它用来匹配哪些连接点需要被切面所增强。切点可以通过注解、正则表达式、逻辑运算等方式来定义。比如 `execution(* com.xyz.service..*(..))`匹配 `com.xyz.service` 包及其子包下的类或接口。
+  - **织入（Weaving）**：织入是将切面和目标对象连接起来的过程，也就是将通知应用到切点匹配的连接点上。常见的织入时机有两种，分别是编译期织入（AspectJ）和运行期织入（AspectJ）。
+
+  ​				
+
+##### 1.5 AOP的应用示例
+
+1. 创建一个切面类 `LoggingAspect`，用于定义日志记录的横切逻辑：
+
+```Java
+@Aspect
+@Component
+public class LoggingAspect {
+
+    @Before("execution(* com.example.service.*.*(..))")
+    public void logMethodExecution(JoinPoint joinPoint) {
+        String className = joinPoint.getTarget().getClass().getSimpleName();
+        String methodName = joinPoint.getSignature().getName();
+        System.out.println("Executing method: " + className + "." + methodName);
+    }
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 </code></pre>
 </li>
 </ul>
 </li>
-<li>
-<p><strong>布隆过滤器</strong></p>
-<ul>
-<li>
-<p>布隆过滤器是流程如下：</p>
-<img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="/2024/01/14/2024-1-14/redis-cache-penetration-bloom-filter.png" alt="加入布隆过滤器之后的缓存处理流程图" style="zoom:50%;">
+</ul>
 </li>
-<li>
-<p>需要注意的是：<strong>布隆过滤器说某个元素存在，小概率会误判。布隆过滤器说某个元素不在，那么这个元素一定不在。</strong></p>
-</li>
-<li>
-<p><strong>当一个元素加入布隆过滤器中的时候，会进行哪些操作：</strong></p>
-<ol>
-<li>使用布隆过滤器中的哈希函数对元素值进行计算，得到哈希值（有几个哈希函数得到几个哈希值）。</li>
-<li>根据得到的哈希值，在位数组中把对应下标的值置为 1。</li>
+</ul>
+<ol start="2">
+<li>创建一个业务服务类<code>UserService</code>，其中包含一个需要记录日志的方法：</li>
 </ol>
-</li>
-<li>
-<p><strong>当我们需要判断一个元素是否存在于布隆过滤器的时候，会进行哪些操作：</strong></p>
-<ol>
-<li>对给定元素再次进行相同的哈希计算；</li>
-<li>得到值之后判断位数组中的每个元素是否都为 1，如果值都为 1，那么说明这个值在布隆过滤器中，如果存在一个值不为 1，说明该元素不在布隆过滤器中。</li>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Service</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">UserService</span><span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">createUser</span><span class="token punctuation">(</span><span class="token class-name">String</span> username<span class="token punctuation">,</span><span class="token class-name">String</span> <span class="token class-name">Password</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token comment">// 业务逻辑代码</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"Creating user: "</span><span class="token operator">+</span>username<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ol start="3">
+<li>在应用程序的配置文件中，启用的是AOP并开始扫描切面类</li>
 </ol>
-</li>
-<li>
-<p>然后，一定会出现这样一种情况：<strong>不同的字符串可能哈希出来的位置相同。</strong> （可以适当增加位数组大小或者调整我们的哈希函数来降低概率）</p>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h6 id="2.-%E7%BC%93%E5%AD%98%E5%87%BB%E7%A9%BF" tabindex="-1">2. 缓存击穿</h6>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Configuration</span>
+<span class="token annotation punctuation">@ComponentScan</span><span class="token punctuation">(</span>basePackages<span class="token operator">=</span><span class="token string">"com.example"</span><span class="token punctuation">)</span>
+<span class="token annotation punctuation">@EnableAspectAutoProxy</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">AppConfig</span><span class="token punctuation">{</span>
+    <span class="token comment">// 配置其他的Bean或设置</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>​</p>
 <ul>
-<li>
-<p><strong>问题描述</strong>：请求的key是热点数据（也就是系统中频繁访问的数据），<strong>某个数据</strong>是<strong>存在于数据库当中，但是并不存在于缓存当中</strong>。（通常是由于缓存中的那份数据已经过期了）</p>
-</li>
-<li>
-<p>举个例子：秒杀进行过程中，缓存中的某个秒杀商品的数据突然过期，这就导致瞬时大量对该商品的请求直接落到数据库上，对数据库造成了巨大的压力。</p>
-<img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="/2024/01/14/2024-1-14/redis-cache-breakdown.png" alt="缓存击穿" style="zoom:50%;">
-</li>
-<li>
-<p><strong>解决方法</strong>：</p>
-<ul>
-<li>设置热点数据永不过期或者过期的时间较长</li>
-<li>针对热点数据提前预热装入缓存中并设置合理的过期时间</li>
-<li>请求数据库写数据到缓存之前，先设置互斥锁，保证只有一个请求会落到数据库中，减少数据库的压力</li>
+<li>在以上示例中，切面类 <code>LoggingAspect</code> 使用了注解 <code>@Aspect</code> 和 <code>@Component</code> 来标识它是一个切面，并且使用 <code>@Before</code> 注解来定义了一个前置通知，在目标方法执行前记录日志。</li>
+<li>通过配置文件中的 <code>@EnableAspectJAutoProxy</code> 注解，应用程序启用了AOP的自动代理功能。当调用 <code>UserService</code> 的 <code>createUser</code> 方法时，AOP框架会自动检测并织入 <code>LoggingAspect</code> 中定义的日志记录逻辑。</li>
+<li>这样，每次调用 <code>UserService</code> 的方法时，都会先执行切面类中定义的日志记录逻辑，从而实现了方法级别的日志记录，而无需在每个方法中重复编写日志代码。</li>
 </ul>
-</li>
-<li>
-<p><strong>总结缓存穿透和缓存击穿的区别？</strong></p>
-<ul>
-<li>缓存穿透当中，请求的key既不存在于缓存中，也不存在于数据库当中</li>
-<li>缓存击穿当中，key对应的是热点数据，该数据存在于数据库当中，但是并不存在于缓存当中（通常是因为缓存中的那份数据已经过期了~）</li>
-</ul>
-</li>
-</ul>
-<h6 id="3.-%E7%BC%93%E5%AD%98%E9%9B%AA%E5%B4%A9" tabindex="-1">3. 缓存雪崩</h6>
-<ul>
-<li>
-<p><strong>问题描述：</strong> <strong>缓存在同一时间大面积的失效，导致大量的请求都直接落到了数据库上，对数据库造成了巨大的压力。</strong> 这就好比雪崩一样，摧枯拉朽之势，数据库的压力可想而知，可能直接就被这么多请求弄宕机了。</p>
-<img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="/2024/01/14/2024-1-14/redis-cache-avalanche.png" alt="缓存雪崩" style="zoom:50%;">
-</li>
-<li>
-<p><strong>解决方法</strong>：</p>
-<p><strong>针对 Redis 服务不可用的情况：</strong></p>
+<p><img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="/2024/01/14/2024-1-14/crosscut-logic-and-businesslogic-separation%20%20%20%20%20%20.png" alt="img"></p>
+<p>​</p>
+<h4 id="2.-spring%E4%B8%AD%E7%9A%84%E4%BA%8B%E5%8A%A1" tabindex="-1">2. Spring中的事务</h4>
+<h5 id="2.1-%E4%BA%8B%E5%8A%A1%E7%9A%84%E7%89%B9%E6%80%A7%EF%BC%88acid%EF%BC%89" tabindex="-1">2.1 事务的特性（ACID）</h5>
 <ol>
-<li>采用 Redis 集群，避免单机出现问题整个缓存服务都没办法使用。</li>
-<li>限流，避免同时处理大量的请求。</li>
-<li>多级缓存，例如本地缓存+Redis 缓存的组合，当 Redis 缓存出现问题时，还可以从本地缓存中获取到部分数据。</li>
+<li><strong>原子性</strong>：事务是最小的执行单位，不允许分割。事务的原子性确保动作要么全部完成，要么就全部都不起作用；</li>
+<li><strong>一致性</strong>：执行事务的前后，数据需要保持一致，例如转账业务中，无论事务是否成功，转账者和收款人的总额应该都是保持不变的；</li>
+<li><strong>隔离性</strong>：并发访问数据库时，一个用户的事务不被其他事务所干扰，各并发事务之间数据库是独立的；</li>
+<li><strong>持久性</strong>：一个事务被提交之后。它对数据库中数据的改变是持久的，即使数据库发生故障也不应该对其有任何影响。</li>
 </ol>
-<p><strong>针对热点缓存失效的情况：</strong></p>
-<ol>
-<li>设置不同的失效时间比如随机设置缓存的失效时间。</li>
-<li>缓存永不失效（不太推荐，实用性太差）。</li>
-<li>缓存预热，也就是在程序启动后或运行过程中，主动将热点数据加载到缓存中。
+<p><img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="https://oss.javaguide.cn/github/javaguide/mysql/AID-%3EC.png" alt="AID->C"></p>
 <ul>
-<li>常见的缓存预热有：1. 定时服务，定时触发缓存预热的逻辑，将数据库中的热点数据查询出来并存入缓存中去。2. 使用消息队列，比如kafka，异地进行缓存预热，将数据库中的热点数据的主键或者ID发送到消息队列中去，由缓存服务消费消息队列的数据，根据主键或者ID查询数据库中的数据，并更新回缓存。</li>
+<li>
+<p>MySQL是如何保证原子性？</p>
+<ul>
+<li>
+<p>在异常发生的时候，对已经执行了的操作进行回滚，在Mysql中，恢复机制是通过<code>undo log</code>进行实现的。</p>
+</li>
+<li>
+<p>如果执行过程中遇到异常的话，我们直接利用 <strong>回滚日志</strong> 中的信息将数据回滚到修改之前的样子。并且，回滚日志会先于数据持久化到磁盘上。</p>
+<p>​</p>
+</li>
 </ul>
+</li>
+</ul>
+<h5 id="2.2-spring%E4%B8%AD%E5%AF%B9%E4%BA%8B%E5%8A%A1%E7%AE%A1%E7%90%86%E7%9A%84%E6%94%AF%E6%8C%81" tabindex="-1">2.2 Spring中对事务管理的支持</h5>
+<ol>
+<li>
+<p>编程式事务管理</p>
+<ul>
+<li>通过<code>TransactionTemplate</code>或者是<code>TransactionManager</code>手动管理事务。</li>
+<li>实际操作很少用</li>
+</ul>
+</li>
+<li>
+<p>声明式事务管理</p>
+<ul>
+<li>推荐使用（代码侵入性最小），实际是通过 AOP 实现（基于<code>@Transactional</code> 的全注解方式使用最多）。</li>
+<li>使用 <code>@Transactional</code>注解进行事务管理的示例代码如下：</li>
+</ul>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Transactional</span><span class="token punctuation">(</span>propagation <span class="token operator">=</span> <span class="token class-name">Propagation</span><span class="token punctuation">.</span><span class="token constant">REQUIRED</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token keyword">void</span> aMethod <span class="token punctuation">{</span>
+  <span class="token comment">//do something</span>
+  <span class="token class-name">B</span> b <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">B</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token class-name">C</span> c <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">C</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  b<span class="token punctuation">.</span><span class="token function">bMethod</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  c<span class="token punctuation">.</span><span class="token function">cMethod</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>​</p>
 </li>
 </ol>
-</li>
+<h5 id="2.3-%E4%BA%8B%E5%8A%A1%E7%86%9F%E6%82%89%E8%AF%A6%E8%A7%A3%E4%B9%8B%E4%BA%8B%E5%8A%A1%E4%BC%A0%E6%92%AD%E8%A1%8C%E4%B8%BA" tabindex="-1">2.3 事务熟悉详解之事务传播行为</h5>
+<ul>
+<li><strong>事务传播行为是为了解决业务层方法之间互相调用的事务问题</strong>。</li>
+<li>当事务方法被另一个事务方法调用时，必须指定事务应该如何传播。例如：方法可能继续在现有事务中运行，也可能开启一个新事务，并在自己的事务中运行。</li>
 </ul>
-<h5 id="2.4-redis%E4%B8%AD%E5%B8%B8%E7%94%A8%E7%9A%84%E7%BC%93%E5%AD%98%E8%AF%BB%E5%86%99%E7%AD%96%E7%95%A5" tabindex="-1">2.4 Redis中常用的缓存读写策略</h5>
-<h6 id="1.-%E6%97%81%E8%B7%AF%E7%BC%93%E5%AD%98%E6%A8%A1%E5%BC%8F" tabindex="-1">1. 旁路缓存模式</h6>
-<ul>
+<ol>
 <li>
-<p>比较适合用于缓存读写模式，适合请求读取较多的场景；</p>
-</li>
-<li>
-<p>写：</p>
+<p><strong><code>TransactionDefinition.PROPAGATION_REQUIRED</code></strong></p>
 <ul>
-<li><strong>先更新db</strong></li>
-<li><strong>后直接删除缓存cache</strong></li>
+<li>使用的最多的一个事务传播行为，我们平时经常使用的<code>@Transactional</code>注解默认使用就是这个事务传播行为。如果当前存在事务，则加入该事务；如果当前没有事务，则创建一个新的事务。也就是说：</li>
+</ul>
+<ul>
+<li>如果外部方法没有开启事务的话，<code>Propagation.REQUIRED</code>修饰的内部方法会新开启自己的事务，且开启的事务相互独立，互不干扰。</li>
+<li>如果外部方法开启事务并且被<code>Propagation.REQUIRED</code>的话，所有<code>Propagation.REQUIRED</code>修饰的内部方法和外部方法均属于同一事务 ，只要一个方法回滚，整个事务均回滚。</li>
 </ul>
 <blockquote>
-<p>如果顺序相反，先删除cache，再进行db的更新的话？</p>
-<ul>
-<li>可能会造成 <strong>数据库（db）和缓存（Cache）数据不一致</strong>的问题。比如先是删除了缓存中的数据，再更新db。此时更新操作失败或被中断，则Redis中的缓存已经被删除，但数据库中的数据却没有更新，导致缓存与数据库不一致。这时候如果有其他应用程序直接从缓存中读取数据，就会读到错误的数据。</li>
-<li>缓存击穿：如果在缓存被删除后，有大量的并发请求直接查询数据库，而此时缓存还没有重新生成，那么这些请求就会全部打到数据库上</li>
-<li>采取的应对措施：
-<ol>
-<li>按照先更新数据库，再删除cache数据顺序</li>
-<li>使用互斥锁避免缓存击穿</li>
-<li>使用热点数据预加载，在系统启动或低峰期，预先将热点数据加载到缓存中，保证缓存中的数据始终是最新的</li>
-</ol>
-</li>
-</ul>
+<p>举例：如果<code>aMethod()</code>和<code>bMethod()</code>使用的都是<code>PROPAGATION_REQUIRED</code>传播行为的话，两者使用的就是同一个事务，只要其中一个方法回滚，整个事务均回滚。</p>
 </blockquote>
-<p>​</p>
+<pre class="line-numbers language-Java" data-language="Java"><code class="language-Java">@Service
+Class A {
+    @Autowired
+    B b;
+    @Transactional(propagation = Propagation.REQUIRED)
+    public void aMethod {
+        //do something
+        b.bMethod();
+    }
+}
+@Service
+Class B {
+    @Transactional(propagation = Propagation.REQUIRED)
+    public void bMethod {
+       //do something
+    }
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 </li>
 <li>
-<p>读：</p>
+<p><strong><code>TransactionDefinition.PROPAGATION_REQUIRES_NEW</code></strong></p>
 <ul>
-<li>从cache中读取数据，读取到数据就直接返回</li>
-<li>cache中读取不到数据的话，就从db中读取数据返回</li>
-<li>再把数据放入cache中。</li>
+<li>创建一个新的事务，如果当前存在事务，则把当前事务挂起。也就是说不管外部方法是否开启事务，<code>Propagation.REQUIRES_NEW</code>修饰的内部方法会新开启自己的事务，且开启的事务相互独立，互不干扰。</li>
+<li>如果我们上面的<code>bMethod()</code>使用<code>PROPAGATION_REQUIRES_NEW</code>事务传播行为修饰，<code>aMethod</code>还是用<code>PROPAGATION_REQUIRED</code>修饰的话。如果<code>aMethod()</code>发生异常回滚，<code>bMethod()</code>不会跟着回滚，因为 <code>bMethod()</code>开启了独立的事务。但是，如果 <code>bMethod()</code>抛出了未被捕获的异常并且这个异常满足事务回滚规则的话,<code>aMethod()</code>同样也会回滚，因为这个异常被 <code>aMethod()</code>的事务管理机制检测到了。</li>
 </ul>
 </li>
 <li>
-<p>下面图示分别是写和读操作：</p>
-</li>
-</ul>
-<p><img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="/2024/01/14/2024-1-14/cache-aside-write.png" alt="img" style="zoom:50%;"><img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="/2024/01/14/2024-1-14/cache-aside-read.png" alt="img" style="zoom:50%;"></p>
-<ul>
-<li><strong>缺陷</strong>：</li>
-</ul>
-<ol>
-<li>首次的请求数据一定不在cache当中（可以将热点数据提前放入cache中解决）</li>
-<li>写操作比较频繁会导致cache中的数据被频繁删除，影响缓存的命中率</li>
-</ol>
-<h6 id="2.-%E8%AF%BB%E5%86%99%E7%A9%BF%E9%80%8F" tabindex="-1">2. 读写穿透</h6>
+<p><strong><code>TransactionDefinition.PROPAGATION_NESTED</code></strong></p>
 <ul>
 <li>
-<p>写操作：</p>
-<img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="/2024/01/14/2024-1-14/write-through.png" alt="img" style="zoom:67%;">
-</li>
-<li>
-<p>读操作：</p>
-<img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="/2024/01/14/2024-1-14/read-through.png" alt="img" style="zoom:80%;">
-</li>
-<li>
-<p>缺陷：和 Cache Aside Pattern 一样， Read-Through Pattern 也有首次请求数据一定不再 cache 的问题，对于热点数据可以提前放入缓存中。</p>
-</li>
-</ul>
-<h6 id="3.-%E5%BC%82%E6%AD%A5%E7%BC%93%E5%AD%98%E5%86%99%E5%85%A5" tabindex="-1">3. 异步缓存写入</h6>
+<p>如果当前存在事务，就在嵌套事务内执行；如果当前没有事务，就执行与<code>TransactionDefinition.PROPAGATION_REQUIRED</code>类似的操作。也就是说：</p>
 <ul>
-<li>与前两个又有很大的不同：<strong>Read/Write Through 是同步更新 cache 和 db，而 Write Behind 则是只更新缓存，不直接更新 db，而是改为异步批量的方式来更新 db。</strong></li>
-<li>不足：比如 cache 数据可能还没异步更新 db 的话，cache 服务可能就就挂掉了。</li>
-<li>适合场景：db的读写性能很高，适合一些数据经常变化又对数据一致性要求没那么高的场景，比如浏览量、点赞量。</li>
+<li>在外部方法开启事务的情况下，在内部开启一个新的事务，作为嵌套事务存在。</li>
+<li>如果外部方法无事务，则单独开启一个事务，与 <code>PROPAGATION_REQUIRED</code> 类似。</li>
 </ul>
-<h5 id="2.5-redis%E4%B8%AD%E7%9A%84%E6%8C%81%E4%B9%85%E5%8C%96%E6%9C%BA%E5%88%B6" tabindex="-1">2.5 Redis中的持久化机制</h5>
-<ul>
-<li>持久化就是把内存中的数据写入到硬盘中去，大部分原因是为了重用数据，或者是需要做数据的同步。</li>
+</li>
+<li>
+<p>如果 <code>bMethod()</code> 回滚的话，<code>aMethod()</code>不会回滚。如果 <code>aMethod()</code> 回滚的话，<code>bMethod()</code>会回滚</p>
+</li>
 </ul>
-<h6 id="1.-rdb%E6%8C%81%E4%B9%85%E5%8C%96" tabindex="-1">1. RDB持久化</h6>
-<p>Redis 可以通过创建快照来获得存储在内存里面的数据在 <strong>某个时间点</strong> 上的副本。</p>
-<ul>
-<li>RDB是将Redis在内存中的数据以二进制格式快照的方式写入磁盘，生成一个RDB文件。</li>
-<li>RDB持久化适合用于备份，将快照复制到其他服务器中从而创建具有相同数据的服务器符本（Redis主从结构，主要用于提高redis性能）、灾难恢复和离线数据分析等场景。</li>
-<li>RDB持久化可以手动触发，也可以基于配置项设置定期自动触发。</li>
-<li>RDB文件通过压缩和序列化来减小文件大小。</li>
-<li>RDB加载时，Redis会读取RDB文件并将其中的数据恢复到内存中。</li>
-</ul>
-<h6 id="2.-aof%E6%8C%81%E4%B9%85%E5%8C%96" tabindex="-1">2. AOF持久化</h6>
-<p>流程分为下面的几步：</p>
-<ol>
-<li>
-<p><strong>命令追加（append）</strong>：所有的写命令会追加到 AOF 缓冲区中。</p>
-</li>
-<li>
-<p><strong>文件写入（write）</strong>：将 AOF 缓冲区的数据写入到 AOF 文件中。这一步需要调用<code>write</code>函数（系统调用），<code>write</code>将数据写入到了系统内核缓冲区之后直接返回了（延迟写）。注意！！！此时并没有同步到磁盘。</p>
-</li>
-<li>
-<p><strong>文件同步（fsync）</strong>：AOF 缓冲区根据对应的持久化方式（ <code>fsync</code> 策略）向硬盘做同步操作。这一步需要调用 <code>fsync</code> 函数（系统调用）， <code>fsync</code> 针对单个文件操作，对其进行强制硬盘同步，<code>fsync</code> 将阻塞直到写入磁盘完成后返回，保证了数据持久化。</p>
-</li>
-<li>
-<p><strong>文件重写（rewrite）</strong>：随着 AOF 文件越来越大，需要定期对 AOF 文件进行重写，达到压缩的目的。</p>
-</li>
-<li>
-<p><strong>重启加载（load）</strong>：当 Redis 重启时，可以加载 AOF 文件进行数据恢复。</p>
 </li>
 </ol>
-<img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="/2024/01/14/2024-1-14/aof-work-process.png" alt="AOF 工作基本流程" style="zoom:67%;">
-<p>​</p>
-<ul>
-<li>AOF以日志追加的方式记录所有的写操作指令，将这些指令写入AOF文件。</li>
-<li>AOF文件记录了构建当前数据集状态所需的所有写操作。</li>
-<li>AOF持久化适合用于保证数据的安全性和完整性。</li>
-<li>AOF文件的写入可以使用不同的策略：每个写命令、每秒钟同步一次或者按条件触发。</li>
-<li>AOF重写可以通过后台进程将AOF文件压缩为更小的文件，同时保留相同的数据集。</li>
-</ul>
-<h6 id="3.-%E5%A6%82%E4%BD%95%E9%80%89%E6%8B%A9rdb%E5%92%8Caof%EF%BC%9F" tabindex="-1">3. 如何选择RDB和AOF？</h6>
-<ul>
-<li>选择使用RDB还是AOF持久化取决于对数据恢复能力、性能和存储空间的需求。下面是对RDB和AOF持久化的优劣势进行分析：</li>
-</ul>
-<p><strong>RDB持久化的优势：</strong></p>
-<ol>
-<li>性能：RDB持久化生成的快照文件是以二进制格式保存在磁盘上的，加载时比AOF持久化更快速。</li>
-<li>存储空间：RDB文件通常比AOF文件更小，因为它们经过了压缩和序列化处理，适用于需要节省磁盘空间的场景。</li>
-<li>恢复速度：由于RDB文件保存了完整的数据快照，可以快速恢复数据，适合用于备份和灾难恢复。</li>
-</ol>
-<p><strong>RDB持久化的劣势：</strong></p>
-<ol>
-<li>数据丢失：由于RDB是定期生成的快照，如果Redis意外关闭或崩溃，最后一次生成的RDB文件中的数据可能会有丢失。</li>
-<li>数据恢复不精确：RDB只能提供最近一次生成快照时的数据状态，无法提供更细粒度的操作历史。</li>
-</ol>
-<p><strong>AOF持久化的优势：</strong></p>
-<ol>
-<li>数据安全性：AOF持久化记录了所有写操作指令，通过重放这些指令可以还原完整的数据状态，可以提供更高的数据安全性。</li>
-<li>数据恢复精确：AOF持久化记录了每个写操作，可以精确到指令级别地进行数据恢复。</li>
-<li>可读性：AOF文件是一个文本文件，可以查看和分析其中的写操作历史。</li>
-</ol>
-<p><strong>AOF持久化的劣势：</strong></p>
-<ol>
-<li>性能：相对于RDB持久化，AOF持久化会增加写操作的负担，可能对性能造成一定影响。</li>
-<li>存储空间：由于AOF文件保存了完整的写操作历史，相比RDB文件，AOF文件通常更大。</li>
-</ol>
-<p><strong>综上所述，根据实际需求可以选择以下策略：</strong></p>
-<ul>
-<li>如果对数据恢复速度、存储空间和加载性能要求较高，且可以接受一定程度的数据丢失，可以选择使用RDB持久化。</li>
-<li>如果对数据安全性和精确恢复要求较高，可以选择使用AOF持久化。</li>
-<li>对于更高的数据安全性和灾难恢复能力，可以同时使用RDB和AOF持久化，以提供多重保障。</li>
-</ul>
-<h5 id="2.6-redis%E7%9A%84%E7%BA%BF%E7%A8%8B%E6%A8%A1%E5%BC%8F" tabindex="-1">2.6 Redis的线程模式</h5>
-<ul>
-<li>
-<p>多线程和单线程总结：</p>
-<blockquote>
-<ul>
-<li>
-<p>Redis 选择使用单线程模型处理客户端的请求主要还是因为 CPU 不是 Redis 服务器的瓶颈，所以使用多线程模型带来的性能提升并不能抵消它带来的开发成本和维护成本，系统的性能瓶颈也主要在网络 I/O 操作上；</p>
-</li>
-<li>
-<p>Redis 引入多线程操作也是出于性能上的考虑，对于一些大键值对的删除操作，通过多线程非阻塞地释放内存空间也能减少对 Redis 主线程阻塞的时间，提高执行的效率。</p>
-</li>
-</ul>
-</blockquote>
-<p>​</p>
-</li>
-</ul>
-<h3 id="spring" tabindex="-1">Spring</h3>
-<h4 id="1.-ioc%E5%92%8Caop%E8%AF%A6%E8%A7%A3" tabindex="-1">1. IoC和Aop详解</h4>
-<h5 id="1.1-ioc%E7%9A%84%E5%AE%9A%E4%B9%89" tabindex="-1">1.1 IoC的定义</h5>
-<ul>
-<li>控制反转/反转控制，本质上是Java开发领域对象的创建和管理的问题。</li>
-<li><strong>传统的开发</strong>：使用的是在类A中通过new 关键字将B的对象 new出来；**使用IoC的思想进行开发：**通过IoC的容器（Spring框架）帮助我们进行实例化对象，我们需要的对象直接从IoC容器中查找即可。</li>
-<li>控制和反转
-<ul>
-<li><strong>控制</strong>：指的是对象的创建（实例化、管理）的权力</li>
-<li><strong>反转</strong>：控制权交给外部的环境（IoC容器）</li>
-</ul>
-</li>
-</ul>
-<img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="/2024/01/14/2024-1-14/frc-365faceb5697f04f31399937c059c162.png" alt="IoC 图解" style="zoom:67%;">
-<p>​</p>
-<h5 id="1.2-ioc%E8%A7%A3%E5%86%B3%E7%9A%84%E9%97%AE%E9%A2%98%EF%BC%9F" tabindex="-1">1.2 IoC解决的问题？</h5>
-<p>IoC 的思想就是两方之间不互相依赖，由第三方容器来管理相关资源。这样有什么好处呢？</p>
+<h5 id="2.4-%40transactional-%E6%B3%A8%E8%A7%A3%E4%BD%BF%E7%94%A8%E8%AF%A6%E8%A7%A3" tabindex="-1">2.4 @Transactional 注解使用详解</h5>
 <ol>
 <li>
-<p>对象之间的耦合度或者说依赖程度降低；</p>
+<p><code>Transactional</code>的作用范围</p>
+<ul>
+<li><strong>方法</strong>：推荐将注解使用于方法上，不过需要注意的是：<strong>该注解只能应用到 public 方法上，否则不生效。</strong></li>
+<li><strong>类</strong>：如果这个注解使用在类上的话，表明该注解对该类中所有的 public 方法都生效。</li>
+<li><strong>接口</strong>：不推荐在接口上使用。</li>
+</ul>
 </li>
 <li>
-<p>资源变的容易管理；比如你用 Spring 容器提供的话很容易就可以实现一个单例</p>
-<p>​</p>
+<p><code>Transactional</code>的常用配置参数</p>
+<table>
+<thead>
+<tr>
+<th>属性名</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>propagation</td>
+<td>事务的传播行为，默认值为 REQUIRED，可选的值在上面介绍过</td>
+</tr>
+<tr>
+<td>isolation</td>
+<td>事务的隔离级别，默认值采用 DEFAULT，可选的值在上面介绍过</td>
+</tr>
+<tr>
+<td>timeout</td>
+<td>事务的超时时间，默认值为-1（不会超时）。如果超过该时间限制但事务还没有完成，则自动回滚事务。</td>
+</tr>
+<tr>
+<td>readOnly</td>
+<td>指定事务是否为只读事务，默认值为 false。</td>
+</tr>
+<tr>
+<td>rollbackFor</td>
+<td>用于指定能够触发事务回滚的异常类型，并且可以指定多个异常类型</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p><strong>@Transactional</strong>的事务注解原理</p>
+<ul>
+<li><code>@Transactional</code> 的工作机制是基于 AOP 实现的，AOP 又是使用动态代理实现的。如果目标对象实现了接口，默认情况下会采用 JDK 的动态代理，如果目标对象没有实现了接口,会使用 CGLIB 动态代理。</li>
+</ul>
 </li>
 </ol>
-<ul>
-<li>
-<p>使用IoC的思想，使得我们将对象的控制权（创建、管理）交给IoC容器进行管理，我们在使用的时候直接向IoC容器去要就行：</p>
-<img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="/2024/01/14/2024-1-14/why-ioc-2.png" alt="img" style="zoom:67%;">
-<ul>
-<li>上图中的IUserDao的接口开发，不需要重新在Service层new 新的对象实现类，而是直接交给Spring容器进行管理。（加入注解@Autowired）</li>
-</ul>
-</li>
-<li>
-<p>IoC 最常见以及最合理的实现方式叫做依赖注入（Dependency Injection，简称 DI）。<br>
-​</p>
-</li>
-</ul>
-<h5 id="1.3-aop%E5%AE%9A%E4%B9%89" tabindex="-1">1.3 AOP定义</h5>
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/katex/dist/katex.min.css">
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/markdown-it-texmath/css/texmath.min.css">
 
@@ -1893,7 +2068,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">112.5k</span>&nbsp;字
+                class="white-color">115k</span>&nbsp;字
             
             
             
@@ -2252,10 +2427,10 @@ $(function () {
     if (windowWidth > 768) {
         document.write('<script type="text/javascript" src="https://apip.weatherdt.com/float/static/js/r.js?v=1111"><\/script>');
     }
-    </script>
+    </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
     
   
-<script src="/live2dw/lib/L2Dwidget.min.js?243708c68e3ad401cd4432916889e600"></script><script>L2Dwidget.init({"dialog":{"enable":true,"hitokoto":true},"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"left","width":120,"height":160,"superSample":2,"voffset":0,"hoffset":20},"mobile":{"show":false},"react":{"opacity":0.7,"opacityOnHover":0.2}});</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+<script src="/live2dw/lib/L2Dwidget.min.js?243708c68e3ad401cd4432916889e600"></script><script>L2Dwidget.init({"dialog":{"enable":true,"hitokoto":true},"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"left","width":120,"height":160,"superSample":2,"voffset":0,"hoffset":20},"mobile":{"show":false},"react":{"opacity":0.7,"opacityOnHover":0.2}});</script>
         <style>
             [bg-lazy] {
                 background-image: none !important;
