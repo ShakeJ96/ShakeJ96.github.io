@@ -631,7 +631,7 @@ charset="utf-8"></script> -->
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2024-01-25
+                    2024-01-26
                 </div>
                 
 
@@ -1241,11 +1241,22 @@ mysql<span class="token operator">&gt;</span> <span class="token keyword">select
 <h6 id="1.-rdb%E6%8C%81%E4%B9%85%E5%8C%96" tabindex="-1">1. RDB持久化</h6>
 <p>Redis 可以通过创建快照来获得存储在内存里面的数据在 <strong>某个时间点</strong> 上的副本。</p>
 <ul>
-<li>RDB是将Redis在内存中的数据以二进制格式快照的方式写入磁盘，生成一个RDB文件。</li>
-<li>RDB持久化适合用于备份，将快照复制到其他服务器中从而创建具有相同数据的服务器符本（Redis主从结构，主要用于提高redis性能）、灾难恢复和离线数据分析等场景。</li>
-<li>RDB持久化可以手动触发，也可以基于配置项设置定期自动触发。</li>
-<li>RDB文件通过压缩和序列化来减小文件大小。</li>
-<li>RDB加载时，Redis会读取RDB文件并将其中的数据恢复到内存中。</li>
+<li>
+<p><strong>RDB是将Redis在内存中的数据以二进制格式快照的方式写入磁盘，生成一个RDB文件。</strong></p>
+</li>
+<li>
+<p>RDB持久化适合用于备份，将快照复制到其他服务器中从而创建具有相同数据的服务器符本（Redis主从结构，主要用于提高redis性能）、灾难恢复和离线数据分析等场景。</p>
+</li>
+<li>
+<p>RDB持久化可以手动触发，也可以基于配置项设置定期自动触发。</p>
+</li>
+<li>
+<p>RDB文件通过压缩和序列化来减小文件大小。</p>
+</li>
+<li>
+<p>RDB加载时，Redis会读取RDB文件并将其中的数据恢复到内存中。</p>
+<p>​</p>
+</li>
 </ul>
 <h6 id="2.-aof%E6%8C%81%E4%B9%85%E5%8C%96" tabindex="-1">2. AOF持久化</h6>
 <p>流程分为下面的几步：</p>
@@ -2303,7 +2314,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">118.6k</span>&nbsp;字
+                class="white-color">119.2k</span>&nbsp;字
             
             
             
