@@ -6,7 +6,7 @@
 
 <head>
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
-    <meta name="keywords" content="Leetcode 560:和为k的子数组, xkj123456">
+    <meta name="keywords" content="QA-Review, xkj123456">
     <meta name="description" content="Mark the Splendid Life">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -18,7 +18,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Leetcode 560:和为k的子数组 | ShakeJ</title>
+    <title>QA-Review | ShakeJ</title>
     <link rel="icon" type="image/png" href="/icon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -474,12 +474,12 @@ charset="utf-8"></script> -->
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/23.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/5.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Leetcode 560:和为k的子数组</h1>
+                    <h1 class="description center-align post-title">QA-Review</h1>
                 </div>
             </div>
         </div>
@@ -595,12 +595,12 @@ charset="utf-8"></script> -->
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/Leetcode/">
-                                <span class="chip bg-color">Leetcode</span>
+                            <a href="/tags/%E5%9F%BA%E7%A1%80/">
+                                <span class="chip bg-color">基础</span>
                             </a>
                         
-                            <a href="/tags/%E7%AE%97%E6%B3%95/">
-                                <span class="chip bg-color">算法</span>
+                            <a href="/tags/%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87/">
+                                <span class="chip bg-color">面试准备</span>
                             </a>
                         
                     </div>
@@ -611,8 +611,8 @@ charset="utf-8"></script> -->
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/Leetcode/" class="post-category">
-                                Leetcode
+                            <a href="/categories/%E5%AE%9E%E4%B9%A0/" class="post-category">
+                                实习
                             </a>
                         
                     </div>
@@ -624,28 +624,28 @@ charset="utf-8"></script> -->
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2023-08-25
+                    2024-01-25
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-09-03
+                    2024-01-26
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.5k
+                    2.4k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    6 分
+                    8 分
                 </div>
                 
 
@@ -670,258 +670,181 @@ charset="utf-8"></script> -->
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="leetcode-560%EF%BC%9A%E5%92%8C%E4%B8%BAk%E7%9A%84%E5%AD%90%E6%95%B0%E7%BB%84" tabindex="-1">Leetcode-560：和为k的子数组</h3>
-<h3 id="1.-%E9%A2%98%E7%9B%AE%E8%AF%B4%E6%98%8E" tabindex="-1">1. 题目说明</h3>
-<ul>
-<li>
-<p>给定一个整数数组和一个整数 k，你需要找到该数组中和为 <strong>k</strong> 的<strong>连续的子数组</strong>的个数。</p>
-<blockquote>
-<p>示例 1 :</p>
-<p>输入:nums = [1,1,1], k = 2 输出: 2 , [1,1] 与 [1,1] 为两种不同的情况。</p>
+                <blockquote>
+<p>对个人的Resume进行复盘，总结可能会出现的问题以及对应的回答（简单粗略版本）~</p>
 </blockquote>
-</li>
-</ul>
-<h3 id="2.-%E8%A7%A3%E7%AD%94%E5%88%86%E6%9E%90%EF%BC%88%E5%90%AB%E5%A4%8D%E6%9D%82%E5%BA%A6%EF%BC%89" tabindex="-1">2. 解答分析（含复杂度）</h3>
+<h3 id="1.-%E6%95%B0%E6%8D%AE%E5%BA%93%E6%96%B9%E9%9D%A2" tabindex="-1">1. 数据库方面</h3>
 <ul>
-<li>
-<p>题目本质上是可以利用暴力解决的，也就是用双重循环进行和为<code>k</code>的子数组的个数统计即可，但是这里我们想利用更多的方法，主要分为3部分：</p>
+<li>SQL常见的索引类型有哪些？</li>
+</ul>
+<blockquote>
+<p>常见的索引类型有B-tree索引、哈希索引和全文索引</p>
 <ol>
-<li>
-<p><strong>暴力</strong></p>
+<li>B-tree索引：最常用的索引类型，适用于范围的查找和排序操作
+<ul>
+<li>B 树的所有节点既存放键(key) 也存放数据(data)，而 B+树只有叶子节点存放 key 和 data，其他内节点只存放 key。</li>
+<li>B 树的叶子节点都是独立的;B+树的叶子节点有一条引用链指向与它相邻的叶子节点</li>
+</ul>
 </li>
-<li>
-<p><strong>前缀和</strong></p>
+<li>哈希索引：使用哈希函数将键映射到存储位置，适用于等职查询</li>
+<li>全文索引：适用于全文的搜索，比如模糊搜索、关键词匹配和相关性排序等</li>
+</ol>
+</blockquote>
+<ul>
+<li>索引失效的场景有哪些？</li>
+</ul>
+<blockquote>
+<ol>
+<li>对索引列进行函操作：如对索引列进行函数运算、计算操作、类型转换、使用的顺序未遵循最左匹配原则等；（此时会全表扫描，由于最初保存的是原始值）</li>
+<li>使用不等于（!=）或不包含（NOT IN、&lt;&gt;）的条件。</li>
+<li>使用模糊查询：%开头的LIKE查询。</li>
+<li>使用OR关键字，在 WHERE 子句中，如果在 OR 前的条件列是索引列，而在 OR 后的条件列不是索引列，那么索引会失效；</li>
+<li>使用in不当，当IN的取值范围较大时会导致索引失效，走全表扫描；</li>
+<li>order By使用不当</li>
+<li>在联合索引中未使用索引的第一个列。</li>
+<li>select* ：使用<code>SELECT*</code>,获取了不需要的数据，则首先通过辅助索引过滤数据，然后再通过聚集索引获取所有的列，这就多了一次b+树查询，速度必然会慢很多，减少使用select * 就是降低回表带来的损耗。如果此时使用<code>select *</code> 放一些无用的列，只会白白的占用缓冲空间。浪费本可以提高性能的机会。</li>
+</ol>
+</blockquote>
+<ul>
+<li>mysql一般怎么去优化语句</li>
+</ul>
+<blockquote>
+<ol>
+<li>使用合适的索引：索引是提高查询效率的重要手段。通过为经常用于过滤、连接和排序的列创建索引，可以大大加快查询速度。但是索引也会增加写操作的开销，因此需要权衡考虑哪些列需要创建索引。</li>
+<li>优化查询语句：编写高效的查询语句也是提升性能的关键。避免在查询中使用不必要的列、多余的表连接或子查询，尽量简化查询语句的结构。</li>
+<li>避免全表扫描：当查询涉及的数据量较大时，可能导致全表扫描，影响性能。可以通过合理设计索引、使用合适的查询条件以及分页等方式来避免全表扫描。</li>
+<li>调整数据库参数：MySQL有很多配置参数可以调整，如缓冲区大小、并发连接数等。</li>
+<li>定期维护和优化表结构：可以通过删除冗余数据、重建表等方式提高性能。</li>
+<li>使用缓存：适当使用缓存可以减少对数据库的访问，从而提升性能。如非关系数据库redis等</li>
+</ol>
+</blockquote>
+<ul>
+<li>mysql中的事务操作？</li>
+</ul>
+<blockquote>
+<ol>
+<li>隐式事务：自动开启事务的操作，比如提交、回滚等事务</li>
+<li>显示事务：需要开发者自己手动开启</li>
+<li>savepoint关键字：回滚部分的数据，指定其中的部分</li>
+<li>只读事务</li>
+</ol>
+<ul>
+<li>事务操作可以保证一组SQL语句要么全部成功提交，要么全部失败回滚，确保数据的一致性和完整性。在开发中，可以根据实际需求选择合适的事务操作方式。</li>
+</ul>
+</blockquote>
+<ul>
+<li>mysql中的隔离级别</li>
+</ul>
+<blockquote>
+<ul>
+<li>事务隔离级别主要指的是多个事务之间数据可见性以及数据正确性的问题。分为下面的4级</li>
+</ul>
+<ol>
+<li>读未提交
+<ul>
+<li>读未提交是隔离级别最低的一种事务级别。在这种隔离级别下，一个事务会读到另一个事务更新后但未提交的数据，如果另一个事务回滚，那么当前事务读到的数据就是脏数据，这就是脏读（Dirty Read）。</li>
+</ul>
 </li>
-<li>
-<p><strong>前缀和+HashMap</strong></p>
+<li>读已提交
+<ul>
+<li>一个事务可能会出现不可重复读的问题。简单说就是一个事务中，多次读到同一数据，但是此时恰好被另外的事务修改数据，导致读取的数据不一致。</li>
+</ul>
+</li>
+<li>可重复读
+<ul>
+<li>一个事务可能会遇到幻读（Phantom Read）的问题。</li>
+</ul>
+</li>
+<li>可串行化
+<ul>
+<li>Serializable 是最严格的隔离级别。在Serializable隔离级别下，所有事务按照次序依次执行，因此，脏读、不可重复读、幻读都不会出现。</li>
+<li>缺点是效率收到影响，由于是串行执行，性能降低。</li>
+</ul>
 </li>
 </ol>
-<hr>
-</li>
-</ul>
-<h3 id="%E2%91%A0-%E6%9A%B4%E5%8A%9B%E8%A7%A3%E6%B3%95" tabindex="-1">① 暴力解法</h3>
 <ul>
-<li>直接上代码：</li>
+<li>如果没有指定隔离级别，数据库就会使用默认的隔离级别。在MySQL中，如果使用 InnoDB，默认的隔离级别是Repeatable Read（可重复读）</li>
 </ul>
-  <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">{</span>
-    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">subarraySum</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> nums<span class="token punctuation">,</span> <span class="token keyword">int</span> k<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-         <span class="token keyword">int</span> len <span class="token operator">=</span> nums<span class="token punctuation">.</span>length<span class="token punctuation">;</span>
-         <span class="token keyword">int</span> sum <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
-         <span class="token keyword">int</span> count <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
-         <span class="token comment">//双重循环</span>
-         <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> len<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-             <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> i<span class="token punctuation">;</span> j <span class="token operator">&lt;</span> len<span class="token punctuation">;</span> <span class="token operator">++</span>j<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-                 sum <span class="token operator">+=</span> nums<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">;</span>
-                 <span class="token comment">//发现符合条件的区间</span>
-                 <span class="token keyword">if</span> <span class="token punctuation">(</span>sum <span class="token operator">==</span> k<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-                     count<span class="token operator">++</span><span class="token punctuation">;</span>
-                 <span class="token punctuation">}</span>
-             <span class="token punctuation">}</span>
-             <span class="token comment">//记得归零，重新遍历</span>
-             sum <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
-         <span class="token punctuation">}</span>
-         <span class="token keyword">return</span> count<span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</blockquote>
 <ul>
-<li><strong>复杂度分析</strong>：
-<ul>
-<li>时间复杂度：<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><msup><mi>N</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N^2)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></eq>，这里 $N $是数组的长度；</li>
-<li>空间复杂度：<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord">1</span><span class="mclose">)</span></span></span></span></eq>。</li>
+<li>MySQL默认什么级别、怎么实现的？</li>
 </ul>
-</li>
-</ul>
-<hr>
-<h3 id="%E2%91%A1-%E5%89%8D%E7%BC%80%E5%92%8C" tabindex="-1">② 前缀和</h3>
-<ul>
-<li>前缀和<code>pre[i]</code>的关键是找到前一个和后一个的关系，这里的连续子数组的元素之和恰好满足前缀求和的关系，所以可以采取。</li>
-<li>需要注意的是：
+<blockquote>
 <ol>
-<li>注意偏移，因为我们的<code>nums[2]</code>到<code>nums[4]</code>等于<code>pre[5]-pre[2]</code>，所以这样就可以得到<code>nums[i,j]</code>区间内的和</li>
-<li>前缀和是从<code>pre[1]</code>开始填充的</li>
+<li></li>
 </ol>
-</li>
-<li>上代码：</li>
-</ul>
-  <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">{</span>
-    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">subarraySum</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> nums<span class="token punctuation">,</span> <span class="token keyword">int</span> k<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token comment">//前缀和数组</span>
-        <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> presum <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token keyword">int</span><span class="token punctuation">[</span>nums<span class="token punctuation">.</span>length<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> nums<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            pre<span class="token punctuation">[</span>i<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> nums<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">+</span> pre<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-        <span class="token comment">//统计个数</span>
-        <span class="token keyword">int</span> count <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
-        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> nums<span class="token punctuation">.</span>length<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> i<span class="token punctuation">;</span> j <span class="token operator">&lt;</span> nums<span class="token punctuation">.</span>length<span class="token punctuation">;</span> <span class="token operator">++</span>j<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-              
-                <span class="token keyword">if</span> <span class="token punctuation">(</span>pre<span class="token punctuation">[</span>j<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">-</span> pre<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">==</span> k<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-                    count<span class="token operator">++</span><span class="token punctuation">;</span>
-                <span class="token punctuation">}</span>
-            <span class="token punctuation">}</span>
-        <span class="token punctuation">}</span>
-        <span class="token keyword">return</span> count<span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<ul>
-<li>
-<p><strong>复杂度分析</strong>：</p>
-<ul>
-<li>
-<p>时间复杂度：<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><msup><mi>N</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N^2)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></eq>，这里 N 是数组的长度；</p>
-</li>
-<li>
-<p>空间复杂度：<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span></eq>。</p>
-</li>
-</ul>
-</li>
-</ul>
-<hr>
-<h3 id="%E2%91%A2-%E5%89%8D%E7%BC%80%E5%92%8C-%2B-hashmap" tabindex="-1">③ 前缀和 + HashMap</h3>
-<ul>
-<li>
-<p>分析上述的前缀和方法不难看出：该代码虽然用到了前缀和数组，但是对比暴力法并没有提升性能，时间复杂度仍为<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><msup><mi>n</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n^2)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></eq>，空间复杂度成了 <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span></eq>。</p>
-</li>
-<li>
-<p>在两数之和的题目中，我们可以看出利用<code>HashMap</code>进行的遍历求解，只用遍历循环数组一次即可，这里我们同样采用的做法是，我们将数组的值和索引存入<code>map</code>中，当我们遍历到某一值 <code>x </code>时，判断 <code>map </code>中是否含有<code> target - x</code>即可。</p>
-</li>
-<li>
-<p>代码如下：</p>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">{</span>
-    <span class="token keyword">public</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token function">twoSum</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> nums<span class="token punctuation">,</span> <span class="token keyword">int</span> target<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-
-        <span class="token class-name">HashMap</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">,</span><span class="token class-name">Integer</span><span class="token punctuation">&gt;</span></span> map  <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">HashMap</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token comment">//一次遍历</span>
-        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> nums<span class="token punctuation">.</span>length<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            <span class="token comment">//存在时，我们用数组得值为 key，索引为 value</span>
-            <span class="token keyword">if</span> <span class="token punctuation">(</span>map<span class="token punctuation">.</span><span class="token function">containsKey</span><span class="token punctuation">(</span>target <span class="token operator">-</span> nums<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>              
-               <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">{</span>i<span class="token punctuation">,</span>map<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>target<span class="token operator">-</span>nums<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
-            <span class="token punctuation">}</span>
-            <span class="token comment">//存入值</span>
-            map<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span>nums<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-        <span class="token comment">//返回</span>
-        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-</li>
-<li>
-<blockquote>
-<p>我们完全可以通过 presum - k的个数获得 k 的个数,如图所示:</p>
-<img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="/2023/08/25/leetcode-560-he-wei-k-de-zi-shu-zu/presum-k.png" alt="presum-k" style="zoom:67%;">
-</blockquote>
-</li>
-<li>
-<p>本题的代码如下：</p>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">{</span>
-    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">subarraySum</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> nums<span class="token punctuation">,</span> <span class="token keyword">int</span> k<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>nums<span class="token punctuation">.</span>length <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-        <span class="token class-name">HashMap</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">,</span><span class="token class-name">Integer</span><span class="token punctuation">&gt;</span></span> map <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">HashMap</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token comment">//细节，这里需要预存前缀和为 0 的情况，会漏掉前几位就满足的情况</span>
-        <span class="token comment">//例如输入[1,1,0]，k = 2 如果没有这行代码，则会返回0,漏掉了1+1=2，和1+1+0=2的情况</span>
-        <span class="token comment">//输入：[3,1,1,0] k = 2时则不会漏掉</span>
-        <span class="token comment">//因为presum[3] - presum[0]表示前面 3 位的和，所以需要map.put(0,1),垫下底</span>
-        map<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">int</span> count <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
-        <span class="token keyword">int</span> presum <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
-        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> x <span class="token operator">:</span> nums<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            presum <span class="token operator">+=</span> x<span class="token punctuation">;</span>
-            <span class="token comment">//当前前缀和已知，判断是否含有 presum - k的前缀和，那么我们就知道某一区间的和为 k 了。</span>
-            <span class="token keyword">if</span> <span class="token punctuation">(</span>map<span class="token punctuation">.</span><span class="token function">containsKey</span><span class="token punctuation">(</span>presum <span class="token operator">-</span> k<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-                count <span class="token operator">+=</span> map<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>presum <span class="token operator">-</span> k<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//获取次数</span>
-            <span class="token punctuation">}</span>
-            <span class="token comment">//更新</span>
-            map<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span>presum<span class="token punctuation">,</span>map<span class="token punctuation">.</span><span class="token function">getOrDefault</span><span class="token punctuation">(</span>presum<span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-        <span class="token keyword">return</span> count<span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-
-<span class="token comment">//或者是：</span>
-<span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">{</span>
-    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">subarraySum</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> nums<span class="token punctuation">,</span> <span class="token keyword">int</span> k<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token comment">/*
-        前缀和+HashMap(两数之和进阶版)
-        若存在i与j满足sum[i,j]=sum[j+1]-sum[i]=k，对于j+1，满足条件的i的个数可以先统计出来
-        前面符合条件的数据为:sum[i]=sum[j+1]-k，这里注意是i&lt;=j，因此需要先统计了前面的再更新当前的
-        与两数之和是差不多的思路，不过这个多了个前缀和
-        时间复杂度:O(N) 空间复杂度:O(N)
-         */</span>
-        <span class="token keyword">int</span> res <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
-        <span class="token comment">// 前缀和还可以进一步空间优化</span>
-        <span class="token keyword">int</span> sum <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
-        <span class="token comment">// 哈希表存储前缀和数组中缺少了某个数的个数</span>
-        <span class="token class-name">HashMap</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">,</span> <span class="token class-name">Integer</span><span class="token punctuation">&gt;</span></span> map <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">HashMap</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        map<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// 初始前缀和</span>
-        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> num <span class="token operator">:</span> nums<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            sum <span class="token operator">+=</span> num<span class="token punctuation">;</span>
-            <span class="token comment">// 先统计</span>
-            res <span class="token operator">+=</span> map<span class="token punctuation">.</span><span class="token function">getOrDefault</span><span class="token punctuation">(</span>sum <span class="token operator">-</span> k<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token comment">// 再更新当前的</span>
-            map<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span>sum<span class="token punctuation">,</span> map<span class="token punctuation">.</span><span class="token function">getOrDefault</span><span class="token punctuation">(</span>sum<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-        <span class="token keyword">return</span> res<span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-</li>
-<li>
-<p><strong>复杂度分析</strong>：</p>
-<ul>
-<li>
-<p>时间复杂度：<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span></eq>，这里 <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi></mrow><annotation encoding="application/x-tex">N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span></span></span></span></eq>是数组的长度；</p>
-</li>
-<li>
-<p>空间复杂度：<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span></eq>。</p>
-</li>
-</ul>
-</li>
-</ul>
-<hr>
-<h3 id="3.-%E5%8F%98%E5%BC%8F%E9%A2%98%E7%9B%AE" tabindex="-1">3. 变式题目</h3>
-<blockquote>
-<p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/count-number-of-nice-subarrays/">1248. 统计「优美子数组」</a></p>
-<p>给你一个整数数组 <code>nums</code> 和一个整数 <code>k</code>。如果某个连续子数组中恰好有 <code>k</code> 个奇数数字，我们就认为这个子数组是「<strong>优美子数组</strong>」。</p>
-<p>请返回这个数组中 <strong>「优美子数组」</strong> 的数目。</p>
-<p><strong>示例 1：</strong></p>
-<pre class="line-numbers language-none"><code class="language-none">输入：nums = [1,1,2,1,1], k = 3
-输出：2
-解释：包含 3 个奇数的子数组是 [1,1,2,1] 和 [1,2,1,1] 。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 </blockquote>
 <ul>
-<li>
-<p>分析解答：类似，只是在遇到奇数的时候将prenum更新而已。类似于<code>HashMap</code>,这里用数组的索引来表示哈希表中的<code>key</code>，对应的值模拟哈希表中的<code>value</code>.代码如下：</p>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">{</span>
-    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">numberOfSubarrays</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> nums<span class="token punctuation">,</span> <span class="token keyword">int</span> k<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">int</span> len<span class="token operator">=</span>nums<span class="token punctuation">.</span>length<span class="token punctuation">;</span>
-        <span class="token keyword">int</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>map<span class="token operator">=</span><span class="token keyword">new</span> <span class="token keyword">int</span><span class="token punctuation">[</span>len<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-        map<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>
-        <span class="token keyword">int</span> oddnum<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>
-        <span class="token keyword">int</span> count<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>
-        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span>len<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-            <span class="token keyword">if</span><span class="token punctuation">(</span>nums<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">%</span><span class="token number">2</span><span class="token operator">!=</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token comment">//如果是奇数的话，存入oddnum</span>
-                oddnum<span class="token operator">++</span><span class="token punctuation">;</span>
-            <span class="token punctuation">}</span>
-            <span class="token keyword">if</span><span class="token punctuation">(</span>oddnum<span class="token operator">&gt;=</span>k<span class="token punctuation">)</span><span class="token punctuation">{</span>
-                count<span class="token operator">+=</span>map<span class="token punctuation">[</span>oddnum<span class="token operator">-</span>k<span class="token punctuation">]</span><span class="token punctuation">;</span>
-            <span class="token punctuation">}</span>
-            map<span class="token punctuation">[</span>oddnum<span class="token punctuation">]</span><span class="token operator">++</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-        <span class="token keyword">return</span> count<span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-</li>
+<li>Redis的用处？能用来做什么？</li>
 </ul>
-<h3 id="4.-%E5%B1%95%E6%9C%9B%EF%BC%88%E4%B8%8E%E9%A2%98%E7%9B%AE%E6%97%A0%E5%85%B3%EF%BC%89" tabindex="-1">4. 展望（与题目无关）</h3>
 <blockquote>
-<p>开学了，还是会继续学习算法，刷力扣，博客也会经常更新自己的学习动态，加油哇！🤗👍大三希望有机会找到一份实习，前后端都行，美化简历😊</p>
+<ol>
+<li>缓存（最主要）：redis将数据缓存到内存中去，加快访问的速度。同时由于丰富的数据结构，在缓存领域得到广泛的应用；</li>
+<li>分布式锁：Redis提供了原子性的操作，可以用来实现分布式锁。使用redis自带的SETNX命令来获取锁，在缓存领域得到广泛的使用；</li>
+<li>计数器和排行榜：Sorted-set有序集合实现排行榜，INCR和DECR命令实现原子性的计数器操作，统计。</li>
+<li>发布订阅、消息队列：使用Redis的List或Pub/Sub方式实现的消息队列是简单的消息传递机制，并不具备一些高级特性，如消息持久化、消息确认机制等</li>
+<li>分布式缓存：集群模式等，将数据分散在多个节点中去，提高性能和可用性。</li>
+</ol>
 </blockquote>
-<img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="/2023/08/25/leetcode-560-he-wei-k-de-zi-shu-zu/Bupt.jpg" alt="Bupt" style="zoom:20%;">
-  <center><span style="font-size:30px;color:red;font-weight:bolder;">END~</span><center>
+<ul>
+<li>redis可能出现的生产问题有哪些？</li>
+</ul>
+<blockquote>
+<ol>
+<li>缓存穿透：大量的请求key不合理，或者说是根本就不存在数据库或redis中，请求直接到达数据库。
+<ul>
+<li>布隆过滤器：使用布隆过滤器对请求进行过滤，如果请求的数据在布隆过滤器中不存在，则直接返回空结果，避免请求穿透到数据库。</li>
+<li>缓存空对象：当数据库中不存在某个数据时，可以在缓存中设置一个空对象作为占位符，这样下次请求同样的数据时，就可以命中缓存，并且不再访问数据库。</li>
+</ul>
+</li>
+<li>缓存击穿（热key问题）：请求的热点key（也就是系统频繁访问的数据），存在于数据库中，却不存在于缓存中（热点数据的缓存数据失效）
+<ul>
+<li>过期时间：设置热点数据较长的过期时间。</li>
+<li>分片：将热key分散到多个Redis节点上，使每个节点的负载更均衡。</li>
+<li>设置互斥锁：请求数据库写数据到缓存之前，先设置互斥锁，保证只有一个请求会落到数据库中，减少数据库的压力。</li>
+</ul>
+</li>
+<li>缓存雪崩：redis缓存大面积失效，导致请求的数据直接落到数据库上，对数据库造成巨大压力。
+<ul>
+<li>设置不同的失效时间比如随机设置缓存的失效时间。</li>
+<li>缓存永不失效（不太推荐，实用性太差）。</li>
+<li>缓存预热，也就是在程序启动后或运行过程中，主动将热点数据加载到缓存中。定时、消息队列、异步缓存预热等等</li>
+</ul>
+</li>
+</ol>
+</blockquote>
+<ul>
+<li>怎么保证数据库的数据和redis数据一致性呢，说说考虑的原因</li>
+</ul>
+<blockquote>
+<ol>
+<li>上个问题的缓存redis中的生产问题解决方案</li>
+<li>读写数据的一致
+<ul>
+<li>旁路缓存模式：读取数据先从缓存中查询，不存在则从数据库中读取，然后将读取到的数据存入缓存中；写操作，先更新数据库，再更新缓存；</li>
+<li>同步读写穿透：读取数据时先从缓存中查询，如果不存在，则从数据库中读取，同时将数据加载到缓存中。写操作，先查cache。不存在直接更新db，存在先更新cache，后写入数据库；</li>
+<li>异步缓存写入：先将更新操作写入到缓存中，然后异步地批量将缓存中的数据写入到数据库中。这种方式虽然可能会导致短暂的数据不一致，但可以提高写入性能和吞吐量。</li>
+</ul>
+</li>
+<li>主从同步
+<ul>
+<li>Redis支持主从同步的情况，将主节点的数据自动同步，保证多个节点数据的一致性。</li>
+</ul>
+</li>
+<li>Redis和数据库的数据定期同步
+<ul>
+<li>可以设置定时任务，定期将Redis中的数据同步到数据库中，从而保证Redis和数据库的数据一致性。</li>
+<li>可以通过Redis提供的持久化方式（如aof、rdb）将数据同步到磁盘中，再通过读取磁盘中的数据来实现Redis和数据库之间的数据同步。</li>
+</ul>
+</li>
+</ol>
+</blockquote>
+<ul>
+<li></li>
+</ul>
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/katex/dist/katex.min.css">
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/markdown-it-texmath/css/texmath.min.css">
-</center></center>
+
                 
             </div>
             <hr/>
@@ -947,7 +870,7 @@ charset="utf-8"></script> -->
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://shakeJ96.github.io/2023/08/25/leetcode-560-he-wei-k-de-zi-shu-zu/">https://shakeJ96.github.io/2023/08/25/leetcode-560-he-wei-k-de-zi-shu-zu/</a>
+                    <a href="https://shakeJ96.github.io/2024/01/25/qa-review/">https://shakeJ96.github.io/2024/01/25/qa-review/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -985,12 +908,12 @@ charset="utf-8"></script> -->
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/Leetcode/">
-                                    <span class="chip bg-color">Leetcode</span>
+                                <a href="/tags/%E5%9F%BA%E7%A1%80/">
+                                    <span class="chip bg-color">基础</span>
                                 </a>
                             
-                                <a href="/tags/%E7%AE%97%E6%B3%95/">
-                                    <span class="chip bg-color">算法</span>
+                                <a href="/tags/%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87/">
+                                    <span class="chip bg-color">面试准备</span>
                                 </a>
                             
                         </div>
@@ -1160,17 +1083,18 @@ charset="utf-8"></script> -->
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2023/08/27/zhou-sai-360-t1-yu-t2/">
+                <a href="/2024/01/25/qa-review/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="周赛360 T1与T2">
+                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="QA-Review">
                         
-                        <span class="card-title">周赛360 T1与T2</span>
+                        <span class="card-title">QA-Review</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1180,30 +1104,31 @@ charset="utf-8"></script> -->
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2023-08-27
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-01-25
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Leetcode/" class="post-category">
-                                    Leetcode
+                            <a href="/categories/%E5%AE%9E%E4%B9%A0/" class="post-category">
+                                    实习
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E7%AE%97%E6%B3%95/">
-                        <span class="chip bg-color">算法</span>
+                    <a href="/tags/%E5%9F%BA%E7%A1%80/">
+                        <span class="chip bg-color">基础</span>
                     </a>
                     
-                    <a href="/tags/%E5%91%A8%E8%B5%9B/">
-                        <span class="chip bg-color">周赛</span>
+                    <a href="/tags/%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87/">
+                        <span class="chip bg-color">面试准备</span>
                     </a>
                     
                 </div>
@@ -1217,13 +1142,13 @@ charset="utf-8"></script> -->
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2023/07/27/priorityqueue-shi-xian-zui-xiao-dui-he-zui-da-dui-de-yong-fa-java/">
+                <a href="/2024/01/14/2024-1-14/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="PriorityQueue实现最小堆和最大堆的用法[JAVA]">
+                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="2024.1.14">
                         
-                        <span class="card-title">PriorityQueue实现最小堆和最大堆的用法[JAVA]</span>
+                        <span class="card-title">2024.1.14</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1234,14 +1159,14 @@ charset="utf-8"></script> -->
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-07-27
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-01-14
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Java/" class="post-category">
-                                    Java
+                            <a href="/categories/%E5%AE%9E%E4%B9%A0/" class="post-category">
+                                    实习
                                 </a>
                             
                             
@@ -1251,8 +1176,12 @@ charset="utf-8"></script> -->
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E7%AE%97%E6%B3%95/">
-                        <span class="chip bg-color">算法</span>
+                    <a href="/tags/%E5%9F%BA%E7%A1%80/">
+                        <span class="chip bg-color">基础</span>
+                    </a>
+                    
+                    <a href="/tags/%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87/">
+                        <span class="chip bg-color">面试准备</span>
                     </a>
                     
                 </div>

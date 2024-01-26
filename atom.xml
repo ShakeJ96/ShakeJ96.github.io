@@ -6,7 +6,7 @@
   <link href="https://shakej96.github.io/atom.xml" rel="self"/>
   
   <link href="https://shakej96.github.io/"/>
-  <updated>2024-01-24T06:06:48.377Z</updated>
+  <updated>2024-01-26T09:30:42.227Z</updated>
   <id>https://shakej96.github.io/</id>
   
   <author>
@@ -17,11 +17,38 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>QA-Review</title>
+    <link href="https://shakej96.github.io/2024/01/25/qa-review/"/>
+    <id>https://shakej96.github.io/2024/01/25/qa-review/</id>
+    <published>2024-01-25T13:07:48.000Z</published>
+    <updated>2024-01-26T09:30:42.227Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;&#92;assets&#92;css&#92;APlayer.min.css&quot;&gt;&lt;script src=&quot;&#92;assets&#92;js&#92;APlayer.min.js&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="实习" scheme="https://shakej96.github.io/categories/%E5%AE%9E%E4%B9%A0/"/>
+    
+    
+    <category term="基础" scheme="https://shakej96.github.io/tags/%E5%9F%BA%E7%A1%80/"/>
+    
+    <category term="面试准备" scheme="https://shakej96.github.io/tags/%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87/"/>
+    
+  </entry>
+  
+  <entry>
     <title>2024.1.14</title>
     <link href="https://shakej96.github.io/2024/01/14/2024-1-14/"/>
     <id>https://shakej96.github.io/2024/01/14/2024-1-14/</id>
     <published>2024-01-14T05:38:17.000Z</published>
-    <updated>2024-01-24T06:06:48.377Z</updated>
+    <updated>2024-01-25T14:44:22.236Z</updated>
     
     
       
@@ -508,31 +535,6 @@
     
     
     <category term="2023秋招" scheme="https://shakej96.github.io/tags/2023%E7%A7%8B%E6%8B%9B/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>动态规划思路和例题应用</title>
-    <link href="https://shakej96.github.io/2023/10/20/dong-tai-gui-hua-si-lu-he-li-ti-ying-yong/"/>
-    <id>https://shakej96.github.io/2023/10/20/dong-tai-gui-hua-si-lu-he-li-ti-ying-yong/</id>
-    <published>2023-10-20T08:22:27.000Z</published>
-    <updated>2023-10-20T13:50:39.037Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;&#92;assets&#92;css&#92;APlayer.min.css&quot;&gt;&lt;script src=&quot;&#92;assets&#92;js&#92;APlayer.min.js&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="Leetcode" scheme="https://shakej96.github.io/categories/Leetcode/"/>
-    
-    
-    <category term="动态规划" scheme="https://shakej96.github.io/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
     
   </entry>
   
