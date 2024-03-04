@@ -638,14 +638,14 @@ charset="utf-8"></script> -->
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    9.8k
+                    12.3k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    35 分
+                    44 分
                 </div>
                 
 
@@ -1806,11 +1806,312 @@ charset="utf-8"></script> -->
 </ul>
 <p>获取方式：</p>
 <ul>
-<li>HelloWorld.java 执行 <code>javac -parameters -d . HellowWorld.java</code>指令</li>
-<li>写入文件指令 <code>javap -v xxx.class &gt;xxx.txt</code></li>
-<li>IDEA 插件 jclasslib</li>
+<li>
+<p>HelloWorld.java 执行 <code>javac -parameters -d . HellowWorld.java</code>指令</p>
+</li>
+<li>
+<p>写入文件指令 <code>javap -v xxx.class &gt;xxx.txt</code></p>
+</li>
+<li>
+<p>IDEA 插件 jclasslib</p>
+<p>​</p>
+</li>
 </ul>
 <hr>
+<h4 id="2.2-%E9%AD%94%E6%95%B0%E7%89%88%E6%9C%AC" tabindex="-1">2.2 魔数版本</h4>
+<p>魔数：每个Class文件开头的4个字节的无符号整数称之未魔数（Magic Number），是Class文件的标识符，代表的是一个能被虚拟机接受的有效合法的Class文件。</p>
+<ul>
+<li>魔数值固定为：0XCAFEBABE，不符合则会抛出错误；</li>
+<li>使用魔数而不是扩展名来进行识别主要是基于安全方面的考虑，因为文件扩展名可以随意改动~</li>
+</ul>
+<p>版本：4个字节，5 6 两个字节代表的是编译的副版本号 <code>minor_version</code> ，而7 8 两个字节是编译的主版本号major_version；</p>
+<ul>
+<li>
+<p>不同版本的Java编译器编译的Class文件对应的版本是不一样的，高版本Java虚拟机可以执行由低版本编译器生成的Class文件，反之JVM会抛出异常~</p>
+<p>​</p>
+</li>
+</ul>
+<hr>
+<h4 id="2.3-%E5%B8%B8%E9%87%8F%E6%B1%A0" tabindex="-1">2.3 常量池</h4>
+<p>常量池中的常量数量是不固定的，所以在常量池的入口需要防止一项u2类型的无符号数，代表常量池计数器，这个容量计数是从1而不是0开始。为了满足后面某些指向常量池的索引值的数据，在特定情况下需要表达不引用任何一个常量池项目，这种情况可用索引值0来表示。</p>
+<p>以1~constant_pool_count-1 为索引，表明存在多少个常量池表项。表项中存放编译时期生成的各种字面量和符号引用~这部分内容在类加载后进入方法区的运行常量池。</p>
+<ul>
+<li>
+<p>字面量：基本数据类型、字符串类型常量、字段的名称和描述符、方法的名称和描述符</p>
+</li>
+<li>
+<p>符号引用：类和接口的全限定名、字段的名称和描述符、方法的名称和描述符…</p>
+<ul>
+<li><strong>全限定名</strong>：com/test/Demo 这个就是类的全限定名，仅仅是把包名的 <code>.</code> 替换成<code>/</code> ，为了使得连续的多个全限定名之间不产生混淆，在使用时最后一般会加入一个<code>;</code>表示全限定名结束；</li>
+<li><strong>简单名称</strong>： 指没有类型和参数修饰的方法或者字段名称</li>
+<li><strong>描述符</strong>：用来描述字段的数据类型、方法的参数列表（包括数量、类型以及顺序）和返回值；</li>
+</ul>
+</li>
+<li>
+<p>18种常量没有出现<code>byte\short\char\boolean</code>的原因：编译之后都可以理解为<code>Integer</code>；</p>
+</li>
+</ul>
+<h4 id="2.4-%E8%AE%BF%E9%97%AE%E6%A0%87%E8%AF%86" tabindex="-1">2.4 访问标识</h4>
+<p>访问标识，又称为访问标志、访问标记，该标记用两个字节标识，用于识别一些类或者接口层次的访问信息，包括这个Class是类还是接口，是否定义为public类型，是否定义为abstract类型等等；</p>
+<ul>
+<li>类的访问权限通常为：<code>ACC_ 开头的常量</code>；</li>
+<li>每一种类型的标识都是通过设置访问标记的32位中的特定位来实现，比如是 public final 的类，组标记为<code>ACC_PUBLIC | ACC_FINAL</code>；</li>
+<li>使用<code>ACC_SUPER</code>可以让类更准确地定位到父类的方法，确定类或接口中的<code>invokespecial</code>指令使用的是哪一种执行语义，现代编译期都会设置并且使用这个标记；</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>标志名称</th>
+<th>标志值</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ACC_PUBLIC</td>
+<td>0x0001</td>
+<td>标志为 public 类型</td>
+</tr>
+<tr>
+<td>ACC_FINAL</td>
+<td>0x0010</td>
+<td>标志被声明为 final，只有类可以设置</td>
+</tr>
+<tr>
+<td>ACC_SUPER</td>
+<td>0x0020</td>
+<td>标志允许使用 invokespecial 字节码指令的新语义，JDK1.0.2之后编译出来的类的这个标志默认为真，使用增强的方法调用父类方法</td>
+</tr>
+<tr>
+<td>ACC_INTERFACE</td>
+<td>0x0200</td>
+<td>标志这是一个接口</td>
+</tr>
+<tr>
+<td>ACC_ABSTRACT</td>
+<td>0x0400</td>
+<td>是否为 abstract 类型，对于接口或者抽象类来说，次标志值为真，其他类型为假</td>
+</tr>
+<tr>
+<td>ACC_SYNTHETIC</td>
+<td>0x1000</td>
+<td>标志此类并非由用户代码产生（由编译器产生的类，没有源码对应）</td>
+</tr>
+<tr>
+<td>ACC_ANNOTATION</td>
+<td>0x2000</td>
+<td>标志这是一个注解</td>
+</tr>
+<tr>
+<td>ACC_ENUM</td>
+<td>0x4000</td>
+<td>标志这是一个枚举</td>
+</tr>
+</tbody>
+</table>
+<p>​</p>
+<hr>
+<h4 id="2.5-%E7%B4%A2%E5%BC%95%E9%9B%86%E5%90%88" tabindex="-1">2.5 索引集合</h4>
+<p>类索引、父类索引、接口索引集合</p>
+<ul>
+<li><strong>类索引</strong>：用于确定这个类的全限定名。</li>
+<li><strong>父类索引</strong>：Java语言不允许多重继承，所以父类索引只有一个，<strong>除了Object之外，所有的Java类都有父类</strong>，因此除了<code>java.lang.Object</code>外，所有<code>Java</code>类的父类索引都不为0；</li>
+<li><strong>接口索引</strong>：集合就用来描述这个类实现了哪些接口。
+<ul>
+<li><code>interfaces_count</code> 项的值标识当前类或接口的直接超链接数量；</li>
+<li><code>interfaces[] </code>接口索引集合，被实现的接口将按 <code>implements </code>语句后的接口顺序从左到右排列在接口索引集合中;</li>
+</ul>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>长度</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>u2</td>
+<td>this_class</td>
+</tr>
+<tr>
+<td>u2</td>
+<td>super_class</td>
+</tr>
+<tr>
+<td>u2</td>
+<td>interfaces_count</td>
+</tr>
+<tr>
+<td>u2</td>
+<td>interfaces[interfaces_count]</td>
+</tr>
+</tbody>
+</table>
+<p>​</p>
+<h4 id="2.6-%E5%AD%97%E6%AE%B5%E8%A1%A8" tabindex="-1">2.6 字段表</h4>
+<p>字段 fields 用于描述接口或类中声明的变量，包括类变量以及实例变量，但不包括方法内部、代码块内部声明的局部变量以及从父类或父接口继承。字段叫什么名字、被定义为什么数据类型，都是无法固定的，只能引用常量池中的常量来描述</p>
+<p>fields_count（字段计数器），表示当前 class 文件 fields 表的成员个数，用两个字节来表示</p>
+<p>fields[ ]（字段表）：</p>
+<ul>
+<li>表中的每个成员都是一个 fields_info 结构的数据项，用于表示当前类或接口中某个字段的完整描述</li>
+<li>字段访问标识</li>
+<li>字段名索引：根据该值查询常量池中的指定索引项即可</li>
+<li>描述符索引：用来描述字段的数据类型、方法的参数列表和返回值</li>
+</ul>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">ConstantValue_attribute</span><span class="token punctuation">{</span>
+    u2 attribute_name_index<span class="token punctuation">;</span>
+    u4 attribute_length<span class="token punctuation">;</span>
+    u2 constantvalue_index<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>​</p>
+<h4 id="2.7-%E6%96%B9%E6%B3%95%E8%A1%A8" tabindex="-1">2.7 方法表</h4>
+<p>方法表是 methods 指向常量池索引集合，其中每一个 method_info 项都对应着一个类或者接口中的方法信息，完整描述了每个方法的签名</p>
+<ul>
+<li>如果这个方法不是抽象的或者不是 native 的，字节码中就会体现出来</li>
+<li>methods 表只描述当前类或接口中声明的方法，不包括从父类或父接口继承的方法</li>
+<li>methods 表可能会出现由编译器自动添加的方法，比如初始化方法 <cinit> 和实例化方法 <init></init></cinit></li>
+</ul>
+<p>**重载（Overload）**一个方法，除了要与原方法具有相同的简单名称之外，还要求必须拥有一个与原方法不同的特征签名，特征签名就是一个方法中各个参数在常量池中的字段符号引用的集合，因为返回值不会包含在特征签名之中，因此 Java 语言里无法仅仅依靠返回值的不同来对一个已有方法进行重载。但在 Class 文件格式中，特征签名的范围更大一些，只要描述符不是完全一致的两个方法就可以共存</p>
+<p>methods_count（方法计数器）：表示 class 文件 methods 表的成员个数，使用两个字节来表示</p>
+<p>methods[ ]（方法表）：每个表项都是一个 method_info 结构，表示当前类或接口中某个方法的完整描述</p>
+<p>​</p>
+<h4 id="2.8-%E5%B1%9E%E6%80%A7%E8%A1%A8" tabindex="-1">2.8 属性表</h4>
+<p>属性表集合，指的是 Class 文件所携带的辅助信息，比如该 Class 文件的源文件的名称，以及任何带有 <code>RetentionPolicy.CLASS</code> 或者 <code>RetentionPolicy.RUNTIME</code> 的注解，这类信息通常被用于 Java 虚拟机的验证和运行，以及 Java 程序的调试。字段表、方法表都可以有自己的属性表，用于描述某些场景专有的信息</p>
+<p>attributes_ count（属性计数器）：表示当前文件属性表的成员个数</p>
+<p>attributes[]（属性表）：属性表的每个项的值必须是 attribute_info 结构</p>
+<ul>
+<li>
+<p>属性的通用格式：</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">ConstantValue_attribute</span><span class="token punctuation">{</span>
+    u2 attribute_name_index<span class="token punctuation">;</span>	<span class="token comment">//属性名索引</span>
+    u4 attribute_length<span class="token punctuation">;</span>		<span class="token comment">//属性长度</span>
+    u2 attribute_info<span class="token punctuation">;</span>			<span class="token comment">//属性表</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li>
+<p>属性类型：</p>
+<table>
+<thead>
+<tr>
+<th>属性名称</th>
+<th>使用位置</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Code</td>
+<td>方法表</td>
+<td>Java 代码编译成的字节码指令</td>
+</tr>
+<tr>
+<td>ConstantValue</td>
+<td>字段表</td>
+<td>final 关键字定义的常量池</td>
+</tr>
+<tr>
+<td>Deprecated</td>
+<td>类、方法、字段表</td>
+<td>被声明为 deprecated 的方法和字段</td>
+</tr>
+<tr>
+<td>Exceptions</td>
+<td>方法表</td>
+<td>方法抛出的异常</td>
+</tr>
+<tr>
+<td>EnclosingMethod</td>
+<td>类文件</td>
+<td>仅当一个类为局部类或者匿名类是才能拥有这个属性，这个属性用于标识这个类所在的外围方法</td>
+</tr>
+<tr>
+<td>InnerClass</td>
+<td>类文件</td>
+<td>内部类列表</td>
+</tr>
+<tr>
+<td>LineNumberTable</td>
+<td>Code 属性</td>
+<td>Java 源码的行号与字节码指令的对应关系</td>
+</tr>
+<tr>
+<td>LocalVariableTable</td>
+<td>Code 属性</td>
+<td>方法的局部变量描述</td>
+</tr>
+<tr>
+<td>StackMapTable</td>
+<td>Code 属性</td>
+<td>JDK1.6 中新增的属性，供新的类型检查检验器检查和处理目标方法的局部变量和操作数有所需要的类是否匹配</td>
+</tr>
+<tr>
+<td>Signature</td>
+<td>类，方法表，字段表</td>
+<td>用于支持泛型情况下的方法签名</td>
+</tr>
+<tr>
+<td>SourceFile</td>
+<td>类文件</td>
+<td>记录源文件名称</td>
+</tr>
+<tr>
+<td>SourceDebugExtension</td>
+<td>类文件</td>
+<td>用于存储额外的调试信息</td>
+</tr>
+<tr>
+<td>Syothetic</td>
+<td>类，方法表，字段表</td>
+<td>标志方法或字段为编泽器自动生成的</td>
+</tr>
+<tr>
+<td>LocalVariableTypeTable</td>
+<td>类</td>
+<td>使用特征签名代替描述符，是为了引入泛型语法之后能描述泛型参数化类型而添加</td>
+</tr>
+<tr>
+<td>RuntimeVisibleAnnotations</td>
+<td>类，方法表，字段表</td>
+<td>为动态注解提供支持</td>
+</tr>
+<tr>
+<td>RuntimelnvisibleAnnotations</td>
+<td>类，方法表，字段表</td>
+<td>用于指明哪些注解是运行时不可见的</td>
+</tr>
+<tr>
+<td>RuntimeVisibleParameterAnnotation</td>
+<td>方法表</td>
+<td>作用与 RuntimeVisibleAnnotations 属性类似，只不过作用对象为方法</td>
+</tr>
+<tr>
+<td>RuntirmelnvisibleParameterAnniotation</td>
+<td>方法表</td>
+<td>作用与 RuntimelnvisibleAnnotations 属性类似，作用对象哪个为方法参数</td>
+</tr>
+<tr>
+<td>AnnotationDefauit</td>
+<td>方法表</td>
+<td>用于记录注解类元素的默认值</td>
+</tr>
+<tr>
+<td>BootstrapMethods</td>
+<td>类文件</td>
+<td>用于保存 invokeddynanic 指令引用的引导方式限定符</td>
+</tr>
+</tbody>
+</table>
+<p>​</p>
+</li>
+</ul>
+<h3 id="3.-%E7%BC%96%E8%AF%91%E6%8C%87%E4%BB%A4" tabindex="-1">3. 编译指令</h3>
+<h4 id="3.1-javac" tabindex="-1">3.1 javac</h4>
+<p>javac：编译命令，将 java 源文件编译成 class 字节码文件；</p>
+<p><code>javac xx.java</code> 不会在生成对应的局部变量表等信息，使用 <code>javac -g xx.java</code> 可以生成所有相关信息；</p>
+<h4 id="3.2-javap" tabindex="-1">3.2 javap</h4>
+<p>javap 反编译生成的字节码文件，根据 class 字节码文件，反解析出当前类对应的 code 区 （字节码指令）、局部变量表、异常表和代码行偏移量映射表、常量池等信息；</p>
 <h3 id="1.-%E5%8F%8C%E4%BA%B2%E5%A7%94%E6%B4%BE%E6%9C%BA%E5%88%B6%E7%9A%84%E5%8E%9F%E7%90%86%E4%B8%8E%E5%AE%9E%E8%B7%B5" tabindex="-1">1. 双亲委派机制的原理与实践</h3>
 <blockquote>
 <p>双亲委派机制是类加载的核心之一，需要重点掌握</p>
@@ -2443,7 +2744,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">129.1k</span>&nbsp;字
+                class="white-color">131.6k</span>&nbsp;字
             
             
             
@@ -2805,7 +3106,7 @@ $(function () {
     </script>
     
   
-<script src="/live2dw/lib/L2Dwidget.min.js?243708c68e3ad401cd4432916889e600"></script><script>L2Dwidget.init({"dialog":{"enable":true,"hitokoto":true},"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"left","width":120,"height":160,"superSample":2,"voffset":0,"hoffset":20},"mobile":{"show":false},"react":{"opacity":0.7,"opacityOnHover":0.2}});</script>
+<script src="/live2dw/lib/L2Dwidget.min.js?243708c68e3ad401cd4432916889e600"></script><script>L2Dwidget.init({"dialog":{"enable":true,"hitokoto":true},"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"left","width":120,"height":160,"superSample":2,"voffset":0,"hoffset":20},"mobile":{"show":false},"react":{"opacity":0.7,"opacityOnHover":0.2}});</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
         <style>
             [bg-lazy] {
                 background-image: none !important;
@@ -2818,6 +3119,6 @@ $(function () {
                 preloadRatio: 3,
                 processImages: null,
             };
-        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(r){r.imageLazyLoadSetting.processImages=t;var e=r.imageLazyLoadSetting.isSPA,n=r.imageLazyLoadSetting.preloadRatio||1,c=a();function a(){var t=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")),e=Array.prototype.slice.call(document.querySelectorAll("[bg-lazy]"));return t.concat(e)}function t(){e&&(c=a());for(var t,o=0;o<c.length;o++)0<=(t=(t=c[o]).getBoundingClientRect()).bottom&&0<=t.left&&t.top<=(r.innerHeight*n||document.documentElement.clientHeight*n)&&function(){var t,e,n,a,i=c[o];e=function(){c=c.filter(function(t){return i!==t}),r.imageLazyLoadSetting.onImageLoaded&&r.imageLazyLoadSetting.onImageLoaded(i)},(t=i).hasAttribute("bg-lazy")?(t.removeAttribute("bg-lazy"),e&&e()):(n=new Image,a=t.getAttribute("data-original"),n.onload=function(){t.src=a,t.removeAttribute("data-original"),e&&e()},t.src!==a&&(n.src=a))}()}function i(){clearTimeout(t.tId),t.tId=setTimeout(t,500)}t(),document.addEventListener("scroll",i),r.addEventListener("resize",i),r.addEventListener("orientationchange",i)}(this);</script><!-- hexo-inject:begin --><!-- hexo-inject:end --></body>
+        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(r){r.imageLazyLoadSetting.processImages=t;var e=r.imageLazyLoadSetting.isSPA,n=r.imageLazyLoadSetting.preloadRatio||1,c=a();function a(){var t=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")),e=Array.prototype.slice.call(document.querySelectorAll("[bg-lazy]"));return t.concat(e)}function t(){e&&(c=a());for(var t,o=0;o<c.length;o++)0<=(t=(t=c[o]).getBoundingClientRect()).bottom&&0<=t.left&&t.top<=(r.innerHeight*n||document.documentElement.clientHeight*n)&&function(){var t,e,n,a,i=c[o];e=function(){c=c.filter(function(t){return i!==t}),r.imageLazyLoadSetting.onImageLoaded&&r.imageLazyLoadSetting.onImageLoaded(i)},(t=i).hasAttribute("bg-lazy")?(t.removeAttribute("bg-lazy"),e&&e()):(n=new Image,a=t.getAttribute("data-original"),n.onload=function(){t.src=a,t.removeAttribute("data-original"),e&&e()},t.src!==a&&(n.src=a))}()}function i(){clearTimeout(t.tId),t.tId=setTimeout(t,500)}t(),document.addEventListener("scroll",i),r.addEventListener("resize",i),r.addEventListener("orientationchange",i)}(this);</script></body>
 
 </html>
