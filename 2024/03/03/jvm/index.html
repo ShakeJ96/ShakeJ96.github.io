@@ -631,21 +631,21 @@ charset="utf-8"></script> -->
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2024-03-03
+                    2024-03-04
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    7.7k
+                    9.8k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    27 分
+                    35 分
                 </div>
                 
 
@@ -1445,9 +1445,14 @@ charset="utf-8"></script> -->
 </li>
 <li>
 <p><strong>并发（Concurrent）</strong>：指用户线程与垃圾回收线程同时进行，可能会交替执行，用户程序在继续运行，而垃圾回收器运行在另外一个CPU上。</p>
-<p>​</p>
 </li>
 </ol>
+<ul>
+<li>
+<p><code>ParNew</code>回收器是JVM中用于新生代的并行垃圾回收器（重点在新生代）</p>
+<p>​</p>
+</li>
+</ul>
 <h4 id="4.3-parallel-scavenge-%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E5%99%A8" tabindex="-1">4.3 Parallel Scavenge 垃圾回收器</h4>
 <ul>
 <li>
@@ -1470,15 +1475,342 @@ charset="utf-8"></script> -->
 </ul>
 <h4 id="4.5-parallel-old-%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E5%99%A8" tabindex="-1">4.5 Parallel Old 垃圾回收器</h4>
 <ul>
-<li>
-<p><strong>本质上Parallel Scavenge 收集器的老年代版本</strong>，在注重吞吐量和CPU资源的场合上，都可以优先考虑这两种垃圾回收器。</p>
-</li>
+<li><strong>本质上Parallel Scavenge 收集器的老年代版本</strong>，在注重吞吐量和CPU资源的场合上，都可以优先考虑这两种垃圾回收器。</li>
 <li>
 <img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="/2024/03/03/jvm/parallel-scavenge-garbage-collector.png" alt="Parallel Old收集器运行示意图" style="zoom:67%;">
+</li>
+</ul>
+<h4 id="4.6-cms-%E5%B9%B6%E5%8F%91%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E5%99%A8" tabindex="-1">4.6 CMS 并发垃圾回收器</h4>
+<ul>
+<li>主要用于老年代的垃圾回收，CMS的设计目标是减少引用程序停顿时间，通过与引用程序线程并发执行部分垃圾回收操作来实现这一目标。</li>
+</ul>
+<p><strong>主要步骤</strong>：</p>
+<ol>
+<li><strong>初始标记</strong>：在此阶段，CMS会暂停应用程序线程，仅在STW的情况下进行，在这个阶段，CMS只标记根对象和直接根对象关联的对象；</li>
+<li><strong>并发标记</strong>：随后的标记工作将与引用程序并发执行。CMS使用并发标记算法来识别所有存活的对象，并记录它们的存活状态；</li>
+<li><strong>重新标记</strong>：在并发标记结束之后，CMS会再次暂停应用程序线程，进行短暂的重新标记。</li>
+<li><strong>并发清除</strong>：CMS将并发执行清除操作，删除未标记的对象，释放它们所占用的内存空间；</li>
+</ol>
+<ul>
+<li>
+<p><strong>优点</strong>：尽量减少应用程序的停顿时间，适用于较小的STW和更高的吞吐量场景；</p>
+</li>
+<li>
+<p><strong>缺点</strong>：可能会引发内存碎片的问题，在标记和清除的过程中消耗一定的系统资源；</p>
 <p>​</p>
 </li>
 </ul>
-<h2 id="%E7%B1%BB%E5%8A%A0%E8%BD%BD" tabindex="-1">类加载</h2>
+<h4 id="4.7-g1-%E5%9B%9E%E6%94%B6%E5%99%A8" tabindex="-1">4.7 G1 回收器</h4>
+<ul>
+<li>G1（Garbage-First）是一款面向服务器的垃圾回收器，主要针对配备多颗处理器以及大容量内存的及其，以高概率满足GC停顿时间要求的同时，还具备提高吞吐量性能的特点。</li>
+<li>随着新版 JDK 的发布，CMS 垃圾回收器已经被标记为"deprecated"，推荐使用 G1 或者其他垃圾回收器来替代；</li>
+</ul>
+<p><strong>适用场景</strong>：</p>
+<ol>
+<li>同时注重吞吐量和低延迟，默认的暂停目标是200ms；</li>
+<li>超大堆内存，会将堆划分为多个大侠相等的Region；</li>
+<li>整体上是标记+整理算法，两个区域之间是复制算法；</li>
+</ol>
+<p><strong>G1 垃圾回收阶段</strong></p>
+<img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="/2024/03/03/jvm/image-20240304090923791.png" alt="image-20240304090923791" style="zoom:67%;">
+<ol>
+<li>
+<p><strong>Young Collection</strong> 存在STW阶段</p>
+</li>
+<li>
+<p><strong>Young Collection +CM</strong></p>
+<ul>
+<li>在Young GC时会进行GC Root 的初始标记</li>
+<li>老年代占用堆空间比例达到阈值的时候，进行并发标记（不会STW），阈值默认是45%</li>
+</ul>
+</li>
+<li>
+<p><strong>Mixed Collection</strong></p>
+<p>会对E、S、O进行全面垃圾回收</p>
+<ul>
+<li>最终标记（Remark）会STW；</li>
+<li>拷贝存活（Evacuation）会STW；</li>
+</ul>
+<img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="/2024/03/03/jvm/image-20240304091620669.png" alt="image-20240304091620669" style="zoom:67%;">
+</li>
+<li>
+<p><strong>Full GC</strong></p>
+</li>
+</ol>
+<ul>
+<li>SerialGC、ParallelGC、CMS、G1。在新生代内存不足的情况下发生的垃圾收集都是：<strong>minor gc</strong></li>
+<li>前两者在老年代内存不足时发生的垃圾收集是<strong>full gc</strong>；后两者需要看并发产生垃圾的效率，比如回收的速度高于产生的速度，那么就不会产生<strong>full gc</strong>；</li>
+</ul>
+<ol start="5">
+<li><strong>Young Collection 跨代引用</strong></li>
+</ol>
+<ul>
+<li>指的是新生代垃圾回收过程中可能涉及到的跨代引用。</li>
+<li>比如：在进行新生代垃圾回收时，可能会发现部分对象存在于年轻代区域，但被老年代区域的对象所引用，这种情况就称为 “Young Collection 跨代引用”。</li>
+<li>G1回收器会在垃圾回收的期间，建立记录跨代引用的数据结构，确保执行垃圾回收操作时，能够正确处理这些引用关系~</li>
+</ul>
+<ol start="6">
+<li><strong>Remark</strong>(重标记)</li>
+</ol>
+<p><strong>大致运行流程</strong>：</p>
+<img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="/2024/03/03/jvm/g1-garbage-collector.png" alt="g1-garbage-collector" style="zoom:67%;">
+<ul>
+<li>
+<p><strong>G1收集器在后天维护了一个优先列表，每次根据允许的手机时间，优先选择回收价值最大的Region（也就是它的名字 Garbage-First的由来）</strong></p>
+<p>​</p>
+</li>
+</ul>
+<h4 id="4.8-%E5%93%8D%E5%BA%94%E6%97%B6%E9%97%B4%E4%BC%98%E5%85%88" tabindex="-1">4.8 响应时间优先</h4>
+<img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="/2024/03/03/jvm/image-20240304112052591.png" alt="image-20240304112052591" style="zoom:67%;">
+<p>​</p>
+<h4 id="%E6%80%BB%E7%BB%93" tabindex="-1">总结</h4>
+<p>Serial GC、Parallel GC、Concurrent Mark Sweep GC 这三个 GC  不同：</p>
+<ul>
+<li>最小化地使用内存和并行开销，选 Serial GC</li>
+<li>最大化应用程序的吞吐量，选 Parallel GC</li>
+<li>最小化 GC 的中断或停顿时间，选 CMS GC</li>
+</ul>
+<img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="/2024/03/03/jvm/JVM-%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E5%99%A8%E6%80%BB%E7%BB%93.png" style="zoom:67%;">
+<h3 id="5.-%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E8%B0%83%E4%BC%98" tabindex="-1">5. 垃圾回收调优</h3>
+<p><strong>预备知识</strong>：</p>
+<ul>
+<li>掌握GC相关的VM参数，会基本的空间调整；</li>
+<li>掌握相关工具；</li>
+<li>调优限定于当前的应用、环境；部分举例仅供参考学习~</li>
+</ul>
+<h4 id="5.1-%E8%B0%83%E4%BC%98%E9%A2%86%E5%9F%9F" tabindex="-1">5.1 调优领域</h4>
+<ol>
+<li>内存</li>
+<li>锁竞争</li>
+<li>cpu占用</li>
+<li>io</li>
+</ol>
+<h4 id="5.2-%E7%A1%AE%E5%AE%9A%E7%9B%AE%E6%A0%87" tabindex="-1">5.2 确定目标</h4>
+<p>低延迟、高吞吐量，选择合适的回收器；CMS，G1，ZGC；ParallelGC；</p>
+<ul>
+<li>ZGC 收集器：与 CMS 中的 ParNew 和 G1 类似，ZGC 也采用标记-复制算法，不过 ZGC 对该算法做了重大改进。ZGC 可以将暂停时间控制在几毫秒以内，且暂停时间不受堆内存大小的影响，出现 Stop The World 的情况会更少，但代价是牺牲了一些吞吐量。ZGC 最大支持 16TB 的堆内存。</li>
+</ul>
+<h4 id="5.3-%E6%9C%80%E5%BF%AB%E7%9A%84gc%E6%98%AF%E4%B8%8D%E5%8F%91%E7%94%9Fgc" tabindex="-1">5.3 最快的GC是不发生GC</h4>
+<ul>
+<li>查看 FullGC前后的内存占用，考虑到几个问题：</li>
+</ul>
+<ol>
+<li>
+<p>数据是不是太多？</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">resultSet <span class="token operator">=</span> statement<span class="token punctuation">.</span><span class="token function">executeQuery</span><span class="token punctuation">(</span><span class="token string">"select * from BigTable limit n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// 进行查询数量的限制</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+</li>
+<li>
+<p>数据表示是否臃肿？</p>
+<ul>
+<li>对象图</li>
+<li>对象大小</li>
+</ul>
+</li>
+<li>
+<p>是否存在内存泄露？解决：</p>
+<ul>
+<li>软/弱引用</li>
+<li>第三方缓存实现（redis 等）</li>
+</ul>
+</li>
+</ol>
+<h4 id="5.4-%E6%96%B0%E7%94%9F%E4%BB%A3%E8%B0%83%E4%BC%98" tabindex="-1">5.4 新生代调优</h4>
+<ul>
+<li><strong>新生代特点</strong>：
+<ul>
+<li>所有的new 操作的内存分配非常廉价；</li>
+<li>死亡对象的回收代价是0；</li>
+<li>大部分对象用过即消灭；</li>
+<li>Minor GC 的时间远远低于 Full GC；</li>
+</ul>
+</li>
+<li>新生代的空间并不是越大越好，需要考虑到吞吐量和垃圾回收的效率问题。新生代尽可能大，由于垃圾回收都是标记-复制算法，且复制时间长于标记时间（主要复制时间），但是新生代的对象存活较少，占用的时间也会较短。</li>
+<li>新生代能容纳所有【并发量 * （请求 - 响应）】的数据；</li>
+</ul>
+<p><strong>幸存区</strong>：</p>
+<ol>
+<li>幸存区大到能保留【当前活跃对象 + 需要晋升到老年代对象】；</li>
+<li>晋升阈值配置得当，让长时间存活对象尽快晋升；</li>
+</ol>
+<h4 id="5.5-%E8%80%81%E5%B9%B4%E4%BB%A3%E8%B0%83%E4%BC%98" tabindex="-1">5.5 老年代调优</h4>
+<p><strong>以 CMS 为例</strong>：</p>
+<ul>
+<li>CMS 的老年代内存越大越好</li>
+<li>先尝试不做调优，如果没有Full GC 那么已经…，否则先尝试调优新生代；</li>
+<li>观察发生 Full GC 时候老年代内存占用，将老年代内存预设调大1/4 ~ 1/3;</li>
+</ul>
+<h2 id="%E7%B1%BB%E5%8A%A0%E8%BD%BD%E4%B8%8E%E5%AD%97%E8%8A%82%E7%A0%81%E6%8A%80%E6%9C%AF" tabindex="-1">类加载与字节码技术</h2>
+<h3 id="1.-%E6%A6%82%E8%BF%B0" tabindex="-1">1. 概述</h3>
+<ol>
+<li>类文件结构</li>
+<li>字节码指令</li>
+<li>编译期处理</li>
+<li>类加载阶段</li>
+<li>类加载器</li>
+<li>运行期优化</li>
+</ol>
+<img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="/2024/03/03/jvm/image-20240304112705865.png" alt="image-20240304112705865" style="zoom:67%;">
+<p>​</p>
+<h3 id="2.-%E7%B1%BB%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84" tabindex="-1">2. 类文件结构</h3>
+<h4 id="2.1-%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84" tabindex="-1">2.1 文件结构</h4>
+<p>字节码是一种二进制的类文件，是编译之后供虚拟机解释执行的二进制字节码文件，<strong>一个 class 文件对应一个 public 类型的类或接口</strong></p>
+<p>字节码内容是 <strong>JVM 的字节码指令</strong>，不是机器码，C、C++ 经由编译器直接生成机器码，所以执行效率比 Java 高；</p>
+<pre class="line-numbers language-Java" data-language="Java"><code class="language-Java">ClassFile {
+	u4 				magic;						
+    u2 				minor_version;						
+    u2 				major_version;						
+    u2 				constant_pool_count;
+    cp_info			constant_pool[constant_pool_count-1];
+    u2	 			access_flags;
+    u2 				this_class;
+    u2 				super_class;
+    u2 				interfaces_count;
+    u2 				interfaces[interfaces_count];
+    u2 				fields_count;
+    field_info 		fields[fields_count];
+    u2 				methods_count;
+    method_info 	methods[methods_count];
+    u2 				attributes_count;
+    attribute_info 	attributes[attributes_count];
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>名称</th>
+<th>说明</th>
+<th>长度</th>
+<th>数量</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>u4</td>
+<td>magic</td>
+<td>魔数，识别类文件格式</td>
+<td>4个字节</td>
+<td>1</td>
+</tr>
+<tr>
+<td>u2</td>
+<td>minor_version</td>
+<td>副版本号(小版本)</td>
+<td>2个字节</td>
+<td>1</td>
+</tr>
+<tr>
+<td>u2</td>
+<td>major_version</td>
+<td>主版本号(大版本)</td>
+<td>2个字节</td>
+<td>1</td>
+</tr>
+<tr>
+<td>u2</td>
+<td>constant_pool_count</td>
+<td>常量池计数器</td>
+<td>2个字节</td>
+<td>1</td>
+</tr>
+<tr>
+<td>cp_info</td>
+<td>constant_pool</td>
+<td>常量池表</td>
+<td>n个字节</td>
+<td>constant_pool_count-1</td>
+</tr>
+<tr>
+<td>u2</td>
+<td>access_flags</td>
+<td>访问标识</td>
+<td>2个字节</td>
+<td>1</td>
+</tr>
+<tr>
+<td>u2</td>
+<td>this_class</td>
+<td>类索引</td>
+<td>2个字节</td>
+<td>1</td>
+</tr>
+<tr>
+<td>u2</td>
+<td>super_class</td>
+<td>父类索引</td>
+<td>2个字节</td>
+<td>1</td>
+</tr>
+<tr>
+<td>u2</td>
+<td>interfaces_count</td>
+<td>接口计数</td>
+<td>2个字节</td>
+<td>1</td>
+</tr>
+<tr>
+<td>u2</td>
+<td>interfaces</td>
+<td>接口索引集合</td>
+<td>2个字节</td>
+<td>interfaces_count</td>
+</tr>
+<tr>
+<td>u2</td>
+<td>fields_count</td>
+<td>字段计数器</td>
+<td>2个字节</td>
+<td>1</td>
+</tr>
+<tr>
+<td>field_info</td>
+<td>fields</td>
+<td>字段表</td>
+<td>n个字节</td>
+<td>fields_count</td>
+</tr>
+<tr>
+<td>u2</td>
+<td>methods_count</td>
+<td>方法计数器</td>
+<td>2个字节</td>
+<td>1</td>
+</tr>
+<tr>
+<td>method_info</td>
+<td>methods</td>
+<td>方法表</td>
+<td>n个字节</td>
+<td>methods_count</td>
+</tr>
+<tr>
+<td>u2</td>
+<td>attributes_count</td>
+<td>属性计数器</td>
+<td>2个字节</td>
+<td>1</td>
+</tr>
+<tr>
+<td>attribute_info</td>
+<td>attributes</td>
+<td>属性表</td>
+<td>n个字节</td>
+<td>attributes_count</td>
+</tr>
+</tbody>
+</table>
+<p>Class 文件格式采用一种类似于 C 语言结构体的方式进行数据存储，这种结构中只有两种数据类型：无符号数和表</p>
+<ul>
+<li>无符号数属于基本的数据类型，以 u1、u2、u4、u8 来分别代表1个字节、2个字节、4个字节和8个字节的无符号数，无符号数可以用来描述数字、索引引用、数量值或者按照 UTF-8 编码构成字符串</li>
+<li>表是由多个无符号数或者其他表作为数据项构成的复合数据类型，表都以 <code>_info</code> 结尾，用于描述有层次关系的数据，整个 Class 文件本质上就是一张表，由于表没有固定长度，所以通常会在其前面加上个数说明</li>
+</ul>
+<p>获取方式：</p>
+<ul>
+<li>HelloWorld.java 执行 <code>javac -parameters -d . HellowWorld.java</code>指令</li>
+<li>写入文件指令 <code>javap -v xxx.class &gt;xxx.txt</code></li>
+<li>IDEA 插件 jclasslib</li>
+</ul>
+<hr>
 <h3 id="1.-%E5%8F%8C%E4%BA%B2%E5%A7%94%E6%B4%BE%E6%9C%BA%E5%88%B6%E7%9A%84%E5%8E%9F%E7%90%86%E4%B8%8E%E5%AE%9E%E8%B7%B5" tabindex="-1">1. 双亲委派机制的原理与实践</h3>
 <blockquote>
 <p>双亲委派机制是类加载的核心之一，需要重点掌握</p>
@@ -2111,7 +2443,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">126.9k</span>&nbsp;字
+                class="white-color">129.1k</span>&nbsp;字
             
             
             
@@ -2470,10 +2802,10 @@ $(function () {
     if (windowWidth > 768) {
         document.write('<script type="text/javascript" src="https://apip.weatherdt.com/float/static/js/r.js?v=1111"><\/script>');
     }
-    </script>
+    </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
     
   
-<script src="/live2dw/lib/L2Dwidget.min.js?243708c68e3ad401cd4432916889e600"></script><script>L2Dwidget.init({"dialog":{"enable":true,"hitokoto":true},"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"left","width":120,"height":160,"superSample":2,"voffset":0,"hoffset":20},"mobile":{"show":false},"react":{"opacity":0.7,"opacityOnHover":0.2}});</script>
+
         <style>
             [bg-lazy] {
                 background-image: none !important;
@@ -2486,6 +2818,6 @@ $(function () {
                 preloadRatio: 3,
                 processImages: null,
             };
-        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(r){r.imageLazyLoadSetting.processImages=t;var e=r.imageLazyLoadSetting.isSPA,n=r.imageLazyLoadSetting.preloadRatio||1,c=a();function a(){var t=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")),e=Array.prototype.slice.call(document.querySelectorAll("[bg-lazy]"));return t.concat(e)}function t(){e&&(c=a());for(var t,o=0;o<c.length;o++)0<=(t=(t=c[o]).getBoundingClientRect()).bottom&&0<=t.left&&t.top<=(r.innerHeight*n||document.documentElement.clientHeight*n)&&function(){var t,e,n,a,i=c[o];e=function(){c=c.filter(function(t){return i!==t}),r.imageLazyLoadSetting.onImageLoaded&&r.imageLazyLoadSetting.onImageLoaded(i)},(t=i).hasAttribute("bg-lazy")?(t.removeAttribute("bg-lazy"),e&&e()):(n=new Image,a=t.getAttribute("data-original"),n.onload=function(){t.src=a,t.removeAttribute("data-original"),e&&e()},t.src!==a&&(n.src=a))}()}function i(){clearTimeout(t.tId),t.tId=setTimeout(t,500)}t(),document.addEventListener("scroll",i),r.addEventListener("resize",i),r.addEventListener("orientationchange",i)}(this);</script><!-- hexo-inject:begin --><!-- hexo-inject:end --></body>
+        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(r){r.imageLazyLoadSetting.processImages=t;var e=r.imageLazyLoadSetting.isSPA,n=r.imageLazyLoadSetting.preloadRatio||1,c=a();function a(){var t=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")),e=Array.prototype.slice.call(document.querySelectorAll("[bg-lazy]"));return t.concat(e)}function t(){e&&(c=a());for(var t,o=0;o<c.length;o++)0<=(t=(t=c[o]).getBoundingClientRect()).bottom&&0<=t.left&&t.top<=(r.innerHeight*n||document.documentElement.clientHeight*n)&&function(){var t,e,n,a,i=c[o];e=function(){c=c.filter(function(t){return i!==t}),r.imageLazyLoadSetting.onImageLoaded&&r.imageLazyLoadSetting.onImageLoaded(i)},(t=i).hasAttribute("bg-lazy")?(t.removeAttribute("bg-lazy"),e&&e()):(n=new Image,a=t.getAttribute("data-original"),n.onload=function(){t.src=a,t.removeAttribute("data-original"),e&&e()},t.src!==a&&(n.src=a))}()}function i(){clearTimeout(t.tId),t.tId=setTimeout(t,500)}t(),document.addEventListener("scroll",i),r.addEventListener("resize",i),r.addEventListener("orientationchange",i)}(this);</script><script src="/live2dw/lib/L2Dwidget.min.js?243708c68e3ad401cd4432916889e600"></script><script>L2Dwidget.init({"dialog":{"enable":true,"hitokoto":true},"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"left","width":120,"height":160,"superSample":2,"voffset":0,"hoffset":20},"mobile":{"show":false},"react":{"opacity":0.7,"opacityOnHover":0.2}});</script></body>
 
 </html>
