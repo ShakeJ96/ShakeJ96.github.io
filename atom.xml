@@ -6,7 +6,7 @@
   <link href="https://shakej96.github.io/atom.xml" rel="self"/>
   
   <link href="https://shakej96.github.io/"/>
-  <updated>2024-03-04T15:51:45.415Z</updated>
+  <updated>2024-03-09T07:56:00.107Z</updated>
   <id>https://shakej96.github.io/</id>
   
   <author>
@@ -17,11 +17,36 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>美团0309春招实习笔试</title>
+    <link href="https://shakej96.github.io/2024/03/09/mei-tuan-0309-chun-zhao-shi-xi-bi-shi/"/>
+    <id>https://shakej96.github.io/2024/03/09/mei-tuan-0309-chun-zhao-shi-xi-bi-shi/</id>
+    <published>2024-03-09T05:17:38.000Z</published>
+    <updated>2024-03-09T07:56:00.107Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;&#92;assets&#92;css&#92;APlayer.min.css&quot;&gt;&lt;script src=&quot;&#92;assets&#92;js&#92;APlayer.min.js&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="笔试真题" scheme="https://shakej96.github.io/categories/%E7%AC%94%E8%AF%95%E7%9C%9F%E9%A2%98/"/>
+    
+    
+    <category term="2024暑期" scheme="https://shakej96.github.io/tags/2024%E6%9A%91%E6%9C%9F/"/>
+    
+  </entry>
+  
+  <entry>
     <title>JVM</title>
     <link href="https://shakej96.github.io/2024/03/03/jvm/"/>
     <id>https://shakej96.github.io/2024/03/03/jvm/</id>
     <published>2024-03-03T15:26:10.000Z</published>
-    <updated>2024-03-04T15:51:45.415Z</updated>
+    <updated>2024-03-04T15:53:50.884Z</updated>
     
     
       
@@ -512,31 +537,6 @@
     
     
     <category term="二分查找" scheme="https://shakej96.github.io/tags/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>菜鸟1025秋招笔试</title>
-    <link href="https://shakej96.github.io/2023/10/26/cai-niao-1025-qiu-zhao-bi-shi/"/>
-    <id>https://shakej96.github.io/2023/10/26/cai-niao-1025-qiu-zhao-bi-shi/</id>
-    <published>2023-10-26T03:28:11.000Z</published>
-    <updated>2023-10-26T05:38:01.550Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;&#92;assets&#92;css&#92;APlayer.min.css&quot;&gt;&lt;script src=&quot;&#92;assets&#92;js&#92;APlayer.min.js&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="笔试真题" scheme="https://shakej96.github.io/categories/%E7%AC%94%E8%AF%95%E7%9C%9F%E9%A2%98/"/>
-    
-    
-    <category term="2023秋招" scheme="https://shakej96.github.io/tags/2023%E7%A7%8B%E6%8B%9B/"/>
     
   </entry>
   
