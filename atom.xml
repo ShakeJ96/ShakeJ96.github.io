@@ -6,7 +6,7 @@
   <link href="https://shakej96.github.io/atom.xml" rel="self"/>
   
   <link href="https://shakej96.github.io/"/>
-  <updated>2024-03-22T01:29:02.425Z</updated>
+  <updated>2024-05-06T14:47:24.372Z</updated>
   <id>https://shakej96.github.io/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>MySQL锁详解</title>
+    <link href="https://shakej96.github.io/2024/05/06/mysql-suo-xiang-jie/"/>
+    <id>https://shakej96.github.io/2024/05/06/mysql-suo-xiang-jie/</id>
+    <published>2024-05-06T06:53:27.000Z</published>
+    <updated>2024-05-06T14:47:24.372Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;&#92;assets&#92;css&#92;APlayer.min.css&quot;&gt;&lt;script src=&quot;&#92;assets&#92;js&#92;APlayer.min.js&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="Java开发" scheme="https://shakej96.github.io/categories/Java%E5%BC%80%E5%8F%91/"/>
+    
+    
+    <category term="MySQL" scheme="https://shakej96.github.io/tags/MySQL/"/>
+    
+    <category term="八股" scheme="https://shakej96.github.io/tags/%E5%85%AB%E8%82%A1/"/>
+    
+  </entry>
   
   <entry>
     <title>3.19 腾讯CSIG面试~</title>
@@ -391,7 +418,7 @@
     <link href="https://shakej96.github.io/2023/11/10/java-mian-shi-ti-zheng-li/"/>
     <id>https://shakej96.github.io/2023/11/10/java-mian-shi-ti-zheng-li/</id>
     <published>2023-11-10T12:21:30.000Z</published>
-    <updated>2023-11-22T08:37:33.918Z</updated>
+    <updated>2024-03-26T14:08:19.278Z</updated>
     
     
       
@@ -514,31 +541,6 @@
     
     
     <category term="公司" scheme="https://shakej96.github.io/tags/%E5%85%AC%E5%8F%B8/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>联通1028秋招笔试</title>
-    <link href="https://shakej96.github.io/2023/10/30/lian-tong-1028-qiu-zhao-bi-shi/"/>
-    <id>https://shakej96.github.io/2023/10/30/lian-tong-1028-qiu-zhao-bi-shi/</id>
-    <published>2023-10-29T17:15:53.000Z</published>
-    <updated>2023-11-01T15:54:24.094Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;&#92;assets&#92;css&#92;APlayer.min.css&quot;&gt;&lt;script src=&quot;&#92;assets&#92;js&#92;APlayer.min.js&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="笔试真题" scheme="https://shakej96.github.io/categories/%E7%AC%94%E8%AF%95%E7%9C%9F%E9%A2%98/"/>
-    
-    
-    <category term="2023秋招" scheme="https://shakej96.github.io/tags/2023%E7%A7%8B%E6%8B%9B/"/>
     
   </entry>
   
