@@ -631,21 +631,21 @@ charset="utf-8"></script> -->
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2024-05-06
+                    2024-05-08
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    3.7k
+                    8.6k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    13 分
+                    30 分
                 </div>
                 
 
@@ -673,14 +673,14 @@ charset="utf-8"></script> -->
                 <blockquote>
 <p>八股太多了，零零散散整理又遗忘，现在还是没找到合适的实习，有点沮丧；但是终归是要面对的，再把基础打牢一点吧，MySQL的锁也是关键点，目前也是记得七七八八，这里系统整理~</p>
 </blockquote>
-<h3 id="mysql%E4%B8%AD%E7%9A%84%E9%94%81%E6%9C%89%E5%93%AA%E4%BA%9B%EF%BC%9F" tabindex="-1">MySQL中的锁有哪些？</h3>
+<h3 id="%E4%B8%80%E3%80%81mysql%E4%B8%AD%E7%9A%84%E9%94%81%E6%9C%89%E5%93%AA%E4%BA%9B%EF%BC%9F" tabindex="-1">一、MySQL中的锁有哪些？</h3>
 <ul>
 <li>
 <p>在MySQL中根据加锁的范围，可以分为<strong>全局锁、表级锁和行级锁</strong>三类。大纲如下图所示：</p>
 <img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="/2024/05/06/mysql-suo-xiang-jie/1e37f6994ef44714aba03b8046b1ace2.png" alt="大纲" style="zoom:50%;">
 </li>
 </ul>
-<h4 id="1.-%E5%85%A8%E5%B1%80%E9%94%81" tabindex="-1">1. 全局锁</h4>
+<h4 id="1.1-%E5%85%A8%E5%B1%80%E9%94%81" tabindex="-1">1.1 全局锁</h4>
 <ul>
 <li>为了使用全局锁需要执行下面的指令：<code>flush tables with read lock</code></li>
 <li>执行之后，整个数据库就处于只读状态了，这时候其他线程执行下面的操作，就会被阻塞：
@@ -711,7 +711,7 @@ charset="utf-8"></script> -->
 <p>Innodb引擎默认的事务隔离级别是RR（可重复度读），因此是可以采用方式备份数据库；</p>
 <p>但是，对于MyISAM这种不支持事务的引擎，在备份数据库时候就要使用全局锁的方法；</p>
 <p>​</p>
-<h4 id="2.-%E8%A1%A8%E7%BA%A7%E9%94%81" tabindex="-1">2. 表级锁</h4>
+<h4 id="1.2-%E8%A1%A8%E7%BA%A7%E9%94%81" tabindex="-1">1.2 表级锁</h4>
 <blockquote>
 <p>MySQL中的表级锁有下面几种：</p>
 </blockquote>
@@ -787,10 +787,10 @@ lock tables t_student write;<span aria-hidden="true" class="line-numbers-rows"><
 <p>当执行插入、更新、删除操作，需要先对表加上「意向独占锁」，然后对该记录加独占锁。</p>
 <p>而普通的 select 是不会加行级锁的，普通的 select 语句是利用 MVCC 实现一致性读，是无锁的。</p>
 <pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">-- select也是可以对记录加上共享锁和独占锁的，具体如下：
-// 先在表上加上意向共享锁，然后对读取的记录加上共享锁；
+-- 先在表上加上意向共享锁，然后对读取的记录加上共享锁；
 select...lock in share mode;
 
-// 先表上加上意向独占锁，然后对读取的记录加独占锁；
+-- 先表上加上意向独占锁，然后对读取的记录加独占锁；
 select...for update;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
 <li>
@@ -834,19 +834,19 @@ select...for update;<span aria-hidden="true" class="line-numbers-rows"><span></s
 <p>​</p>
 </li>
 </ul>
-<h4 id="3.-%E8%A1%8C%E7%BA%A7%E9%94%81" tabindex="-1">3. 行级锁</h4>
+<h4 id="1.3-%E8%A1%8C%E7%BA%A7%E9%94%81" tabindex="-1">1.3 行级锁</h4>
 <p>在Innodb引擎中是支持行级锁的，但是MyISAM并不支持行级锁；</p>
 <p>普通的select语句是不会对记录加锁的，因为它属于快照读。如果要在查询时候对记录加行锁，确实可以使用下面的这两个方式，这种查询会加锁的语句称为<strong>锁定读</strong>；</p>
-<pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">//对读取的记录加共享锁
+<pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">-- 对读取的记录加共享锁
 select ... lock in share mode;
 
-//对读取的记录加独占锁
+-- 对读取的记录加独占锁
 select ... for update;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
 <li>上述的这两个语句必须放在同一个事务中，<strong>因为当事务提交了，所就会被提前释放</strong>，所以在使用这两条语句的时候，要加上begin、start transaction或者是set autocommit = 0。</li>
 </ul>
 <p>共享锁和独占锁。共享锁（S锁）是读读共享、读写互斥；独占锁（X锁）满足写写互斥、读写互斥；</p>
-<img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="/2024/05/06/mysql-suo-xiang-jie/x%E9%94%81%E5%92%8Cs%E9%94%81.png" alt="共享锁和独占锁" style="zoom:50%;">
+<img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="/2024/05/06/mysql-suo-xiang-jie/x%E9%94%81%E5%92%8Cs%E9%94%81.png" alt="共享锁和独占锁" style="zoom:67%;">
 <ul>
 <li>
 <p>行级锁分为三类，分别是Record Lock（称为记录锁）、Gap Lock（间隙锁）、Next-Key Lock（就是上述两种锁的结合，也称为临键锁）下面就这三个展开说说：</p>
@@ -877,6 +877,223 @@ select * from t_test where id = 1 for update;<span aria-hidden="true" class="lin
 <img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="/2024/05/06/mysql-suo-xiang-jie/image-20240506224348110.png" alt="案例" style="zoom:67%;">
 <p>如果说间隙锁锁住的是一个区间，那么「插入意向锁」锁住的就是一个点。因而从这个角度来说，插入意向锁确实是一种特殊的间隙锁。</p>
 <p>插入意向锁与间隙锁的另一个非常重要的差别是：尽管「插入意向锁」也属于间隙锁，但两个事务却不能在同一时间内，一个拥有间隙锁，另一个拥有该间隙区间内的插入意向锁（当然，插入意向锁如果不在间隙锁区间内则是可以的）。</p>
+<p>​</p>
+<h3 id="%E4%BA%8C%E3%80%81mysql%E6%98%AF%E6%80%8E%E4%B9%88%E5%8A%A0%E9%94%81%E7%9A%84%EF%BC%9F" tabindex="-1">二、MySQL是怎么加锁的？</h3>
+<h4 id="2.1-%E4%BB%80%E4%B9%88sql%E8%AF%AD%E5%8F%A5%E4%BC%9A%E5%8A%A0%E4%B8%8A%E8%A1%8C%E7%BA%A7%E9%94%81%EF%BC%9F" tabindex="-1">2.1 什么SQL语句会加上行级锁？</h4>
+<p>InnoDB引擎是支持行级锁的，而MyISAM引擎并不支持行级锁，所以后面的内容都是基于InnoDB引擎的；本质上还是InnoDB引擎决定加行级锁的操作；</p>
+<p>普通的select语句并不会对记录加锁的（除了串行化隔离级别），因为它属于的是快照读，是通过MVCC（多版本并发控制策略）实现的。</p>
+<p><strong>如果要在查询时候对记录加上行级锁，可以使用下面的两种方式，这两种查询会加锁的语句称之为锁定读</strong></p>
+<pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">-- 对读取的记录加上共享锁（S型锁）
+select ... lock in share mode;
+
+-- 对读取的记录加上独占锁(X型锁)
+select ... for update;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>上面这两条语句必须在同一个事务中，<strong>因为当事务提交了之后，锁就会被释放</strong>，所以在使用这两条语句时候，要加上begin或者start transaction开启事务的语句。</p>
+<p><strong>除了上面这两条锁定读语句会加上行级锁之外，update和delete操作都会加上行级锁，且锁的类型都是独占锁（X型锁）</strong></p>
+<pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">-- 对操作的记录加独占锁(X型锁)
+update table .... where id = 1;
+
+-- 对操作的记录加独占锁(X型锁)
+delete from table where id = 1;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>再重复一遍，共享锁（S锁）满足读读共享，读写互斥。独占锁（X锁）满足写写互斥、读写互斥。</p>
+<h4 id="2.2-%E8%A1%8C%E7%BA%A7%E9%94%81%E7%9A%84%E7%A7%8D%E7%B1%BB%E5%88%86%E5%88%AB%EF%BC%9F" tabindex="-1">2.2 行级锁的种类分别？</h4>
+<blockquote>
+<p>上述已经讲述了具体的分类，这里简单总结即可。</p>
+</blockquote>
+<p>在【读已提交隔离级别】，行级锁的种类只有记录锁，也就是仅仅把一条记录锁上。</p>
+<p>在【可重复读隔离级别】，行级锁的种类除了有记录所，还有间隙锁（目的是为了避免幻读），所以行级锁的种类主要有三类：</p>
+<ol>
+<li>Record Lock，记录锁，也就是仅仅把一条记录锁上；(S型共享锁，X型记录锁等)</li>
+<li>Gap Lock，间隙锁，锁定一个范围，但是不包含记录本身；</li>
+<li>Next-Key Lock：Record Lock + Gap Lock的组合，锁定一个范围，并且锁定记录本身。</li>
+</ol>
+<h4 id="2.3-mysql%E6%98%AF%E6%80%8E%E4%B9%88%E5%8A%A0%E4%B8%8A%E8%A1%8C%E7%BA%A7%E9%94%81%E7%9A%84%EF%BC%9F" tabindex="-1">2.3 MySQL是怎么加上行级锁的？</h4>
+<p>行级锁加锁规则比较复杂，不同场景，加锁的形式是不同的；</p>
+<p><strong>加锁的对象是索引，加锁的基本单位是临键锁（Next- Key Lock）</strong>，它是由记录锁和间隙锁组合而成的，<strong>next-key lock 是前开后闭区间，而间隙锁是前开后开区间</strong>。</p>
+<ul>
+<li>比如针对这里面的加锁范围：假设，表中有一个范围 id 为（3，5] 的 next-key lock，那么其他事务即不能插入 id = 4 记录，也不能修改和删除 id = 5 这条记录。</li>
+</ul>
+<p>但是，next-key Lock在一些场景下退化成记录锁或者间隙锁；总结一句，<strong>在能使用记录锁或者间隙锁就能避免幻读现象的场景下， next-key lock 就会退化成记录锁或间隙锁</strong>。</p>
+<h5 id="%E5%94%AF%E4%B8%80%E7%B4%A2%E5%BC%95%E7%AD%89%E5%80%BC%E6%9F%A5%E8%AF%A2" tabindex="-1">唯一索引等值查询</h5>
+<p>当我们用唯一索引进行等值查询的时候，查询的记录存不存在，加锁的规则也会不同：</p>
+<ul>
+<li>当查询的记录是「存在」的，在索引树上定位到这一条记录后，将该记录的索引中的 next-key lock 会<strong>退化成「记录锁」</strong>。</li>
+<li>当查询的记录是「不存在」的，在索引树找到第一条大于该查询记录的记录后，将该记录的索引中的 next-key lock 会<strong>退化成「间隙锁」</strong>。</li>
+</ul>
+<blockquote>
+<ol>
+<li>「唯一索引」是用「主键索引」作为案例说明的，加锁只加在主键索引项上。</li>
+<li>如果是用二级索引（不管是不是非唯一索引，还是唯一索引）进行锁定读查询的时候，除了会对二级索引项加行级锁（如果是唯一索引的二级索引，加锁规则和主键索引的案例相同），而且还会对查询到的记录的主键索引项上加「记录锁」。</li>
+</ol>
+</blockquote>
+<p><strong>1. 记录存在的情况</strong></p>
+<p>举例：</p>
+<pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">-- 假设此时的事务A执行了这条等值查询的语句，查询的记录是存在于当前的表中的；
+select * from user where id = 1 for update;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<ul>
+<li>这里的事务A会id为1的这条记录就会加上<strong>X型的记录锁；</strong>，加上去了后，其他事务就无法对id为1的这条记录进行更新和删除的操作了；</li>
+</ul>
+<blockquote>
+<p>为什么说唯一索引等值查询并且查询记录存在的场景下，该记录的索引中的 next-key lock 会退化成记录锁？</p>
+</blockquote>
+<p>原因就是在唯一索引等值查询并且查询记录存在的场景下，仅靠记录锁也能避免幻读的问题。所以：要避免幻读就是避免结果集某一条记录被其他事务删除，或者有其他事务插入了一条新记录，<strong>这样前后两次查询的结果集就不会出现不相同的情况</strong>；</p>
+<ul>
+<li>由于主键具有的唯一性，所以<strong>其他事务插入id = 1的时候，会因为主键冲突，导致无法插入id = 1的新记录</strong>。这样的事务A在多次查询 id = 1 的记录时候，不会出现前后两次查询的结果集不同情况，也就避免了幻读的问题。</li>
+<li>由于对 id = 1 加了记录锁，<strong>其他事务无法删除该记录</strong>，这样事务 A 在多次查询 id = 1 的记录的时候，不会出现前后两次查询的结果集不同，也就避免了幻读的问题。</li>
+</ul>
+<p><strong>2. 记录不存在的情况</strong></p>
+<p>举例：</p>
+<pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">-- 假设事务 A 执行了这条等值查询语句，查询的记录是「不存在」于表中的。
+select * from user where id = 2 for update;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p><strong>此时事务 A 在 id = 5 记录的主键索引上加的是间隙锁，锁住的范围是 (1, 5)；注意这里是前开后开。</strong></p>
+<ul>
+<li>如何确定的查询范围情况？</li>
+<li>如果 LOCK_MODE 是 next-key 锁或者间隙锁，那么 LOCK_DATA 就表示锁的范围「右边界」，此次的事务 A 的 LOCK_DATA 是 5。然后锁范围的「左边界」是表中 id 为 5 的上一条记录的 id 值，即 1。</li>
+</ul>
+<blockquote>
+<p>为什么唯一索引等值查询并且查询记录「不存在」的场景下，在索引树找到第一条大于该查询记录的记录后，要将该记录的索引中的 next-key lock 会退化成「间隙锁」？</p>
+</blockquote>
+<p>原因在于唯一索引等值查询并且查询记录不存在的场景下，仅靠间隙锁就能避免幻读的问题？</p>
+<ul>
+<li>
+<p>为什么 id = 5 记录上的主键索引的锁不可以是 next-key lock？如果是 next-key lock，就意味着其他事务无法删除 id = 5 这条记录，但是这次的案例是查询 id = 2 的记录，只要保证前后两次查询 id = 2 的结果集相同，就能避免幻读的问题了，所以即使 id =5 被删除，也不会有什么影响，那就没必须加 next-key lock，因此只需要在 id = 5 加间隙锁，避免其他事务插入 id = 2 的新记录就行了。</p>
+</li>
+<li>
+<p>为什么不可以针对不存在的记录加记录锁？锁是加在索引上的，而这个场景下查询的记录是不存在的，自然就没办法锁住这条不存在的记录。</p>
+<p>​</p>
+</li>
+</ul>
+<h5 id="%E5%94%AF%E4%B8%80%E7%B4%A2%E5%BC%95%E8%8C%83%E5%9B%B4%E6%9F%A5%E8%AF%A2" tabindex="-1">唯一索引范围查询</h5>
+<p>当唯一索引进行范围查询时，<strong>会对每一个扫描到的索引加 next-key 锁，然后如果遇到下面这些情况，会退化成记录锁或者间隙锁</strong>：</p>
+<ul>
+<li>
+<p>情况一：针对「大于等于」的范围查询，因为存在等值查询的条件，那么如果等值查询的记录是存在于表中，那么该记录的索引中的 next-key 锁会<strong>退化成记录锁</strong>。只有存在等值的情况下才会发生退化情况，如果还是范围的话，则直接加上的是临键锁；</p>
+<p>​</p>
+</li>
+<li>
+<p>情况二：针对「小于或者小于等于」的范围查询，要看条件值的记录是否存在于表中：</p>
+<ul>
+<li>当条件值的记录不在表中，那么不管是「小于」还是「小于等于」条件的范围查询，<strong>扫描到终止范围查询的记录时，该记录的索引的 next-key 锁会退化成间隙锁</strong>，其他扫描到的记录，都是在这些记录的索引上加 next-key 锁。</li>
+</ul>
+<p>举例：</p>
+<pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">-- 事务A执行下面的这条范围查询语句，需要注意的是id为6的数据并不存在于表中，小于或者小于等于加锁情况是一样的（id为6的数据并不存在）
+select * from user where id &lt; 6 for update;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>给出加锁的情况如下：</p>
+<img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="/2024/05/06/mysql-suo-xiang-jie/%E5%94%AF%E4%B8%80%E7%B4%A2%E5%BC%95%E8%8C%83%E5%9B%B4%E6%9F%A5%E8%AF%A2%E5%B0%8F%E4%BA%8E%E7%AD%89%E4%BA%8E6.drawio.png" alt="案例" style="zoom:67%;">
+<p>​</p>
+<ul>
+<li>当条件值的记录在表中，如果是「小于」条件的范围查询，<strong>扫描到终止范围查询的记录时，该记录的索引的 next-key 锁会退化成间隙锁</strong>，其他扫描到的记录，都是在这些记录的索引上加 next-key 锁；</li>
+</ul>
+<p>举例：</p>
+<pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">-- 如果事务 A 的查询语句是小于的范围查询，且查询条件值的记录（id 为 5）存在于表中。
+select * from user where id &lt; 5 for update;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>如下图所示：</p>
+<img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="/2024/05/06/mysql-suo-xiang-jie/%E5%94%AF%E4%B8%80%E7%B4%A2%E5%BC%95%E8%8C%83%E5%9B%B4%E6%9F%A5%E8%AF%A2%E5%B0%8F%E4%BA%8E5.drawio.png" alt="案例" style="zoom:67%;">
+<ul>
+<li>当条件值的记录在表中，如果「小于等于」条件的范围查询，扫描到终止范围查询的记录时，该记录的索引 next-key 锁不会退化成间隙锁。其他扫描到的记录，都是在这些记录的索引上加 next-key 锁。</li>
+</ul>
+<p>举例：</p>
+<pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">-- 假设事务 A 执行了这条范围查询语句，注意查询条件值的记录（id 为 5）存在于表中
+select * from user where id &lt;= 5 for update;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>如下图所示：</p>
+<img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="/2024/05/06/mysql-suo-xiang-jie/%E5%94%AF%E4%B8%80%E7%B4%A2%E5%BC%95%E8%8C%83%E5%9B%B4%E6%9F%A5%E8%AF%A2%E5%B0%8F%E4%BA%8E%E7%AD%89%E4%BA%8E5.drawio.png" alt="案例" style="zoom:67%;">
+<p>​</p>
+</li>
+</ul>
+<h5 id="%E9%9D%9E%E5%94%AF%E4%B8%80%E7%B4%A2%E5%BC%95%E7%AD%89%E5%80%BC%E6%9F%A5%E8%AF%A2" tabindex="-1">非唯一索引等值查询</h5>
+<p>当我们用非唯一索引进行等值查询的时候，<strong>因为存在两个索引，一个主键索引，一个非唯一索引（二级索引），所以在加锁的时候，两个都会加锁，但是对主键索引加锁的时候，只有满足查询条件的记录才会对它们的主键索引加锁；</strong></p>
+<p><strong>1. 记录不存在的情况</strong></p>
+<pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">-- 事务 A 对非唯一索引（age）进行了等值查询，且表中不存在 age = 25 的记录
+select * from user where ag = 25 for update;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="/2024/05/06/mysql-suo-xiang-jie/%E9%9D%9E%E5%94%AF%E4%B8%80%E7%B4%A2%E5%BC%95%E7%AD%89%E5%80%BC%E6%9F%A5%E8%AF%A2age=25.drawio.png" alt="img" style="zoom:67%;">
+<p>加锁情况：</p>
+<ul>
+<li>定位到第一条不符合查询条件的二级索引记录，即扫描到 age = 39，于是<strong>该二级索引的 next-key 锁会退化成间隙锁，范围是 (22, 39)</strong>。</li>
+<li>停止查询</li>
+</ul>
+<p>​</p>
+<blockquote>
+<p>问题：当有一个事务持有二级索引的间隙锁（22，39）时候，什么情况下，可以让其他事务的插入age = 22 或者 age = 39 记录的语句成功？又是什么情况下，插入时候会被阻塞？</p>
+</blockquote>
+<p>首先需要直到的是，什么情况下插入语句会发生阻塞情况？</p>
+<p>插入语句在插入一条记录之前，需要定位到该记录在B+树的为止，如果插入位置的吓一跳记录的索引上有间隙锁，才会发生阻塞情况；</p>
+<p>二级索引树是按照二级索引值（age列）按顺序存放的，在相同的二级索引值情况下， 再按主键 id 的顺序存放。知道了这个前提，我们才能知道执行插入语句的时候，插入的位置的下一条记录是谁。</p>
+<p>基于前面的实验，事务 A 是在 age = 39 记录的二级索引上，加了 X 型的间隙锁，范围是 (22, 39)。</p>
+<p>比如：插入 age = 22 记录的成功和失败的情况分别如下：</p>
+<ul>
+<li>
+<p>当其他事务插入一条 age = 22，id = 3 的记录的时候，在二级索引树上定位到插入的位置，而<strong>该位置的下一条是 id = 10、age = 22 的记录，该记录的二级索引上没有间隙锁，所以这条插入语句可以执行成功</strong>。</p>
+</li>
+<li>
+<p>当其他事务插入一条 age = 22，id = 12 的记录的时候，在二级索引树上定位到插入的位置，而<strong>该位置的下一条是 id = 20、age = 39 的记录，正好该记录的二级索引上有间隙锁，所以这条插入语句会被阻塞，无法插入成功</strong>。</p>
+<p>​</p>
+</li>
+</ul>
+<p><strong>2. 记录存在的情况</strong></p>
+<p>举例：</p>
+<pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">-- 事务A对非唯一索引age进行等值查询的时候，查询值存在的情况；
+select * from user where age = 22 for update;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>这里的事务A加锁的变化过程如下：</p>
+<img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="/2024/05/06/mysql-suo-xiang-jie/%E9%9D%9E%E5%94%AF%E4%B8%80%E7%B4%A2%E5%BC%95%E7%AD%89%E5%80%BC%E6%9F%A5%E8%AF%A2%E5%AD%98%E5%9C%A8.drawio.png" alt="img" style="zoom:67%;">
+<p>注意：<strong>那么当在 age = 39 这条记录的二级索引索引上加了范围为 (22, 39) 的间隙锁后，其他事务是无法插入一个 age = 22，id = 12 的新记录，因为当其他事务插入一条 age = 22，id = 12 的新记录的时候，在二级索引树上定位到插入的位置，而该位置的下一条是 id = 20、age = 39 的记录，正好该记录的二级索引上有间隙锁，所以这条插入语句会被阻塞，无法插入成功，这样就避免幻读现象的发生</strong>。</p>
+<p>​</p>
+<h5 id="%E9%9D%9E%E5%94%AF%E4%B8%80%E7%B4%A2%E5%BC%95%E8%8C%83%E5%9B%B4%E6%9F%A5%E8%AF%A2" tabindex="-1">非唯一索引范围查询</h5>
+<p>非唯一索引和主键索引的范围查询的加锁也有所不同，不同之处在于<strong>非唯一索引范围查询，索引的 next-key lock 不会有退化为间隙锁和记录锁的情况</strong>，也就是非唯一索引进行范围查询时，对二级索引记录加锁都是加 next-key 锁。</p>
+<pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">-- 比如下面这个事务A的范围查询语句
+ select * from user where age &gt;= 22  for update;
+ <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="/2024/05/06/mysql-suo-xiang-jie/%E9%9D%9E%E5%94%AF%E4%B8%80%E7%B4%A2%E5%BC%95%E8%8C%83%E5%9B%B4%E6%9F%A5%E8%AF%A2age%E5%A4%A7%E4%BA%8E%E7%AD%89%E4%BA%8E22.drawio.png" alt="img" style="zoom:67%;">
+<p>可以看到，事务 A 对主键索引和二级索引都加了 X 型的锁；</p>
+<ul>
+<li>主键索引（id 列）：
+<ul>
+<li>在 id = 10 这条记录的主键索引上，加了记录锁，意味着其他事务无法更新或者删除 id = 10 的这一行记录。</li>
+<li>在 id = 20 这条记录的主键索引上，加了记录锁，意味着其他事务无法更新或者删除 id = 20 的这一行记录。</li>
+</ul>
+</li>
+<li>二级索引（age 列）：
+<ul>
+<li>在 age = 22 这条记录的二级索引上，加了范围为 (21, 22] 的 next-key 锁，意味着其他事务无法更新或者删除 age = 22 的这一些新记录，不过对于是否可以插入 age = 21 和 age = 22 的新记录，还需要看新记录的 id 值，有些情况是可以成功插入的，而一些情况则无法插入，具体哪些情况，我们前面也讲了。</li>
+<li>在 age = 39 这条记录的二级索引上，加了范围为 (22, 39] 的 next-key 锁，意味着其他事务无法更新或者删除 age = 39 的这一些记录，也无法插入 age 值为 23、24、25、…、38 的这一些新记录。不过对于是否可以插入 age = 22 和 age = 39 的新记录，还需要看新记录的 id 值，有些情况是可以成功插入的，而一些情况则无法插入，具体哪些情况，我们前面也讲了。</li>
+<li>在特殊记录的二级索引上，加上了范围为(39，+∞]的next-key锁，意味着其他事务是无法插入age大于39的这些新记录；</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>在 age &gt;= 22 的范围查询中，明明查询 age = 22 的记录存在并且属于等值查询，为什么不会像唯一索引那样，将 age = 22 记录的二级索引上的 next-key 锁退化为记录锁？</p>
+</blockquote>
+<p>本质上在于这里的age字段并不是唯一索引，不具有唯一性，如果加了记录锁（无法防止插入，只能防止删除或者修改），就会导致可能出现两个age = 22 的记录情况，从而导致前后两次查询的结果集不同、幻读的情况；</p>
+<p>​</p>
+<h5 id="%E6%B2%A1%E6%9C%89%E5%8A%A0%E7%B4%A2%E5%BC%95%E7%9A%84%E6%9F%A5%E8%AF%A2" tabindex="-1">没有加索引的查询</h5>
+<p><strong>如果锁定读查询语句，没有使用索引列作为查询条件，或者查询语句没有走索引查询，导致扫描是全表扫描。那么，每一条记录的索引上都会加 next-key 锁，这样就相当于锁住的全表，这时如果其他事务对该表进行增、删、改操作的时候，都会被阻塞</strong>。</p>
+<p>不只是锁定读查询语句不加索引才会导致这种情况，update 和 delete 语句如果查询条件不加索引，那么由于扫描的方式是全表扫描，于是就会对每一条记录的索引上都会加 next-key 锁，这样就相当于锁住的全表。</p>
+<p>因此，<strong>在线上在执行 update、delete、select … for update 等具有加锁性质的语句，一定要检查语句是否走了索引，如果是全表扫描的话，会对每一个索引加 next-key 锁，相当于把整个表锁住了</strong>，这是挺严重的问题。</p>
+<h4 id="%E6%80%BB%E7%BB%93" tabindex="-1">总结</h4>
+<p>关于MySQL行级锁的加锁规则：</p>
+<p>唯一索引等值查询：</p>
+<ul>
+<li>当查询的记录是「存在」的，在索引树上定位到这一条记录后，将该记录的索引中的 next-key lock 会<strong>退化成「记录锁」</strong>。</li>
+<li>当查询的记录是「不存在」的，在索引树找到第一条大于该查询记录的记录后，将该记录的索引中的 next-key lock 会<strong>退化成「间隙锁」</strong>。</li>
+</ul>
+<p>非唯一索引等值查询：</p>
+<ul>
+<li>当查询的记录「存在」时，由于不是唯一索引，所以肯定存在索引值相同的记录，于是非唯一索引等值查询的过程是一个扫描的过程，直到扫描到第一个不符合条件的二级索引记录就停止扫描，然后<strong>在扫描的过程中，对扫描到的二级索引记录加的是 next-key 锁，而对于第一个不符合条件的二级索引记录，该二级索引的 next-key 锁会退化成间隙锁。同时，在符合查询条件的记录的主键索引上加记录锁</strong>。</li>
+<li>当查询的记录「不存在」时，<strong>扫描到第一条不符合条件的二级索引记录，该二级索引的 next-key 锁会退化成间隙锁。因为不存在满足查询条件的记录，所以不会对主键索引加锁</strong>。</li>
+</ul>
+<p>非唯一索引和主键索引的范围查询的加锁规则不同之处在于：</p>
+<ul>
+<li>唯一索引在满足一些条件的时候，索引的 next-key lock 退化为间隙锁或者记录锁。</li>
+<li>非唯一索引范围查询，索引的 next-key lock 不会退化为间隙锁和记录锁。</li>
+</ul>
+<p>其实理解 MySQL 为什么要这样加锁，主要要以避免幻读角度去分析，这样就很容易理解这些加锁的规则了。</p>
+<p>还有一件很重要的事情，在线上在执行 update、delete、select … for update 等具有加锁性质的语句，一定要检查语句是否走了索引，<strong>如果是全表扫描的话，会对每一个索引加 next-key 锁，相当于把整个表锁住了</strong>，这是挺严重的问题。</p>
+<p>​</p>
+<hr>
+<p><strong>主键唯一索引加锁流程图：</strong></p>
+<img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="/2024/05/06/mysql-suo-xiang-jie/%E5%94%AF%E4%B8%80%E7%B4%A2%E5%BC%95%E5%8A%A0%E9%94%81%E6%B5%81%E7%A8%8B.jpeg" alt="img" style="zoom:150%;">
+<p>​</p>
+<p><strong>非唯一索引加锁流程图：</strong></p>
+<p><img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="/2024/05/06/mysql-suo-xiang-jie/%E9%9D%9E%E5%94%AF%E4%B8%80%E7%B4%A2%E5%BC%95%E5%8A%A0%E9%94%81%E6%B5%81%E7%A8%8B.jpeg" alt="img"></p>
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/katex/dist/katex.min.css">
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/markdown-it-texmath/css/texmath.min.css">
 
@@ -1423,7 +1640,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">141.7k</span>&nbsp;字
+                class="white-color">146.6k</span>&nbsp;字
             
             
             
@@ -1782,10 +1999,10 @@ $(function () {
     if (windowWidth > 768) {
         document.write('<script type="text/javascript" src="https://apip.weatherdt.com/float/static/js/r.js?v=1111"><\/script>');
     }
-    </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    </script>
     
   
-<script src="/live2dw/lib/L2Dwidget.min.js?243708c68e3ad401cd4432916889e600"></script><script>L2Dwidget.init({"dialog":{"enable":true,"hitokoto":true},"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"left","width":120,"height":160,"superSample":2,"voffset":0,"hoffset":20},"mobile":{"show":false},"react":{"opacity":0.7,"opacityOnHover":0.2}});</script>
+<script src="/live2dw/lib/L2Dwidget.min.js?243708c68e3ad401cd4432916889e600"></script><script>L2Dwidget.init({"dialog":{"enable":true,"hitokoto":true},"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"left","width":120,"height":160,"superSample":2,"voffset":0,"hoffset":20},"mobile":{"show":false},"react":{"opacity":0.7,"opacityOnHover":0.2}});</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
         <style>
             [bg-lazy] {
                 background-image: none !important;
