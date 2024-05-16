@@ -826,11 +826,11 @@ charset="utf-8"></script> -->
 </ul>
 <h4 id="redo-log-%E6%96%87%E4%BB%B6%E5%86%99%E6%BB%A1%E4%BA%86%E6%80%8E%E4%B9%88%E5%8A%9E%EF%BC%9F" tabindex="-1">redo log 文件写满了怎么办？</h4>
 <p>默认情况下，InnoDB存储引擎有1个重做日志文件组，「重做日志文件组」由有 2 个 redo log 文件组成，这两个 redo 日志的文件名叫 ：<code>ib_logfile0</code> 和 <code>ib_logfile1</code> 。</p>
-<img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="/2024/05/14/mysql-ri-zhi-ji-zhi-xiang-jie/%E9%87%8D%E5%81%9A%E6%97%A5%E5%BF%97%E6%96%87%E4%BB%B6%E7%BB%84.drawio.png" alt="重做日志文件组" style="zoom:33%;">
+<img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="/2024/05/14/mysql-ri-zhi-ji-zhi-xiang-jie/%E9%87%8D%E5%81%9A%E6%97%A5%E5%BF%97%E6%96%87%E4%BB%B6%E7%BB%84.drawio.png" alt="重做日志文件组" style="zoom: 50%;">
 <p>在重做日志组中，每个 redo log File 的大小是固定且一致的，假设每个 redo log File 设置的上限是 1 GB，那么总共就可以记录 2GB 的操作。</p>
 <p>重做日志文件组是以<strong>循环写</strong>的方式工作的，从头开始写，写到末尾就又回到开头，相当于一个环形。</p>
 <p>所以，InnoDB存储引擎会先写ib_logfile0文件，当ib_logfile0 文件被写满的时候，会切换到ib_logfile1文件；如此这样来回进行切换即可。顺序如下：</p>
-<img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="/2024/05/14/mysql-ri-zhi-ji-zhi-xiang-jie/%E9%87%8D%E5%81%9A%E6%97%A5%E5%BF%97%E6%96%87%E4%BB%B6%E7%BB%84%E5%86%99%E5%85%A5%E8%BF%87%E7%A8%8B.drawio.png" alt="重做日志文件组写入过程" style="zoom:33%;">
+<img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="/2024/05/14/mysql-ri-zhi-ji-zhi-xiang-jie/%E9%87%8D%E5%81%9A%E6%97%A5%E5%BF%97%E6%96%87%E4%BB%B6%E7%BB%84%E5%86%99%E5%85%A5%E8%BF%87%E7%A8%8B.drawio.png" alt="重做日志文件组写入过程" style="zoom: 50%;">
 <h3 id="%E5%9B%9B%E3%80%81%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81binlog%EF%BC%9F" tabindex="-1">四、为什么需要binlog？</h3>
 <p>前面介绍的undo log 和 redo log 两个日志文件都是Innodb存储引擎生成的；</p>
 <p>MySQL在完成一条更新操作后，Server层都还是会生成一条binlog，等之后事务提交的时候，会将该事务执行过程红产生的所以binlog统一写入到binlog文件中去；</p>
