@@ -161,9 +161,9 @@
     };
     loaded();
 })()
- </script><meta name="generator" content="Hexo 6.3.0">
-<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/atom.xml" title="ShakeJ" type="application/atom+xml"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+ </script><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="ShakeJ" type="application/atom+xml">
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </head>
 <!-- <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js"
 
@@ -631,7 +631,7 @@ charset="utf-8"></script> -->
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2024-05-16
+                    2024-08-13
                 </div>
                 
 
@@ -684,7 +684,7 @@ charset="utf-8"></script> -->
 <img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="/2024/05/14/mysql-ri-zhi-ji-zhi-xiang-jie/%E6%8F%90%E7%BA%B2.png" alt="本文大纲" style="zoom:67%;">
 <p>​</p>
 <h3 id="%E4%B8%80%E3%80%81%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81undo-log%EF%BC%9F" tabindex="-1">一、为什么需要undo log？</h3>
-<h5 id="1.1-%E5%8A%9F%E8%83%BD%E5%9C%BA%E6%99%AF%E4%BB%8B%E7%BB%8D" tabindex="-1">1.1 功能场景介绍</h5>
+<h4 id="1.1-%E5%8A%9F%E8%83%BD%E5%9C%BA%E6%99%AF%E4%BB%8B%E7%BB%8D" tabindex="-1">1.1 功能场景介绍</h4>
 <p>当我们在SQL语句的’‘增删改’'语句（DML语句）等，虽然我们并没有主动输入begin开启事务和commit提交事务，但是MySQL会主动隐式开启事务进行自动提交的操作等，其中也有参数<code>autocommit</code>决定等；</p>
 <blockquote>
 <p>所以这里如果出现这样的问题：一个事务在执行的过程中，如果此时还没提交事务之前，MySQL反而发生了崩溃，如何回滚到事务之前的数据呢？需要进行备份等？</p>
@@ -712,7 +712,7 @@ charset="utf-8"></script> -->
 </ul>
 <p>这两个隔离级别实现是通过「事务的 Read View 里的字段」和「记录中的两个隐藏列（trx_id 和 roll_pointer）」的比对，如果不满足可见行，就会顺着 undo log 版本链里找到满足其可见性的记录，从而控制并发事务访问同一个记录时的行为，这就叫 MVCC（多版本并发控制）。</p>
 <p>​</p>
-<h5 id="1.2-%E6%80%BB%E7%BB%93undo-log-%E7%9A%84%E4%BD%9C%E7%94%A8" tabindex="-1">1.2 总结undo log 的作用</h5>
+<h4 id="1.2-%E6%80%BB%E7%BB%93undo-log-%E7%9A%84%E4%BD%9C%E7%94%A8" tabindex="-1">1.2 总结undo log 的作用</h4>
 <ol>
 <li><strong>实现事务回滚，保障事务的原子性</strong>；事务处理过程中，如果出现了错误或者用户执 行了 ROLLBACK 语句，MySQL 可以利用 undo log 中的历史数据将数据恢复到事务开始之前的状态。</li>
 <li><strong>实现MVCC（多版本并发控制）关键因素之一</strong>；MVCC 是通过 ReadView + undo log 实现的。undo log 为每条记录保存多份历史数据，MySQL 在执行快照读（普通 select 语句）的时候，会根据事务的 Read View 里的信息，顺着 undo log 的版本链找到满足其可见性的记录。</li>
@@ -731,7 +731,7 @@ charset="utf-8"></script> -->
 <li>当读取数据时，如果数据存在于 Buffer Pool 中，客户端就会直接读取 Buffer Pool 中的数据，否则再去磁盘中读取。</li>
 <li>当修改数据时，如果数据存在于 Buffer Pool 中，那直接修改 Buffer Pool 中数据所在的页，然后将其页设置为脏页（该页的内存数据和磁盘上的数据已经不一致），为了减少磁盘I/O，不会立即将脏页写入磁盘，后续由后台线程选择一个合适的时机将脏页写入到磁盘。</li>
 </ul>
-<h4 id="buffer-pool-%E7%BC%93%E5%AD%98%E4%BB%80%E4%B9%88%EF%BC%9F" tabindex="-1">Buffer Pool 缓存什么？</h4>
+<h4 id="2.1-buffer-pool-%E7%BC%93%E5%AD%98%E4%BB%80%E4%B9%88%EF%BC%9F" tabindex="-1">2.1 Buffer Pool 缓存什么？</h4>
 <p>【页】作为磁盘和内存交互的基本单位，一个页的默认大小是16kb。因此，Buffer Pool是同样需要按照【页】进行划分。</p>
 <p>在 MySQL 启动的时候，<strong>InnoDB 会为 Buffer Pool 申请一片连续的内存空间，然后按照默认的<code>16KB</code>的大小划分出一个个的页， Buffer Pool 中的页就叫做缓存页</strong>。此时这些缓存页都是空闲的，之后随着程序的运行，才会有磁盘上的页被缓存到 Buffer Pool 中。</p>
 <p>所以，MySQL 刚启动的时候，你会观察到使用的虚拟内存空间很大，而使用到的物理内存空间却很小，这是因为只有这些虚拟内存被访问后，操作系统才会触发缺页中断，申请物理内存，接着将虚拟地址和物理地址建立映射关系。</p>
@@ -794,7 +794,7 @@ charset="utf-8"></script> -->
 </li>
 </ol>
 <p>·</p>
-<h4 id="redo-log-%E4%BB%80%E4%B9%88%E6%97%B6%E5%80%99%E8%BF%9B%E8%A1%8C%E5%88%B7%E7%9B%98%EF%BC%9F" tabindex="-1">redo log 什么时候进行刷盘？</h4>
+<h4 id="3.1-redo-log-%E4%BB%80%E4%B9%88%E6%97%B6%E5%80%99%E8%BF%9B%E8%A1%8C%E5%88%B7%E7%9B%98%EF%BC%9F" tabindex="-1">3.1 redo log 什么时候进行刷盘？</h4>
 <p>缓存在redo log buffer里的redo log 还是在内存中，主要存在以下的几个时机：</p>
 <ul>
 <li>MySQL 正常关闭时；</li>
@@ -824,7 +824,7 @@ charset="utf-8"></script> -->
 <p>​</p>
 </li>
 </ul>
-<h4 id="redo-log-%E6%96%87%E4%BB%B6%E5%86%99%E6%BB%A1%E4%BA%86%E6%80%8E%E4%B9%88%E5%8A%9E%EF%BC%9F" tabindex="-1">redo log 文件写满了怎么办？</h4>
+<h4 id="3.2-redo-log-%E6%96%87%E4%BB%B6%E5%86%99%E6%BB%A1%E4%BA%86%E6%80%8E%E4%B9%88%E5%8A%9E%EF%BC%9F" tabindex="-1">3.2 redo log 文件写满了怎么办？</h4>
 <p>默认情况下，InnoDB存储引擎有1个重做日志文件组，「重做日志文件组」由有 2 个 redo log 文件组成，这两个 redo 日志的文件名叫 ：<code>ib_logfile0</code> 和 <code>ib_logfile1</code> 。</p>
 <img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="/2024/05/14/mysql-ri-zhi-ji-zhi-xiang-jie/%E9%87%8D%E5%81%9A%E6%97%A5%E5%BF%97%E6%96%87%E4%BB%B6%E7%BB%84.drawio.png" alt="重做日志文件组" style="zoom: 50%;">
 <p>在重做日志组中，每个 redo log File 的大小是固定且一致的，假设每个 redo log File 设置的上限是 1 GB，那么总共就可以记录 2GB 的操作。</p>
@@ -836,7 +836,7 @@ charset="utf-8"></script> -->
 <p>MySQL在完成一条更新操作后，Server层都还是会生成一条binlog，等之后事务提交的时候，会将该事务执行过程红产生的所以binlog统一写入到binlog文件中去；</p>
 <p><strong>binlog 文件是记录了所有数据库表结构变更和表数据修改的日志</strong>，不会记录查询类的操作，比如 SELECT 和 SHOW 操作。</p>
 <p>​</p>
-<h4 id="redo-log-%E5%92%8C-binlog-%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB%EF%BC%9F" tabindex="-1">redo log 和 binlog 有什么区别？</h4>
+<h4 id="4.1-redo-log-%E5%92%8C-binlog-%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB%EF%BC%9F" tabindex="-1">4.1 redo log 和 binlog 有什么区别？</h4>
 <p>这两个日志有四个区别。</p>
 <p><em>1、适用对象不同：</em></p>
 <ul>
@@ -871,7 +871,7 @@ charset="utf-8"></script> -->
 <p>因为redo log 文件是循环写，是会边写边擦除日志的，只记录未被刷入磁盘的数据物理日志，已经刷入磁盘的数据都会从redo log 文件里面擦除；</p>
 <p>binlog 文件保存的是全量的日志，也就是保存了所有数据变更的情况，理论上只要记录在binlog上的数据，都是可以恢复的，如果不小心整个数据库都被删除了，这时候得用binlog 文件恢复数据；</p>
 <p>​</p>
-<h4 id="%E4%B8%BB%E4%BB%8E%E5%A4%8D%E5%88%B6%E6%98%AF%E6%80%8E%E4%B9%88%E5%AE%9E%E7%8E%B0%EF%BC%9F" tabindex="-1">主从复制是怎么实现？</h4>
+<h4 id="4.2-%E4%B8%BB%E4%BB%8E%E5%A4%8D%E5%88%B6%E6%98%AF%E6%80%8E%E4%B9%88%E5%AE%9E%E7%8E%B0%EF%BC%9F" tabindex="-1">4.2 主从复制是怎么实现？</h4>
 <p>MySQL的主从复制依赖于binlog，也就是记录MySQL上的所有变化并且以二进制形式保存在磁盘中，复制的过程就是将binlog中的数据从主库传输到从库上。</p>
 <p><strong>这一过程一般是异步实现的</strong>，也就是主库上执行事务操作的线程不会等待复制binlog的线程同步完成。</p>
 <p>MySQL集群的主从复制过程梳理成3个阶段：</p>
@@ -904,7 +904,7 @@ charset="utf-8"></script> -->
 <p>​</p>
 </li>
 </ul>
-<h4 id="binlog-%E4%BB%80%E4%B9%88%E6%97%B6%E5%80%99%E5%88%B7%E7%9B%98%EF%BC%9F" tabindex="-1">binlog 什么时候刷盘？</h4>
+<h4 id="4.3-binlog-%E4%BB%80%E4%B9%88%E6%97%B6%E5%80%99%E5%88%B7%E7%9B%98%EF%BC%9F" tabindex="-1">4.3 binlog 什么时候刷盘？</h4>
 <p>事务执行过程中，先把日志写到 binlog cache（Server 层的 cache），事务提交的时候，再把 binlog cache 写到 binlog 文件中。</p>
 <p>一个事务的 binlog 是不能被拆开的，因此无论这个事务有多大（比如有很多条语句），也要保证一次性写入。这是因为有一个线程只能同时有一个事务在执行的设定，所以每当执行一个 begin/start transaction 的时候，就会默认提交上一个事务，这样如果一个事务的 binlog 被拆开的时候，在备库执行就会被当做多个事务分段自行，这样破坏了原子性，是有问题的。</p>
 <p>MySQL 给每个线程分配了一片内存用于缓冲 binlog ，该内存叫 binlog cache，参数 binlog_cache_size 用于控制单个线程内 binlog cache 所占内存的大小。如果超过了这个参数规定的大小，就要暂存到磁盘。</p>
@@ -949,7 +949,7 @@ charset="utf-8"></script> -->
 <h3 id="%E4%BA%94%E3%80%81%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%E4%B8%A4%E9%98%B6%E6%AE%B5%E6%8F%90%E4%BA%A4%EF%BC%9F" tabindex="-1">五、为什么需要两阶段提交？</h3>
 <p>在持久化 redo log 和 binlog 这两份日志的时候，如果出现半成功的状态，就会造成主从环境的数据不一致性。这是因为 redo log 影响主库的数据，binlog 影响从库的数据，所以 redo log 和 binlog 必须保持一致才能保证主从数据一致。</p>
 <p>**MySQL中为了避免出现两份日志之间的逻辑不一致情况，使用了【两阶段提交】来进行解决，**两阶段提交其实是分布式事务一致性协议，它可以保证多个逻辑操作要不全部成功，要不全部失败，不会出现半成功情况~</p>
-<h4 id="%E4%B8%A4%E9%98%B6%E6%AE%B5%E6%8F%90%E4%BA%A4%E7%9A%84%E8%BF%87%E7%A8%8B%E6%98%AF%E6%80%8E%E6%A0%B7%E7%9A%84%EF%BC%9F" tabindex="-1">两阶段提交的过程是怎样的？</h4>
+<h4 id="5.1-%E4%B8%A4%E9%98%B6%E6%AE%B5%E6%8F%90%E4%BA%A4%E7%9A%84%E8%BF%87%E7%A8%8B%E6%98%AF%E6%80%8E%E6%A0%B7%E7%9A%84%EF%BC%9F" tabindex="-1">5.1 两阶段提交的过程是怎样的？</h4>
 <p>在MySQL的InnoDB存储引擎中，开启binlog情况下，MySQL会同时维护binlog日志和InnoDB的redo log，为了保证这两个日志的一致性，MySQL使用了内部XA事务，内部 XA 事务由 binlog 作为协调者，存储引擎是参与者。</p>
 <p>当客户端执行 commit 语句或者在自动提交的情况下，MySQL 内部开启一个 XA 事务，<strong>分两阶段来完成 XA 事务的提交</strong>。</p>
 <p>事务的提交过程有两个阶段，就是<strong>将 redo log 的写入拆成了两个步骤：prepare 和 commit，中间再穿插写入binlog</strong>，具体如下：</p>
@@ -1880,7 +1880,7 @@ $(function () {
     if (windowWidth > 768) {
         document.write('<script type="text/javascript" src="https://apip.weatherdt.com/float/static/js/r.js?v=1111"><\/script>');
     }
-    </script>
+    </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
     
   
 
@@ -1896,6 +1896,6 @@ $(function () {
                 preloadRatio: 3,
                 processImages: null,
             };
-        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(r){r.imageLazyLoadSetting.processImages=t;var e=r.imageLazyLoadSetting.isSPA,n=r.imageLazyLoadSetting.preloadRatio||1,c=a();function a(){var t=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")),e=Array.prototype.slice.call(document.querySelectorAll("[bg-lazy]"));return t.concat(e)}function t(){e&&(c=a());for(var t,o=0;o<c.length;o++)0<=(t=(t=c[o]).getBoundingClientRect()).bottom&&0<=t.left&&t.top<=(r.innerHeight*n||document.documentElement.clientHeight*n)&&function(){var t,e,n,a,i=c[o];e=function(){c=c.filter(function(t){return i!==t}),r.imageLazyLoadSetting.onImageLoaded&&r.imageLazyLoadSetting.onImageLoaded(i)},(t=i).hasAttribute("bg-lazy")?(t.removeAttribute("bg-lazy"),e&&e()):(n=new Image,a=t.getAttribute("data-original"),n.onload=function(){t.src=a,t.removeAttribute("data-original"),e&&e()},t.src!==a&&(n.src=a))}()}function i(){clearTimeout(t.tId),t.tId=setTimeout(t,500)}t(),document.addEventListener("scroll",i),r.addEventListener("resize",i),r.addEventListener("orientationchange",i)}(this);</script><script src="/live2dw/lib/L2Dwidget.min.js?243708c68e3ad401cd4432916889e600"></script><script>L2Dwidget.init({"dialog":{"enable":true,"hitokoto":true},"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"left","width":120,"height":160,"superSample":2,"voffset":0,"hoffset":20},"mobile":{"show":false},"react":{"opacity":0.7,"opacityOnHover":0.2}});</script><!-- hexo-inject:begin --><!-- hexo-inject:end --></body>
+        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(r){r.imageLazyLoadSetting.processImages=t;var e=r.imageLazyLoadSetting.isSPA,n=r.imageLazyLoadSetting.preloadRatio||1,c=a();function a(){var t=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")),e=Array.prototype.slice.call(document.querySelectorAll("[bg-lazy]"));return t.concat(e)}function t(){e&&(c=a());for(var t,o=0;o<c.length;o++)0<=(t=(t=c[o]).getBoundingClientRect()).bottom&&0<=t.left&&t.top<=(r.innerHeight*n||document.documentElement.clientHeight*n)&&function(){var t,e,n,a,i=c[o];e=function(){c=c.filter(function(t){return i!==t}),r.imageLazyLoadSetting.onImageLoaded&&r.imageLazyLoadSetting.onImageLoaded(i)},(t=i).hasAttribute("bg-lazy")?(t.removeAttribute("bg-lazy"),e&&e()):(n=new Image,a=t.getAttribute("data-original"),n.onload=function(){t.src=a,t.removeAttribute("data-original"),e&&e()},t.src!==a&&(n.src=a))}()}function i(){clearTimeout(t.tId),t.tId=setTimeout(t,500)}t(),document.addEventListener("scroll",i),r.addEventListener("resize",i),r.addEventListener("orientationchange",i)}(this);</script><script src="/live2dw/lib/L2Dwidget.min.js?243708c68e3ad401cd4432916889e600"></script><script>L2Dwidget.init({"dialog":{"enable":true,"hitokoto":true},"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"left","width":120,"height":160,"superSample":2,"voffset":0,"hoffset":20},"mobile":{"show":false},"react":{"opacity":0.7,"opacityOnHover":0.2}});</script></body>
 
 </html>
